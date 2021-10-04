@@ -15,7 +15,7 @@ import vo.ActionForward;
 /**
  * Servlet implementation class CustomerController
  */
-@WebServlet("*.do")
+@WebServlet("*.co")
 public class CustomerController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class CustomerController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("/CustCenter.do")) {
+		if(command.equals("/CustCenter.co")) {
 			// 글쓰기 작업을 위한 뷰페이지로 포워딩
 			forward = new ActionForward();
 			forward.setPath("/cust/custCenter.jsp");
