@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>집밥장인이 만든 온라인 식품몰 더반찬&</title>
-<link href="../CSS/default.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/CSS/default.css" rel="stylesheet">
 </head>
 <body>
 	<div id="wrap">
@@ -17,7 +17,7 @@
 		<!-- 컨텐츠 -->
 		<section id="content">
 			<div id="img1">
-				<img alt="" src="../img/food.jpg">
+				<img alt="" src="/img/food.jpg">
 			</div>
 			<form action="order.do" method="post">
 				<div id="detail">
