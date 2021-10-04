@@ -17,7 +17,7 @@
 		<!-- 컨텐츠 -->
 		<section id="content">
 			<div id="img1">
-				<img alt="" src="/img/food.jpg">
+				<img alt="" src="https://cdn.thebanchan.co.kr/upload/C00001/goods/prd/510/624/200715000025624.jpg">
 			</div>
 			<form action="order.do" method="post">
 				<div id="detail">
@@ -66,14 +66,18 @@
 		<div id="sub_menu">
 			<ul>
 				<li><a href="#desc">제품정보</a></li>
-				<li><a>제품정보고시</a></li>
-				<li><a>고객후기</a></li>
-				<li><a>주의사항</a></li>
+				<li><a href="#">제품정보고시</a></li>
+				<li><a href="#">고객후기</a></li>
+				<li><a href="#">주의사항</a></li>
 			</ul>
 		</div>
 		<section id="desc">
-			<img alt="" src="../img/detail_description.jpg">
+			<img alt="" src="http://image.thebanchan.co.kr/upload/C00001/fckeditor/tempgoodsdesc/202108/1627885195080.jpg" style="width: 950px; height: 600px;"><br>
+			<img alt="" src="http://image.thebanchan.co.kr/upload/C00001/fckeditor/tempgoodsdesc/202007/1594797404567.jpg"><br>
+			<img alt="" src="http://image.thebanchan.co.kr/upload/C00001/fckeditor/tempgoodsdesc/202007/1594797423524.jpg"><br>
 		</section>
+		
+		<jsp:include page="../review/goodsReview.jsp"/>
 
 		<!-- footer -->
 		<footer>
