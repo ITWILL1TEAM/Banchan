@@ -1,13 +1,9 @@
 @charset "UTF-8";
 
-#main_container{
-	margin-left: 100px;
-}
-
-.main_title{
+#wrapper{
 	width: 100%;
-	height: 130px;
-	float: left;
+	text-align: left;
+	margin: 0 auto;
 }
 
 .lnb{
@@ -16,6 +12,7 @@
 	width:170px;
 	padding:0 0 40px 0;
 }
+
 .lnb h2{
 	width:172px;
 	height:120px;
@@ -37,7 +34,6 @@
 	border:1px solid #ededed;
 	background:#f9f9f9;
 }
-
 .lnb ul li a{
 	display:block;
 	height:20px;
@@ -64,103 +60,33 @@
 	font-size: 17px;
 }
 
-.cst_top{
-	overflow:hidden;
-	float: left;
+.faq_search{
 	width:1000px;
-	height:120px;
-	margin-bottom:30px;
+	height: 120px;
 	background:skyblue;
-	font-size:28px;
-	line-height:120px;
-	text-align:center;
 	position: relative;
-	top: 23.2px;
-}
-
-.cst_top dt {
-	position: relative;
-	text-align:left;
-	left: 75px;
-	line-height: 65px;
-	font-weight: bold;
-	color: #fff;	
-}
-.cst_top dd{
-	position: relative;
-	right: 190px;
-	top: -97px;
-	display:block;		
-}
-.cst_top dd input{
-	width:283px;height:26px;
-	font-size:13px;
-	position: relative;
-	left: 20px;
-}
-.cst_top dd button{
-	width:68px;height:32.6px;
-	font-size:13px;
-	position: relative;
-	right: -10px;
-	top: 0.8px;
-	background: black;
-	color: #fff;
-}
-.cst_top .faq_word{
-	position:absolute;
-	bottom:-82px;
-	left:553px;
-	width: 500px;
-}
-.cst_top .faq_word li{
-	float:left;
-	width:auto; 
-	list-style: none;
-	font-size: 20px;
-	position:relative;
-	right: 50px;
-	font-weight: bold;
-}
-.cst_top .faq_word li a{
-	text-decoration: none;
-	color: #fff;
+	top:23.2px;
+	left: 170px;
 	
 }
-.sub_content{
-	float:left;
-	position:relative;
-	top: 10px;
-	width:860px;
-	min-height:800px;
-	padding:0 0 75px 30px;}
+
 .sub_content .cst_quick{
 	width:933px;
-	height:98px;
-	margin-bottom:38px;
-	padding:20px 0;
+	height:130px;
+	background:gray;
 	border:4px solid #efefef;
-}
-
-.sub_content .cst_quick li{
-	font-size:17px;
 	position: relative;
-	top: 80px;
-	left:50px;
-	margin-right: 90px;
-}
-
-.sub_content .cst_quick li a{
-	text-decoration: none;
-}
-.cst_faq{
-	width:930px;
-	height: 1000px;
-	position: relative;
-	left: 210px;	
-	bottom: 650px;
+	top:40px;
+	left: 190px;
 	
 }
 
+.faq_cont {
 
-
+	position: relative;
+	top:40px;
+	left: 50px;
+}
+.faq_cont .notice .list{
+	
+}
