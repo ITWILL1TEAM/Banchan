@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+#wrap {
+	text-align: center;
+	margin: 0 auto;
+	
+}
+	
+#wrap>header {
+	min-height: 200px;
+	text-align: left;
+	margin: 0 30px;
+}
+
+#login {text-align: right;}
+
+#top_menu>ul {list-style: none;}
+
+li {
+	display: inline-block;
+	margin: 0 30px 50px 0;	
+}
+
+#content {
+	text-align: center;
+	margin-top: 50px;
+}
+
+#clear {clear: both;}
+
+#img_cart {
+	width:60px;
+}
+
+#title {
+	float: left;
+	font-size: 40px;
+	letter-spacing: -5px;
+}
+
+#img_food {
+	width: 100px;
+}
+
+#count {width: 15px;}
+
+.input {
+	width: 20px;
+}
+
+.qty_edit {
+	width: 85px;
+}
+
+.subject {
+	background-color: lightgray;
+}
+
+.txt, .img {
+	float: left;
+}
+
+.txt {
+	line-height: 100px;
+	vertical-align: middle;
+}
+
+.prd_sum, .dis_sum, .cart_sum, .sel_date {
+	float: left;
+	margin-right: 100px;
+}
+
+.order {
+	width: 1200px; height: 120px;
+	border: 2px solid black;
+	clear: both;
+	overflow: hidden;
+}
+
+.sel_date {
+	position: relative;
+	top: 15px;
+	width: 400px;
+	height: 50px;
+	background-color: orange;
+	font-size: 1.3em;
+}
