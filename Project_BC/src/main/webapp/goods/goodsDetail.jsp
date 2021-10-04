@@ -19,7 +19,7 @@
 			<div id="img1">
 				<img alt="" src="https://cdn.thebanchan.co.kr/upload/C00001/goods/prd/510/624/200715000025624.jpg">
 			</div>
-			<form action="order.do" method="post">
+			<form action="Order.do" method="post">
 				<div id="detail">
 					<table>
 						<tr>
