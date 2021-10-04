@@ -17,9 +17,9 @@
 		
 		</header>
 		<nav id="cst" class="lnb">
-			<a href=""><h2>고객센터</h2></a><!-- 눌렀을때 고객센터 페이지 들어가기 -->
+			<a href="../CustCenter.do"><h2>고객센터</h2></a><!-- 눌렀을때 고객센터 페이지 들어가기 -->
 			<ul>
-				<li><a href="">자주하는 질문</a></li>
+				<li><a href="">자주하는 질문</a></li> 
 				<li><a href="">1:1 친절상담</a></li>
 				<li><a href="">1:1 상담내역</a></li>
 				<li><a href="">공지사항</a></li>
