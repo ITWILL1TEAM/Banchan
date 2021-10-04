@@ -31,7 +31,7 @@ public class ProductController extends HttpServlet {
 		// 각 Action 클래스의 인스턴스를 공통으로 관리하는 Action 타입 변수 선언
 		Action action = null;
 		
-		if(command.equals("/product.do")) {
+		if(command.equals("/Product.do")) {
 			forward = new ActionForward();
 			forward.setPath("/goods/goodsDetail.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
