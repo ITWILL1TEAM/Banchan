@@ -36,7 +36,7 @@ public class ProductController extends HttpServlet {
 			forward.setPath("/goods/goodsDetail.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 			
-		} else if(command.equals("/order.do")) {
+		} else if(command.equals("/Order.do")) {
 			// 글쓰기 작업을 위한 뷰페이지로 포워딩
 			forward = new ActionForward();
 			forward.setPath("/goods/orderTest.jsp");
