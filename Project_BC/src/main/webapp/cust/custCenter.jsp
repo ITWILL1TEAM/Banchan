@@ -17,15 +17,15 @@
 		
 		</header>
 		<nav id="cst" class="lnb">
-			<a href="CustCenter.co"><h2>고객센터</h2></a><!-- 눌렀을때 고객센터 페이지 들어가기 -->
+			<a href="CustCenterMain.co"><h2>고객센터</h2></a><!-- 눌렀을때 고객센터 페이지 들어가기 -->
 			<ul>
-				<li><a href="">자주하는 질문</a></li> 
-				<li><a href="">1:1 친절상담</a></li>
-				<li><a href="">1:1 상담내역</a></li>
-				<li><a href="">공지사항</a></li>
+				<li><a href="CustCenterFAQ.co">자주하는 질문</a></li> 
+				<li><a href="CustCenterQNA.co">1:1 친절상담</a></li>
+				<li><a href="CustCenterQNAList.co">1:1 상담내역</a></li>
+				<li><a href="CustCenterNotice.co">공지사항</a></li>
 			</ul>
 			<dl class="cst">
-				<dt><a href="" >  고객센터 ></a></dt>
+				<dt><a href="CustCenterMain.co" >  고객센터 ></a></dt>
 				
 				<dd><b>1644-6844</b></dd>
 				<dd>평일 08:00~20:00<br>(토/일/공휴일은 휴무)</dd>

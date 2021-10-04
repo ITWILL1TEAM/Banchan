@@ -27,12 +27,38 @@ public class CustomerController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("/CustCenter.co")) {
+		if(command.equals("/CustCenterMain.co")) {
 			// 글쓰기 작업을 위한 뷰페이지로 포워딩
 			forward = new ActionForward();
 			forward.setPath("/cust/custCenter.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/CustCenterFAQ.co")) {
+			//faq페이지로 이동
+			forward = new ActionForward();
+			forward.setPath("/cust/faq.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/CustCenterNotice.co")) {
+			//faq페이지로 이동
+			forward = new ActionForward();
+			forward.setPath("/cust/custNotice.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/CustCenterQNA.co")) {
+			//faq페이지로 이동
+			forward = new ActionForward();
+			forward.setPath("/cust/qna.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/CustCenterQNAList.co")) {
+			//faq페이지로 이동
+			forward = new ActionForward();
+			forward.setPath("/cust/qnaList.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}
+		
+		
+		
+		
+		
+		//======================================================
 		
 		
 		if(forward != null) {

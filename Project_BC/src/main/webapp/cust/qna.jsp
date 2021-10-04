@@ -4,11 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자주하는 질문</title>
+<title>1:1상담</title>
 <link href="${pageContext.request.contextPath}/CSS/custCss.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/CSS/default.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<%
+				//세션 아이디가 존재하지 않으면 로그인 페이지로 이동
+				//자바스크립트로 로그인필수를 출력 후 이동처리
+				String id =(String)session.getAttribute("id");
+				if(id==null){
+					%>
+					<script type="text/javascript">
+						alert('로그인 필수');
+					</script>
+					<%
+					response.sendRedirect("../member/login.jsp");//로그인 폼 페이지로 이동 로그인팀 후에 하기ㅡㅡ
+					
+				}
+				
+%>
+
 <div id="wrapper">
 		<header>
 			<div class="main_title">
@@ -31,36 +47,13 @@
 				<dd>평일 08:00~20:00<br>(토/일/공휴일은 휴무)</dd>
 			</dl>
 		</nav>
-		<h2>자주하는 질문</h2>
-		<section class="cst_top">
-			<article class="faq_search">
-				<dl>
-					<dt><b>FAQ</b></dt>
-					<dd><input type="text" id="cstSearch" title="검색어 입력" placeholder="궁금하신 사항을 입력해 주세요"> 
-						<button id="searchBtn">검색</button>
-					</dd>
-				</dl>
-				<ul class="faq_word">
-					<li><a href="">쿠폰</a></li>
-					<li><a href="">배송</a></li>
-					<li><a href="">회원</a></li>
-					<li><a href="">적립금</a></li>
-					<li><a href="">이벤트</a></li>
-				</ul>
-			</article>
-		</section>
-		<section class="detail_faq">
-					
-		
-		
-		
-		
-		</section>
-	
-	
-	
+		<h2>1:1상담</h2>
 	
 	</div>
 
+			
+			
+			
+			
 </body>
 </html>
