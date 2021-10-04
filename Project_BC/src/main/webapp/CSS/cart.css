@@ -2,7 +2,6 @@
 
 #wrap {
 	text-align: center;
-	margin: 0 auto;
 	
 }
 	
@@ -24,13 +23,14 @@ li {
 #content {
 	text-align: center;
 	margin-top: 50px;
+	margin-left: 20%;
+}
+
+.odr_tb1 {
+	margin-bottom: 50px;
 }
 
 #clear {clear: both;}
-
-#img_cart {
-	width:60px;
-}
 
 #title {
 	float: left;
@@ -80,7 +80,7 @@ li {
 .sel_date {
 	position: relative;
 	top: 15px;
-	width: 400px;
+	width: 300px;
 	height: 50px;
 	background-color: orange;
 	font-size: 1.3em;

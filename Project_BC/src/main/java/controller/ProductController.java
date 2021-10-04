@@ -32,14 +32,20 @@ public class ProductController extends HttpServlet {
 		Action action = null;
 		
 		if(command.equals("/Product.do")) {
+			// 상품 상세 페이지로 포워딩
 			forward = new ActionForward();
 			forward.setPath("/goods/goodsDetail.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 			
 		} else if(command.equals("/Order.do")) {
-			// 글쓰기 작업을 위한 뷰페이지로 포워딩
+			// 주문하기 페이지로 포워딩
 			forward = new ActionForward();
 			forward.setPath("/goods/orderTest.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		} else if(command.equals("/Cart.do")) {
+			// 장바구니 페이지로 포워딩
+			forward = new ActionForward();
+			forward.setPath("/cart/cart.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}
 		

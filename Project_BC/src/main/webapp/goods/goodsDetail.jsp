@@ -54,7 +54,7 @@
 						</tr>
 					</table>
 					<div id="btn">
-						<input type="button" value="장바구니" id="btnCart" onclick="alert('선택한 제품이 장바구니에 담겼습니다.')">
+						<input type="button" value="장바구니" id="btnCart" onclick="location.href='Cart.do'">
 						<input type="submit" value="바로구매" id="btnOrder">
 					</div>
 				</div>
