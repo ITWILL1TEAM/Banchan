@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터 | 더반찬 짭</title>
-<link href="../CSS/custCss.css" rel="stylesheet" type="text/css">
-<link href="../CSS/default.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/CSS/custCss.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/CSS/default.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="wrapper">
@@ -17,7 +17,7 @@
 		
 		</header>
 		<nav id="cst" class="lnb">
-			<a href="../CustCenter.co"><h2>고객센터</h2></a><!-- 눌렀을때 고객센터 페이지 들어가기 -->
+			<a href="CustCenter.co"><h2>고객센터</h2></a><!-- 눌렀을때 고객센터 페이지 들어가기 -->
 			<ul>
 				<li><a href="">자주하는 질문</a></li> 
 				<li><a href="">1:1 친절상담</a></li>
