@@ -11,7 +11,6 @@ var passwordRetypeCheckResult = false;
 var checkNameResult = false;
 var checkPhoneResult = false;
 
-
 function checkId(member_id) {
 
 	var regex = /^[A-Za-z0-9_]{5,20}$/g;
