@@ -16,7 +16,7 @@ import vo.ActionForward;
  * Servlet implementation class ProductController
  */
 @WebServlet("*.do")
-public class ProductController extends HttpServlet {
+public class ProductFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
