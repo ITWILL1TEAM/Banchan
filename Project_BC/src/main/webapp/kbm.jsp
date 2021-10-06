@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>kbm 가 만든 jsp 페이지</h1>
+	<h1>kbm이 만든 페이지</h1>
 </body>
 </html>
