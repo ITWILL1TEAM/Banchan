@@ -48,10 +48,19 @@
 			</dl>
 		</nav>
 		<h2>1:1상담</h2>
+	<footer>
+		commit test
+		footer
+		</footer>
+		
+
+	<!-- 푸터 들어가기 -->
+
+
 	
 	</div>
 
-			
+		
 			
 </body>
 </html>
