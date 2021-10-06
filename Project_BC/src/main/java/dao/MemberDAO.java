@@ -1,8 +1,11 @@
 package dao;
 
+import static db.JdbcUtil.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -105,7 +108,7 @@ private static MemberDAO instance;
 			
 			// 3단계. SQL 구문 작성 및 전달
 			// => id 에 해당하는 레코드의 pass 컬럼 데이터 검색
-			String sql = "SELECT * FROM mvc_member WHERE member_id=? AND member_pass=?";
+			String sql = "SELECT * FROM member_BC WHERE member_id=? AND member_pass=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member_id);
 			pstmt.setString(2, member_pass);
@@ -128,6 +131,36 @@ private static MemberDAO instance;
 		
 		return isLoginSuccess;
 	}
+
+    public boolean selectMember(MemberBean member) {
+        boolean isLoginSuccess = false;
+        
+        // SELECT 작업을 통해 회원 아이디, 패스워드 조회 후 로그인 결과 판별
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        
+        try {
+            // 아이디, 패스워드를 모두 전달하여 결과가 조회되면 성공, 아니면 실패
+            String sql = "SELECT id FROM member_BC WHERE id=? AND passwd=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, member.getMember_id());
+            pstmt.setString(2, member.getMember_pass());
+            
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) { // 조회된 id 값이 있을 경우 로그인 성공
+                isLoginSuccess = true;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("MemberDAO - selectMember() 오류 발생!");
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return isLoginSuccess;
+    }
 	
 }
 

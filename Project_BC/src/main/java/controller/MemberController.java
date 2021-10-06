@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.MemberLoginProAction;
 import vo.ActionForward;
 
 
@@ -33,6 +34,20 @@ public class MemberController extends HttpServlet {
 			forward.setPath("/member/member_join_form.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}
+	
+		 if(command.equals("/MemberLoginForm.me")) {
+	            forward = new ActionForward();
+	            forward.setPath("/member/member_login_form.jsp");
+	            forward.setRedirect(false);
+		 }else if(command.equals("/MemberLoginPro.me")) {
+	            action = new MemberLoginProAction();
+	            
+	            try {
+	                forward = action.execute(request, response);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+		 }
 		
 		
 		if(forward != null) {
