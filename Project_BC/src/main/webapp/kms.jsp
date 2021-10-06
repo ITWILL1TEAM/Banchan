@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>kms 가 만든 JSP 페이지</h1>
+
 </body>
 </html>
