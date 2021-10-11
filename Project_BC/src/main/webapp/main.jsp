@@ -10,43 +10,38 @@
 <!-- Bootstrap CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
 	crossorigin="anonymous"></script>
 
-
-
-
-<style type="./CSS/main.css"></style>
-<script type="./js/jquery-3.6.0.js"></script>
 <title>Hello, world!</title>
 </head>
 <body>
 	<div class=" bg-light text-dark ">
 		<div class="container">
 			<!--  head top -->
-
-			<div class="col text-size" align="right">
-				<a class="btn btn-light" id="head_login" href="MemberLoginForm.me">로그인</a>
-				<a class="btn btn-light" id="head_sign" href="Member.me">회원가입</a> <a
-					class="btn btn-light" id="head_Service center" href="#">장바구니</a>
-			</div>
-
-			<div class="row">
-				<div class="col-12 text-center">
-					<a class="navbar-brand" href="#"> <img alt="logo"
-						src="./img/TestLogo.png" width="150" height="150">
-					</a>
+			<header>
+				<div class="col text-size" align="right">
+					<a class="btn btn-light" id="head_login" href="MemberLoginForm.me">로그인</a> <a
+						class="btn btn-light" id="head_sign" href="MemberJoinForm.me">회원가입</a> <a
+						class="btn btn-light" id="head_Service center" href="#">장바구니</a>
 				</div>
-			</div>
 
-			<!--  Header NavBar -->
-			<div class="top-header py4 sticky-top">
-				<nav
-					class="navbar navbar-expand-lg navbar-light bg-light text-dark ">
-					<div class="container-fluid ">
+				<div class="row">
+					<div class="col-12 text-center">
+						<a class="navbar-brand" href="#"> <img alt="logo"
+							src="./img/TestLogo.png" width="150" height="150">
+						</a>
+					</div>
+				</div>
+
+				<!--  Header NavBar -->
+				<nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
+					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="navbarNavLightDropdown">
 							<ul class="navbar-nav">
 								<li class="nav-item dropdown"><a
@@ -77,8 +72,9 @@
 						</form>
 					</div>
 				</nav>
-			</div>
 
+
+			</header>
 
 
 			<!--  caousel -->
@@ -132,168 +128,125 @@
 			</div>
 
 
-			<!--  추천상품 -->
+
+			<!--  CONTENT -->
 			<div class="row mt-5" id="recommended">
-				<div>
-					<h3 align="center">추천상품</h3>
-				</div>
-
-
-				<nav>
-					<div class="nav nav-tabs nav-pills nav-fill" id="nav-tab"
-						role="tablist">
-						<a class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
-							href="#good1" role="tab" aria-controls="nav-home"
-							aria-selected="true">추천상품1</a> <a class="nav-link"
-							id="nav-profile-tab" data-bs-toggle="tab" href="#good2"
-							role="tab" aria-controls="nav-profile" aria-selected="false">추천상품2</a>
-						<a class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
-							href="#good3" role="tab" aria-controls="nav-contact"
-							aria-selected="false">추천상품3</a> <a class="nav-link"
-							id="nav-contact-tab" data-bs-toggle="tab" href="#good4"
-							role="tab" aria-controls="nav-contact" aria-selected="false">추천상품4</a>
-					</div>
-				</nav>
-				<div class="tab-content" id="nav-tabContent">
-					<div class="tab-pane fade show active" id="good1" role="tabpanel"
-						aria-labelledby="nav-home-tab">
-						<div class="row">
-							<%
-							for (int i = 0; i < 4; i++) {
-							%>
-							<div class="col-lg-3 col-sm-6 mb-4">
-								<div class="card">
-									<img src="./img/innerbox_sample1.jpg" class="card-img-center"
-										alt=".." style="width: 300px; height: 200px;">
-									<div class="card-body">
-										<h3 class="card-title" align="center">상품 이름</h3>
-										<p class="card-text">상품설명상품설명상품설명상품설상품설명</p>
-										<p align="right">15,000원</p>
-										<a href="#" class="btn btn-success"> 구매하기</a> <a href="#"
-											class="btn btn-dark"> 장바구니</a>
-									</div>
-								</div>
-							</div>
-							<%
-							}
-							%>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="good2" role="tabpanel"
-						aria-labelledby="nav-profile-tab">
-						<div class="row">
-							<%
-							for (int i = 0; i < 4; i++) {
-							%>
-							<div class="col-lg-3 col-sm-6 mb-4">
-								<div class="card">
-									<img src="./img/innerbox_sample2.jpg" class="card-img-center"
-										alt=".." style="width: 300px; height: 200px;">
-									<div class="card-body">
-										<h3 class="card-title" align="center">상품 이름</h3>
-										<p class="card-text">상품설명상품설명상품설명상품설상품설명</p>
-										<p align="right">15,000원</p>
-										<a href="#" class="btn btn-success"> 구매하기</a> <a href="#"
-											class="btn btn-dark"> 장바구니</a>
-									</div>
-								</div>
-							</div>
-							<%
-							}
-							%>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="good3" role="tabpanel"
-						aria-labelledby="nav-contact-tab">
-						<div class="row">
-							<%
-							for (int i = 0; i < 4; i++) {
-							%>
-							<div class="col-lg-3 col-sm-6 mb-4">
-								<div class="card">
-									<img src="./img/innerbox_sample3.jpg" class="card-img-center"
-										alt=".." style="width: 300px; height: 200px;">
-									<div class="card-body">
-										<h3 class="card-title" align="center">상품 이름</h3>
-										<p class="card-text">상품설명상품설명상품설명상품설상품설명</p>
-										<p align="right">15,000원</p>
-										<a href="#" class="btn btn-success"> 구매하기</a> <a href="#"
-											class="btn btn-dark"> 장바구니</a>
-									</div>
-								</div>
-							</div>
-							<%
-							}
-							%>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="goodr" role="tabpanel"
-						aria-labelledby="nav-contact-tab">
-						<div class="row">
-							<%
-							for (int i = 0; i < 4; i++) {
-							%>
-							<div class="col-lg-3 col-sm-6 mb-4">
-								<div class="card">
-									<img src="./img/innerbox_sample4.jpg" class="card-img-center"
-										alt=".." style="width: 300px; height: 200px;">
-									<div class="card-body">
-										<h3 class="card-title" align="center">상품 이름</h3>
-										<p class="card-text">상품설명상품설명상품설명상품설상품설명</p>
-										<p align="right">15,000원</p>
-										<a href="#" class="btn btn-success"> 구매하기</a> <a href="#"
-											class="btn btn-dark"> 장바구니</a>
-									</div>
-								</div>
-							</div>
-							<%
-							}
-							%>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-   <!-- 기본상품  -->
-
-
-			<div class="row mt-5" id="recommended">
-				<h3 align="center">그냥 상품</h3>
+				<h3 align="center">추천 상품</h3>
 				<hr>
 				<div class="row">
-					<%
-					for (int i = 0; i < 8; i++) {
-					%>
 					<div class="col-lg-3 col-sm-6 mb-4">
 						<!--추천상품 1-->
-						<div class="tumnail">
-							<div class="btn" data-bs-toggle="collapse">
-								<a href="#" class="text-decoration-none"> <img
-									class="img-thumbnail" src="./img/innerbox_sample1.jpg"
-									alt="..." style="width: 300px; height: 200px;" />
-
-									<h3 align="center">상품이름</h3>
-									<div class="" align="right">햄버거</div>
-									<div class="" align="right">15,000원</div>
-
-								</a>
+						<div class="">
+							<a class="" href="#"> <img class="img-thumbnail"
+								src="./img/innerbox_sample1.jpg" alt="..." />
+							</a>
+							<div class="">
+								<div class="" align="right">햄버거</div>
+								<div class="" align="right">15,000원</div>
 							</div>
 						</div>
 					</div>
-					<%
-					}
-					%>
+
+					<div class="col-lg-3 col-sm-6 mb-4">
+						<!--추천상품 2-->
+						<div class="">
+							<a class="" href="#"> <img class="img-thumbnail"
+								src="./img/innerbox_sample2.jpg" alt="..." />
+							</a>
+							<div class="">
+								<div class="" align="right">마카롱</div>
+								<div class="" align="right">15,000원</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6 mb-4">
+						<!--추천상품 3-->
+						<div class="">
+							<a class="" href="#"> <img class="img-thumbnail" src="./img/innerbox_sample3.jpg" alt="..." />
+							</a>
+							<div class="">
+								<div class="" align="right">뭐드라</div>
+								<div class="" align="right">15,000원</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-lg-3 col-sm-6 mb-4">
+                        <!--추천상품 4-->
+                        <div class="">
+                            <a class="" href="#">
+                                 <img class="img-thumbnail" src="./img/innerbox_sample1.jpg" alt="..." />
+                            </a>
+                            <div class="">
+                                <div class="" align="right">햄버거</div>
+                                <div class="" align="right">15,000원</div>
+                            </div>
+                        </div>
+                    </div>
 
 				</div>
 
 			</div>
+			
+			
+			
+			<div class="row mt-5" id="recommended">
+                <h3 align="center">그냥 상품</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 mb-4">
+                        <!--추천상품 1-->
+                        <div class="">
+                            <a class="" href="#"> <img class="img-thumbnail"
+                                src="./img/innerbox_sample1.jpg" alt="..." />
+                            </a>
+                            <div class="">
+                                <div class="" align="right">햄버거</div>
+                                <div class="" align="right">15,000원</div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-lg-3 col-sm-6 mb-4">
+                        <!--추천상품 2-->
+                        <div class="">
+                            <a class="" href="#"> <img class="img-thumbnail"
+                                src="./img/innerbox_sample2.jpg" alt="..." />
+                            </a>
+                            <div class="">
+                                <div class="" align="right">마카롱</div>
+                                <div class="" align="right">15,000원</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 mb-4">
+                        <!--추천상품 3-->
+                        <div class="">
+                            <a class="" href="#"> <img class="img-thumbnail" src="./img/innerbox_sample3.jpg" alt="..." />
+                            </a>
+                            <div class="">
+                                <div class="" align="right">뭐드라</div>
+                                <div class="" align="right">15,000원</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-sm-6 mb-4">
+                        <!--추천상품 4-->
+                        <div class="">
+                            <a class="" href="#">
+                                 <img class="img-thumbnail" src="./img/innerbox_sample1.jpg" alt="..." />
+                            </a>
+                            <div class="">
+                                <div class="" align="right">햄버거</div>
+                                <div class="" align="right">15,000원</div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
 
-
-
-
+            </div>
 
 			<!--  Footer -->
 			<hr>
