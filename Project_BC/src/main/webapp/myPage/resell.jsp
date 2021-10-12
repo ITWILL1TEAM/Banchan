@@ -1,0 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/mys.css" type="text/css">
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211011000" type="text/css">
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211011000" type="text/css">
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/mys.css?t=20200406000000" type="text/css">
+<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
+</head>
+<body>
+<div id="content" class="content" style="padding-top: 269px;">
+	<input type="hidden" id="checkPeriod">
+	<!-- WRAP -->
+	<div class="wrap mys">
+
+		<div id="skip_nav"><a href="#mys_content">MY더반찬 본문 바로가기</a></div>
+		
+<dl class="location_slt">
+	<dt><a href="">Home</a></dt>
+	<dd><a href="">MY더반찬</a></dd>
+</dl>
+
+
+<%@include file="quick.jsp" %>
+
+		<div id="mys_content" class="sub_cont">
+			<h3 class="tit2">주문배송 조회
+
+			</h3>
+
+<div class="mys_sch">
+	<div class="txt" id="guide_text"><ul><li>최대 6개월 이내의 주문/배송 내역이 확인됩니다.</li></ul></div>	
+	
+	<div class="show_calendar" id="show_calendar"></div>
+</div>
+			<div class="mys_none">
+				<span class="txt">주문 내역이 없습니다.</span>
+			</div>
+			<div class="mys_step">
+				<h4><b>주문/배송 단계</b> 고객님의 주문이 정상적으로 진행 중인지 꼭 확인해주세요.</h4>
+				<ul class="col5">
+					<li>
+						<dl>
+							<dt><b>STEP 1</b>입금확인중</dt>
+							<dd>입금확인 전 상태입니다.<br> 기한 내 미입금 시 자동<br> 취소됩니다.</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><b>STEP 2</b>결제완료</dt>
+							<dd>결제/입금이<br> 확인되었습니다.</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><b>STEP 3</b>제품 준비중</dt>
+							<dd>고객님께 발송드릴<br> 제품을 준비 중입니다.</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><b>STEP 4</b>배송중</dt>
+							<dd>제품이 고객님께<br> 배송중입니다.</dd>
+						</dl>
+					</li>
+					<li class="end">
+						<dl>
+							<dt><b>STEP 5</b>배송완료</dt>
+							<dd>제품 배송이<br> 완료되었습니다.</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<!-- //MY STEP -->
+
+			<!-- MY NOTICE -->
+			<div class="mys_notice">
+				<h4>주문/배송 <b>TIP</b></h4>
+				<ul>
+					<li></li>
+					<li>주문 제품을 <em>재 주문 하시고자 하시면</em>, 주문 상세내역에서 제품들을 확인 하신 후 일괄 <em>장바구니 담기 기능</em>을 활용해주시기 바랍니다.</li>
+					<li>주문을 즉시 취소 하실 경우 <em>즉시 취소 버튼을 클릭하시면</em> 취소 확인 후 <em>해당 주문 건 전체를 삭제하여 취소처리</em> 해 드립니다.</li>
+					
+					<li><em>즉시 취소는 결제완료 단계까지 가능</em>하며 제품 준비중 단계에서는 제품이 조리되어 취소처리가 불가능하니 이점 양해 부탁 드립니다.</li>
+					
+					<li><em>배송조회는 더반찬에서 발송되는 택배배송건만</em> 가능합니다. <em>(새벽직배송, 업체신선배송 조회 불가)</em></li>
+					<li>자세한 반품 신청 및 내역 조회는 취소/반품 내역 메뉴를 확인해 주시기 바랍니다.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

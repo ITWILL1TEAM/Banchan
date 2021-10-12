@@ -29,6 +29,8 @@
 					<a class="btn btn-light" id="head_login" href="MemberLoginForm.me">로그인</a> <a
 						class="btn btn-light" id="head_sign" href="MemberJoinForm.me">회원가입</a> <a
 						class="btn btn-light" id="head_Service center" href="#">장바구니</a>
+						<a
+						class="btn btn-light" id="head_Service center" href="OrderCheck.my">마이페이지</a>
 				</div>
 
 				<div class="row">

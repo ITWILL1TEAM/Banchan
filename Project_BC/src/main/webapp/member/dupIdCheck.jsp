@@ -20,8 +20,8 @@ String id = request.getParameter("id");
 if(id != null && !id.equals("")){
 	// MemberDAO 객체의 dupCheckId() 메서드를 호출하여 아이디 조회 후 중복 여부 판별
 	// => 파라미터 : 아이디(id) , 리턴타입 : boolean(isDuplicate)
-	MemberDAO dao = new MemberDAO();
-	boolean isDuplicate = dao.dupCheckId(id);
+	MemberDAO dao = MemberDAO.getInstance();
+	boolean isDuplicate = false;
 	%>
 	<%
 	if(isDuplicate){

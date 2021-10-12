@@ -193,7 +193,7 @@
 							<!-- TOOLTIP -->
 							<div class="lyr_tip_wrap">
 								<div class="lyr_tip right" id="sns_lyr">
-									<a href="javascript:void(0);" onclick="fnCallSNSShare('FB');" title="페이스북에 공유 새창" class="face"><span>페이스북</span></a>
+									<a href="javascript0:void(0);" onclick="fnCallSNSShare('FB');" title="페이스북에 공유 새창" class="face"><span>페이스북</span></a>
 									<a href="javascript:void(0);" onclick="fnCallSNSShare('KS');" title="카카오스토리에 공유 새창" class="kakao"><span>카카오스토리</span></a>
 									<a href="javascript:void(0);" onclick="fnCallSNSShare('NB');" title="네이버블로그에 공유 새창" class="nhn"><span>네이버블로그</span></a>
 									<a href="javascript:void(0);" onclick="fnCallSNSShare('UC');" title="URL 복사 새창" class="url"><span>URL 복사</span></a>

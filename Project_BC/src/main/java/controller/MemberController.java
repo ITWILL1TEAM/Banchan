@@ -77,22 +77,11 @@ public class MemberController extends HttpServlet {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+		
+		
 //	}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 		if(forward != null) {
 			// 2. ActionForward 객체 내의 isRedirect 값이 true(= Redirect 방식) 인지 판별
 			if(forward.isRedirect()) { // true = Redirect 방식
