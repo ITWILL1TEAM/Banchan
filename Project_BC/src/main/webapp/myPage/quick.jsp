@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../CSS/mys.css" type="text/css">
 </head>
 <body>
+<%@include file="../inc/top.jsp" %>
 	<div id="mys_lnb" class="lnb">
 	
 		<ul>

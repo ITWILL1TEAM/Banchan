@@ -19,6 +19,7 @@
 
 </head>
 <body>
+<%@include file="../inc/top.jsp" %>
 <div id="content" class="content" style="padding-top: 269px;">
 	<input type="hidden" id="checkPeriod">
 	<!-- WRAP -->

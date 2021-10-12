@@ -13,6 +13,7 @@
 <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
 </head>
 <body>
+<%@include file="../inc/top.jsp" %>
 <div id="content" class="content" style="padding-top: 269px;">
 	<input type="hidden" id="checkPeriod">
 	<!-- WRAP -->

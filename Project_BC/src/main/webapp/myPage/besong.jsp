@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/mys.css?t=20200406000000" type="text/css">
 </head>
+
 <body>
+<%@include file="../inc/top.jsp" %>
 <div id="content" class="content" style="padding-top: 269px;">
 	<input type="hidden" id="checkPeriod">
 	<!-- WRAP -->
