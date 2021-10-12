@@ -5,6 +5,14 @@
 <head>
 <meta charset="utf-8">
 <title>집밥장인이 만든 온라인 식품몰 더반찬&</title>
+<script src="../js/script.js"></script> 
+<!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
+<!-- <link href="../CSS/common.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="../CSS/sub.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="../CSS/font.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="../CSS/font.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="../CSS/gds.css" rel="stylesheet" type="text/css"> -->
 	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
 	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211010210" type="text/css">	
