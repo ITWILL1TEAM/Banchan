@@ -11,16 +11,44 @@
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211010170" type="text/css">
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211010170" type="text/css">
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211010170" type="text/css">
-	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
-	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
-	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script>
-	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script>
+<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script> -->
+<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script> -->
+<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script> -->
+<script src="../js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#crt_all").click(function() {
+			if($("#crt_all").is(":checked")) {
+				$("input[name=cart_checkbox]").prop("checked", true);
+			} else {
+				$("input[name=cart_checkbox]").prop("checked", false);
+			}
+		});
+			
+		$("button[name=change_qty_button]").click(function() {	
+			var role = $('input[name=qty_button]:focus').attr('data-role');
+			var cart_seq = $('input[name=qty_button]:focus').attr("data-cart-seq");
+			var qty = $('input[name=qty_button]:focus').eq(cart_seq).attr('value');
+			
+			alert(qty);
+			
+// 			if (role == "-" && qty > 1) {
+// 				input.val(qty - 1);
+// 			} else if (role == "+" && qty < 999) {
+// 				input.val(qty + 1);
+// 			};
+		});
+		
+	});
+</script>
 </head>
 <body>
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
-	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/order/overpass.cart.base.js?v=1633854217145"></script>
-	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/order/overpass.cart.js?v=1633854217145"></script>
+<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/order/overpass.cart.base.js?v=1633854217145"></script> -->
+<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/order/overpass.cart.js?v=1633854217145"></script> -->
 	<!-- 왠진 모르겠으나 아래 코드는 수량조절 버튼과 관련되어 있으므로 삭제 금지 -->
 	<script type="text/javascript">
 	<!--
@@ -66,7 +94,7 @@
 					<tbody>
 						<tr>
 							<td class="chck">
-								<input type="checkbox" id="crt_4" name="cart_checkbox" data-order-yn="N" data-cart-seq="4" data-svd-yn="N" data-ekcm-yn="false" checked="checked"  />
+								<input type="checkbox" id="crt_4" name="cart_checkbox" checked="checked"  />
 								<label for="crt_4">양장피</label>								
 							</td>
 							<td class="info">
@@ -77,18 +105,14 @@
 								</div>
 								<div class="txt">
 								<span class="name">[더반찬] 양장피</span>
-									<span class="opt">
-									</span>
- 
-                                    <div class="deli_type_tag">
-
-                                    </div>
+									<span class="opt"></span>
+                                    <div class="deli_type_tag"></div>
 								</div>
 							</td><td class="prc_ori"><span class="om"><em class="thm">11,200</em>원</span>
 							</td>
 							<td class="qty_set">
 								<div class="qty">
-									<input name="cart_qty" class="input" id="qty_4" data-cart-seq="4" type="text" maxlength="3" value="1" title="옵션수량입력">
+									<input name="cart_qty" class="input" id="qty_4" data-cart-seq="4" type="text" maxlength="3" value="1" title="옵션수량입력" readonly="readonly">
 									<button class="minus" name="change_qty_button" data-role="-" data-cart-seq="4" type="button" title="수량감소">수량감소</button>
 									<button class="plus" name="change_qty_button" data-role="+" data-cart-seq="4" type="button" title="수량증가">수량증가</button>
 								</div>
@@ -101,7 +125,7 @@
 				
 						<tr>
 							<td class="chck">
-								<input type="checkbox" id="crt_1" name="cart_checkbox" data-order-yn="N" data-cart-seq="1" data-svd-yn="N" data-ekcm-yn="false" checked="checked"  />
+								<input type="checkbox" id="crt_1" name="cart_checkbox" checked="checked"  />
 								<label for="crt_1">더반찬& 집밥만찬 2종 골라담기 (5,000원 부터~)</label>								
 							</td>
 							<td class="info">
@@ -130,7 +154,7 @@
 							</td>
 							<td class="qty_set">
 								<div class="qty">
-									<input name="cart_qty" class="input" id="qty_1" data-cart-seq="1" type="text" maxlength="3" value="1" title="옵션수량입력">
+									<input name="cart_qty" class="input" id="qty_1" data-cart-seq="1" type="text" maxlength="3" value="1" title="옵션수량입력" readonly="readonly">
 									<button class="minus" name="change_qty_button" data-role="-" data-cart-seq="1" type="button" title="수량감소">수량감소</button>
 									<button class="plus" name="change_qty_button" data-role="+" data-cart-seq="1" type="button" title="수량증가">수량증가</button>
 								</div>
@@ -143,7 +167,7 @@
 				
 						<tr>
 							<td class="chck">
-								<input type="checkbox" id="crt_0" name="cart_checkbox" data-order-yn="N" data-cart-seq="0" data-svd-yn="N" data-ekcm-yn="false" checked="checked"  />
+								<input type="checkbox" id="crt_0" name="cart_checkbox" checked="checked"  />
 								<label for="crt_0">도라지오이무침(185g)</label>								
 							</td>
 							<td class="info">
@@ -166,7 +190,7 @@
 							</td>
 							<td class="qty_set">
 								<div class="qty">
-									<input name="cart_qty" class="input" id="qty_0" data-cart-seq="0" type="text" maxlength="3" value="1" title="옵션수량입력">
+									<input name="cart_qty" class="input" id="qty_0" data-cart-seq="0" type="text" maxlength="3" value="1" title="옵션수량입력" readonly="readonly">
 									<button class="minus" name="change_qty_button" data-role="-" data-cart-seq="0" type="button" title="수량감소">수량감소</button>
 									<button class="plus" name="change_qty_button" data-role="+" data-cart-seq="0" type="button" title="수량증가">수량증가</button>
 								</div>
