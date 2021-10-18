@@ -61,8 +61,6 @@ public class customerJoinProAction implements Action {
 			forward.setRedirect(true);
 		}
 	
-				
-		
 		
 		
 		return forward;
