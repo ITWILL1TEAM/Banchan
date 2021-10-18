@@ -43,6 +43,7 @@
 					<!-- 아이디  오류시 노출 -->
 					<span class="caution" id="checkIdResult" style="display: block;">아이디를 중복확인 해주세요 </span>
 
+
 					<label for="join_pw" class="ir">비밀번호</label>
 					<input type="password" id="join_pw" name="member_pass" class="login_input" maxlength="20" placeholder="비밀번호" onkeyup="checkPassword(this.value)">
 					<label for="join_pw_re" class="ir">비밀번호 재입력</label>

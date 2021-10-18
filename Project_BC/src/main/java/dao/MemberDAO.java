@@ -312,6 +312,8 @@ private static MemberDAO instance;
 		return isDuplicate;
 	}
 	
+	
+	
 }
 
 

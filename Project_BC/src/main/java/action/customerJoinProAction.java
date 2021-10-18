@@ -70,4 +70,5 @@ public class customerJoinProAction implements Action {
 		return forward;
 	}
 
+	
 }

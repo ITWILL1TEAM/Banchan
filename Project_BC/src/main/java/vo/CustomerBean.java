@@ -78,6 +78,7 @@ public class CustomerBean extends MemberBean {
 	
 	
 	
+	
 }
 
 
