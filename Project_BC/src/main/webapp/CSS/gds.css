@@ -382,7 +382,7 @@
 .gd_set_n .lst li .prc .on b{margin-right:10px;font-weight:normal;;line-height:29px;}
 .gd_set_n .lst li .prc .on b+b{margin:2px 2px 1px 0;font-family:"Tahoma";font-weight:bold;vertical-align:top;}
 .gd_set_n .lst li .sold{display:block;overflow:hidden;position:absolute;left:1px;top:1px;z-index:4;width:340px;height:338px;padding-top:150px;font-family:"Tahoma";font-size:18px;line-height:22px;color:#333;font-weight:bold;text-align:center;background:url("../images/gds/bg_soldout_l.png") 50% 0 no-repeat;}
-.gd_set_n .lst li .sold em{;font-weight:bold;}
+.gd_set_n .lst li .sold em{font-weight:bold;}
 .gd_set_n .lst li .prv{display:block;position:absolute;right:20px;top:360px;z-index:1;width:100px;height:30px;}
 .gd_set_n .lst li .prv button{display:block;width:100px;height:30px;}
 .gd_set_n .lst li .prv button em{display:inline-block;padding-left:25px;font-size:14px;line-height:30px;color:#666;background:url("../images/gds/ico_gd_zoom.png") 0 7px no-repeat;}
