@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../CSS/mys.css" type="text/css">
 </head>
 <body>
-<%@include file="../inc/top.jsp" %>
 	<div id="mys_lnb" class="lnb">
 	
 		<ul>
@@ -17,7 +16,7 @@
 				<dl>
 					<dt>주문정보</dt>
 					<dd><a id="left_01" href="OrderCheck.my" onclick="" class="on">주문/배송 조회</a></dd>
-					<dd><a id="left_02" href="Resell" onclick="" >취소/반품 내역</a></dd>
+					<dd><a id="left_02" href="Resell.my" onclick="" >취소/반품 내역</a></dd>
 				</dl>
 			</li>
 			<li>
