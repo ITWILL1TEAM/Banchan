@@ -14,7 +14,7 @@
    <strong class="tit"></strong>
    <h1 class="join" align="center">신규 회원가입</h1>
    <strong class="tit"></strong>
-      <a href="BuyerJoinForm.me">
+      <a href="CustomerJoinForm.me">
         <div class="member_gate_join">
           <img src="../img/person.ico">
           <p class="title">개인 구매회원</p>
@@ -34,4 +34,3 @@
     </div>
 </body>
 </html>
-

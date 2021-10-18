@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.SellerJoinProAction;
+import action.customerJoinProAction;
 import vo.ActionForward;
 
 @WebServlet("*.me")
@@ -29,56 +31,39 @@ public class MemberController extends HttpServlet {
 		// 각 Action 클래스의 인스턴스를 공통으로 관리하는 Action 타입 변수 선언
 		Action action = null;
 		
-		
-		if(command.equals("/MemberJoinForm.me")) {
-			System.out.println("작동중");
+		if(command.equals("/CustomerJoinForm.me")) {
 			forward = new ActionForward();
-			forward.setPath("/member/JoinForm.jsp");
+			forward.setPath("/member/customerjoin.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/CustomerJoinPro.me")) {
+			action = new customerJoinProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(command.equals("/MemberLoginForm.me")) {
 			forward = new ActionForward();
 			forward.setPath("/member/login.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-			
+		}else if(command.equals("/MemberJoinForm.me")) {
+			forward = new ActionForward();
+			forward.setPath("/member/JoinForm.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}else if(command.equals("/SellerJoinForm.me")) {
-			System.out.println("작동중");
 			forward = new ActionForward();
 			forward.setPath("/member/sellerJoin.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-		}else if(command.equals("/BuyerJoinForm.me")) {
-			System.out.println("작동중");
-			forward = new ActionForward();
-			forward.setPath("/member/buyerjoin.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-		}//else if(command.equals("/SellerJoinPro.me")) {
-//			action = new SellerJoinProAction();
-//			
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}else if(command.equals("/BuyerJoinPro.me")) {
-//			action = new BuyerJoinProAction();
-//			
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}else if(command.equals("/MemberLoginPro.me")) {
-//		action = new MemberLoginProAction();
-//		
-//		try {
-//			forward = action.execute(request, response);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
+		}else if(command.equals("/SellerJoinPro.me")) {
+			action = new SellerJoinProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 //	}
 		
@@ -112,6 +97,7 @@ public class MemberController extends HttpServlet {
 	
 	}
 
+	
 }
 
 
