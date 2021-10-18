@@ -7,6 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="robots" content="index, follow">
+
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script> -->
 <!-- Bootstrap CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
@@ -15,36 +17,40 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+	
 
-<meta property="og:title" content="집밥선생!ProjectBC">
+
+<script src="../js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript" charset="UTF-8"
+    src="//t1.daumcdn.net/adfit/static/kp.js"></script>
 
 
 
 <title>집밥선생!Project_BC</title>
 
-	
 <!-- jquery 에러! -->
-<script src="../js/jquery-3.6.0.js"></script>
+
 	<!-- jquery 에러! -->
 
 </head>
-<body class="">
+<body>
 
-	<!-- ACCESSIBILITY -->
+	
 
 	<!-- HEADER -->
 	<jsp:include page="inc/top.jsp" />
-
 	<!--// HEADER -->
-
-	<link rel="stylesheet"
-		href="//www.thebanchan.co.kr/fo/css/main.css?v=20211014190"
-		type="text/css">
+<!--  Main CSS -->
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/main.css?v=20211014190" type="text/css">
 
 
 	<!-- CONTENT -->
 	<!-- <div id="content" class="content"  > -->
-	<div id="container" style="outline: gray;">
+	<div id="container" style="outline: none;">
 		<!-- WRAP -->
 		<!-- <div class="wrap main"> -->
 		<section id="content" class="main" style="padding-top: 118px;">
@@ -100,7 +106,7 @@
 					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
-
+    <!--  caousel END -->
 
 
 
@@ -113,183 +119,6 @@
 
 				<!-- 영역 레벨 시작  -->
 				<div id="D1706000845" class="area_lv1">
-
-
-					<script type="text/javascript">
-
-var StringBuffer = function() { this.buffer = new Array(); }; 
-StringBuffer.prototype.append = function(str) { this.buffer[this.buffer.length] = str; }; 
-StringBuffer.prototype.toString = function() { return this.buffer.join(""); };
-
-//Area No (모바일 템플릿을 기준으로 셋팅)
-var arrAreaNo = ['D2007000995','D2007000997','D2007001032','D2007001033']; 
-
-//슬라이드 리스트 목록을 체크
-var mdSliderStartCnt = 0;
-
-//MD 추천 슬라이드 시작 
-var mdSliderStart = function(){
-    //MD 추천 슬라이드
-    var MdSlider = $('.md-slider');
-    MdSlider.on('init',function(event, slick){
-        var item=slick.$slides.length;
-        if(item === 2){
-            slick.$dots.find('li').css('width','50%');
-        }else if(item === 3){
-            slick.$dots.find('li').css('width','33.3333%');
-        }
-    });
-    MdSlider.slick({
-        slide: '.list',
-        autoplay:false,
-        autoplaySpeed:3000,
-        infinite: true,
-        slidesToShow: 1,
-        arrows: true,
-        slidesToScroll: 1,
-        dots: true,
-        speed: 400,
-        cssEase: 'ease-in-out',
-        touchThreshold: 100,
-        customPaging: function (slider, i) {
-            var lSlide = slider.$slides[i];
-            return '<a href="#" onclick="return false;">' + '<span>' + $(lSlide).attr('data-title') + '</span>' + '</a>';
-        }
-    }).on('afterChange', function (event, slick) {
-        var lastPos = slick.$dots.find('li').outerWidth();
-        if (slick.currentSlide >= 4) {
-            slick.$dots.animate({scrollLeft:lastPos*(slick.currentSlide-3)  + 'px'},200);
-        }else if (slick.currentSlide < 4) {
-            slick.$dots.animate({scrollLeft: 0 + 'px'},200);
-        }
-    });
-}
-
-//추천 PICK 조회 및 화면 그리기 
-var searchMdPickList = function(areaNo){
-    $.ajax({
-           url : "/dispctg/searchMdPickList.action"
-        , type : "POST"
-        , data: {area_no : areaNo}
-        , dataType : "json"
-        , success : function(data) {
-            //태그 카운트 선언 
-            var tagCnt = 1;
-            var tag = new StringBuffer();
-            $.each(data, function(i, val) {
-                //타이틀 셋팅 
-                if(val.CONTS_FORM_CD == '150'){
-                    //추천 타이틀 
-                    $('#TAB_'+areaNo).text(val.INPUT_CONTS2);
-                    //SUB 추천 타이틀
-                //  $('#SUB_'+areaNo).text(val.INPUT_CONTS2);
-                //상품 데이터 셋팅 
-                }else { 
-                    //4의 배수 기준 list 영역 만들기 [S]
-                    if((tagCnt+4)%4 == 1){
-                        tag.append('<div class="list">');
-                    }
-                    tag.append('<div class="item">'); //item 영역 [S]
-                    tag.append('    <div class="thumb">');
-                    tag.append('        <div class="btn-cart">');
-                    tag.append('            <a href=" " '+ cartTagCreate(val) +' >');
-                    tag.append('                <i class="ico-cart2"></i>장바구니 담기</a>');
-                    tag.append('            </a>');
-                    tag.append('        </div>');
-                    tag.append('        <a href=" " '+ goodsLinkTag(val) +' >');
-                    tag.append('            <img src="'+ val.SRC_IMG_PATH +'"/>');//상품 이미지 
-                    //세일이 들어 가면 표시
-                    if(val.GOODS_CMPS_DIVI_CD == "20"){
-                        var setDcRate = Math.round(((parseInt(val.SET_ORI_PRICE) - parseInt(val.SALE_PRICE)) / parseInt(val.SET_ORI_PRICE))*100);
-                        if(setDcRate > 0){
-                            tag.append('            <span class="tag sale v3"><strong>'+ setDcRate +'</strong>%</span>');//활인율
-                        }
-                    }else{
-                        if(val.SALE_RATE > 0){
-                            tag.append('            <span class="tag sale v3"><strong>'+ val.SALE_RATE +'</strong>%</span>');//활인율
-                        }
-                    }
-
-                    /* if(val.ICON_S_INFO.indexOf('M205Y') != -1){
-                        tag.append('            <span class="tag self"><strong>SELF</strong></span>');                  //셀프조리 
-                    } */
-                    tag.append('        </a>');
-                    tag.append('    </div>');
-                    tag.append('    <div class="info">');
-                    tag.append('        <a href=" " '+ goodsLinkTag(val) +' >');
-                    tag.append('            <p class="subject">'+ val.GOODS_NM +'</p>');                                //상품 이름 
-                    tag.append('            <div class="price">');
-                    //세일이 들어 가면 가격 영역을 달리 한다. 
-                    if(val.GOODS_CMPS_DIVI_CD == "20"){
-                        var setDcRate = Math.round(((parseInt(val.SET_ORI_PRICE) - parseInt(val.SALE_PRICE)) / parseInt(val.SET_ORI_PRICE))*100);
-                        if(setDcRate > 0){
-                            tag.append('            <p><strong>'+ val.SALE_PRICE.toLocaleString() +'</strong>원</p>');      //활인 가격
-                            tag.append('            <p class="original">'+ val.SET_ORI_PRICE.toLocaleString() +'원</p>');   //판매 가격
-                        }else{
-                            tag.append('            <p><strong>'+ val.SALE_PRICE.toLocaleString() +'</strong>원</p>');  //활인 가격
-                        }
-                    }else{
-                        if(val.SALE_RATE > 0){
-                            tag.append('            <p><strong>'+ val.CUST_SALE_PRICE.toLocaleString() +'</strong>원</p>');  //활인 가격
-                            tag.append('            <p class="original">'+ val.MARKET_PRICE.toLocaleString() +'원</p>');     //판매 가격
-                        }else{
-                            tag.append('            <p><strong>'+ val.SALE_PRICE.toLocaleString() +'</strong>원</p>');     //판매 가격
-                        }
-                    }
-                    tag.append('            </div>');
-                    tag.append('        </a>');
-                    tag.append('    </div>');
-                    tag.append('</div>');             //item 영역 [E]
-                
-                    //4의 배수 기준 list 영역 만들기 [E]
-                    if((tagCnt)%4 == 0 || i == (data.length-1)){
-                        tag.append('</div>');
-                    }
-                    //태그 카운트 
-                    tagCnt++;
-                
-                }
-            });
-            //HTML 셋팅 
-            $('#MD_'+areaNo).append(tag.toString());
-            tag = null;
-            //슬라이드 리스트 카운트 
-            mdSliderStartCnt++;
-            //슬라이드 시작
-            if(mdSliderStartCnt == 4){
-                //슬라이드 시작 
-                mdSliderStart();
-            }
-            
-        }
-    });
-    
-}
-
-// //장바구니 태그 만들기 
-// var cartTagCreate = function(val){
-    
-//     var cartTag = new StringBuffer();
-//     cartTag.append('onclick="overpass.goods.addCart({ ');
-//     cartTag.append('goods_no:\''+val.GOODS_NO+'\', ');
-//     cartTag.append('vir_vend_no:\''+val.VIR_VEND_NO+'\', ');
-//     cartTag.append('sale_shop_divi_cd:\'10\', ');
-//     cartTag.append('sale_shop_no:\''+val.DISP_CTG_NO+'\', ');
-//     cartTag.append('sale_area_no:\''+val.AREA_NO+'\', ');
-//     cartTag.append('tr_yn:\'Y\', ');
-//     cartTag.append('conts_dist_no:\''+val.CONTS_DIST_NO+'\', ');
-//     cartTag.append('conts_divi_cd:\'20\', ');
-//     cartTag.append('rel_no:\''+val.GOODS_NO+'\', ');
-//     cartTag.append('rel_divi_cd:\'10\', ');
-//     cartTag.append('openwinyn:\'\', ');
-//     cartTag.append('disp_ctg_no:\'\', ');
-//     cartTag.append('goods_cmps_divi_cd:\''+val.GOODS_CMPS_DIVI_CD+'\', ');
-//     cartTag.append(' obj : this});"');
-    
-//     return cartTag.toString();
-// }
-
-<!-- </script> -->
 
 					<!-- MD 추천 -->
 					<article class="article md-article">
@@ -842,26 +671,6 @@ var searchMdPickList = function(areaNo){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 					<article class="article sale-article">
 						<div class="inner-box">
 							<div class="title-wrap">
@@ -882,23 +691,7 @@ var searchMdPickList = function(areaNo){
 												onerror="this.src='/common/images/common/noimg_480.jpg'">
 												<span class="tag sale v3"> <strong>20</strong>%
 											</span>
-												<div class="deal-wrap" id="dTime">
-													<span class="deal">타임딜</span> <span class="time"> <strong>00:00:00</strong>남음
-													</span>
-													<script>
-                                    $(document).ready(function(){
-                                        var saleEndDtime = '2021/10/14 20:59:59';
-                                        var eDate = new Date(saleEndDtime);
-                                        var cDate = new Date();
-    
-                                        if (eDate.getTime() > cDate.getTime()) {
-                                            $('#dTime').countdown(saleEndDtime, function (e) {
-                                                $(this).find('.time strong').html(e.strftime('%H:%M:%S'));
-                                            });
-                                        }
-                                    });
-                                </script>
-												</div>
+																							
 											</a>
 										</div>
 										<div class="info">

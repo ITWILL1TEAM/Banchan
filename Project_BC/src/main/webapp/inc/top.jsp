@@ -8,17 +8,8 @@
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
     rel="stylesheet">
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
 
-<meta property="og:title" content="집밥선생!">
-<meta property="og:type" content="website">
 
-<meta name="naver-site-verification" content="6c66b794f79123c06762b1b36f007114ff397013">
-<meta name="description" content="집밥장인이 만든 온라인 식품몰 더반찬&amp;">
-<meta name="keywords" content="더반찬&amp;,더반찬앤드,더반찬엔드,더반찬앤,더반찬엔">
 
     <link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
     <link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
@@ -30,15 +21,15 @@
 
     
 
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.common.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.fn.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.delihopedate.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.login.base.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.member.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.fo.js?v=20211014190"></script>    
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.popup.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.login.js?v=20211014190"></script> 
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ds.appinterface.dongwon.js?v=20211014190"></script>    <!--  APP 스킴용 -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.common.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.fn.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.delihopedate.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.login.base.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.member.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.fo.js?v=20211014190"></script>     -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.popup.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.login.js?v=20211014190"></script>  -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ds.appinterface.dongwon.js?v=20211014190"></script>     APP 스킴용 -->
     
     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script>
@@ -49,7 +40,6 @@
 
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-
 
 
 
