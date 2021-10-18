@@ -21,87 +21,11 @@
 
 
 <title>집밥선생!Project_BC</title>
-<link rel="shortcut icon"
-	href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2"
-	type="image/x-icon">
-<link rel="icon"
-	href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2"
-	type="image/x-icon">
-<link rel="stylesheet"
-	href="//www.thebanchan.co.kr/fo/css/common.css?v=20211014190"
-	type="text/css">
-<link rel="stylesheet"
-	href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211014190"
-	type="text/css">
-<link rel="stylesheet"
-	href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211014190"
-	type="text/css">
-<link rel="stylesheet"
-	href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211014190"
-	type="text/css">
-<script  src="https://connect.facebook.net/en_US/fbevents.js"></script>
-<script type="text/javascript" async="" defer=""
-	src="//image.cauly.co.kr/script/caulytracker_async.js"></script>
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript"
-	src="https://cdn.taboola.com/scripts/cds-pips.js" charset="UTF-8"
-	async="async"></script>
-<script type="text/javascript" async=""
-	src="https://www.googletagmanager.com/gtag/js?id=G-W1EL74L8N0&amp;l=dataLayer&amp;cx=c"></script>
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/gtm/js?id=GTM-5TMP3P6&amp;t=gtm4&amp;cid=1965582174.1633173992"></script>
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script async="" src="//cdn.taboola.com/libtrc/unip/1326614/tfa.js"
-	id="tb_tfa_script"></script>
-<script async=""
-	src="https://www.googletagmanager.com/gtm.js?id=GTM-W97P9F7"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
 
-
-
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/overpass.common.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/overpass.fn.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/overpass.delihopedate.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/overpass.login.base.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/overpass.member.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/fo/js/overpass.fo.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/fo/js/overpass.popup.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/fo/js/overpass.login.js?v=20211014190"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/fo/js/ds.appinterface.dongwon.js?v=20211014190"></script>
-<!--  APP 스킴용 -->
-
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/ui.js"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/slick.min.js"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/visaulSlder.js"></script>
-<script type="text/javascript"
-	src="//www.thebanchan.co.kr/common/js/overpass.sns.js"></script>
-
-
-
-<script type="text/javascript" charset="UTF-8"
-	src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-
-
+	
+<!-- jquery 에러! -->
+<script src="../js/jquery-3.6.0.js"></script>
+	<!-- jquery 에러! -->
 
 </head>
 <body class="">
@@ -189,22 +113,6 @@
 
 				<!-- 영역 레벨 시작  -->
 				<div id="D1706000845" class="area_lv1">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 					<script type="text/javascript">
