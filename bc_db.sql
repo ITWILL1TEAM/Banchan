@@ -89,17 +89,13 @@ CREATE TABLE `review` (
   CONSTRAINT `rv_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `basket` (
-  `customer_id` varchar(45) COLLATE utf8_bin NOT NULL,
-  `basket_count` int(11) NOT NULL,
-  `product_num` int(11) NOT NULL,
-  PRIMARY KEY (`basket_count`),
-  KEY `bask_id_fk` (`customer_id`),
-  KEY `bask_pdnum_fk` (`product_num`),
-  CONSTRAINT `bask_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
-  CONSTRAINT `bask_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-
-
+CREATE TABLE basket(
+   basket_idx INT PRIMARY KEY auto_increment,
+   customer_id varchar(45) NOT NULL,
+   basket_count INT NOT NULL DEFAULT '0',
+   product_num INT NOT NULL,
+   CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+   CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
+); 
 
