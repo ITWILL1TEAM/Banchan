@@ -40,7 +40,7 @@
 
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-
+<script src="js/jquery-3.6.0.js"></script>
 
 
 <noscript>
