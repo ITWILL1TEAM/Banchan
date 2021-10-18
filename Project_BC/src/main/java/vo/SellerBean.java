@@ -12,7 +12,6 @@ public class SellerBean extends MemberBean{
 
 	public SellerBean() {}
 	
-	
 	public SellerBean(String seller_id, int sNO, String sName, String adress, String phone, String email, int status) {
 		super();
 		this.seller_id = seller_id;

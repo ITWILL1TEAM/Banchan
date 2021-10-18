@@ -313,7 +313,6 @@ private static MemberDAO instance;
 	}
 	
 	
-	
 }
 
 

@@ -65,7 +65,6 @@ public class MemberController extends HttpServlet {
 			}
 		}
 		
-		
 //	}
 		
 		if(forward != null) {

@@ -50,7 +50,6 @@
 	                  <button class="submit" type="button"  class="dup" id="btn" onclick="openWindow('dupIdCheck')">중복확인</button>
 	           </div>
                
-               
 				<!-- 아이디  오류시 노출 -->
 					<span class="caution" id="checkIdResult" style="display: none;"> </span>
 									
