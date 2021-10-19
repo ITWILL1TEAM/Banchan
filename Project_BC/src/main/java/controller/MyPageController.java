@@ -52,6 +52,9 @@ public class MyPageController extends HttpServlet {
 		}else if(command.equals("/Review.my")) {
 			forward = new ActionForward();
 			forward.setPath("/myPage/myReview.jsp");
+		}else if(command.equals("/admin.my")) {
+			forward = new ActionForward();
+			forward.setPath("/adminPage/admin_main.jsp");
 		}
     
     if(forward != null) {

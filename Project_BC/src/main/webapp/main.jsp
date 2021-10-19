@@ -1468,7 +1468,7 @@
 							</div>
 						</div>
 					</article>
-					<!-- //새로나옸어요 -->
+					
 
 	
 				</div>
@@ -1486,7 +1486,7 @@
 
 					<!-- //APP LAYER -->
 
-
+</div></div></section></div>
 
 
 </body>
