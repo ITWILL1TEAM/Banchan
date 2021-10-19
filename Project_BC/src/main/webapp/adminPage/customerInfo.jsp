@@ -8,7 +8,7 @@
         
         <title>일반 회원 조회</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="../CSS/styles.css" rel="stylesheet" />
+        <link href="CSS/styles.css" rel="stylesheet" />
         <!-- 컨트롤러 작업 시 CSS/styles.css 로 사용 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         
@@ -73,18 +73,12 @@
                 
             </div>
         </div>
-<<<<<<< HEAD
+    </body>
+    
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-=======
-       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
         <script src="js/assets/demo/scripts2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<<<<<<< HEAD
         <script src="js/assets/demo/datatables-simple-demo.js"></script>
-        
-      </body>  
-=======
         <script src="js/assets/demo/chart-area-demo.js"></script>
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
+
 </html>
