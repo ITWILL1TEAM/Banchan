@@ -7,8 +7,6 @@ public class MemberBean {
 	int grade;
 	
 	
-	
-	
 	public MemberBean() {}
 	
 	public MemberBean(String id, String password, String name, int grade) {
