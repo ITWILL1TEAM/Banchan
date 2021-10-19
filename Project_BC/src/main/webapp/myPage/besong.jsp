@@ -9,13 +9,8 @@
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
-<script type="text/javascript">
-	$(function() {
-		$('.modifyBtn').on('click', function() {
-			document.open("addAddress.jsp","","width=300,height=100");
-		});
-
-</script>
+<script src="js/jquery-3.6.0.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 </head>
 <body>
@@ -69,7 +64,7 @@
 			
 			<div class="mys_summ">
 				<div class="txt"><b>조정민</b> 님의 배송지 목록에 총 <b>0</b> 곳이 저장되어 있습니다.</div>
-				<button type="button" class="bx" title="배송지 추가 새창" name="modifyBtn" >배송지 추가</button>
+				<button type="button" class="bx" title="배송지 추가 새창" name="modifyBtn">배송지 추가</button>
 			</div>
 			
 
