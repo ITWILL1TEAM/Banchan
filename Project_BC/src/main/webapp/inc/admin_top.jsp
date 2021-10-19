@@ -4,22 +4,11 @@
                   <!-- 상단nav -->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">집밥선생</a>
+            <a class="navbar-brand ps-3" href="main.ad">집밥선생</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>       
          
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Home</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <!-- Navbar-->            
         </nav>
         
         
@@ -31,29 +20,42 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">회원관리</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="CustomerInfo.ad">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 회원정보 조회
                             </a>
+                            
+                               <div class="sb-sidenav-menu-heading">공지사항</div>
+                                <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                공지사항
+                            </a>
+                            
                             <div class="sb-sidenav-menu-heading">상품</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#productmanagement" aria-expanded="false" aria-controls="productmanagement">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 상품관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="productmanagement" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="tables.html"> 상품조회</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">리뷰관리</a>
+                                    <a class="nav-link" href="productList.jsp"> 상품조회</a>
+                                    <a class="nav-link" href="#">리뷰관리</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#CustomerSupport" aria-expanded="false" aria-controls="CustomerSupport">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 고객지원
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>   
+                            </a>
+                            <div class="collapse" id="CustomerSupport" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#"> 1:1문의</a>
+                                    <a class="nav-link" href="#">자주묻는질문 FAQ</a>
+                                </nav>
+                            </div>   
                             <div class="sb-sidenav-menu-heading">차트</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="Chart.ad">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 매출차트
                             </a>                            
