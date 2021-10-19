@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>계정삭제</title>
 <link rel="stylesheet" href="CSS/mys.css?t=20200406000000" type="text/css">
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">

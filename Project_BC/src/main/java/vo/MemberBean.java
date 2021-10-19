@@ -42,4 +42,7 @@ public class MemberBean {
 		this.grade = grade;
 	}
 	
+	
+	
+	
 }

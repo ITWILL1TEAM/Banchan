@@ -3,7 +3,6 @@ var passwordRetypeCheckResult = false;
 var checkNameResult = false;
 var checkPhoneResult = false;
 
-
 function openWindow(target) {
 
 	if(target == "dupIdCheck") {
