@@ -8,7 +8,9 @@
 #skip_nav a{display:block;position:absolute;top:-9999px;width:100%;padding:10px 0;background-color:#f36d3d;font-weight:bold;text-align:center;}
 #skip_nav a:hover, #skip_nav a:active, #skip_nav a:focus{position:absolute;top:0;left:0;color:#fff;}
 
-.wrap.mys{position:relative;width:1060px;margin:0 auto;padding:90px 0 20px 0;}
+/*.wrap.mys padding삭제*/
+.wrap.mys{position:relative;width:1060px;margin:0 auto;padding: 0 auto;}
+
 .wrap.mys .location_slt{width:1060px;left:50%;margin-left:-530px;}
 
 /* MY TOP */
@@ -35,7 +37,7 @@
 
 
 /* MY TOP RENEW */
-.mys_top_pc{width : 1060px;height:190px;margin-bottom : 60px;}
+.mys_top_pc{width : 1060px;height:60px;margin-bottom : 20px;}
 .mys_top_pc .mytbc{display: block;display: block;margin: 0px 0px 50px 0px;font-size: 35px;line-height: 21px;color: #262525;letter-spacing: -1.5px;text-align: center;font-weight: bold;}
 .mys_top_pc .mys_top_span{float:left;width : 25%;height : 120px;}
 .mys_top_pc .top_table{margin:30px 40px;font-family:'Noto Sans KR', sans-serif;font-weight:normal;font-size:15px;color:#8b8b8b;}

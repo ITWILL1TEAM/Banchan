@@ -59,6 +59,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="../inc/top.jsp"/>
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
 	<form action="Order.do" method="post">

@@ -8,41 +8,28 @@
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
     rel="stylesheet">
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
 
-<meta property="og:title" content="집밥장인이 만든 온라인 식품몰 더반찬&amp;">
-<meta property="og:url" content="https://www.thebanchan.co.kr/">
-<meta property="og:image" content="https://www.thebanchan.co.kr/common/images/common/theBanchanLogo.png">
-<meta property="og:description" content="반찬과(&amp;) 베이커리, 샐러드, 정육, 식재료까지  ONE-STOP 장보기">
-<meta property="og:type" content="website">
 
-<meta name="naver-site-verification" content="6c66b794f79123c06762b1b36f007114ff397013">
-<meta name="description" content="집밥장인이 만든 온라인 식품몰 더반찬&amp;">
-<meta name="keywords" content="더반찬&amp;,더반찬앤드,더반찬엔드,더반찬앤,더반찬엔">
-<title>집밥장인이 만든 온라인 식품몰 더반찬&amp;</title>
+
     <link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
     <link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211014190" type="text/css">   
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211014190" type="text/css">
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211014190" type="text/css">
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211014190" type="text/css">
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script type="text/javascript" async="" defer="" src="//image.cauly.co.kr/script/caulytracker_async.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="https://cdn.taboola.com/scripts/cds-pips.js" charset="UTF-8" async="async"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-W1EL74L8N0&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/gtm/js?id=GTM-5TMP3P6&amp;t=gtm4&amp;cid=1965582174.1633173992"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="//cdn.taboola.com/libtrc/unip/1326614/tfa.js" id="tb_tfa_script"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-W97P9F7"></script><script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
+    
 
     
 
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.common.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.fn.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.delihopedate.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.login.base.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.member.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.fo.js?v=20211014190"></script>    
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.popup.js?v=20211014190"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.login.js?v=20211014190"></script> 
-    <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ds.appinterface.dongwon.js?v=20211014190"></script>    <!--  APP 스킴용 -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.common.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.fn.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.delihopedate.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.login.base.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.member.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.fo.js?v=20211014190"></script>     -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.popup.js?v=20211014190"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.login.js?v=20211014190"></script>  -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ds.appinterface.dongwon.js?v=20211014190"></script>     APP 스킴용 -->
     
     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script>
@@ -53,85 +40,15 @@
 
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-<script type="text/javascript">
-      kakaoPixel('910182813788819188').pageView();
-</script>
+<script src="js/jquery-3.6.0.js"></script>
 
 
-<!-- dataLayer 변수 추가-->
-<script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        'userId': "" //고객 번호와 같은 개인정보가 아닌 고유한 식별 값을 입력합니다.
-    });
-</script>
-<!-- End dataLayer 변수 추가-->
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W97P9F7');</script>
-<!-- End Google Tag Manager -->
-<!-- Taboola Pixel Code -->
-<script type="text/javascript">
-  window._tfa = window._tfa || [];
-  window._tfa.push({notify: 'event', name: 'page_view', id: 1326614});
-  !function (t, f, a, x) {
-         if (!document.getElementById(x)) {
-            t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
-         }
-  }(document.createElement('script'),
-  document.getElementsByTagName('script')[0],
-  '//cdn.taboola.com/libtrc/unip/1326614/tfa.js',
-  'tb_tfa_script');
-</script>
 <noscript>
   <img src='https://trc.taboola.com/1326614/log/3/unip?en=page_view'
       width='0' height='0' style='display:none'/>
 </noscript>
-<!-- End of Taboola Pixel Code -->
 
-<!-- Start of beusable Pixel Code -->
-<script type="text/javascript">
-    (function(w, d, a){
-        w.__beusablerumclient__ = {
-            load : function(src){
-                var b = d.createElement("script");
-                b.src = src; b.async=true; b.type = "text/javascript";
-                d.getElementsByTagName("head")[0].appendChild(b);
-            }
-        };w.__beusablerumclient__.load(a);
-    })(window, document, "//rum.beusable.net/script/b201111e111214u801/fdedcfe3ee");
-</script><script src="//rum.beusable.net/script/b201111e111214u801/fdedcfe3ee" async="" type="text/javascript"></script>
-<!-- End of beusable Pixel Code -->
-
-<!-- Start of ACE TRADER -->
-    <script type="text/javascript" src="//static.tagmanager.toast.com/tag/view/305"></script><script src="//rum.beusable.net/script/checker/b201111e111214u801/fdedcfe3ee?url=https%3A%2F%2Fwww.thebanchan.co.kr%2Fmain%2FinitMain.action" async="" type="text/javascript"></script>
-    <script type="text/javascript">
-    window.ne_tgm_q = window.ne_tgm_q || [];
-    window.ne_tgm_q.push(
-    {
-        tagType: 'visit',
-        device:'web'/*web, mobile, tablet*/,
-        uniqValue:'',
-        pageEncoding:'utf-8'
-    });
-    </script>
-
-    <!-- End of ACE TRADER -->
-    <script type="text/javascript">
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-52578269-1', 'auto');
-            ga('set', 'userId',"");
-            ga('send', 'pageview');
-    </script>
-
+   
 <script>
     $(document).ready(function() {
         var __today = new Date();
@@ -165,8 +82,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
     });
 </script>
-<meta http-equiv="origin-trial" content="A4RpyXPHPXj2Tt0KMMrya+U6IibH8/6yFLknmyK5ZwpgUNYhhwGyllkLZNqKedteT7fKzxsI8p/Pbpbd4tEJOQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IkludGVyZXN0Q29ob3J0QVBJIiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="></head>
-<body class="">
+
+
 
 <!-- ACCESSIBILITY -->
 <div id="accessibility" class="accessibility" style="outline: none;">
@@ -194,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!--             </div> -->
 <!--         </div> -->
         <!-- header top -->
-        <div class="header-top">
+        <div class="header-top" style="background-color:#90EE90;">
             <div class="inner-box">
                 <h1 class="logo">
                     <a href="#"
@@ -203,20 +120,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <!-- 검색 영역 [S] -->
                 <div class="search-wrap">
                     <div class="search-form">
-                        <input type="text" id="hd_sch" class="sch_input"
-                            autocomplete="off" data-keyword="반찬은 집밥선생" data-typing="off"                            
-                            style="color: rgb(127, 127, 127);">
-                        <button type="submit" id="btnSearch" class="btn-search">검색</button>
-                        <button type="button" class="btn-clear hidden">지우기</button>
-                        <div class="sch-box">
-                            <p class="title">최근검색어</p>
-                            <div class="nodata-wrap">
-                                <p>최근 검색어가 없습니다.</p>
-                            </div>
-                        </div>
-                        <button class="sch_bt" type="button">
-                            <em class="ir">검색하기</em>
-                        </button>
+<!--                         <input type="text" id="hd_sch" class="sch_input" -->
+<!--                             autocomplete="off" data-keyword="반찬은 집밥선생" data-typing="off"                             -->
+<!--                             style="color: rgb(127, 127, 127);"> -->
+<!--                         <button type="submit" id="btnSearch" class="btn-search">검색</button> -->
+<!--                         <button type="button" class="btn-clear hidden">지우기</button> -->
+<!--                         <div class="sch-box"> -->
+<!--                             <p class="title">최근검색어</p> -->
+<!--                             <div class="nodata-wrap"> -->
+<!--                                 <p>최근 검색어가 없습니다.</p> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         <button class="sch_bt" type="button"> -->
+<!--                             <em class="ir">검색하기</em> -->
+<!--                         </button> -->
+
+                      <form class="d-flex" id="SearchBox" action="get">
+                            <input class="form-control me-2" type="search" placeholder="검색"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">search</button>
+                        </form>
                     </div>
                 </div>
                 <!-- 검색 영역 [E] -->
@@ -268,7 +191,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <nav class="gnb-area">
             <h2 class="hidden">전체메뉴</h2>
             <div class="gnb-wrap">
-                <div class="inner-box">
+                <div class="inner-box" >
                     <ul>
                         <li class="mnu-all"><a href=" "> <span class="icon">
                                     <img
