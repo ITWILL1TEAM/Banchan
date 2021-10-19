@@ -8,6 +8,7 @@ public class MemberBean {
 	
 	
 	
+	
 	public MemberBean() {}
 	
 	public MemberBean(String id, String password, String name, int grade) {
