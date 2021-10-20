@@ -67,7 +67,7 @@ CREATE TABLE `product` (
 CREATE TABLE `product_img` (
   `product_num` int(11) DEFAULT NULL,
   `product_original_img` varchar(45) COLLATE utf8_bin NOT NULL,
-  `product_img` varchar(45) COLLATE utf8_bin UNIQUE NOT NULL,
+  `product_img` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_img_location` int(11) DEFAULT NULL,
   KEY `pdi_pnum_fk` (`product_num`),
   CONSTRAINT `pdi_pnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
