@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BoardListAction;
+import action.BoardWriteProAction;
 import vo.ActionForward;
 
 /**
@@ -47,7 +49,13 @@ public class ProductFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/cart/cart.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-		}
+		}else if(command.equals("/BoardWriteForm.do")) {
+	            // 글쓰기 작업을 위한 뷰페이지로 포워딩
+	            forward = new ActionForward();
+	            forward.setPath("/product/productRegister.jsp");
+	            forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+	        } 
+		
 		
 		
 		if(forward != null) {
@@ -66,6 +74,9 @@ public class ProductFrontController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
+		
+		
+	   
 		
 	}
 

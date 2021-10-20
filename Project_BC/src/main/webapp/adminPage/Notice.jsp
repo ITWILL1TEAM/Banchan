@@ -4,29 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-        
-        <title>일반 회원 조회</title>
-<<<<<<< HEAD
-      
-=======
+<title>집밥선생_AdminPage</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
         <link href="CSS/styles.css" rel="stylesheet" />
-        <!-- 컨트롤러 작업 시 CSS/styles.css 로 사용 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+      
 </head>
 <body class="sb-nav-fixed">
-        
-        <%@include file="../inc/admin_top.jsp" %>
-            
-            
-            <div id="layoutSidenav_content">
+ 
+  <jsp:include page="../inc/admin_top.jsp"/>
+
+ <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">회원 정보</h1>
+                        <h1 class="mt-4">공지사항</h1>
                         <ol class="breadcrumb mb-4">
                             
                         </ol>
@@ -34,26 +26,22 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                일반 회원 정보
+                                공지사항!!!
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>아이디</th>
-                                            <th>전화번호</th>
-                                            <th>이메일</th>
-                                            <th>나이</th>
-                                            <th>등급</th>
+                                            <th >글번호</th>
+                                            <th>제목</th>
+                                            <th>작성일</th>                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>아이디</th>
-                                            <th>전화번호</th>
-                                            <th>이메일</th>
-                                            <th>나이</th>
-                                            <th>등급</th>
+                                            <th>글번호</th>
+                                            <th>제목</th>
+                                            <th>작성일</th>  
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -61,37 +49,33 @@
                                             <td>ddddd</td>
                                             <td>ddddd</td>
                                             <td>ddddd</td>
-                                            <td>ddddd</td>
-                                            <td>ddddd</td>
-                                            
                                         </tr>
                                         
                                     </tbody>
                                 </table>
                             </div>
+                              <a href="#" class="btn btn-primary "role="button" data-bs-toggle="button" >글쓰기</a>
                         </div>
                     </div>
                 </main>
-                
-                <%@include file="../inc/admin_bottom.jsp" %>
-                
-            </div>
-        </div>
-<<<<<<< HEAD
 
-=======
-    </body>
-    
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+   <jsp:include page="../inc/admin_bottom.jsp"/>
+            
+         
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/scripts2.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<<<<<<< HEAD
-        <script src="js/assets/demo/datatables-simple-demo.js"></script>         
-              </body>  
-=======
-        <script src="js/assets/demo/datatables-simple-demo.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/chart-area-demo.js"></script>
+        <script src="js/assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/assets/demo/datatables-simple-demo.js"></script>
+    </body>
 
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 </html>

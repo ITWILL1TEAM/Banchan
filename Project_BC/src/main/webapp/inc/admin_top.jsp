@@ -39,7 +39,7 @@
                             </a>
                             <div class="collapse" id="productmanagement" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="productList.jsp"> 상품조회</a>
+                                    <a class="nav-link" href="ProductList.ad"> 상품조회</a>
                                     <a class="nav-link" href="#">리뷰관리</a>
                                 </nav>
                             </div>
@@ -52,6 +52,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#"> 1:1문의</a>
                                     <a class="nav-link" href="#">자주묻는질문 FAQ</a>
+                                    <a class="nav-link" href="Notice.ad">공지사항</a>
                                 </nav>
                             </div>   
                             <div class="sb-sidenav-menu-heading">차트</div>
