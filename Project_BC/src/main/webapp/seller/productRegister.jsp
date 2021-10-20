@@ -127,7 +127,7 @@
                           상품등록
                             </div>
                             <div class="card-body">
-                            <form name=product action="BoardWritePro.do" method="post">
+                            <form name=product action="Dashboard" method="post">
                                 <table >
                                    <tbody>
                                  		<tr><td>상품명</td><td><input type="text" name = product_name size=10></td></tr>
@@ -139,34 +139,37 @@
 										<tr><td>제품 유통기한</td><td><input type="text" name = product_expiration_date size=10></td></tr>
 										<tr><td>제품보관방법</td><td><textarea rows="5" cols="30" name=product_handling></textarea></td></tr>
 										<tr><td>제품원재료명 및 함량</td><td><textarea rows="5" cols="30" name=product_material></textarea></td></tr>
-									    <tr><td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>
+									    <tr>
+									    	<td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>
 									    
-									    <td>				    
-									   		<select>
-									   			<option>주 이미지</option>
-									   			<option>상세 이미지</option>
-									   		</select>
-									   	</td>
+										    <td>				    
+										   		<select>
+										   			<option>주 이미지</option>
+										   			<option>상세 이미지</option>
+										   		</select>
+										   	</td>
+										</tr>
+								
+								        <tr>
+								        	<td>이미지추가</td><td><input type="file" name="product_original_img2" size=10></td>
+										    
+										    <td>				    
+										   		<select>
+										   			<option>주 이미지</option>
+										   			<option>상세 이미지</option>
+										   		</select>
+										   	</td>
 									   	</tr>
 							
-							               <tr><td>이미지추가</td><td><input type="file" name="product_original_img2" size=10></td>
+							  			<tr>
+							  				<td>이미지추가</td><td><input type="file" name="product_original_img3" size=10></td>
 									    
-									    <td>				    
-									   		<select>
-									   			<option>주 이미지</option>
-									   			<option>상세 이미지</option>
-									   		</select>
-									   	</td>
-									   	</tr>
-							
-							   <tr><td>이미지추가</td><td><input type="file" name="product_original_img3" size=10></td>
-									    
-									    <td>				    
-									   		<select>
-									   			<option>주 이미지</option>
-									   			<option>상세 이미지</option>
-									   		</select>
-									   	</td>
+										    <td>				    
+										   		<select>
+										   			<option>주 이미지</option>
+										   			<option>상세 이미지</option>
+										   		</select>
+										   	</td>
 									   	</tr>
 							
                                  

@@ -32,7 +32,13 @@ public class SellerController extends HttpServlet {
             forward = new ActionForward();
             forward.setPath("/seller/productRegister.jsp");
             forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+        } else if(command.equals("/DashBoard.sc")) {
+            // 글쓰기 작업을 위한 뷰페이지로 포워딩
+            forward = new ActionForward();
+            forward.setPath("/seller/productRegister.jsp");
+            forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
         }
+
         
         
         if(forward != null) {
