@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.MemberLoginProAction;
 import action.SellerJoinProAction;
 import action.customerJoinProAction;
 import vo.ActionForward;
@@ -57,6 +58,14 @@ public class MemberController extends HttpServlet {
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}else if(command.equals("/SellerJoinPro.me")) {
 			action = new SellerJoinProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberLoginPro.me")) {
+			action = new MemberLoginProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
