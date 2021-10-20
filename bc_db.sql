@@ -54,10 +54,8 @@ CREATE TABLE `product` (
   `product_price` int(11) NOT NULL,
   `product_weight` int(11) NOT NULL,
   `product_discount` int(11) NOT NULL DEFAULT '0',
-  `product_count` int(11) NOT NULL DEFAULT '0',
   `product_date` date NOT NULL,
-  `product_stock` int(11) NOT NULL,
-  `product_location` varchar(255) COLLATE utf8_bin NOT NULL,
+  `product_stock` int(11) NOT NULL DEFAULT '0',
   `product_expiration_date` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_handling` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_material` varchar(1000) COLLATE utf8_bin NOT NULL,
@@ -92,9 +90,9 @@ CREATE TABLE `review` (
 
 CREATE TABLE basket(
    basket_idx INT PRIMARY KEY auto_increment,
+   product_num INT NOT NULL,
    customer_id varchar(45) NOT NULL,
    basket_count INT NOT NULL DEFAULT '0',
-   product_num INT NOT NULL,
    CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
    CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
 ); 

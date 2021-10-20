@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<meta name="robots" content="index, follow">
 <!-- Bootstrap CSS -->
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
@@ -32,10 +28,10 @@
 <!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ds.appinterface.dongwon.js?v=20211014190"></script>     APP 스킴용 -->
     
     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/visaulSlder.js"></script>
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.sns.js"></script>
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/visaulSlder.js"></script> -->
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.sns.js"></script> -->
 
 
 
@@ -49,39 +45,6 @@
 </noscript>
 
    
-<script>
-    $(document).ready(function() {
-        var __today = new Date();
-        var __dd = __today.getDate();
-        var __mm = __today.getMonth()+1;
-        var __yyyy = __today.getFullYear();
-
-        if(__dd<10) {   __dd='0'+__dd } 
-        if(__mm<10) { __mm='0'+__mm }
-        __today = __yyyy+"-"+__mm+"-"+__dd;
-
-        if(__today < "2020-10-03"){
-            $(".header-wrap .header-top .logo a").css({'width' : '234px', 'height' : '87px', 'background-image': 'url("../fo/images/ico/tbc_logo_thanksgiving.png")'});
-        }else{
-            $(".header-wrap .header-top .logo a").css({'width' : '184px', 'height' : '50px',    'background-image': 'url("../fo/images/ico/logo.png")'});
-        }
-
-        var url = decodeURIComponent(location.href);
-        var path_name = decodeURIComponent(location.pathname);
-        var mbrDiviCd = "null";
-
-        if(mbrDiviCd == 30){
-            var mbrDiviCd_yn = false;
-            if(path_name !="/member/initMemActive.action"){
-                mbrDiviCd_yn = true;
-                overpass.logout();
-            }
-            if(path_name != "/member/initMemChangePwd.action" && mbrDiviCd_yn){
-                overpass.logout();
-            }
-        }
-    });
-</script>
 
 
 
@@ -245,7 +208,7 @@
                                     <li><a href=" " onclick=" ">국</a></li>
                                 </ul>
                             </div></li>
-                       </ul>
+
                 </div>
             </div>
         </nav>
