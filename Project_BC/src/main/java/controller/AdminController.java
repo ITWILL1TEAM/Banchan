@@ -38,6 +38,11 @@ public class AdminController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/adminPage/sellerInfo.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+<<<<<<< HEAD
+		}else if(command.equals("/side.ad")) {			
+			forward = new ActionForward();
+			forward.setPath("/category/sidedish.jsp");
+=======
 		}else if(command.equals("/ProductList.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/productList.jsp");
@@ -45,13 +50,13 @@ public class AdminController extends HttpServlet {
 		}else if(command.equals("/Notice.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/Notice.jsp");
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}else if(command.equals("/ProductRegister.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/productRegister.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}
-		
 		
 		
 		if(forward != null) {
