@@ -23,7 +23,7 @@
          <input type="hidden" name="ret_domain" id="ret_domain" value="">
          <input type="hidden" name="loginType" id="loginType" value="">
          <input type="hidden" name="snsDiviCd" id="snsDiviCd" value="">
-                     
+               
          <label for="login_id_lyr" class="ir">아이디</label>
          <input type="text" id="login_id_lyr" name="login_id" maxlength="50" class="login_input" placeholder="아이디" value="">
          

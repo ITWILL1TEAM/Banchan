@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,44 +10,62 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.MemberLoginProAction;
+import action.SellerJoinProAction;
+import action.customerJoinProAction;
 import vo.ActionForward;
-
 
 @WebServlet("*.me")
 public class MemberController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    private void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-    	request.setCharacterEncoding("UTF-8");
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("MemberController");
+		// POST 방식 요청에 대한 한글 처리(UTF-8)
+		request.setCharacterEncoding("UTF-8");
 		
+		// 요청 URL 에 대한 작업을 구분하기 위해 서블릿 주소 추출하여 command 변수에 저장
 		String command = request.getServletPath();
 		System.out.println("command : " + command);
 		
-		Action action = null;
+		// Action 클래스로부터 리턴받아 포워딩 정보를 관리하는 ActionForward 타입 변수 선언
 		ActionForward forward = null;
+		// 각 Action 클래스의 인스턴스를 공통으로 관리하는 Action 타입 변수 선언
+		Action action = null;
 		
-		if(command.equals("/Member.me")) {
-			// 글쓰기 작업을 위한 뷰페이지로 포워딩
+		if(command.equals("/CustomerJoinForm.me")) {
 			forward = new ActionForward();
-			forward.setPath("/member/member_join_form.jsp");
+			forward.setPath("/member/customerjoin.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/CustomerJoinPro.me")) {
+			action = new customerJoinProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberLoginForm.me")) {
+			forward = new ActionForward();
+			forward.setPath("/member/login.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/MemberJoinForm.me")) {
+			forward = new ActionForward();
+			forward.setPath("/member/JoinForm.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/SellerJoinForm.me")) {
+			forward = new ActionForward();
+			forward.setPath("/member/sellerJoin.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/SellerJoinPro.me")) {
+			action = new SellerJoinProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-	
-		 if(command.equals("/MemberLoginForm.me")) {
-	            forward = new ActionForward();
-	            forward.setPath("/member/member_login_form.jsp");
-	            forward.setRedirect(false);
-		 }else if(command.equals("/MemberLoginPro.me")) {
-	            action = new MemberLoginProAction();
-	            
-	            try {
-	                forward = action.execute(request, response);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-		 }
 		
+//	}
 		
 		if(forward != null) {
 			// 2. ActionForward 객체 내의 isRedirect 값이 true(= Redirect 방식) 인지 판별
@@ -66,15 +83,23 @@ public class MemberController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		
 	}
 	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+		
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
+		
+	
 	}
 
+	
 }
+
+
+
+
