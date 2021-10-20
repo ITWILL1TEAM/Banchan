@@ -748,7 +748,7 @@
 				<dl>
 					<dt>사용자 총 평점<em>(총 <b>4,965</b>개 고객후기 기준)</em></dt>
 					<dd>
-						<span class="star_rate04"><b class="ir">평점</b><em style="width:90%;">4.6</em></span>
+						<span class="star_rate04"><b class="ir">평점</b><em style="width:50%;">4.6</em></span>
 						<span class="scr"><b>4.6</b>/5<em>점</em></span>
 					</dd>
 				</dl>
