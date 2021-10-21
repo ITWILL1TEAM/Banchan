@@ -38,9 +38,17 @@ public class AdminController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/adminPage/sellerInfo.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 		}else if(command.equals("/side.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/category/sidedish.jsp");
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 		}else if(command.equals("/ProductList.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/productList.jsp");
@@ -48,11 +56,24 @@ public class AdminController extends HttpServlet {
 		}else if(command.equals("/Notice.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/Notice.jsp");
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}else if(command.equals("/ProductRegister.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/productRegister.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if (command.equals("/ProductWritePro.ad")) {
+			action = new BoardWriteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// 위임받은 Exception 예외처리 필요..!
 		}
 		
 		
