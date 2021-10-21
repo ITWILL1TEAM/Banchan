@@ -454,6 +454,8 @@
 			</li>
 		</ul>
 		<button class="add_btn"><em>배송비 절약제품 추가</em></button>
+		
+		<jsp:include page="../inc/bottom.jsp"/>
 	</div>
 </body>
 </html>

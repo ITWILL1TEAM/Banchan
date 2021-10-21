@@ -7,21 +7,12 @@
 <title>집밥장인이 만든 온라인 식품몰 더반찬&</title>
 <script src="../js/jquery-3.6.0.js"></script> 
 <!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
-<!-- <link href="../CSS/common.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="../CSS/sub.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="../CSS/font.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="../CSS/font.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="../CSS/gds.css" rel="stylesheet" type="text/css"> -->
-	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
-	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211010210" type="text/css">	
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211010210" type="text/css">
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211010210" type="text/css">
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211010210" type="text/css">
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script> -->
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script> -->
-
+<link href="../CSS/common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="../CSS/font.css" rel="stylesheet" type="text/css">
+<link href="../CSS/font.css" rel="stylesheet" type="text/css">
+<link href="../CSS/gds.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -53,13 +44,14 @@
 		// 제품 수량에 따른 총 제품 금액 계산
 		$('#totalAmt').append(11200 * qty * 1);
 		// 대충 이런식으로 하는 건 알겠는데 수량 버튼으로 수량을 바꿔도 완전 적용하기 전까지는 qty가 1이니까... 
-		// ajax로 해야 하는 건가? 
+		// ajax로 해야 하는 건가? 그리고 천단위 콤마 찍는 거... 포맷으로 해야하나 
 		
 	});
 </script>
 </head>
 <body>
-<jsp:include page="../inc/top.jsp"/>
+	<jsp:include page="../inc/top.jsp"/>
+	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
 	<form action="Order.do" method="post">
@@ -119,7 +111,7 @@
 						<!-- BRAND -->
 						<div class="gd_brd">	
 							<dl>
-								<dt>더반찬</dt>
+								<dt>집밥선생</dt>
 							</dl>
 						</div>
 						<!-- NAME -->
@@ -159,13 +151,9 @@
 									<span class="sale"><b>11,200</b>원</span>
 								</dd>
 							</dl>
-	<!-- 						<dl> -->
-	<!-- 							<dt>100g당 단가</dt> -->
-	<!-- 							<dd>1,982원</dd> -->
-	<!-- 						</dl> -->
 							<dl>
 								<dt>중량</dt>
-								<dd>565g(745kcal)</dd>
+								<dd>565g</dd>
 							</dl>
 							<dl>
 								<dt>유통기한</dt>
@@ -184,14 +172,9 @@
 									<span class="qty">
 										<input type="hidden" id="sale_price" name="sale_price" value="11200"/>	
 										<input type="hidden" id="chk_sale_price" name="chk_sale_price" value="11200"/>	
-										<input type="text" name="ord_qty" id="ord_qty" value="1" class="input" title="제품수량입력" maxlength="3" 
-												onkeyup="overpass.goodsDetail.fnGoods.checkKeyPressQty({min_qty:1,max_qty:0,sale_poss_qty : 999999,ord_poss_max_qty_st_cd : '10',obj:this});"
-												readonly="readonly"/>
-										<button type="button" class="minus" onclick="overpass.goodsDetail.fnGoods.setMinus({min_qty:1, max_qty:0, sale_poss_qty : 999999, ord_poss_max_qty_st_cd : '10'});return false;"  
-												onkeypress="this.onclick;" title="상품수량감소">감소</button>							
-										<button type="button" class="plus" 
-												onclick="overpass.goodsDetail.fnGoods.setPlus({max_qty:0, sale_poss_qty : 999999, ord_poss_max_qty_st_cd : '10', nplus_base_cnt:0, nplus_cnt:0 });return false;"  
-												onkeypress="this.onclick;" title="상품수량증가">증가</button>								
+										<input type="text" name="ord_qty" id="ord_qty" value="1" class="input" title="제품수량입력" maxlength="3" readonly="readonly"/>
+										<button type="button" class="minus" title="상품수량감소">감소</button>
+										<button type="button" class="plus" title="상품수량증가">증가</button>								
 									</span>
 								</dd>
 							</dl>
@@ -224,7 +207,7 @@
 							<!-- //TOOLTIP -->
 		
 							<!-- //TOOLTIP -->
-							<button type="button" class="buy" onclick="location.href='Order.do'" title="주문하기 페이지 이동"><em>바로구매</em></button>
+							<button type="submit" class="buy" title="주문하기 페이지 이동"><em>바로구매</em></button>
 						</div>
 						<!-- //BTN. -->
 		
