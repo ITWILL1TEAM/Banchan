@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="../js/jquery-3.6.0.js"></script> 
+<!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
+<link href="../CSS/common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="../CSS/font.css" rel="stylesheet" type="text/css">
+<link href="../CSS/font.css" rel="stylesheet" type="text/css">
+<link href="../CSS/gds.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211010170" type="text/css">   
 </head>
 <body>
 <!-- TAB3 -->
@@ -21,7 +31,7 @@
 				<dl>
 					<dt>사용자 총 평점<em>(총 <b>4,965</b>개 고객후기 기준)</em></dt>
 					<dd>
-						<span class="star_rate04"><b class="ir">평점</b><em style="width:50%;">4.6</em></span>
+						<span class="star_rate04"><b class="ir">평점</b><em style="width:50%;">review_score출력</em></span>
 						<span class="scr"><b>4.6</b>/5<em>점</em></span>
 					</dd>
 				</dl>
@@ -32,18 +42,17 @@
 				<div class="group">
 					<ul>
 						<li name="evalTab" data-value=""><a href="javascript:void(0);" id="rtabs0" class="on" onclick="fnTab(3, 'rtabs', 0, '');return false;">전체 (4,965)</a></li>
-						<li name="evalTab" data-value="best"><a href="javascript:void(0);" id="rtabs1" class="off" onclick="fnTab(3, 'rtabs', 1, '');return false;">BEST (16)</a></li>
-						<li name="evalTab" data-value="best"><a href="javascript:void(0);" id="rtabs1" class="off" onclick="fnTab(3, 'rtabs', 1, '');return false;">BEST (16)</a></li>
+						<li name="evalTab" data-value="photo"><a href="javascript:void(0);" id="rtabs1" class="off" onclick="fnTab(3, 'rtabs', 1, '');return false;">포토 (16)</a></li>
+						
 					</ul>
 				
 				
 				</div>
 				<div class="sort">
 						<select title="상품후기 정렬 선택" id="sch_gb">
-							<option value="best">BEST</option> 
-							<option value="recomm">도움 많은순</option>
 							<option value="recent" selected="selected">최근 등록순</option>
 							<option value="high_score">평점 높은순</option>
+							<option value="low_score">평점 낮은순</option>
 						</select>
 						<span class="button">
 							<button type="button" title="고객후기작성 열기" onclick="overpass.mypage.goReviewList();">고객후기 작성</button>
