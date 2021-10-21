@@ -95,4 +95,9 @@ CREATE TABLE basket(
    basket_count INT NOT NULL DEFAULT 0,
    CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
    CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git

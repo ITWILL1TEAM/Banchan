@@ -180,4 +180,39 @@ public class MemberDAO {
 		
 		return isDuplicate;
 	}
+	public boolean selectMember(MemberBean member) {
+		boolean isLoginSuccess = false;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
+			String sql = "SELECT id FROM member WHERE id=? AND password=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,member.getId());
+			pstmt.setString(2,member.getPassword());
+			
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+					isLoginSuccess = true;
+					System.out.println("selectMember - 정상작동");
+			}
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원 반환
+			close(rs);
+			close(pstmt);
+			
+		}
+
+		
+		
+		return isLoginSuccess;
+	}
 }
