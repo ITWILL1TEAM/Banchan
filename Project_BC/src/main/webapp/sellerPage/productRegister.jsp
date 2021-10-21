@@ -73,7 +73,7 @@ function category(e){
     
     
     <body class="sb-nav-fixed">
-        <jsp:include page="../inc/admin_top.jsp"/>
+        <jsp:include page="../inc/seller_top.jsp"/>
            
             <div id="layoutSidenav_content">
                 <main>
@@ -132,9 +132,9 @@ function category(e){
                         </div>
                     </div>
                 </main>
-                <jsp:include page="../inc/admin_bottom.jsp"/>
+                <jsp:include page="../inc/seller_bottom.jsp"/>
             </div>
-        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/scripts2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

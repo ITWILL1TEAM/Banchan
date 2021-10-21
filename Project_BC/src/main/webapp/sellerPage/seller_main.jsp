@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>집밥선생_AdminPage</title>
+<title>집밥선생_SellerPage</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="CSS/styles.css" rel="stylesheet" />
         
@@ -13,16 +13,17 @@
 </head>
 <body class="sb-nav-fixed">
  
-  <jsp:include page="../inc/admin_top.jsp"/>
+  <jsp:include page="../inc/seller_top.jsp"/>
      
                 <!--  메인 Content -->
                  <!--  첫차트. -->
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Admin</h1>
+                    <div class="container-fluid px-4" style="background-color: #ddeefc;">
+                        <h1 class="">@@@판매자님 어서오십시오</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">DashBoard</li>
+                            <li class="breadcrumb-item active">DashBoard</li>&nbsp;&nbsp;&nbsp;
+                            <li><a href="AddProduct.sc" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a></li>
                         </ol>
                         
                       
@@ -31,7 +32,7 @@
                                 <div class="card mb-4">
                                 <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
-                                       1:1문의
+                                       리뷰관리
                                     </div>
                                     <div class="card-body">
                                        <table class="table table-striped text-wrap">
@@ -111,32 +112,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                </div>                          
-                       
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                       일별차트
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            
-                             <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                       월별차트
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        
+                                </div>  
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -220,10 +196,10 @@
                     
                 </main>
                 
-               <jsp:include page="../inc/admin_bottom.jsp"/>
+               <jsp:include page="../inc/seller_bottom.jsp"/>
             
             </div>
-        </div>
+    
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/scripts2.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
