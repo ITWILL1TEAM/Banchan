@@ -14,25 +14,38 @@ public class BoardWriteProAction implements Action {
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
  
-        System.out.println("action");
-        
-        
+        System.out.println("Board(현Product)WritePro - action");
         ActionForward forward = null;
         
         BoardBean boardBean = new BoardBean();
         
+
+        String name = request.getParameter("product_name");
+        String Sname = request.getParameter("Sname");
+        String category = request.getParameter("product_category")+request.getParameter("product_category2");      
+        int price = Integer.parseInt(request.getParameter("product_price"));        
+        int weight = Integer.parseInt(request.getParameter("product_weight"));  
+        int discount = Integer.parseInt(request.getParameter("product_discount"));
+        int stock = Integer.parseInt(request.getParameter("product_stock"));
+        String expiration = request.getParameter("product_expiration_date");
+        String handling = request.getParameter("product_handling");
+        String material = request.getParameter("product_material");
+
         
-        boardBean.setProduct_name(request.getParameter("Product_name"));
-        boardBean.setSname(request.getParameter("Sname"));
-        boardBean.setProduct_category(request.getParameter("Product_category"));
-        boardBean.setProduct_price(Integer.parseInt(request.getParameter("Product_price")));
-        boardBean.setProduct_weight(Integer.parseInt(request.getParameter("Product_weigh")));
-        boardBean.setProduct_discount(Integer.parseInt(request.getParameter("Product_name")));
-        boardBean.setProduct_count(Integer.parseInt(request.getParameter("Product_name")));
-        boardBean.setProduct_stock(Integer.parseInt(request.getParameter("Product_stock")));
-        boardBean.setProduct_expiration_date(request.getParameter("Product_expiration_date"));
-        boardBean.setProduct_handling(request.getParameter("Product_handling"));
-        boardBean.setProduct_material(request.getParameter("Product_material"));
+        System.out.println(name+"|"+Sname+"|"+category+"|"+price+"|"+weight+"|"+discount+"|"+stock+"|"+expiration+"|"+handling+"|"+material);
+        
+        
+        
+        boardBean.setProduct_name(name);
+        boardBean.setSname(Sname);
+        boardBean.setProduct_category(category);
+        boardBean.setProduct_price(price);
+        boardBean.setProduct_weight(weight);
+        boardBean.setProduct_discount(discount);
+        boardBean.setProduct_stock(stock);
+        boardBean.setProduct_expiration_date(expiration);
+        boardBean.setProduct_handling(handling);
+        boardBean.setProduct_material(material);       
         
         
     BoardWriteProService service = new BoardWriteProService();
@@ -56,7 +69,7 @@ public class BoardWriteProAction implements Action {
             // => request 객체 유지 불필요, 주소 유지 불필요
             // => 새로운 요청을 발생시키므로 Redirect 방식 포워딩
             forward = new ActionForward();
-            forward.setPath("BoardList.do");
+            forward.setPath("productList.ad");
             forward.setRedirect(true);
         }
         

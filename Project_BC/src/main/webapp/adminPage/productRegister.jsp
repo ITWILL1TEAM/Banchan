@@ -7,15 +7,18 @@
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 var count=0;
+var imgtag = 1;
 $(document).ready(function () {
 	$('#tagplus').click(function () {		
-		count++;		
+		count++;
+		imgtag++;
+		
 		if(count>3){
 			alert('더 추가할수 없습니다.');
 			count=3;
 			return;
 		}
-		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img3' size=10></td><td><select><option>주 이미지</option><option>상세 이미지</option></select></td></tr>"   
+		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img"+imgtag+"' size=10></td><td><select><option value='1'>주 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   
 			   $('tbody').append(plus);
 		
 	});
@@ -84,59 +87,38 @@ function category(e){
                           상품등록
                             </div>
                             <div class="card-body">
-                            <form name="product" action="Dashboard" method="post">
+                            <form name="product" action="ProductWritePro.ad" method="post">
                                 <table class="table table-bordered talbe-light" >
                                    <tbody>
-                                         <tr><td>카테고리</td><td colspan="2"><select onchange="category(this)">                                                                                
+                                         
+                                 		<tr><td>상품명</td><td colspan="2"><input type="text" name = "product_name" size=10></td></tr>
+										<tr><td>회사명</td><td colspan="2"><input type="text" name = "Sname" size=10></td></tr>
+                                        <tr><td>카테고리</td><td colspan="2"><select onchange="category(this) " name = "product_category">                                                                                
                                                                                 <option value="SideDish" selected="selected">반찬</option>
                                                                                 <option value="Soup">국</option>
                                                                                 <option value="Kimchi">김치</option>
                                                                             </select> 
-                                                                            <select id="select"><option>소분류</option>
+                                                                            <select id="select" name = "product_category2" ><option>소분류</option>
                                                                             </select></td></tr>
-                                         
-                                 		<tr><td>상품명</td><td colspan="2"><input type="text" name = product_name size=10></td></tr>
-										<tr><td>회사명</td><td colspan="2"><input type="text" name = Sname size=10></td></tr>
-										<tr><td>제품품목</td><td colspan="2"><input type="text" name = product_category size=10></td></tr>
-										<tr><td>상품가격</td><td colspan="2"><input type="text" name = product_price size=10></td></tr>
-										<tr><td>제품무게</td><td colspan="2"><input type="text" name = product_weight size=10></td></tr>
-										<tr><td>제품총재고</td><td colspan="2"><input type="text" name = product_stock size=10></td></tr>
-										<tr><td>제품 유통기한</td><td colspan="2"><input type="text" name = product_expiration_date size=10></td></tr>
-										<tr><td>제품보관방법</td><td colspan="2"><textarea rows="5" cols="30" name=product_handling></textarea></td></tr>
-										<tr><td>제품원재료명 및 함량</td><td colspan="2"><textarea rows="5" cols="30" name=product_material></textarea></td></tr>
+										<tr><td>상품가격</td><td colspan="2"><input type="number" name = "product_price" size=10></td></tr>
+										<tr><td>제품무게</td><td colspan="2"><input type="number" name = "product_weight" size=10></td></tr>
+										<tr><td>제품총재고</td><td colspan="2"><input type="number" name = "product_stock" size=10></td></tr>
+										<tr><td>제품할인률</td><td colspan="2"><input type="number" name = "product_discount" size=10></td></tr>
+										<tr><td>제품 유통기한</td><td colspan="2"><input type="text" name = "product_expiration_date" size=10></td></tr>
+										<tr><td>제품보관방법</td><td colspan="2"><textarea rows="5" cols="30" name="product_handling"></textarea></td></tr>
+										<tr><td>제품원재료명 및 함량</td><td colspan="2"><textarea rows="5" cols="30" name="product_material"></textarea></td></tr>
+<!-- 										<tr><td>제품품목</td><td colspan="2"><input type="text" name = product_category size=10></td></tr> -->
 									    <tr>
 									    	<td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>
 									    
 										    <td>				    
 										   		<select>
-										   			<option>주 이미지</option>
-										   			<option>상세 이미지</option>
+										   			<option value="1">주 이미지</option>
+										   			<option value="2">상세 이미지</option>
 										   		</select>
 										   	</td>
 										</tr>
-								
-								        <tr>
-								        	<td>이미지추가</td><td><input type="file" name="product_original_img2" size=10></td>
-										    
-										    <td>				    
-										   		<select>
-										   			<option>주 이미지</option>
-										   			<option>상세 이미지</option>
-										   		</select>
-										   	</td>
-									   	</tr>
-							
-							  			<tr>
-							  				<td>이미지추가</td><td><input type="file" name="product_original_img3" size=10></td>
-									    
-										    <td>				    
-										   		<select>
-										   			<option>주 이미지</option>
-										   			<option>상세 이미지</option>
-										   		</select>
-										   	</td>
-									   	</tr>					  
-							
+										
                                     </tbody>
                                 </table>
                                 <button type="button" id="tagplus" >태그추가</button>&nbsp;<button type="button" id="tagminus" >태그삭제</button>
@@ -144,7 +126,7 @@ function category(e){
 															<input type="submit" value=등록>
 															<input type="reset" value="취소">
 									</section>
-														</form>
+								</form>
                                 
                             </div>
                         </div>

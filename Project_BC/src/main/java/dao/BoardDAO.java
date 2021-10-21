@@ -34,16 +34,18 @@ public class BoardDAO {
     }
     
     public int insertArticle(BoardBean board) {
+    	System.out.println("insertArticle - DAO");
         int insertCount = 0;
         
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        System.out.println(board.getProduct_name().toString());
         
         int num = 1; // 새 글 번호를 저장할 변수 선언
         
         try {
         
-            String sql = "SELECT MAX(board_num) FROM BC_board";
+            String sql = "SELECT MAX(product_num) FROM product";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
             
@@ -53,29 +55,28 @@ public class BoardDAO {
             
             // 다음 작업을 위해 PreparedStatement 객체 반환
             // 하나의 메서드에서 복수개의 PreparedStatement 가 생성되는 것을 방지
-            close(pstmt);
-            
+            close(pstmt);          
             // 글 등록 작업을 위한 INSERT 작업 수행
             // => 등록일(board_date)은 now() 함수 활용
-            sql = "INSERT INTO BC_board VALUES (null,?,?,?,?,?,?,?,now(),?,?,?,?,?)";
+            sql = "INSERT INTO product VALUES (null,?,?,?,?,?,?,now(),?,?,?,?)";
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, board.getProduct_name()); // 계산된 새 글 번호
-            pstmt.setString(2, board.getSname());
-            pstmt.setString(3, board.getProduct_category());
-            pstmt.setInt(4, board.getProduct_price());
-            pstmt.setInt(5, board.getProduct_weight());
-            pstmt.setInt(6, board.getProduct_discount());
-            pstmt.setInt(7, board.getProduct_count()); //보류
-            pstmt.setDate(8, board.getProduct_date());
-            pstmt.setInt(9, board.getProduct_stock());
-            pstmt.setString(11, board.getProduct_expiration_date());
-            pstmt.setString(12, board.getProduct_handling());
-            pstmt.setString(13, board.getProduct_material());
+            //첫 문장은 auto_increment 이므로 null값 넣음
+            pstmt.setString(1, board.getProduct_name()); //					상품명
+            pstmt.setString(2, board.getSname());//							회사명
+            pstmt.setString(3, board.getProduct_category());//				상품 카테고리
+            pstmt.setInt(4, board.getProduct_price());  // 					상품가격
+            pstmt.setInt(5, board.getProduct_weight());// 					상품무게
+            pstmt.setInt(6, board.getProduct_discount()); //				상품 할인률
+//            pstmt.setDate(7, board.getProduct_date());//					now로 들어감
+            pstmt.setInt(7, board.getProduct_stock()); //					상품 수량
+            pstmt.setString(8, board.getProduct_expiration_date());// 		유통기한
+            pstmt.setString(9, board.getProduct_handling());// 				보관법
+            pstmt.setString(10, board.getProduct_material());// 			제품 품질
             
             
             pstmt.setDate(num, null);
             
-            // INSERT 구문 실행 및 결과 리턴받기 => insertCount 에 저장
+            // INSERT 구문 실행 및 결과 리턴받기 => insertCount 에 저장IN
             insertCount = pstmt.executeUpdate();
             
         } catch (Exception e) {
@@ -102,7 +103,7 @@ public class BoardDAO {
         try {
             // 3단계. SQL 구문 작성 및 전달
             // => 전체 레코드 갯수를 조회하기 위해 COUNT(*) 함수 사용(또는 COUNT(num))
-            String sql = "SELECT COUNT(*) FROM BC_board";
+            String sql = "SELECT COUNT(*) FROM product";
             pstmt = con.prepareStatement(sql);
             
             // 4단계. SQL 구문 실행 및 결과 처리
@@ -138,7 +139,7 @@ public class BoardDAO {
             //    (참조글번호를 기준으로 내림차순, 순서번호를 기준으로 오름차순 정렬)
             // => 단, 시작행번호부터 페이지당 게시물수 만큼만 조회
             //    LIMIT 시작행번호,페이지당게시물수
-            String sql = "SELECT * FROM BC_board "
+            String sql = "SELECT * FROM product "
                     + "ORDER BY board_re_ref DESC,board_re_seq ASC "
                     + "LIMIT ?,?";
             pstmt = con.prepareStatement(sql);
@@ -158,7 +159,7 @@ public class BoardDAO {
                 //    (답글에 대한 들여쓰기를 위해 board_re_lev 값도 추가)
                 BoardBean board = new BoardBean();
                 board.setProduct_num(rs.getInt("product_num"));
-                board.setProduct_name(rs.getString("product_name: "));
+                board.setProduct_name(rs.getString("product_name"));
                 board.setSname(rs.getString("Sname "));
                 board.setProduct_date(rs.getDate("product_date"));
                 
