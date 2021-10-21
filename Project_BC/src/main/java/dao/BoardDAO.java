@@ -39,7 +39,7 @@ public class BoardDAO {
         
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        System.out.println(board.getProduct_name().toString());
+        System.out.println(board.getProduct_name());
         
         int num = 1; // 새 글 번호를 저장할 변수 선언
         
@@ -49,6 +49,7 @@ public class BoardDAO {
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
             
+            //조회된 글 번호가 하나라도 존재할경우.
             if(rs.next()) {
                 num = rs.getInt(1) + 1;
             }
@@ -56,6 +57,8 @@ public class BoardDAO {
             // 다음 작업을 위해 PreparedStatement 객체 반환
             // 하나의 메서드에서 복수개의 PreparedStatement 가 생성되는 것을 방지
             close(pstmt);          
+            
+            
             // 글 등록 작업을 위한 INSERT 작업 수행
             // => 등록일(board_date)은 now() 함수 활용
             sql = "INSERT INTO product VALUES (null,?,?,?,?,?,?,now(),?,?,?,?)";
@@ -72,9 +75,8 @@ public class BoardDAO {
             pstmt.setString(8, board.getProduct_expiration_date());// 		유통기한
             pstmt.setString(9, board.getProduct_handling());// 				보관법
             pstmt.setString(10, board.getProduct_material());// 			제품 품질
-            
-            
-            pstmt.setDate(num, null);
+               
+//            pstmt.setDate(num, null);
             
             // INSERT 구문 실행 및 결과 리턴받기 => insertCount 에 저장IN
             insertCount = pstmt.executeUpdate();

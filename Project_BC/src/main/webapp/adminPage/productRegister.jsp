@@ -87,7 +87,7 @@ function category(e){
                           상품등록
                             </div>
                             <div class="card-body">
-                            <form name="product" action="ProductWritePro.ad" method="post">
+                            <form name="product" action="ProductWritePro.ad" method="GET">
                                 <table class="table table-bordered talbe-light" >
                                    <tbody>
                                          
@@ -135,7 +135,7 @@ function category(e){
                 <jsp:include page="../inc/admin_bottom.jsp"/>
             </div>
         </div>
-        <<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/scripts2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/assets/demo/datatables-simple-demo.js"></script> 
