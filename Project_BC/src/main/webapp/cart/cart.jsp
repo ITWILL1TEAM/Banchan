@@ -5,18 +5,17 @@
 <head>
 <meta charset="utf-8">
 <title>장바구니</title>
-	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
-	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211010170" type="text/css">	
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211010170" type="text/css">
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211010170" type="text/css">
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211010170" type="text/css">
+<link href="CSS/common.css" rel="stylesheet" type="text/css">
+<link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+<link href="CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="CSS/font.css" rel="stylesheet" type="text/css">
+<link href="CSS/ord.css" rel="stylesheet" type="text/css">
 <!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script> -->
 <!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script> -->
 <!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script> -->
 <!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script> -->
 <!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script> -->
-<script src="../js/jquery-3.6.0.js"></script>
+<script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -46,7 +45,7 @@
 </script>
 </head>
 <body>
-    <jsp:include page="../inc/top.jsp"/>
+    <%@include file="../inc/top.jsp" %>
 
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
 <!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/order/overpass.cart.base.js?v=1633854217145"></script> -->

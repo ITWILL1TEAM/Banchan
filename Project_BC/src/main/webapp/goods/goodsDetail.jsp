@@ -5,13 +5,12 @@
 <head>
 <meta charset="utf-8">
 <title>집밥장인이 만든 온라인 식품몰 더반찬&</title>
-<script src="../js/jquery-3.6.0.js"></script> 
-<link href="../CSS/common.css" rel="stylesheet" type="text/css">
-<link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
-<link href="../CSS/sub.css" rel="stylesheet" type="text/css">
-<link href="../CSS/font.css" rel="stylesheet" type="text/css">
-<link href="../CSS/font.css" rel="stylesheet" type="text/css">
-<link href="../CSS/gds.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-3.6.0.js"></script> 
+<link href="CSS/common.css" rel="stylesheet" type="text/css">
+<link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+<link href="CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="CSS/font.css" rel="stylesheet" type="text/css">
+<link href="CSS/gds.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -49,7 +48,7 @@
 </script>
 </head>
 <body>
-	<jsp:include page="../inc/top.jsp"/>
+	<%@include file="../inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
@@ -743,50 +742,22 @@
 								<td>양장피</td>
 							</tr>
 							<tr>
-								<th scope="row">식품의 유형</th>
-								<td>즉석조리식품</td>
-							</tr>
-							<tr>
-								<th scope="row">생산자 및 소재지(수입품의 경우 생산자, 수입자 및 제조국)</th>
-								<td>동원디어푸드 주식회사 가산공장/서울특별시 금천구 서부샛길 280</td>
-							</tr>
-							<tr>
 								<th scope="row">제조연월일, 유통기한 또는 품질유지기한</th>
 								<td>제조일로부터 냉장 4일</td>
 							</tr>
 							<tr>
 								<th scope="row">포장단위별 내용물의 용량(중량), 수량</th>
-								<td>565g(745kcal)</td>
+								<td>565g</td>
 							</tr>
 							<tr>
 								<th scope="row">원재료명 및 함량(농수산물의 원산지 표시에 관한 법률에 따른 원산지 표시 포함)</th>
-								<td>양장피채22%(중국산/고구마전분100%),오징어(중국산),고추잡채소스[굴소스(홍콩산),혼합간장{탈지대두(외국산)},마늘,고추기름-1,설탕],새우,양파,돼지고기,청피망,홍피망,오이,당근,맛살,표고버섯,발효식초,설탕,고추맛기름,계란지단,마요네즈,연겨자,양조간장,목이버섯,참기름,마늘,천일염   *달걀,대두,밀,게,새우,돼지고기,오징어,조개류(굴) 함유</td>
+								<td>양장피채22%(중국산/고구마전분100%),오징어(중국산),고추잡채소스[굴소스(홍콩산),혼합간장{탈지대두(외국산)},
+									마늘,고추기름-1,설탕],새우,양파,돼지고기,청피망,홍피망,오이,당근,맛살,표고버섯,발효식초,설탕,고추맛기름,계란지단,
+									마요네즈,연겨자,양조간장,목이버섯,참기름,마늘,천일염   *달걀,대두,밀,게,새우,돼지고기,오징어,조개류(굴) 함유</td>
 							</tr>
 							<tr>
 								<th scope="row">보관방법 / 취급방법</th>
 								<td>냉장보관(0~10℃)</td>
-							</tr>
-							<tr>
-								<th scope="row">소비자안전을 위한 주의사항</th>
-								<td>-본 제품은 알류(메추리알),우유,메밀,땅콩,고등어,복숭아,토마토,아황산류,호두,닭고기,쇠고기,조개류(전복,홍합 포함),잣을 사용한 제품과 같은 제조시설에서 제조하고 있습니다.
-									-본 제품은 공정거래위원회고시 소비자분쟁해결기준에 의거 교환 또는 보상을 받을 수 있습니다.
-									-부정·불량 식품 신고는 국번없이 1399</td>
-							</tr>
-							<tr>
-								<th scope="row">소비자상담 관련 전화번호</th>
-								<td>1644-6844</td>
-							</tr>
-							<tr>
-								<th scope="row">영양성분(식품등의표시·광고에관한법률에 따른 영양성분 표시대상 식품에 한함)</th>
-								<td>총 내용량 565g, 745kcal/ 나트륨2,340mg(117%), 탄수화물93g(29%), 당류20g(20%), 지방31g(57%), 트랜스지방0g, 포화지방5.0g(33%), 콜레스테롤25mg(8%), 단백질23g(42%), /1일 영양성분 기준치에 대한 비율(%)은 2,000kcal 기준이므로 개인의 필요 열량에 따라 다를 수 있습니다.</td>
-							</tr>
-							<tr>
-								<th scope="row">유전자변형식품에 해당하는 경우의 표시</th>
-								<td>해당사항없음</td>
-							</tr>
-							<tr>
-								<th scope="row">수입식품에 해당하는 경우 "수입식품안전관리특별법에 따른 수입신고를 필함"의 문구</th>
-								<td>해당사항없음</td>
 							</tr>
 						</tbody>
 					</table>
@@ -794,72 +765,72 @@
 			</div>
 			<!-- //TAB2 -->
 			
-			<div class="gd_lst">
-				<h3>
-					<span><b>더반찬</b>브랜드의 다른 제품들</span>
-					<a href="javascript:void(0);" onclick="overpass.link('BRAND',{brand_no:'1700002614'});">더보기</a>
-				</h3>
-				<div class="lst">
-					<ul>
-						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2110015914', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2110015914', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" >
-								<span class="tit">국/찌개/전골류 2종 골라담기 (11,000원 부터~)</span>
-								<span class="prc">
-									<span>
-										<em class="on"><b class="ir">가격할인</b><b>11,000</b>원</em>
-									</span>
-								</span>
-								<span class="pnt"></span>
-								<span class="img">
-									<div class="deli_type_tag"></div>
-									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/658/211008000027658.jpg" width="235" height="235" alt="국/찌개/전골류 2종 골라담기 (11,000원 부터~)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
-								</span>
-							</a>
-						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2110015914', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2110015914', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'20', obj : this});"><b class="ir">장바구니에 담기</b></button></li>
-						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2010014696', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2010014696', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" >
-								<span class="tit">[남향푸드또띠아] 간편브리또 8종 (2개 세트)</span>
-								<span class="prc">
-									<span>
-										<em class="on"><b class="ir">가격할인</b><b>5,800</b>원</em>
-									</span>
-								</span>
-								<span class="pnt"></span>
-								<span class="img">
-									<div class="deli_type_tag"></div>
-									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/292/201026000026292.jpg" width="235" height="235" alt="[남향푸드또띠아] 간편브리또 8종 (2개 세트)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
-								</span>
-							</a>
-						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2010014696', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2010014696', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'20', obj : this});"><b class="ir">장바구니에 담기</b></button></li>
-						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" >
-								<span class="tit">두메산나물비빔밥재료</span>
-								<span class="prc">
-									<span>
-										<em class="on"><b class="ir">판매가</b><b>7,800</b>원</em>
-									</span>
-								</span>
-								<span class="pnt"></span>
-								<span class="img">
-									<div class="deli_type_tag"></div>
-									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/571/200714000025571.jpg" width="235" height="235" alt="두메산나물비빔밥재료" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
-								</span>
-							</a>
-						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'10', obj : this});"><b class="ir">장바구니에 담기</b></button></li>
-						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2108015821', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2108015821', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" >
-								<span class="tit">[북창동순두부 X 더반찬&] 북창동순두부찌개(600g)</span>
-								<span class="prc">
-									<span>
-										<em class="on"><b class="ir">판매가</b><b>7,200</b>원</em>
-									</span>
-								</span>
-								<span class="pnt"></span>
-								<span class="img">
-									<div class="deli_type_tag"></div>
-									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/568/210826000027568.jpg" width="235" height="235" alt="[북창동순두부 X 더반찬&] 북창동순두부찌개(600g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
-								</span>
-							</a>
-						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2108015821', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2108015821', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'10', obj : this});"><b class="ir">장바구니에 담기</b></button></li>
-					</ul>
-				</div>
-			</div>
+<!-- 			<div class="gd_lst"> -->
+<!-- 				<h3> -->
+<!-- 					<span><b>더반찬</b>브랜드의 다른 제품들</span> -->
+<!-- 					<a href="javascript:void(0);" onclick="overpass.link('BRAND',{brand_no:'1700002614'});">더보기</a> -->
+<!-- 				</h3> -->
+<!-- 				<div class="lst"> -->
+<!-- 					<ul> -->
+<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2110015914', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2110015914', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
+<!-- 								<span class="tit">국/찌개/전골류 2종 골라담기 (11,000원 부터~)</span> -->
+<!-- 								<span class="prc"> -->
+<!-- 									<span> -->
+<!-- 										<em class="on"><b class="ir">가격할인</b><b>11,000</b>원</em> -->
+<!-- 									</span> -->
+<!-- 								</span> -->
+<!-- 								<span class="pnt"></span> -->
+<!-- 								<span class="img"> -->
+<!-- 									<div class="deli_type_tag"></div> -->
+<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/658/211008000027658.jpg" width="235" height="235" alt="국/찌개/전골류 2종 골라담기 (11,000원 부터~)" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
+<!-- 								</span> -->
+<!-- 							</a> -->
+<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2110015914', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2110015914', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'20', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
+<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2010014696', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2010014696', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
+<!-- 								<span class="tit">[남향푸드또띠아] 간편브리또 8종 (2개 세트)</span> -->
+<!-- 								<span class="prc"> -->
+<!-- 									<span> -->
+<!-- 										<em class="on"><b class="ir">가격할인</b><b>5,800</b>원</em> -->
+<!-- 									</span> -->
+<!-- 								</span> -->
+<!-- 								<span class="pnt"></span> -->
+<!-- 								<span class="img"> -->
+<!-- 									<div class="deli_type_tag"></div> -->
+<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/292/201026000026292.jpg" width="235" height="235" alt="[남향푸드또띠아] 간편브리또 8종 (2개 세트)" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
+<!-- 								</span> -->
+<!-- 							</a> -->
+<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2010014696', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2010014696', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'20', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
+<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
+<!-- 								<span class="tit">두메산나물비빔밥재료</span> -->
+<!-- 								<span class="prc"> -->
+<!-- 									<span> -->
+<!-- 										<em class="on"><b class="ir">판매가</b><b>7,800</b>원</em> -->
+<!-- 									</span> -->
+<!-- 								</span> -->
+<!-- 								<span class="pnt"></span> -->
+<!-- 								<span class="img"> -->
+<!-- 									<div class="deli_type_tag"></div> -->
+<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/571/200714000025571.jpg" width="235" height="235" alt="두메산나물비빔밥재료" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
+<!-- 								</span> -->
+<!-- 							</a> -->
+<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'10', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
+<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2108015821', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2108015821', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
+<!-- 								<span class="tit">[북창동순두부 X 더반찬&] 북창동순두부찌개(600g)</span> -->
+<!-- 								<span class="prc"> -->
+<!-- 									<span> -->
+<!-- 										<em class="on"><b class="ir">판매가</b><b>7,200</b>원</em> -->
+<!-- 									</span> -->
+<!-- 								</span> -->
+<!-- 								<span class="pnt"></span> -->
+<!-- 								<span class="img"> -->
+<!-- 									<div class="deli_type_tag"></div> -->
+<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/568/210826000027568.jpg" width="235" height="235" alt="[북창동순두부 X 더반찬&] 북창동순두부찌개(600g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
+<!-- 								</span> -->
+<!-- 							</a> -->
+<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2108015821', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2108015821', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'10', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 	
 		<script type="text/javascript">
 		$(document).ready(function(){
@@ -875,7 +846,6 @@
 
 		});
 		</script>
-		
 		
 		
 		
