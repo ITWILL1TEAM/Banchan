@@ -46,7 +46,27 @@ public class AdminController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/adminPage/Notice.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-		}
+		}else if(command.equals("/NoticeWrite.ad")) {          
+            forward = new ActionForward();
+            forward.setPath("/adminPage/NoticeWrite.jsp");
+            forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+        }else if(command.equals("/NoticeWritePro.ad")) {
+            action = new NoticeWriteProAction();
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if(command.equals("/NoticeBoardList.ad")) {
+
+            action = new BoardListAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 		
 		
 		
