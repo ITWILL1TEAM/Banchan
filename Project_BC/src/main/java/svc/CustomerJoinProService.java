@@ -27,7 +27,7 @@ public class CustomerJoinProService {
 		System.out.println(cBean.getRecommend_id());
 		updateCount = dao.foundRecommandID(cBean.getRecommend_id());
 		
-		if(updateCount > 0) {
+		if(updateCount > -1) {
 			insertCount = dao.insertMember(cBean);
 		}
 		
@@ -42,6 +42,7 @@ public class CustomerJoinProService {
 		
 		return isJoinSuccess;
 	}
+	
 	
 	
 	

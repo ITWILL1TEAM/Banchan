@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="script/script.js"></script> 
+<script src="js/script.js"></script> 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@
 	                  <label for="join_id" class="ir">아이디</label>
 	                  <div class="input_w auth_div">
 	                  <input type="text" id="join_id" name="member_id" maxlength="20" class="login_input"
-	                   placeholder="아이디" onkeyup="checkId(this)" >
+	                   placeholder="아이디" onkeyup="checkId(this)" readonly="readonly">
 	                  </div>
 	                  <span class="limit" id="_certTime"></span>
 	                  <button class="submit" type="button"  class="dup" id="btn" onclick="openWindow('dupIdCheck')">중복확인</button>
@@ -146,7 +146,7 @@
 							<input type="hidden" id="base_addr" name="base_addr"> 
 							<input type="hidden" id="road_base_addr" name="road_base_addr"> 
 							<input type="hidden" id="road_dtl_addr" name="road_dtl_addr">	
-							<input type="text" id="addr_view" name="address"  placeholder="사업장 소재지">
+							<input type="text" id="addr_view" name="address"  placeholder="사업장 소재지" readonly="readonly">
 							<label for="addr_view" class="ir">주소</label>
 							<!-- <input type="text" id="road_base_addr_view" disabled="disabled" />
 							<label for="road_base_addr_view" class="ir">주소</label> -->
