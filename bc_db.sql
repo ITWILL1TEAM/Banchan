@@ -91,9 +91,9 @@ CREATE TABLE `review` (
 CREATE TABLE basket(
    basket_idx int(11) PRIMARY KEY AUTO_INCREMENT,
    product_num int(11) NOT NULL,
-   customer_id varchar(15) NOT NULL,
-   basket_count INT NOT NULL DEFAULT '0',
+   customer_id varchar(15) COLLATE utf8_bin NOT NULL,
+   basket_count INT NOT NULL DEFAULT 0,
    CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
    CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
-); 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
