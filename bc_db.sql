@@ -22,7 +22,7 @@ CREATE TABLE `customer` (
   `recommend_id` int(11) NOT NULL DEFAULT '0',
   `personal_data` int(11) NOT NULL,
   UNIQUE KEY `eamil_UNIQUE` (`eamil`),
-  KEY `costomer_id` (`customer_id`),
+  PRIMARY KEY`costomer_id` (`customer_id`),
   CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `member` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
