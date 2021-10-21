@@ -6,7 +6,6 @@
 <meta charset="utf-8">
 <title>집밥장인이 만든 온라인 식품몰 더반찬&</title>
 <script src="../js/jquery-3.6.0.js"></script> 
-<!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
 <link href="../CSS/common.css" rel="stylesheet" type="text/css">
 <link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
 <link href="../CSS/sub.css" rel="stylesheet" type="text/css">
@@ -862,145 +861,6 @@
 				</div>
 			</div>
 	
-			<!-- TAB3 -->
-			<div class="gds_cont" id="gds_cont3">
-			<div class="gd_tabs">
-				<ul>
-					<li><a href="#gds_cont1">제품정보</a></li>
-					<li><a href="#gds_cont2">제품정보고시</a></li>
-					<li class="on"><a href="#gds_cont3">고객후기 <em>(4,965)</em><em class="ir">선택</em></a></li>
-					<li><a href="#gds_cont4">주의사항</a></li>
-				</ul>
-			</div>
-			<div class="gd_scr">
-				<dl>
-					<dt>사용자 총 평점<em>(총 <b>4,965</b>개 고객후기 기준)</em></dt>
-					<dd>
-						<span class="star_rate04"><b class="ir">평점</b><em style="width:50%;">4.6</em></span>
-						<span class="scr"><b>4.6</b>/5<em>점</em></span>
-					</dd>
-				</dl>
-			</div>
-			<div class="gd_rv" id="goodsEvalDiv">
-				<div class="g_sort">
-					<h3>고객후기</h3>
-				<div class="group">
-					<ul>
-						<li name="evalTab" data-value=""><a href="javascript:void(0);" id="rtabs0" class="on" onclick="fnTab(3, 'rtabs', 0, '');return false;">전체 (4,965)</a></li>
-						<li name="evalTab" data-value="best"><a href="javascript:void(0);" id="rtabs1" class="off" onclick="fnTab(3, 'rtabs', 1, '');return false;">BEST (16)</a></li>
-						<li name="evalTab" data-value="best"><a href="javascript:void(0);" id="rtabs1" class="off" onclick="fnTab(3, 'rtabs', 1, '');return false;">BEST (16)</a></li>
-					</ul>
-				
-				
-				</div>
-				<div class="sort">
-						<select title="상품후기 정렬 선택" id="sch_gb">
-							<option value="best">BEST</option> 
-							<option value="recomm">도움 많은순</option>
-							<option value="recent" selected="selected">최근 등록순</option>
-							<option value="high_score">평점 높은순</option>
-						</select>
-						<span class="button">
-							<button type="button" title="고객후기작성 열기" onclick="overpass.mypage.goReviewList();">고객후기 작성</button>
-						</span>
-					</div>
-				<input type="hidden" id="eval_goods_no" name="eval_goods_no" value="2106015489">	
-				</div>
-				<div id="evalListBodydiv">
-
-				<!-- REVIEW LIST -->
-				<div class="g_rv_lst">
-					<h4 class="ir">고객후기 목록</h4>
-					<ul>
-
-						<li class="photo">
-							<dl>
-								<dt>
-									<span class="pho"><img src="//www.thebanchan.co.kr/fo/images/gds/ico_picture.png" width="18" height="14" alt="포토고객후기"></span>
-
-									<span class="star_rate05"><b class="ir">평점</b><em style="width:100.0%;">4</em></span>
-
-
-									<span class="user">글쓴이</span>
-									<span class="date">글작성날짜</span>
-								</dt>
-								<dd class="off">
-									<div class="rcmt">
-										내용
-									</div>
-
-									<div class="rimg">
-									
-										<img src="//cdn.thebanchan.co.kr/upload/C00001/mypage/review/400/94/202110101074694_00001.jpg" alt="Resized_20211007_174853(1).jpg">
-
-									</div>
-
-								</dd>
-							</dl>
-						</li>
-						<li class="photo">
-							<dl>
-								<dt>
-									<span class="pho"><img src="//www.thebanchan.co.kr/fo/images/gds/ico_picture.png" width="18" height="14" alt="포토고객후기"></span>
-
-									<span class="star_rate05"><b class="ir">평점</b><em style="width:100.0%;">4</em></span>
-
-
-									<span class="user">글쓴이</span>
-									<span class="date">글작성날짜</span>
-								</dt>
-								<dd class="off">
-									<div class="rcmt">
-										내용
-									</div>
-
-									<div class="rimg">
-									
-										<img src="//cdn.thebanchan.co.kr/upload/C00001/mypage/review/400/34/202110091074434_00001.jpg" alt="Resized_20211007_174853(1).jpg">
-
-									</div>
-
-								</dd>
-							</dl>
-						</li>
-
-						<li>
-							<dl>
-								<dt>
-
-									<span class="star_rate05"><b class="ir">평점</b><em style="width:100.0%;">4</em></span>
-
-
-									<span class="user">글쓴이</span>
-									<span class="date">작성일</span>
-								</dt>
-								<dd class="off">
-									<div class="rcmt">
-										내용
-									</div>
-								</dd>
-							</dl>
-						</li>
-
-					</ul>
-				</div>	
-
-				<!-- PAGING -->
-				<div class="paging" id="page_nav">
-					<span class="page">
-					<a href="javascript:void(0);" class="select_num" data-current="true" data-value="1" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">1<span class="ir">현재페이지</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="2" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">2<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="3" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">3<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="4" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">4<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="5" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">5<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="6" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">6<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="7" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">7<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="8" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">8<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="9" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">9<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="num" data-current="false" data-value="10" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">10<span class="ir">페이지로 이동</span></a><a href="javascript:void(0);" class="next" data-current="" data-value="11" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331"><span class="ir">다음 목록으로 이동</span></a><a href="javascript:void(0);" class="end" data-current="" data-value="497" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331"><span class="ir">끝 목록으로 이동</span></a>
-					</span>
-				</div>
-				<!-- //PAGING -->
-				<!-- //REVIEW LIST -->
-				</div>
-				
-				
-				
-				
-			</div>
-		</div>
-		<!-- //TAB3 -->
 		<script type="text/javascript">
 		$(document).ready(function(){
 			var param = {
@@ -1015,9 +875,18 @@
 
 		});
 		</script>
-	
+		
+		
+		
+		
+		
+		<!-- 리뷰 페이지 넣을 곳 -->
+		
+		
+		
+		
+		
 			<!-- TAB4 -->
-			
 			<div class="gds_cont" id="gds_cont4">
 				<div class="gd_tabs">
 					<ul>
@@ -1066,170 +935,6 @@
 				</div>
 			</div>
 			<!-- //TAB4 -->
-	
-	
-		</div>
-		<!-- WRAP -->
-=======
-						<div id="evalListBodydiv">
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
-		
-						<!-- REVIEW LIST -->
-						<div class="g_rv_lst">
-							<h4 class="ir">고객후기 목록</h4>
-							<ul>
-								<li class="photo">
-									<dl>
-										<dt>
-											<span class="pho"><img src="//www.thebanchan.co.kr/fo/images/gds/ico_picture.png" width="18" height="14" alt="포토고객후기"></span>
-											<span class="star_rate05"><b class="ir">평점</b><em style="width:100.0%;">4</em></span>
-											<span class="user">글쓴이</span>
-											<span class="date">글작성날짜</span>
-										</dt>
-										<dd class="off">
-											<div class="rcmt">
-												내용
-											</div>
-											<div class="rimg">
-												<img src="//cdn.thebanchan.co.kr/upload/C00001/mypage/review/400/94/202110101074694_00001.jpg" alt="Resized_20211007_174853(1).jpg">
-											</div>
-										</dd>
-									</dl>
-								</li>
-								<li class="photo">
-									<dl>
-										<dt>
-											<span class="pho"><img src="//www.thebanchan.co.kr/fo/images/gds/ico_picture.png" width="18" height="14" alt="포토고객후기"></span>
-											<span class="star_rate05"><b class="ir">평점</b><em style="width:100.0%;">4</em></span>
-											<span class="user">글쓴이</span>
-											<span class="date">글작성날짜</span>
-										</dt>
-										<dd class="off">
-											<div class="rcmt">
-												내용
-											</div>
-											<div class="rimg">
-												<img src="//cdn.thebanchan.co.kr/upload/C00001/mypage/review/400/34/202110091074434_00001.jpg" alt="Resized_20211007_174853(1).jpg">
-											</div>
-										</dd>
-									</dl>
-								</li>
-		
-								<li>
-									<dl>
-										<dt>
-											<span class="star_rate05"><b class="ir">평점</b><em style="width:100.0%;">4</em></span>
-											<span class="user">글쓴이</span>
-											<span class="date">작성일</span>
-										</dt>
-										<dd class="off">
-											<div class="rcmt">
-												내용
-											</div>
-										</dd>
-									</dl>
-								</li>
-							</ul>
-						</div>	
-						<!-- PAGING -->
-						<div class="paging" id="page_nav">
-							<span class="page">
-							<a href="javascript:void(0);" class="select_num" data-current="true" data-value="1" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">1
-									<span class="ir">현재페이지</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="2" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">2
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="3" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">3
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="4" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">4
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="5" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">5
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="6" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">6
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="7" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">7
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="8" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">8
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="9" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">9
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="num" data-current="false" data-value="10" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">10
-									<span class="ir">페이지로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="next" data-current="" data-value="11" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">
-									<span class="ir">다음 목록으로 이동</span>
-								</a>
-								<a href="javascript:void(0);" class="end" data-current="" data-value="497" data-parameters="val=&amp;sch_gb=recent&amp;goods_detail_yn=Y&amp;obj=%5Bobject+Object%5D&amp;best_yn=&amp;goods_no=2106015489&amp;liObj=%5Bobject+Object%5D&amp;img_add_yn=&amp;_=1633866764331">
-									<span class="ir">끝 목록으로 이동</span>
-								</a>
-							</span>
-						</div>
-						<!-- //PAGING -->
-						<!-- //REVIEW LIST -->
-						</div>
-					</div>
-				</div>
-				<!-- //TAB3 -->
-		
-				<!-- TAB4 -->
-				<div class="gds_cont" id="gds_cont4">
-					<div class="gd_tabs">
-						<ul>
-							<li><a href="#gds_cont1">제품정보</a></li>
-							<li><a href="#gds_cont2">제품정보고시</a></li>
-							<li><a href="#gds_cont3">고객후기 <em>(2,145)</em></a></li>
-							<li class="on"><a href="#gds_cont4">주의사항</a><em class="ir">선택</em></li>
-						</ul>
-					</div>
-					<div class="gd_noti">
-						<h3>주문 전 확인해 주세요!</h3>
-						<div class="g_noti bg_car">
-							<ul>
-								<li>10,000원 이상부터 주문 가능해요!
-									<span class="no_bg">더반찬&은 신선하고 안전한 배송을 위해 박스, 보냉제, 완충제 등 기본 포장비가 발생되어 10,000원 이상부터 주문하실 수 있어요</span>
-								</li>
-								<li>배송 방법에 따라 선택 가능한 배송일이 달라질 수 있어요
-									<span class="no_bg">새벽배송은 오늘 밤 9시까지 주문하면 다음날 새벽 도착해요.</span>
-									<span class="no_bg">일반택배는 오늘 낮 1시까지 주문하면 다음날까지 도착해요.</span>
-									<span class="no_bg bold">※ 일부 제품의 경우, 주문량이 늘어나면 일찍 마감되거나 배송일 선택이 제한될 수 있어요. 상품 상세페이지에서 정확한 배송일자를 확인해 주세요.</span>
-								</li>
-								<li>쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요
-									<span class="no_bg">30,000원 미만인 경우 새벽배송은 2,900원, 일반택배(업체배송 포함) 2,500원의 배송비가 추가됩니다.</span>
-								</li>
-								<li>원하는 배송일은 최대 2주 이내까지 선택할 수 있어요
-									<span class="no_bg">새벽배송은 선택하신 희망 배송일 전일 밤부터 당일 새벽까지 도착해요.</span>
-									<span class="no_bg">일반택배는 선택하신 희망 배송일 내 도착해요.</span>
-									<span class="no_bg bold">※ 업체배송은 배송조회 기능을 제공하지 않고 있어요. 업체에서 배송 관련 문자를 발송하고 있어요.</span>
-								</li>
-							</ul>
-						</div>
-						<h3>취소, 반품 시 참고해 주세요!</h3>
-						<div class="g_noti">
-							<ul>
-								<li>결제 후 주문 상태가 제품 준비 중으로 변경되면 수정, 취소가 불가능 해요
-									<span class="no_bg">제품 준비 중으로 상태 변경 시, 주문정보를 수정하거나 취소하실 수 없으니 양해 부탁드려요.</span>
-									<span class="no_bg bold">※ 입금대기중, 결제완료 단계는 MY더반찬 > 주문/배송 조회에서 직접 취소하실 수 있어요.</span>
-									<span class="no_bg bold">※ 더반찬&은 부분 취소가 어려우며, 번거로우시겠지만 전체 주문 취소 후 재주문해 주세요.</span>
-								</li>
-								<li>제품의 특성상 고객님의 단순 변심에 의해 교환 및 반품이 불가능합니다.
-									<span class="no_bg">제품에 이상이 있는 경우 <a href="javascript:;" onclick="overpass.custcenter.goCounsel()">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
-									<span class="no_bg">입고 지연, 생산 이슈에 따라 일부 제품이 발송이 어려운 경우 부분취소될 수 있습니다.</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- //TAB4 -->
-			</div>
-			<!-- WRAP -->
 		</div>
 		<!-- //CONTENT -->
 	</form>
