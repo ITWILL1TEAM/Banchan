@@ -38,10 +38,10 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <<th>상품번호</th>
+                                            <th>상품번호</th>
                                             <th>회사명</th>
                                             <th>상품명</th>
-                                            <th>판매수량</th><
+                                            <th>판매수량</th>
                                             <th>판매시작일</th>
                                             <th>총 판매금액</th>
                                             <th>관리</th>
@@ -78,7 +78,7 @@
                  <%@include file="../inc/admin_bottom.jsp" %>
             </div>
         </div>
-        <<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/scripts2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/assets/demo/datatables-simple-demo.js"></script> 
