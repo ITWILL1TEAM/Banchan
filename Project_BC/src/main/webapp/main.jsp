@@ -26,27 +26,28 @@
 			<!--  head top -->
 			<header>
 				<div class="col text-size" align="right">
-					<%
-        // "sId" 세션값을 가져와서 id 변수에 저장
-        String sId = (String)session.getAttribute("sId");
-        if(sId==null){
-        %>
-        <!-- 세션에 "id" 속성값이 없을 경우 login, join 버튼 표시 -->
-        <div id="login">
-            <a href="MemberLoginForm.me">로그인</a> 
-            <a class="btn btn-light" id="head_sign" href="MemberJoinForm.me">회원가입</a> 
-            <a class="btn btn-light" id="head_Service center" href="#">장바구니</a>
-        </div>
-        <%
-        }else{
-        %>
-        <!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->
-        <div id="login">
-            <a href="MemberLogout.me">로그아웃</a>
-            <a class="btn btn-light" id="head_Service center" href="#">장바구니</a>
-        </div>
-        <%}
-        %>
+				<!-- 상단 Login, Join 링크 표시 -->
+		<%
+		// "sId" 세션값을 가져와서 id 변수에 저장
+		String sId = (String)session.getAttribute("sId");
+		if(sId==null){
+		%>
+		<!-- 세션에 "id" 속성값이 없을 경우 login, join 버튼 표시 -->
+		<div id="login">
+			<a href="MemberLoginForm.me"> 로그인</a> 
+			<a class="btn btn-light" id="head_sign" href="MemberJoinForm.me">회원가입</a> 
+			<a class="btn btn-light" id="head_Service center" href="#">장바구니</a>
+		</div>
+		<%
+		}else{
+		%>
+		<!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->	
+		<div id="login">
+			<a href="MemberLogout.me">로그아웃</a>
+			<a class="btn btn-light" id="head_Service center" href="#">장바구니</a>
+		</div>
+		<%}
+		%>
 				</div>
 
 				<div class="row">
@@ -90,7 +91,6 @@
 						</form>
 					</div>
 				</nav>
-
 
 			</header>
 

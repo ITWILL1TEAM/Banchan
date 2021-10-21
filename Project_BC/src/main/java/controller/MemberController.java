@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.MemberLoginProAction;
+import action.MemberLogoutAction;
 import action.SellerJoinProAction;
 import action.customerJoinProAction;
 import vo.ActionForward;
@@ -72,7 +73,16 @@ public class MemberController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(command.equals("/MemberLogout.me")) {
+			action = new MemberLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+
 		
 //	}
 		
