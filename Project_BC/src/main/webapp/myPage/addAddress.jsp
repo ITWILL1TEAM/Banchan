@@ -12,18 +12,20 @@
 <script src="../js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	var roadAddress;
+	var zonecode
 function openWindow() {
 	new daum.Postcode({
 	    oncomplete: function(data) {
         roadAddress = data.roadAddress; // 도로명 주소
         var jibunAddress = data.jibunAddress; // 지번 주소
-        var zonecode = data.zonecode; // 우편번호
-        var element = document.getElementById('addr_area')
+        zonecode = data.zonecode; // 우편번호
+        var element = document.getElementById('addr_area');
 		element.innerHTML = "<h1>"+zonecode + ", " + roadAddress+"</h1>";
 	    }
 	}).open();
 	
 	if(roadAddress!=null){
+		
 		var element = document.getElementById('base_addr_info')
 		element.innerHTML = "";
 		element.style = "display: none;";
@@ -32,7 +34,9 @@ function openWindow() {
 }	
 
 function getAddress() {
-	location.href = "vvv.my?roadAddress="+ roadAddress;
+	var dtl_addr = document.getElementById("dtl_addr").value;
+	alert(dtl_addr);
+	location.href = "AddAddress.my?roadAddress="+ roadAddress+"&zonecode="+ zonecode+"&dtl_addr="+ dtl_addr;
 	window.opener.location.reload();
 	window.close();
 }
@@ -53,7 +57,7 @@ function getAddress() {
 						</span>
 						<!-- 검색결과 -->
 						<span class="txt" id="addr_area"></span>
-						<input type="text" name="dtl_addr" id="dtl_addr" class="insert_name" title="상세주소 입력" maxlength="133" data-role="input" data-check="text" data-message="상세 주소를 입력해 주세요" data-input="input" data-input-name="dtl_addr">
+						<input type="text" name="dtl_addr" id="dtl_addr" class="insert_name" title="상세주소 입력" maxlength="50" data-role="input" data-check="text" data-message="상세 주소를 입력해 주세요" data-input="input" data-input-name="dtl_addr">
 					</div>
 					<span class="caution" data-input="display" data-input-name="dtl_addr" style="display: none;">상세 주소를 입력해 주세요</span>
 				</div>
