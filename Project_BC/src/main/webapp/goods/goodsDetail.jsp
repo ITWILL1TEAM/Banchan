@@ -510,25 +510,25 @@
 <!-- 				</div> -->
 <!-- 			</div> -->
 	
-		<script type="text/javascript">
-		$(document).ready(function(){
-			var param = {
-					goods_no: "2106015489",
-					vir_vend_no : "VV17002724",
-					goods_type_dtl_cd : "2012",
-					goods_detail_yn : "Y"
-				};
-			
-			
-			overpass.goodsDetail.fnEval.fnLoadEval(param, "#goodsEvalDiv");
-
-		});
-		</script>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				var param = {
+						goods_no: "2106015489",
+						vir_vend_no : "VV17002724",
+						goods_type_dtl_cd : "2012",
+						goods_detail_yn : "Y"
+					};
+				
+				
+				overpass.goodsDetail.fnEval.fnLoadEval(param, "#goodsEvalDiv");
+	
+			});
+			</script>
 		
 		
 		
 		
-		<!-- 리뷰 페이지 넣을 곳 -->
+			<!-- 리뷰 페이지 넣을 곳 -->
 		
 		
 		
