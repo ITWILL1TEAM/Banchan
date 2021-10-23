@@ -181,4 +181,50 @@ public class BoardDAO {
         
         return articleList;
     }
+    
+    public BoardBean selectArticle(int product_num) {
+		BoardBean article = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			
+			// 3단계. SQL 구문 작성 및 전달
+			// -> 글번호(num)에 해당하는 게시물 상세 정보 조회 후 BoardBean 객체에 저장
+			String sql = "SELECT * FROM product WHERE product_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				// 조회된 상세 정보를 BoardBean 객체에 저장
+				article = new BoardBean();
+				
+				article.setProduct_num(rs.getInt("product_num"));
+				article.setProduct_name(rs.getString("product_name"));
+				article.setSname(rs.getString("Sname"));
+				article.setProduct_category(rs.getString("product_category"));
+				article.setProduct_price(rs.getInt("product_price"));
+				article.setProduct_weight(rs.getInt("product_weight"));
+				article.setProduct_discount(rs.getInt("product_discount"));
+				article.setProduct_date(rs.getDate("product_date"));
+				article.setProduct_stock(rs.getInt("product_stock"));
+				article.setProduct_expiration_date(rs.getString("product_expiration_date"));
+				article.setProduct_handling(rs.getString("product_handling"));
+				article.setProduct_material(rs.getString("product_material"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 반환
+			close(rs);
+			close(pstmt);
+		}
+		
+		return article;
+	}
 }
