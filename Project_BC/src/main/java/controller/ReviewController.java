@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BoardListAction;
 import action.BoardWriteProAction;
+import action.ReviewListAction;
 import action.ReviewWriteProAction;
 import vo.ActionForward;
 
@@ -41,6 +43,17 @@ public class ReviewController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(command.equals("/ReviewList.re")) {
+//			
+			action = new ReviewListAction();
+			
+			try {
+				forward =action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		
