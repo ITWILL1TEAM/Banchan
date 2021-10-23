@@ -15,9 +15,7 @@ import action.BoardWriteProAction;
 import action.ProductDetailAction;
 import vo.ActionForward;
 
-/**
- * Servlet implementation class ProductController
- */
+
 @WebServlet("*.do")
 public class ProductFrontController extends HttpServlet {
 	
@@ -47,13 +45,15 @@ public class ProductFrontController extends HttpServlet {
 		} else if(command.equals("/Order.do")) {
 			// 주문하기 페이지로 포워딩
 			forward = new ActionForward();
-			forward.setPath("/goods/orderTest.jsp");
+			forward.setPath("/product/orderTest.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+			
 		} else if(command.equals("/Cart.do")) {
 			// 장바구니 페이지로 포워딩
 			forward = new ActionForward();
 			forward.setPath("/cart/cart.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+			
 		}else if(command.equals("/BoardWriteForm.do")) {
 	            // 글쓰기 작업을 위한 뷰페이지로 포워딩
 	            forward = new ActionForward();

@@ -1,5 +1,9 @@
+<%@page import="vo.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	BoardBean article = (BoardBean)request.getAttribute("article");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -109,11 +113,11 @@
 						<!-- BRAND -->
 						<div class="gd_brd">	
 							<dl>
-								<dt>집밥선생</dt>
+								<dt><%=article.getSname() %></dt>
 							</dl>
 						</div>
 						<!-- NAME -->
-						<h2 class="gd_name">양장피</h2>
+						<h2 class="gd_name"><%=article.getProduct_name() %></h2>
 						<!-- TAG -->
 						<div class="gd_ico"></div>
 		
@@ -146,16 +150,16 @@
 							<dl>
 								<dt>판매가</dt>
 								<dd class="prc">
-									<span class="sale"><b>11,200</b>원</span>
+									<span class="sale"><b><%=article.getProduct_price() %></b>원</span>
 								</dd>
 							</dl>
 							<dl>
 								<dt>중량</dt>
-								<dd>565g</dd>
+								<dd><%=article.getProduct_weight() %>g</dd>
 							</dl>
 							<dl>
 								<dt>유통기한</dt>
-								<dd class="lmt">제조일로부터 냉장 4일</dd>
+								<dd class="lmt"><%=article.getProduct_expiration_date() %></dd>
 							</dl>
 							<dl>
 								<dt>배송안내</dt>
@@ -405,36 +409,24 @@
 							<tbody>
 								<tr>
 									<th scope="row">제품명</th>
-									<td>양장피</td>
-								</tr>
-								<tr>
-									<th scope="row">식품의 유형</th>
-									<td>즉석조리식품</td>
+									<td><%=article.getProduct_name() %></td>
 								</tr>
 								<tr>
 									<th scope="row">제조연월일, 유통기한 또는 품질유지기한</th>
-									<td>제조일로부터 냉장 4일</td>
+									<td><%=article.getProduct_expiration_date() %></td>
 								</tr>
 							
 								<tr>
 									<th scope="row">포장단위별 내용물의 용량(중량), 수량</th>
-									<td>565g(745kcal)</td>
+									<td><%=article.getProduct_weight() %>g</td>
 								</tr>
 								<tr>
 									<th scope="row">보관방법 / 취급방법</th>
-									<td>냉장보관(0~10℃)</td>
+									<td><%=article.getProduct_handling() %></td>
 								</tr>
 								<tr>
-									<th scope="row">소비자상담 관련 전화번호</th>
-									<td>1644-6844</td>
-								</tr>
-								<tr>
-									<th scope="row">유전자변형식품에 해당하는 경우의 표시</th>
-									<td>해당사항없음</td>
-								</tr>
-								<tr>
-									<th scope="row">수입식품에 해당하는 경우 "수입식품안전관리특별법에 따른 수입신고를 필함"의 문구</th>
-									<td>해당사항없음</td>
+									<th scope="row">영양성분(식품등의표시·광고에관한법률에 따른 영양성분 표시대상 식품에 한함)</th>
+									<td><%=article.getProduct_material() %></td>
 								</tr>
 							</tbody>
 						</table>
