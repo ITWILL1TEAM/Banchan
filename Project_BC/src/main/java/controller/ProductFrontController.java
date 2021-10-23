@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.BoardListAction;
 import action.BoardWriteProAction;
+import action.ProductDetailAction;
 import vo.ActionForward;
 
 /**
@@ -35,9 +36,13 @@ public class ProductFrontController extends HttpServlet {
 		
 		if(command.equals("/Product.do")) {
 			// 상품 상세 페이지로 포워딩
-			forward = new ActionForward();
-			forward.setPath("/goods/goodsDetail.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+			action = new ProductDetailAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		} else if(command.equals("/Order.do")) {
 			// 주문하기 페이지로 포워딩
@@ -52,11 +57,10 @@ public class ProductFrontController extends HttpServlet {
 		}else if(command.equals("/BoardWriteForm.do")) {
 	            // 글쓰기 작업을 위한 뷰페이지로 포워딩
 	            forward = new ActionForward();
-	            forward.setPath("/product/productRegister.jsp");
+	            forward.setPath("/sellerPage/productRegister.jsp");
 	            forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 	        } 
-		
-		
+
 		
 		if(forward != null) {
 			// 2. ActionForward 객체 내의 isRedirect 값이 true(= Redirect 방식) 인지 판별
@@ -74,9 +78,6 @@ public class ProductFrontController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-		
-		
-	   
 		
 	}
 
