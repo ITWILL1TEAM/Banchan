@@ -30,11 +30,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/jquery-3.6.0.js"></script> 
+
+<script src="<%=request.getContextPath()%>/js/jquery-3.6.0.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.on').click(function(){
+	    $('.noPhoto').show();
+	  });
+	  $('.off').click(function(){
+	    $('.noPhoto').hide();
+	  });
+
+	
+	
+});
+</script>
 <!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
 <link href="../CSS/common.css" rel="stylesheet" type="text/css">
 <link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
-<link href="../CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/CSS/sub.css" rel="stylesheet" type="text/css">
 <link href="../CSS/font.css" rel="stylesheet" type="text/css">
 <link href="../CSS/font.css" rel="stylesheet" type="text/css">
 <link href="../CSS/gds.css" rel="stylesheet" type="text/css">
@@ -100,12 +114,13 @@
 				
 					<ul>
 						<%
-						for(int i = 0; i < listCount; i++) {
+						for(int i = 0; i < reviewList.size(); i++) {
 						%>
+						<%if(reviewList.get(i).getReview_img()!=null){ %>
 						<li class="photo">
 							<dl>
 								<dt>
-									<span class="pho"><img src="//www.thebanchan.co.kr/fo/images/gds/ico_picture.png" width="18" height="14" alt="포토고객후기"></span>
+									<span class="pho"><img src="<%if(reviewList.get(i).getReview_img()!=null){ %>//www.thebanchan.co.kr/fo/images/gds/ico_picture.png<% }%>" width="18" height="14" ></span>
 
 									<span class="star_rate05"><b class="ir"><%=reviewList.get(i).getReview_score() %></b><em style="width:<%=reviewList.get(i).getReview_score()/5*100 %>%;"><%=reviewList.get(i).getReview_score() %></em></span>
 
@@ -119,17 +134,42 @@
 									</div>
 
 									<div class="rimg">
+										
 									
-										<img src="//cdn.thebanchan.co.kr/upload/C00001/mypage/review/400/94/202110101074694_00001.jpg" alt="Resized_20211007_174853(1).jpg">
-
+										<img src="<%=request.getContextPath() %>/review/reviewImg/<%=reviewList.get(i).getReview_img() %>">
+										
 									</div>
+
+								</dd>
+							</dl>
+						</li>
+						<% }else {%>
+						<li class="noPhoto">
+							<dl>
+								<dt>
+									<span class="pho"><img src="<%if(reviewList.get(i).getReview_img()!=null){ %>//www.thebanchan.co.kr/fo/images/gds/ico_picture.png<% }%>" width="18" height="14" ></span>
+
+									<span class="star_rate05"><b class="ir"><%=reviewList.get(i).getReview_score() %></b><em style="width:<%=reviewList.get(i).getReview_score()/5*100 %>%;"><%=reviewList.get(i).getReview_score() %></em></span>
+
+
+									<span class="user"><%=reviewList.get(i).getReview_id() %></span>
+									<span class="date"><%=reviewList.get(i).getReview_date()%></span>
+								</dt>
+								<dd class="off">
+									<div class="rcmt">
+										<%=reviewList.get(i).getReview_content()%>
+									</div>
+
+								
 
 								</dd>
 							</dl>
 						</li>
 
 
-						
+
+
+						<%} %>
 					</ul>
 					
 					<%}%>

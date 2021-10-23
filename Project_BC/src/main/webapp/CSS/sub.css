@@ -789,3 +789,22 @@
     }
 }
 
+
+#pageList{
+	text-align: center;
+	margin: 20px 0 0 0;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.5em;
+}
+#pageList a{
+	
+	text-decoration: none;
+	color: #333;
+	
+}
+#pageList a:hover{
+	font-weight: bold;
+	color: #F90;
+	text-decoration: underline;
+}
