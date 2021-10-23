@@ -55,7 +55,7 @@
 							<option value="low_score">평점 낮은순</option>
 						</select>
 						<span class="button">
-							<button type="button" title="고객후기작성 열기" onclick="overpass.mypage.goReviewList();">고객후기 작성</button>
+							<button type="button" title="고객후기작성 열기" onclick="location.href='<%=request.getContextPath() %>/Review.my'">고객후기 작성</button>
 						</span>
 					</div>
 				<input type="hidden" id="eval_goods_no" name="eval_goods_no" value="2106015489">	
