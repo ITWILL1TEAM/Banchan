@@ -23,6 +23,7 @@ password 속성 : DB 접속 패스워드
 Project_BC
  -->
  
+ 
      <Resource 
       name="jdbc/MySQL"
       auth="Container"
