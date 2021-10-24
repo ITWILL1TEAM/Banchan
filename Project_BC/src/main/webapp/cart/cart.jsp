@@ -26,7 +26,9 @@
 				$("input[name=cart_checkbox]").prop("checked", false);
 			}
 		});
-			
+		
+		// 장바구니 ArrayList를 만들고 
+		// for문 사용하기 or JSTL c태그 사용하기
 		$("button[name=change_qty_button]").click(function() {	
 			var role = $('input[name=qty_button]:focus').attr('data-role');
 			var cart_seq = $('input[name=qty_button]:focus').attr("data-cart-seq");

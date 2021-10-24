@@ -1,11 +1,15 @@
 package action;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import svc.ProductDetailService;
+import svc.ReviewListService;
 import vo.ActionForward;
 import vo.BoardBean;
+import vo.ReviewBean;
 
 public class ProductDetailAction implements Action {
 
@@ -20,10 +24,13 @@ public class ProductDetailAction implements Action {
 		
 		// BoardDetailService 클래스 인스턴스 생성 후 
 		ProductDetailService service = new ProductDetailService();
+		ReviewListService review = new ReviewListService();
 		
 		// getArticle() 메소드 호출하여 board_num에 대한 게시물 상세 정보 리턴받기
 		// -> 파라미터 : 글번호(board_num)  리턴타입 : Boardbean(article)
 		BoardBean article = service.getArticle(product_num);
+//		int listCount = review.getListCount();
+//		ArrayList<ReviewBean> reviewList = service.getReviewList(product_num, page, limit);
 		
 		// 다음 페이지로 전달하기 위한 객체를(article, page) request 객체에 저장
 		request.setAttribute("article", article);

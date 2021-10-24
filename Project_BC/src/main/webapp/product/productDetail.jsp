@@ -1,14 +1,18 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="vo.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
+	String id =(String)session.getAttribute("id");
+	
 %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>집밥장인이 만든 온라인 식품몰 더반찬&</title>
+<title>집밥장인이 만든 온라인 식품몰 집밥선생</title>
 <script src="js/jquery-3.6.0.js"></script> 
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
 <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
@@ -16,10 +20,13 @@
 <link href="CSS/font.css" rel="stylesheet" type="text/css">
 <link href="CSS/gds.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	
+	var qty;
+	var price = <%=article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount()) %>;
+	var max_qty = <%=article.getProduct_stock() %>
+	var total_amt;
 	$(document).ready(function() {
 		
-		var qty = $('input[name=ord_qty]').val(); // 제품 수량
+		qty = $('input[name=ord_qty]').val(); // 제품 수량
 		
 		// 수량조절 감소 버튼
 		$(".minus").click(function() {	
@@ -30,25 +37,37 @@
 			} else {
 				$('input[name=ord_qty]').val(qty);
 			}
+			// 제품 수량에 따른 총 제품 금액 계산
+			total_amt = price * qty;
+// 			alert(total_amt);
+			$('#totalAmt').text(priceToString(total_amt));
 		});
 		
 		// 수량조절 증가 버튼
 		$(".plus").click(function() {	
 			qty++;
-			if(qty > 10) {
+			if(qty > max_qty) {
 				alert('재고가 부족합니다.');
 				return false;
 			} else {
 				$('input[name=ord_qty]').val(qty);
 			}
+			
+			// 제품 수량에 따른 총 제품 금액 계산
+			total_amt = price * qty;
+			$('#totalAmt').text(priceToString(total_amt));
 		});
 		
-		// 제품 수량에 따른 총 제품 금액 계산
-		$('#totalAmt').append(11200 * qty * 1);
-		// 대충 이런식으로 하는 건 알겠는데 수량 버튼으로 수량을 바꿔도 완전 적용하기 전까지는 qty가 1이니까... 
-		// ajax로 해야 하는 건가? 그리고 천단위 콤마 찍는 거... 포맷으로 해야하나 
-		
 	});
+	
+	function setQty() {
+		document.pdDetail.ord_qty.value = qty;
+	}
+	
+	function priceToString(price) {
+	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+	
 </script>
 </head>
 <body>
@@ -56,7 +75,7 @@
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
-	<form action="Order.do" method="post">
+	<form action="Order.do" method="post" name="pdDetail">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 		
@@ -130,27 +149,17 @@
 							</div>
 							
 							<div class="g_sns">						
-								<button type="button" class="btn_sns" id="sns_lyr_open" onclick="showTip('sns_lyr', this);return false;">공유하기<b class="ir">SNS 레이어 열기</b></button>
-								<!-- TOOLTIP -->
-								<div class="lyr_tip_wrap">
-									<div class="lyr_tip right" id="sns_lyr">
-										<a href="javascript:void(0);" onclick="fnCallSNSShare('UC');" title="URL 복사 새창" class="url"><span>URL 복사</span></a>
-										<input type="hidden" id="shorten_url" value=""/>
-										<button type="button" class="cls" onclick="hideTip('sns_lyr');return false;" >SNS 공유하기 레이어 닫기</button>
-									</div>
-								</div>
-								<!-- //TOOLTIP -->
 							</div>
 						</div>
 						<!-- //SCORE -->
-						<script type="text/javascript">
-						</script>				
+									
 						<!-- INFO. -->
 						<div class="gd_info">
 							<dl>
 								<dt>판매가</dt>
 								<dd class="prc">
-									<span class="sale"><b><%=article.getProduct_price() %></b>원</span>
+									
+									<span class="sale"><b class="price"><fmt:formatNumber value="<%=article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount())%>" pattern="#,###"/></b>원</span>
 								</dd>
 							</dl>
 							<dl>
@@ -172,11 +181,11 @@
 								<dt class="dt"><label for="ord_qty">수량</label></dt>
 								<dd>
 									<span class="qty">
-										<input type="hidden" id="sale_price" name="sale_price" value="11200"/>	
-										<input type="hidden" id="chk_sale_price" name="chk_sale_price" value="11200"/>	
-										<input type="text" name="ord_qty" id="ord_qty" value="1" class="input" title="제품수량입력" maxlength="3" readonly="readonly"/>
-										<button type="button" class="minus" title="상품수량감소">감소</button>
-										<button type="button" class="plus" title="상품수량증가">증가</button>								
+										<input type="hidden" id="sale_price" name="sale_price" value="<%=article.getProduct_price() %>"/>	
+										<input type="hidden" id="chk_sale_price" name="chk_sale_price" value="<%=article.getProduct_price() %>"/>	
+										<input type="text" name="ord_qty" id="ord_qty" value="1" class="input" title="제품수량입력" maxlength="3" readonly="readonly"  onchange="change()"/>
+										<button type="button" class="minus" title="상품수량감소" onclick="del()" >감소</button>
+										<button type="button" class="plus" title="상품수량증가" onclick="add()">증가</button>								
 									</span>
 								</dd>
 							</dl>
@@ -187,7 +196,8 @@
 						<div class="gd_amt">
 							<dl>
 								<dt>총 제품금액</dt>
-								<dd><b id="totalAmt"></b><em>원</em></dd>
+								
+								<dd><b id="totalAmt"><fmt:formatNumber value="<%=article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount())%>" pattern="#,###"/></b><em>원</em></dd>
 							</dl>
 						</div>
 						<!-- //AMOUNT -->
@@ -196,22 +206,37 @@
 						<div class="gd_btns">
 							<!-- TOOLTIP -->
 							<button type="button" class="cart" id="msg_open_cart" onclick="location.href='Cart.do'" title="장바구니 상품 알림 레이어 열기"><em>장바구니</em></button>
-							<div class="lyr_tip_wrap2" >
-								<div class="lyr_tip" id="lyr_msg_cart">
-									<span class="txt">선택한 제품이 장바구니에 담겼습니다.</span>
-									<span class="btns">
-										<a href="javascript:void(0);" onclick="hideTip('lyr_msg_cart');return false;">쇼핑계속하기</a>
-										<a href="javascript:void(0);" class="bx" onclick="overpass.link('CART');">장바구니 가기</a>
-									</span>
-									<button class="cls" type="button" onclick="hideTip('lyr_msg_cart');return false;">장바구니 제품 알림 레이어 닫기</button>
-								</div>
-							</div>
+<!-- 							<div class="lyr_tip_wrap2" > -->
+<!-- 								<div class="lyr_tip" id="lyr_msg_cart"> -->
+<!-- 									<span class="txt">선택한 제품이 장바구니에 담겼습니다.</span> -->
+<!-- 									<span class="btns"> -->
+<!-- 										<a href="javascript:void(0);" onclick="hideTip('lyr_msg_cart');return false;">쇼핑계속하기</a> -->
+<!-- 										<a href="javascript:void(0);" class="bx" onclick="overpass.link('CART');">장바구니 가기</a> -->
+<!-- 									</span> -->
+<!-- 									<button class="cls" type="button" onclick="hideTip('lyr_msg_cart');return false;">장바구니 제품 알림 레이어 닫기</button> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 							<!-- //TOOLTIP -->
 		
 							<!-- //TOOLTIP -->
 							<button type="submit" class="buy" title="주문하기 페이지 이동"><em>바로구매</em></button>
 						</div>
 						<!-- //BTN. -->
+						
+<%-- 							<% --%>
+<!-- // 								세션 아이디가 존재하지 않으면 로그인 페이지로 이동 -->
+<!-- // 								자바스크립트로 로그인필수를 출력 후 이동처리 -->
+<!-- 								if(id==null){ -->
+<!-- 									%>  -->
+<!-- 									<script type="text/javascript"> -->
+<!-- // 					 						alert('로그인 필수');  -->
+<!-- 				 					</script> 	 -->
+<%-- 									<% --%>
+<!-- 								} else	{	 -->
+<!-- 									response.sendRedirect("MemberLoginForm.me"); -->
+<!-- 								} -->
+								
+<!--  							%>  -->
 		
 					</div>
 					<!-- //GOODS INFO -->
@@ -389,6 +414,7 @@
 				<!-- //TAB1 -->
 		
 				<!-- TAB2 -->
+				<!-- 제품 정보 고시란 -->
 				<div class="gds_cont" id="gds_cont2">
 					<div class="gd_tabs">
 						<ul>
@@ -502,29 +528,22 @@
 <!-- 				</div> -->
 <!-- 			</div> -->
 	
-			<script type="text/javascript">
-			$(document).ready(function(){
-				var param = {
-						goods_no: "2106015489",
-						vir_vend_no : "VV17002724",
-						goods_type_dtl_cd : "2012",
-						goods_detail_yn : "Y"
-					};
+<!-- 			<script type="text/javascript"> -->
+<!-- 			$(document).ready(function(){ -->
+<!-- 				var param = { -->
+<!-- 						goods_no: "2106015489", -->
+<!-- 						vir_vend_no : "VV17002724", -->
+<!-- 						goods_type_dtl_cd : "2012", -->
+<!-- 						goods_detail_yn : "Y" -->
+<!-- 					}; -->
 				
 				
-				overpass.goodsDetail.fnEval.fnLoadEval(param, "#goodsEvalDiv");
+<!-- 				overpass.goodsDetail.fnEval.fnLoadEval(param, "#goodsEvalDiv"); -->
 	
-			});
-			</script>
+<!-- 			}); -->
+<!-- 			</script> -->
 		
-		
-		
-		
-			<!-- 리뷰 페이지 넣을 곳 -->
-		
-		
-		
-		
+			<!-- 리뷰 -->
 		
 			<!-- TAB4 -->
 			<div class="gds_cont" id="gds_cont4">
@@ -541,13 +560,13 @@
 					<div class="g_noti bg_car">
 						<ul>
 							<li>10,000원 이상부터 주문 가능해요!
-								<span class="no_bg">더반찬&은 신선하고 안전한 배송을 위해 박스, 보냉제, 완충제 등 기본 포장비가 발생되어 10,000원 이상부터 주문하실 수 있어요</span>
+								<span class="no_bg">집밥선생은 신선하고 안전한 배송을 위해 박스, 보냉제, 완충제 등 기본 포장비가 발생되어 10,000원 이상부터 주문하실 수 있어요</span>
 							</li>
-							<li>배송 방법에 따라 선택 가능한 배송일이 달라질 수 있어요
-								<span class="no_bg">새벽배송은 오늘 밤 9시까지 주문하면 다음날 새벽 도착해요.</span>
-								<span class="no_bg">일반택배는 오늘 낮 1시까지 주문하면 다음날까지 도착해요.</span>
-								<span class="no_bg bold">※ 일부 제품의 경우, 주문량이 늘어나면 일찍 마감되거나 배송일 선택이 제한될 수 있어요. 상품 상세페이지에서 정확한 배송일자를 확인해 주세요.</span>
-							</li>
+<!-- 							<li>배송 방법에 따라 선택 가능한 배송일이 달라질 수 있어요 -->
+<!-- 								<span class="no_bg">새벽배송은 오늘 밤 9시까지 주문하면 다음날 새벽 도착해요.</span> -->
+<!-- 								<span class="no_bg">일반택배는 오늘 낮 1시까지 주문하면 다음날까지 도착해요.</span> -->
+<!-- 								<span class="no_bg bold">※ 일부 제품의 경우, 주문량이 늘어나면 일찍 마감되거나 배송일 선택이 제한될 수 있어요. 상품 상세페이지에서 정확한 배송일자를 확인해 주세요.</span> -->
+<!-- 							</li> -->
 							<li>쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요
 								<span class="no_bg">30,000원 미만인 경우 새벽배송은 2,900원, 일반택배(업체배송 포함) 2,500원의 배송비가 추가됩니다.</span>
 							</li>
@@ -564,7 +583,7 @@
 							<li>결제 후 주문 상태가 제품 준비 중으로 변경되면 수정, 취소가 불가능 해요
 								<span class="no_bg">제품 준비 중으로 상태 변경 시, 주문정보를 수정하거나 취소하실 수 없으니 양해 부탁드려요.</span>
 								<span class="no_bg bold">※ 입금대기중, 결제완료 단계는 MY더반찬 > 주문/배송 조회에서 직접 취소하실 수 있어요.</span>
-								<span class="no_bg bold">※ 더반찬&은 부분 취소가 어려우며, 번거로우시겠지만 전체 주문 취소 후 재주문해 주세요.</span>
+								<span class="no_bg bold">※ 집밥선생은 부분 취소가 어려우며, 번거로우시겠지만 전체 주문 취소 후 재주문해 주세요.</span>
 							</li>
 							<li>제품의 특성상 고객님의 단순 변심에 의해 교환 및 반품이 불가능합니다.
 								<span class="no_bg">제품에 이상이 있는 경우 <a href="javascript:;" onclick="overpass.custcenter.goCounsel()">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
