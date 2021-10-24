@@ -48,7 +48,7 @@ $(document).ready(function() {
 <!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
 <link href="../CSS/common.css" rel="stylesheet" type="text/css">
 <link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
-<link href="<%=request.getContextPath()%>/CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="CSS/sub.css" rel="stylesheet" type="text/css">
 <link href="../CSS/font.css" rel="stylesheet" type="text/css">
 <link href="../CSS/font.css" rel="stylesheet" type="text/css">
 <link href="../CSS/gds.css" rel="stylesheet" type="text/css">
@@ -134,7 +134,6 @@ $(document).ready(function() {
 									</div>
 
 									<div class="rimg">
-										
 									
 										<img src="<%=request.getContextPath() %>/review/reviewImg/<%=reviewList.get(i).getReview_img() %>">
 										
