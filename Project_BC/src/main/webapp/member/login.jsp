@@ -9,6 +9,7 @@
 
 <%
 String cookie_login_id = "";
+
 Cookie[] cookie = request.getCookies();
 
 if(cookie != null){

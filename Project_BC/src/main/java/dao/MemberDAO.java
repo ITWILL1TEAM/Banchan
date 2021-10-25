@@ -181,6 +181,7 @@ public class MemberDAO {
 		return isDuplicate;
 	}
 	public boolean selectMember(MemberBean member) {
+		System.out.println("MemberDAO - selectMember");
 		boolean isLoginSuccess = false;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -188,15 +189,16 @@ public class MemberDAO {
 		try {
 			
 			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
-			String sql = "SELECT id FROM member WHERE id=? AND password=?";
+			String sql = "SELECT id,grade FROM member WHERE id=? AND password=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,member.getId());
 			pstmt.setString(2,member.getPassword());
 			
 			
+			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			if(rs.next()) {				
 					isLoginSuccess = true;
 					System.out.println("selectMember - 정상작동");
 			}

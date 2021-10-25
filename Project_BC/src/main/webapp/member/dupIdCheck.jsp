@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>dupCheckID</title>
 </head>
-<script src="../js/script.js"></script> 
-<link href="CSS/mem.css" rel="stylesheet" type="text/css">
-<link href="CSS/common.css" rel="stylesheet" type="text/css">
-<link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
-<link href="CSS/sub.css" rel="stylesheet" type="text/css">
-<link href="CSS/font.css" rel="stylesheet" type="text/css">
+<script src="../js/idScript.js"></script> 
+<link href="../CSS/mem.css" rel="stylesheet" type="text/css">
+<link href="../CSS/common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="../CSS/font.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="#">
 <body>
 <%
