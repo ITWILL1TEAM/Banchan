@@ -17,6 +17,7 @@ var regex = /^[A-Za-z][A-Za-z0-9]{5,11}$/;
 // 정규표현식 판별 결과를 표시할 공간의 요소 id값 가져오기
 var element = document.getElementById('checkIdResult');
 
+
 // 정규표현식 문자열의 exec() 함수를 호출하여 입력받은 아이디를 파라미터로 전달
 
 if(regex.exec(id)){

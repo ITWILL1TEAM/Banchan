@@ -23,6 +23,7 @@ function changeDomain(domain){
 }
 
 
+
 function checkRetypePasswd(retypePassword) { 
 	var password = document.fr.join_pw.value;
 
