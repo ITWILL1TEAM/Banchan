@@ -58,14 +58,15 @@ CREATE TABLE `product` (
   `product_weight` int(11) NOT NULL,
   `product_discount` int(11) NOT NULL DEFAULT '0',
   `product_date` date NOT NULL,
-  `product_stock` int(11) NOT NULL DEFAULT '0',
+  `product_stock` int(11) NOT NULL,
   `product_expiration_date` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_handling` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_material` varchar(1000) COLLATE utf8_bin NOT NULL,
+  `product_review_score` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_num`),
   KEY `pd_pnum_fk` (`Sname`),
   CONSTRAINT `pd_pnum_fk` FOREIGN KEY (`Sname`) REFERENCES `seller` (`Sname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 
 CREATE TABLE `product_img` (
   `product_num` int(11) DEFAULT NULL,
