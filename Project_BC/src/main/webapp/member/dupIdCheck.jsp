@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,7 +9,7 @@
 <meta charset="UTF-8">
 <title>dupCheckID</title>
 </head>
-<script src="../js/script.js"></script> 
+<script src="../js/dupCheck.js"></script> 
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
 <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
@@ -23,8 +24,7 @@ String id = request.getParameter("id");
 if(id != null && !id.equals("")){
 	// MemberDAO 객체의 dupCheckId() 메서드를 호출하여 아이디 조회 후 중복 여부 판별
 	// => 파라미터 : 아이디(id) , 리턴타입 : boolean(isDuplicate)
-
-
+	
 	MemberDAO dao = MemberDAO.getInstance();
 
 	boolean isDuplicate = dao.dupCheckId(id);
@@ -44,7 +44,7 @@ if(id != null && !id.equals("")){
  %>
 
 <!-- 아아디 중복 확인을 위한 입력 창 -->
-<form action="dupIdCheck.jsp" method="post" name="checkForm" onsubmit="return checkSubmit()">
+<form action="dupIdCheck.jsp" method="post" name="checkForm" onsubmit="return DupSubmit()">
 	<br><br>
 	아이디 <input type="text" name="id"  required="required" onkeyup="checkId(this.value)">
 	<input type="submit" value="중복 확인"><br>

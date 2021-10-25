@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/idScript.js"></script> 
+<script src="js/customerJoin.js"></script> 
 <script src="js/submit.js"></script> 
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,7 @@
 					<label for="join_pw" class="ir">비밀번호</label>
 					<input type="password" id="join_pw" name="member_pass" class="login_input" maxlength="20" placeholder="비밀번호" onkeyup="checkPassword(this.value)">
 					<label for="join_pw_re" class="ir">비밀번호 재입력</label>
-					<input type="password" id="join_pw_re" class="login_input" placeholder="비밀번호 재입력" onkeyup="checkRetypePasswd(this.value)">
+					<input type="password" id="join_pw_re" class="login_input" name="member_repass" placeholder="비밀번호 재입력" onkeyup="checkRetypePasswd(this.value)">
 					
 					<!-- 비번 오류시 노출 -->
 					<span class="caution" id="checkPasswdResult" style="display: none;"><!-- - --></span>
