@@ -1,5 +1,6 @@
 package action;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,7 +15,21 @@ public class MemberLogoutAction implements Action {
 		
 		// 세션 객체 가져와서 초기화
 		HttpSession session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("sId");
+
+		Cookie[] cookie = request.getCookies();
+		
+		if(cookie != null){
+			for(Cookie tempCookie : cookie){
+				if(tempCookie.getName().equals("login_cookie")){
+					tempCookie.setMaxAge(0);
+					tempCookie.setPath("/");
+					response.addCookie(tempCookie);
+				
+				}
+			}
+		}
+
 		
 		forward = new ActionForward();
 		forward.setPath("./main.jsp");

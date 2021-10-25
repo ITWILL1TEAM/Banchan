@@ -110,13 +110,28 @@
                 <!-- 2020.07.10 MAIN 수정  -->
                 <div class="util-wrap">
                     <ul>
-
-                        <li><a id="head_login_a" href="MemberLoginForm.me">로그인</a></li>
-                        <li><a id="head_login_b" href="MemberJoinForm.me">회원가입</a></li>
-
-                        <li><a href="">고객센터</a></li>                
-
-                    </ul>
+  		 <%
+		// "sId" 세션값을 가져와서 id 변수에 저장
+		String sId = (String)session.getAttribute("sId");
+		
+        %> 
+        <%
+        
+        if(sId==null){
+		
+		%>
+		<!-- 세션에 "id" 속성값이 없을 경우 login, join 버튼 표시 -->
+ 		<li><a id="head_login_a" href="MemberLoginForm.me" onclick='window.open("MemberLoginForm.me","_blank","height=500,width=500, status=yes,toolbar=no,menubar=no,location=no");return false'>로그인</a></li>
+ 	    <li><a id="head_login_b" href="MemberJoinForm.me">회원가입</a></li>
+        <li><a href="">고객센터</a></li>   
+		<%
+		}else{
+		%>
+		<!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->	
+	    <li><a id="head_login_a" href="MemberLogout.me">로그아웃</a></li>
+		<li><a href="">고객센터</a></li>  
+		<%}
+		%>                    </ul>
                 </div>
                 <div id="myWrap" class="my-wrap">
                     <ul>

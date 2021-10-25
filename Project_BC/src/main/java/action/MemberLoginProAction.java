@@ -2,6 +2,7 @@ package action;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,18 +17,23 @@ public class MemberLoginProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberLoginProAction");
 		ActionForward forward = null;
-		
-		
-		
+		String checkedLoginyn = request.getParameter("cookie_login_yn");
+		String cookie_login_id = request.getParameter("cookie_login_id"); /* login.jsp에서 쿠키값이 있으면 쿠키값의 로그인시킬id가 넘어옴 */
+		String login_id = null;
 		boolean isLoginSuccess = false;
-		MemberLoginProService service = new MemberLoginProService();
-		MemberBean member = new MemberBean();
-		member.setId(request.getParameter("login_id"));
-		member.setPassword(request.getParameter("login_pass"));
 		
-		isLoginSuccess = service.loginMember(member);
-		
-		
+		if(cookie_login_id != "") {
+			isLoginSuccess = true;
+			login_id = cookie_login_id;
+		} else {
+			MemberLoginProService service = new MemberLoginProService();
+			MemberBean member = new MemberBean();
+			member.setId(request.getParameter("login_id"));
+			member.setPassword(request.getParameter("login_pass"));
+			isLoginSuccess = service.loginMember(member);
+			login_id = member.getId();
+		}
+
 		if(!isLoginSuccess) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -40,12 +46,30 @@ public class MemberLoginProAction implements Action {
 			// 1. request 객체로부터 HttpSession 객체 가져오기
 			HttpSession session = request.getSession();
 			// 2. 세션 객체의 setAttribute() 메서드를 호출하여 세션 정보 저장하기
-			session.setAttribute("sId", member.getId());
+			session.setAttribute("sId", login_id);
 			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("setTimeout(function() {");
+			out.println("opener.location.reload();");
+			out.println("self.close();");
+			out.println("},1000);");
+			out.println("</script>");
+			
+			if(checkedLoginyn != null && checkedLoginyn.equals("Y")) {
+				Cookie cookie = new Cookie("login_cookie" , login_id);
+				cookie.setPath("/");
+				
+				long limitTime = 60 * 60*24* 90;
+				cookie.setMaxAge((int)limitTime);
+				
+				response.addCookie(cookie);
+			}
 			System.out.println("로그인 성공");
 			forward = new ActionForward();
-			forward.setPath("./main.jsp");
-			forward.setRedirect(true);
+			//forward.setPath("./main.jsp");
+			//forward.setRedirect(true);
 			// Redirect 방식으로 포워딩 할 경우 request 객체는 유지되지 않지만 
 			// session 객체는 웹브라우저 종료 시까지 유지되므로 포워딩 방식과 무관함
 			
@@ -54,5 +78,6 @@ public class MemberLoginProAction implements Action {
 		return forward;
 		
 	}
+	
 
 }

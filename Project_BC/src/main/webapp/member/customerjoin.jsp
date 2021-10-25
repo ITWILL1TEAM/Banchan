@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/idScript.js"></script> 
+<script src="js/submit.js"></script> 
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
 <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
@@ -34,7 +35,7 @@
 	                  <label for="join_id" class="ir">아이디</label>
 	                  <div class="input_w auth_div">
 	                     <input type="text" id="join_id" name="member_id" maxlength="20" class="login_input"
-	                      placeholder="아이디" onkeyup="checkId(this)"  readonly="readonly">
+	                      placeholder="아이디" onkeyup="checkId(this)" >
 	                  </div>
 	                  <span class="limit" id="_certTime"></span>
 	                  <button class="submit" type="button"  class="dup" id="btn" onclick="openWindow('dupIdCheck')">중복확인</button>
@@ -52,7 +53,7 @@
 					<span class="caution" id="checkPasswdResult" style="display: none;"><!-- - --></span>
 					
 					<label for="join_name" class="ir">이름</label>
-					<input type="text" id="join_name" name="member_name" class="login_input" maxlength="20" placeholder="이름" onkeyup="checkName(this.value)"
+					<input type="text" id="join_name" name="member_name" class="login_input" maxlength="20" placeholder="이름" required="required" "checkName(this.value)"
 					onclick="checkPasswdValue()">
 
 					<!-- 이름/성별 오류시 노출 -->
@@ -109,7 +110,7 @@
 					<span class="caution ir" id="auth_msg">인증번호  입력시간이 초과되었습니다</span>
 					
 					<label for="email"></label>
-					<input type="text" id="email" name="member_email" maxlength="50" placeholder="이메일">
+					<input type="text" id="email" name="member_email" maxlength="50" required="required" placeholder="이메일">
 					
 					<div class="info_txt">※ 주문관련 정보에 대한 이메일과 <em class="thm">SMS</em>는 자동으로 전송됩니다.</div>
 					<span class="caution ir" id="caution5"></span>
