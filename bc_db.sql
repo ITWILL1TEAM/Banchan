@@ -79,9 +79,8 @@ CREATE TABLE `review` (
   `review_idx` int(11) NOT NULL AUTO_INCREMENT,
   `product_num` int(11) NOT NULL,
   `review_id` varchar(45) COLLATE utf8_bin NOT NULL,
-  `review_subject` varchar(45) COLLATE utf8_bin NOT NULL,
-  `review_content` varchar(255) COLLATE utf8_bin NOT NULL,
-  `review_img` varchar(45) COLLATE utf8_bin NOT NULL,
+  `review_content` varchar(2000) COLLATE utf8_bin NOT NULL,
+  `review_img` varchar(45) COLLATE utf8_bin,
   `review_score` float NOT NULL,
   `review_date` date NOT NULL,
   PRIMARY KEY (`review_idx`),
@@ -89,12 +88,11 @@ CREATE TABLE `review` (
   CONSTRAINT `rv_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-
 CREATE TABLE basket(
    basket_idx int(11) PRIMARY KEY AUTO_INCREMENT,
    product_num int(11) NOT NULL,
    customer_id varchar(15) COLLATE utf8_bin NOT NULL,
-   basket_count INT NOT NULL DEFAULT 0,
+   item_qty INT NOT NULL DEFAULT 1,
    CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
    CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
