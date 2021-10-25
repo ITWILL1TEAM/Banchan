@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <%
 String cookie_login_id = "";
 Cookie[] cookie = request.getCookies();

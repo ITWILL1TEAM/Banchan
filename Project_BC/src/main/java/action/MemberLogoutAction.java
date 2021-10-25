@@ -13,6 +13,7 @@ public class MemberLogoutAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		
+		
 		// 세션 객체 가져와서 초기화
 		HttpSession session = request.getSession();
 		session.removeAttribute("sId");

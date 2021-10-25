@@ -94,7 +94,8 @@
 <!--                                 <p>최근 검색어가 없습니다.</p> -->
 <!--                             </div> -->
 <!--                         </div> -->
-<!--                         <button class="sch_bt" type="button"> -->
+<!--                 
+	        <button class="sch_bt" type="button"> -->
 <!--                             <em class="ir">검색하기</em> -->
 <!--                         </button> -->
 

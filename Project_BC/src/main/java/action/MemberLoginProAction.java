@@ -43,6 +43,7 @@ public class MemberLoginProAction implements Action {
 			out.println("</script>");
 		} else { // 로그인 성공 시 
 			// 세션 객체에 로그인 아이디 정보를 저장(속성명 sId)
+			
 			// 1. request 객체로부터 HttpSession 객체 가져오기
 			HttpSession session = request.getSession();
 			// 2. 세션 객체의 setAttribute() 메서드를 호출하여 세션 정보 저장하기
