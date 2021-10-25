@@ -137,12 +137,12 @@
 		<!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->	
 	    <li><a id="head_login_a" href="MemberLogout.me">로그아웃</a></li>
 		<li><a href="">고객센터</a></li> 
-		<%  if(grade==1){
-			    response.sendRedirect("/main.ad");
-			  }else if(grade==2){%>
-				   <li><a href="Seller.sc">판매자페이지로</a></li>
+		<%  if(grade==1){%>
+			  <li><a href="main.ad"> 관리자페이지로</a></li>
+			  <%}else if(grade==2){%>
+				   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li>
 			<%}else if(grade==3){%>
-			   <li><a href="Besong.my">마이페이지로</a></li>    
+			   <li><a href="Besong.my"> 마이페이지로</a></li>    
 			<%}else{//grade==4
 				//휴면계정 
 				} %>
