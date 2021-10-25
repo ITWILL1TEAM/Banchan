@@ -31,9 +31,10 @@ CREATE TABLE `customer_address` (
   `customer_roadAddress` varchar(50) COLLATE utf8_bin NOT NULL,
   `customer_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
   `customer_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `address_priority` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`customer_id`),
   CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `seller` (
   `seller_id` varchar(15) COLLATE utf8_bin NOT NULL,
@@ -96,3 +97,32 @@ CREATE TABLE basket(
    CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
    CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `order` (
+  `order_num` int(11) NOT NULL,
+  `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
+  `order_roadAddress` varchar(50) COLLATE utf8_bin NOT NULL,
+  `order_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
+  `order_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL,
+  `phone` varchar(45) COLLATE utf8_bin NOT NULL,
+  `order_price` int(11) NOT NULL,
+  `bank_name` varchar(10) COLLATE utf8_bin NOT NULL,
+  `card_num` varchar(20) COLLATE utf8_bin NOT NULL,
+  `card_validity` varchar(5) COLLATE utf8_bin NOT NULL,
+  `card_cvc` int(11) NOT NULL,
+  `order_check` int(11) NOT NULL,
+  PRIMARY KEY (`order_num`),
+  KEY `customer_id_order_fk` (`customer_id`),
+  CONSTRAINT `customer_id_order_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `order_product` (
+  `order_num` int(11) NOT NULL,
+  `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
+  `product_num` int(11) NOT NULL,
+  `product_stock` int(11) NOT NULL,
+  KEY `order_num_product_num_fk_idx` (`order_num`),
+  CONSTRAINT `order_num_product_num_fk` FOREIGN KEY (`order_num`) REFERENCES `order` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
