@@ -180,9 +180,9 @@ public class MemberDAO {
 		
 		return isDuplicate;
 	}
-	public boolean selectMember(MemberBean member) {
+	public int selectMember(MemberBean member) {
 		System.out.println("MemberDAO - selectMember");
-		boolean isLoginSuccess = false;
+		int grade = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -198,9 +198,11 @@ public class MemberDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {				
-					isLoginSuccess = true;
-					System.out.println("selectMember - 정상작동");
+			if(rs.next()) {
+				System.out.println("selectMember - 정상작동");
+				grade = rs.getInt("grade");
+			
+					
 			}
 	
 		} catch (Exception e) {
@@ -215,6 +217,6 @@ public class MemberDAO {
 
 		
 		
-		return isLoginSuccess;
+		return grade;
 	}
 }

@@ -20,8 +20,7 @@ public class MemberLoginProAction implements Action {
 		String checkedLoginyn = request.getParameter("cookie_login_yn");
 		String cookie_login_id = request.getParameter("cookie_login_id"); /* login.jsp에서 쿠키값이 있으면 쿠키값의 로그인시킬id가 넘어옴 */		
 		String login_id = null;
-//		int grade= Integer.parseInt(request.getParameter("grade"));	
-		int login_grade=0;
+		int grade = 0;			
 		boolean isLoginSuccess = false;
 		
 		if(cookie_login_id != "") {
@@ -33,10 +32,11 @@ public class MemberLoginProAction implements Action {
 			MemberBean member = new MemberBean();
 			member.setId(request.getParameter("login_id"));
 			member.setPassword(request.getParameter("login_pass"));	
-			isLoginSuccess = service.loginMember(member);			
-			login_id = member.getId();
-			login_grade = member.getGrade();
-			System.out.println(login_grade);
+			grade = service.loginMember(member);
+			if(grade>0) {
+				isLoginSuccess = true;			
+			}
+			login_id = member.getId();		
 						
 			
 		}
@@ -56,7 +56,7 @@ public class MemberLoginProAction implements Action {
 			HttpSession session = request.getSession();
 			// 2. 세션 객체의 setAttribute() 메서드를 호출하여 세션 정보 저장하기			
 			session.setAttribute("sId", login_id);
-			session.setAttribute("grade", login_grade);
+			session.setAttribute("grade", grade);
 		
 			
 			response.setContentType("text/html; charset=UTF-8");

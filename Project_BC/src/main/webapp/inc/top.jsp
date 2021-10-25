@@ -119,8 +119,9 @@
 		
         %> 
         <script>
-        alert(<%=grade%>)
+        alert(<%=grade %>);
         </script>
+       
         <%
         
         if(sId==null){

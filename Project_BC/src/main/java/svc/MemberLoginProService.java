@@ -9,9 +9,9 @@ import static db.JdbcUtil.*;
 
 public class MemberLoginProService {
 
-	public boolean loginMember(MemberBean member) {
+	public int loginMember(MemberBean member) {
 		System.out.println("MemberLoginProService");
-		boolean isLoginSuccess = false;
+		int grade = 0;
 		
 		Connection con = getConnection();
 		
@@ -20,7 +20,7 @@ public class MemberLoginProService {
 		dao.setConnection(con);
 		
 		
-		isLoginSuccess = dao.selectMember(member);
+		grade = dao.selectMember(member);
 		
 		
 		
@@ -30,7 +30,7 @@ public class MemberLoginProService {
 		
 		
 		
-		return isLoginSuccess;
+		return grade;
 	}
 
 }
