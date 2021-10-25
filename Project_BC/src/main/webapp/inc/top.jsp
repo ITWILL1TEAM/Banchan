@@ -118,9 +118,7 @@
   		
 		
         %> 
-        <script>
-        alert(<%=grade %>);
-        </script>
+       
        
         <%
         

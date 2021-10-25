@@ -16,7 +16,7 @@
    <strong class="tit"></strong>
       <a href="CustomerJoinForm.me">
         <div class="member_gate_join">
-          <img src="../img/person.ico">
+          <img src="img/customer.png">
           <p class="title">개인 구매회원</p>
           <p class="text_small">만 14세 이상 가능</p>
           <span class="btns_sys red_big_d"><span>회원가입</span></span>
@@ -24,7 +24,7 @@
       </a>
       <a href="SellerJoinForm.me">
         <div class="member_gate_join">
-          <img src="../img/company.ico">
+          <img src="img/seller.png">
           <p class="title">사업자 판매회원</p>
           <p class="text_small">사업자등록증을 보유한 판매회원</p>
           <span class="btns_sys red_big_d"><span>회원가입</span></span>
