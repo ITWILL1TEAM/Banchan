@@ -21,6 +21,7 @@
 String id = request.getParameter("id");
 
 
+
 // 조회할 아이디 값이 있을 경우 (null이 아니고 널스트링이 아닐 경우)에만 중복 확인 수행
 if(id != null && !id.equals("")){
 	// MemberDAO 객체의 dupCheckId() 메서드를 호출하여 아이디 조회 후 중복 여부 판별
