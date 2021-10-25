@@ -4,8 +4,8 @@
 	pageEncoding="UTF-8"%>
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
-	String id =(String)session.getAttribute("id");
-	
+	String id = (String)session.getAttribute("id");
+	int price = article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
 %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -56,6 +56,7 @@
 			// 제품 수량에 따른 총 제품 금액 계산
 			total_amt = price * qty;
 			$('#totalAmt').text(priceToString(total_amt));
+			$('#total_amt').val(total_amt);
 		});
 		
 	});
@@ -68,14 +69,33 @@
 	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 	
+	var id = <%=id %>
+	
+// 	function checkLogin() {
+// 		if(id == null) {
+// 			alert('로그인이 필요합니다.');
+// 			location.href = 'MemberLoginForm.me';
+// 			return false;
+// 		} 
+// 	}
+
+// 	function checkLoginCart() {
+// 		if(id == null) {
+// 			alert('로그인이 필요합니다.');
+// 			location.href = 'MemberLoginForm.me';
+// 		} else {
+// 			location.href = 'Cart.do';
+// 		}
+// 	}
+	
 </script>
 </head>
 <body>
-	<%@include file="../inc/top.jsp" %>
+<%-- 	<%@include file="../inc/top.jsp" %> --%>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
-	<form action="Order.do" method="post" name="pdDetail">
+	<form method="post" name="pdDetail" onsubmit="return checkLogin()">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 		
@@ -83,26 +103,13 @@
 			<div class="wrap gds" id="goodsInfoDiv">
 			
 				<div id="detailBaseInfo" style="display:none;">
-					<input type="hidden" id="goods_no" name="goods_no" value="0000014985"/>
-					<input type="hidden" id="vir_vend_no" name="vir_vend_no" value="VV17002724"/>
-					<input type="hidden" id="multi_item_yn" name="multi_item_yn" value="N"/>
-					<input type="hidden" id="goods_cmps_divi_cd" name="goods_cmps_divi_cd" value="10"/>
-				 	<input type="hidden" id="item_no" name="item_no" value="00000"/>
-					<input type="hidden" id="gift_goods_info" name="gift_goods_info" value=""/>
-					<input type="hidden" id="min_qty" name="min_qty" value="1"/>
-					<input type="hidden" id="nplus_base_cnt" name="nplus_base_cnt" value="0"/>
-					<input type="hidden" id="nplus_cnt" name="nplus_cnt" value="0"/>
-					<input type="hidden" id="sale_unit_qty" name="sale_unit_qty" value="0"/>
-					<input type="hidden" id="poss_buy_min_price" name="poss_buy_min_price" value="10000"/>
-					<input type="hidden" id="multi_price_yn" name="multi_price_yn" value="N"/>
-					<input type="hidden" id="cart_grp_cd" name="cart_grp_cd" value="10"/>
-					<input type="hidden" id="stock_qty_disp_yn" name="stock_qty_disp_yn" value="N"/>
-					<input type="hidden" id="conts_dist_no" name="conts_dist_no" value=""/>
-					<input type="hidden" id="sale_area_no" name="sale_area_no" value=""/>
-					<input type="hidden" id="sale_shop_no" name="sale_shop_no" value=""/>
-					<input type="hidden" id="sale_shop_divi_cd" name="sale_shop_divi_cd" value="11"/>
-					<input type="hidden" id="add_ord_sel_info" name="add_ord_sel_info" value=""/>
-					<input type="hidden" id="tax_divi_cd" name="tax_divi_cd" value="10"/>
+					<input type="hidden" id="product_num" name="product_num" value="<%=article.getProduct_num()%>"/>
+					<input type="hidden" id="product_name" name="product_name" value="<%=article.getProduct_name()%>"/>
+					<input type="hidden" id="product_discount" name="product_discount" value="<%=article.getProduct_discount()%>"/>
+					<input type="hidden" id="product_stock" name="product_stock" value="<%=article.getProduct_stock()%>"/>
+					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSname()%>"/>
+					<input type="hidden" id="product_price" name="product_price" value="<%=article.getProduct_price()%>"/>
+					<input type="hidden" id="total_amt" name="total_amt" value=""/>
 				</div>
 		
 				<!-- GOODS VIEW -->
@@ -158,8 +165,7 @@
 							<dl>
 								<dt>판매가</dt>
 								<dd class="prc">
-									
-									<span class="sale"><b class="price"><fmt:formatNumber value="<%=article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount())%>" pattern="#,###"/></b>원</span>
+									<span class="sale"><b class="price"><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
 								</dd>
 							</dl>
 							<dl>
@@ -181,9 +187,7 @@
 								<dt class="dt"><label for="ord_qty">수량</label></dt>
 								<dd>
 									<span class="qty">
-										<input type="hidden" id="sale_price" name="sale_price" value="<%=article.getProduct_price() %>"/>	
-										<input type="hidden" id="chk_sale_price" name="chk_sale_price" value="<%=article.getProduct_price() %>"/>	
-										<input type="text" name="ord_qty" id="ord_qty" value="1" class="input" title="제품수량입력" maxlength="3" readonly="readonly"  onchange="change()"/>
+										<input type="text" name="ord_qty" id="ord_qty" value="1" class="input" title="제품수량입력" readonly="readonly"  onchange="change()"/>
 										<button type="button" class="minus" title="상품수량감소" onclick="del()" >감소</button>
 										<button type="button" class="plus" title="상품수량증가" onclick="add()">증가</button>								
 									</span>
@@ -196,8 +200,7 @@
 						<div class="gd_amt">
 							<dl>
 								<dt>총 제품금액</dt>
-								
-								<dd><b id="totalAmt"><fmt:formatNumber value="<%=article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount())%>" pattern="#,###"/></b><em>원</em></dd>
+								<dd><b id="totalAmt"><fmt:formatNumber value="<%=price %>" pattern="#,###"/></b><em>원</em></dd>
 							</dl>
 						</div>
 						<!-- //AMOUNT -->
@@ -205,38 +208,10 @@
 						<!-- BTN. -->
 						<div class="gd_btns">
 							<!-- TOOLTIP -->
-							<button type="button" class="cart" id="msg_open_cart" onclick="location.href='Cart.do'" title="장바구니 상품 알림 레이어 열기"><em>장바구니</em></button>
-<!-- 							<div class="lyr_tip_wrap2" > -->
-<!-- 								<div class="lyr_tip" id="lyr_msg_cart"> -->
-<!-- 									<span class="txt">선택한 제품이 장바구니에 담겼습니다.</span> -->
-<!-- 									<span class="btns"> -->
-<!-- 										<a href="javascript:void(0);" onclick="hideTip('lyr_msg_cart');return false;">쇼핑계속하기</a> -->
-<!-- 										<a href="javascript:void(0);" class="bx" onclick="overpass.link('CART');">장바구니 가기</a> -->
-<!-- 									</span> -->
-<!-- 									<button class="cls" type="button" onclick="hideTip('lyr_msg_cart');return false;">장바구니 제품 알림 레이어 닫기</button> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-							<!-- //TOOLTIP -->
-		
-							<!-- //TOOLTIP -->
-							<button type="submit" class="buy" title="주문하기 페이지 이동"><em>바로구매</em></button>
+							<button type="submit" class="cart" id="msg_open_cart" formaction="Cart.do" title="장바구니 상품 알림 레이어 열기"><em>장바구니</em></button>
+							<button type="submit" class="buy" formaction="Order.do" title="주문하기 페이지 이동"><em>바로구매</em></button>
 						</div>
 						<!-- //BTN. -->
-						
-<%-- 							<% --%>
-<!-- // 								세션 아이디가 존재하지 않으면 로그인 페이지로 이동 -->
-<!-- // 								자바스크립트로 로그인필수를 출력 후 이동처리 -->
-<!-- 								if(id==null){ -->
-<!-- 									%>  -->
-<!-- 									<script type="text/javascript"> -->
-<!-- // 					 						alert('로그인 필수');  -->
-<!-- 				 					</script> 	 -->
-<%-- 									<% --%>
-<!-- 								} else	{	 -->
-<!-- 									response.sendRedirect("MemberLoginForm.me"); -->
-<!-- 								} -->
-								
-<!--  							%>  -->
 		
 					</div>
 					<!-- //GOODS INFO -->
