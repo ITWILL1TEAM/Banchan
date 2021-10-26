@@ -17,7 +17,7 @@ public class NoticeWriteProService {
         // 1. 글쓰기 작업 요청 처리 결과를 저장할 boolean 타입 변
         boolean isWriteSuccess = false;
         
-        // 2. JdbcUtil 객체로부터 Connection Pool 에 저장된 Connection 객체 가져오기(공통) 
+        // 2. JdbcUtil 객체로부터 Connection Pool에 저장된 Connection 객체 가져오기(공통) 
 //      Connection con = JdbcUtil.getConnection();
         Connection con = getConnection();
         

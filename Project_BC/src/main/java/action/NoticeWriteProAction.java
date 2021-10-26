@@ -25,7 +25,7 @@ public class NoticeWriteProAction implements Action {
         
    
         
-        // BoardBean 객체에 전달받은 파라미터 저장
+        // BoardBean 객체에 전달받은 파라미터 저
         NoticeBean board = new NoticeBean();
         board.setBoard_subject("board_subject");
         board.setBoard_content("board_content");

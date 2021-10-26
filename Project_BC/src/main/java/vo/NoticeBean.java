@@ -11,7 +11,7 @@ public class NoticeBean {
 		board_subject VARCHAR(50) NOT NULL,
 		board_content VARCHAR(2000) NOT NULL,
 		board_file VARCHAR(50) NOT NULL,
-		board_original_file VARCHAR(50) NOT NULL,
+		board_original_file VARCHAR50) NOT NULL,
 		board_date DATE NOT NULL,
 		board_readcount INT NOT NULL
 	);
