@@ -25,7 +25,7 @@
 				<dd><a href="#">신규 회원가입</a></dd>
 			</dl>
 	<form action="CustomerJoinPro.me" name="fr" id="joinForm" method="post" autocomplete="off" onsubmit="return checkSubmit()">			
-		<input type="hidden" name="grade" value="2">
+		<input type="hidden" name="grade" value="3">
 			<!--// LOCATION SELECT -->
 			<div class="join_box" id="join_box">
 				<h2><em>더반찬&amp;</em> 신규 회원가입</h2>

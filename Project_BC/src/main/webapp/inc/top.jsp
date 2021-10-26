@@ -114,7 +114,7 @@
   		 <%
 		// "sId" 세션값을 가져와서 id 변수에 저장
 		String sId = (String)session.getAttribute("sId");
-  		int grade = (Integer)session.getAttribute("grade");
+  		
   		
 		
         %> 
@@ -130,18 +130,25 @@
  	    <li><a id="head_login_b" href="MemberJoinForm.me">회원가입</a></li>
         <li><a href="">고객센터</a></li>   
 		<%
-		}else{%>
+		}else{
+		int grade = (Integer)session.getAttribute("grade");
+			
+		%>
 		<li><%=sId %> 님 반갑습니다.</li>
 		<!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->	
 	    <li><a id="head_login_a" href="MemberLogout.me">로그아웃</a></li>
 		<li><a href="">고객센터</a></li> 
-		<%  if(grade==1){%>
-			  <li><a href="main.ad"> 관리자페이지로</a></li>
-			  <%}else if(grade==2){%>
-				   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li>
-			<%}else if(grade==3){%>
+			<%  if(grade==1){
+				pageContext.forward("/main.ad");
+			%>
+<!-- 			  <li><a href="main.ad"> 관리자페이지로</a></li> -->
+			<%  }else if(grade==2){
+			  		pageContext.forward("/Seller.sc");
+			%>
+<%-- 				   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li> --%>
+			<%  }else if(grade==3){%>
 			   <li><a href="Besong.my"> 마이페이지로</a></li>    
-			<%}else{//grade==4
+			<%  }else{//grade==4
 				//휴면계정 
 				} %>
 			
