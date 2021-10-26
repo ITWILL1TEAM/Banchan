@@ -27,7 +27,7 @@
                 
                 
                 <section id="writeForm">
-      <h1>공지사항 글 등록</h1>
+      <h1>공지사항 등록</h1>
       <form action="NoticeWritePro.ad" method="post" name="NoticeBoard">
       <!-- 파일 업로드 기능을 사용하려면 cos.jar 라이브러리 등록 필수 -->
          <table>

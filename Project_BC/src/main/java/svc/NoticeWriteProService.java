@@ -14,7 +14,7 @@ public class NoticeWriteProService {
 
     public boolean registArticle(NoticeBean board) {
        
-        // 1. 글쓰기 작업 요청 처리 결과를 저장할 boolean 타입 변수 선언
+        // 1. 글쓰기 작업 요청 처리 결과를 저장할 boolean 타입 변
         boolean isWriteSuccess = false;
         
         // 2. JdbcUtil 객체로부터 Connection Pool 에 저장된 Connection 객체 가져오기(공통) 

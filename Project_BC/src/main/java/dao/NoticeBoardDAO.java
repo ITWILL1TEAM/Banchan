@@ -41,7 +41,7 @@ public class NoticeBoardDAO {
         
         try {
             
-            // 글 등록 작업을 위한 INSERT 작업 수행
+            // 글 등록 작업을 위한 INSERT
             // => 등록일(board_date)은 now() 함수 활용
             String sql = "INSERT INTO notice VALUES (null,?,?,now())";
             pstmt = con.prepareStatement(sql);

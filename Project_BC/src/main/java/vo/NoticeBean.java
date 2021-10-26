@@ -16,7 +16,7 @@ public class NoticeBean {
 		board_readcount INT NOT NULL
 	);
 	*/
-	// 게시물 1개 정보를 관리할 BoardBean 클래스 정의
+	// 게시물 1개 정보를 관스 정의
     
 	private int board_num;
     private String board_subject;

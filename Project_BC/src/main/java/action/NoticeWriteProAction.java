@@ -20,7 +20,7 @@ public class NoticeWriteProAction implements Action {
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         
-        // 포워딩 정보를 관리하는 ActionForward 타입 변수 선언
+        
         ActionForward forward = null;
         
    

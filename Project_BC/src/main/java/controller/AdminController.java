@@ -80,7 +80,7 @@ public class AdminController extends HttpServlet {
 		
 		
 		if(forward != null) {
-			if(forward.isRedirect()) { // true = Redirect 방식
+			if(forward.isRedirect()) { // true = Redirect 
 				response.sendRedirect(forward.getPath());
 			} else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
