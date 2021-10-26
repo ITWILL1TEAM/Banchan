@@ -30,12 +30,12 @@ public class SellerController extends HttpServlet {
         if(command.equals("/AddProduct.sc")) {
             // 글쓰기 작업을 위한 뷰페이지로 포워딩
             forward = new ActionForward();
-            forward.setPath("/seller/productRegister.jsp");
+            forward.setPath("/sellerPage/productRegister.jsp");
             forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-        } else if(command.equals("/DashBoard.sc")) {
+        } else if(command.equals("/Seller.sc")) {
             // 글쓰기 작업을 위한 뷰페이지로 포워딩
             forward = new ActionForward();
-            forward.setPath("/seller/productRegister.jsp");
+            forward.setPath("/sellerPage/seller_main.jsp");
             forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
         }
 

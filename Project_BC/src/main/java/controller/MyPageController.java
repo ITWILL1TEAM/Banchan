@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AddAddressAction;
 import vo.ActionForward;
 
 
@@ -52,6 +53,15 @@ public class MyPageController extends HttpServlet {
 		}else if(command.equals("/Review.my")) {
 			forward = new ActionForward();
 			forward.setPath("/myPage/myReview.jsp");
+		}else if(command.equals("/myPage/AddAddress.my")) {
+			System.out.println(command+"asdasdasdas");
+			action = new AddAddressAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
     
     if(forward != null) {

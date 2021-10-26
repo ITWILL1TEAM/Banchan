@@ -57,7 +57,7 @@ public class MemberDAO {
 			sql="INSERT INTO customer VALUES(?,?,?,0,?)" ;
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, cBean.getCostomer_id());
+			pstmt.setString(1, cBean.getCustomer_id());
 			pstmt.setString(2,cBean.getPhone());
 			pstmt.setString(3, cBean.getEamil());
 			pstmt.setInt(4, cBean.getPersonal_data());
@@ -180,25 +180,29 @@ public class MemberDAO {
 		
 		return isDuplicate;
 	}
-	public boolean selectMember(MemberBean member) {
-		boolean isLoginSuccess = false;
+	public int selectMember(MemberBean member) {
+		System.out.println("MemberDAO - selectMember");
+		int grade = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
 			
 			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
-			String sql = "SELECT id FROM member WHERE id=? AND password=?";
+			String sql = "SELECT id,grade FROM member WHERE id=? AND password=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,member.getId());
 			pstmt.setString(2,member.getPassword());
 			
 			
+			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-					isLoginSuccess = true;
-					System.out.println("selectMember - 정상작동");
+				System.out.println("selectMember - 정상작동");
+				grade = rs.getInt("grade");
+			
+					
 			}
 	
 		} catch (Exception e) {
@@ -213,6 +217,6 @@ public class MemberDAO {
 
 		
 		
-		return isLoginSuccess;
+		return grade;
 	}
 }

@@ -1,280 +1,1493 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!doctype html>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="robots" content="index, follow">
 
 <!-- Bootstrap CSS -->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-	crossorigin="anonymous">
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    rel="stylesheet">
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-	crossorigin="anonymous"></script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    
 
-<title>Hello, world!</title>
+
+<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script> -->
+<script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+   
+</script>
+<script type="text/javascript" charset="UTF-8"
+    src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+
+
+
+<title>집밥선생!Project_BC</title>
 </head>
 <body>
-	<div class=" bg-light text-dark ">
-		<div class="container">
-			<!--  head top -->
-			<header>
-				<div class="col text-size" align="right">
-					<%
-        // "sId" 세션값을 가져와서 id 변수에 저장
-        String sId = (String)session.getAttribute("sId");
-        if(sId==null){
-        %>
-        <!-- 세션에 "id" 속성값이 없을 경우 login, join 버튼 표시 -->
-        <div id="login">
-            <a href="MemberLoginForm.me">로그인</a> 
-            <a class="btn btn-light" id="head_sign" href="MemberJoinForm.me">회원가입</a> 
-            <a class="btn btn-light" id="head_Service center" href="#">장바구니</a>
-        </div>
-        <%
-        }else{
-        %>
-        <!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->
-        <div id="login">
-            <a href="MemberLogout.me">로그아웃</a>
-            <a class="btn btn-light" id="head_Service center" href="#">장바구니</a>
-        </div>
-        <%}
-        %>
-				</div>
 
-				<div class="row">
-					<div class="col-12 text-center">
-						<a class="navbar-brand" href="#"> <img alt="logo"
-							src="./img/TestLogo.png" width="150" height="150">
-						</a>
-					</div>
-				</div>
+    
 
-				<!--  Header NavBar -->
-				<nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
-					<div class="container-fluid">
-						<div class="collapse navbar-collapse" id="navbarNavLightDropdown">
-							<ul class="navbar-nav">
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle font-weight-bold" href="#"
-									id="navbarLightDropdownMenuLink" role="button"
-									data-bs-toggle="dropdown" aria-expanded="false"> 카테고리 </a>
-									<ul class="dropdown-menu dropdown-menu-light"
-										aria-labelledby="navbarLightDropdownMenuLink">
-										<li><a class="dropdown-item" href="#">반찬</a></li>
-										<li><a class="dropdown-item" href="#">국</a></li>
-										<li><a class="dropdown-item" href="#">고급반찬</a></li>
-									</ul></li>
-								<li class="nav-item"><a class="nav-link" href="#"> 할인특가
-								</a></li>
-								<li class="nav-item"><a class="nav-link" href="#"> 베스트
-								</a></li>
-								<li class="nav-item"><a class="nav-link" href="#"> 신상품
-								</a></li>
-
-							</ul>
-						</div>
-					</div>
-					<div class="col-3">
-						<form class="d-flex" id="SearchBox" action="get">
-							<input class="form-control me-2" type="search" placeholder="검색"
-								aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">search</button>
-						</form>
-					</div>
-				</nav>
+    <!-- HEADER -->
+    <jsp:include page="inc/top.jsp" />
+    <!--// HEADER -->
+<!--  Main CSS -->
+    <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/main.css?v=20211014190" type="text/css">
 
 
-			</header>
+    <!-- CONTENT -->
+    <!-- <div id="content" class="content"  > -->
+    <div id="container" style="outline: none;">
+        <!-- WRAP -->
+        <!-- <div class="wrap main"> -->
+        <section id="content" class="main" style="padding-top: 118px;">
+            <!-- wrap addClass -->
 
 
-			<!--  caousel -->
-			<div id="carouselExampleCaptions" class="carousel slide"
-				data-bs-ride="carousel">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleCaptions"
-						data-bs-slide-to="0" class="active" aria-current="true"
-						aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions"
-						data-bs-slide-to="1" aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions"
-						data-bs-slide-to="2" aria-label="Slide 3"></button>
-				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="./img/carousel_sample1.jpg" class="d-block w-100"
-							height="500" alt="sampletest1">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>산딸기</h5>
-							<p>It's a fresh raspberry, actually, it's a snake berry lol</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img src="./img/carousel_sample2.jpg" class="d-block w-100 "
-							height="500" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>스테이크</h5>
-							<p>The steak looks very tasty. How much is it?</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img src="./img/carousel_sample3.jpg" class="d-block w-100 "
-							height="500" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>직화 숯불 꼬지</h5>
-							<p>Look so damn delicious I want to go camping</p>
-						</div>
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button"
-					data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button"
-					data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
-			</div>
-
-
-
-			<!--  CONTENT -->
-			<div class="row mt-5" id="recommended">
-				<h3 align="center">추천 상품</h3>
-				<hr>
-				<div class="row">
-					<div class="col-lg-3 col-sm-6 mb-4">
-						<!--추천상품 1-->
-						<div class="">
-							<a class="" href="#"> <img class="img-thumbnail"
-								src="./img/innerbox_sample1.jpg" alt="..." />
-							</a>
-							<div class="">
-								<div class="" align="right">햄버거</div>
-								<div class="" align="right">15,000원</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-sm-6 mb-4">
-						<!--추천상품 2-->
-						<div class="">
-							<a class="" href="#"> <img class="img-thumbnail"
-								src="./img/innerbox_sample2.jpg" alt="..." />
-							</a>
-							<div class="">
-								<div class="" align="right">마카롱</div>
-								<div class="" align="right">15,000원</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-6 mb-4">
-						<!--추천상품 3-->
-						<div class="">
-							<a class="" href="#"> <img class="img-thumbnail" src="./img/innerbox_sample3.jpg" alt="..." />
-							</a>
-							<div class="">
-								<div class="" align="right">뭐드라</div>
-								<div class="" align="right">15,000원</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-lg-3 col-sm-6 mb-4">
-                        <!--추천상품 4-->
-                        <div class="">
-                            <a class="" href="#">
-                                 <img class="img-thumbnail" src="./img/innerbox_sample1.jpg" alt="..." />
-                            </a>
-                            <div class="">
-                                <div class="" align="right">햄버거</div>
-                                <div class="" align="right">15,000원</div>
-                            </div>
-                        </div>
-                    </div>
-
-				</div>
-
-			</div>
-			
-			
-			
-			<div class="row mt-5" id="recommended">
-                <h3 align="center">그냥 상품</h3>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 mb-4">
-                        <!--추천상품 1-->
-                        <div class="">
-                            <a class="" href="#"> <img class="img-thumbnail"
-                                src="./img/innerbox_sample1.jpg" alt="..." />
-                            </a>
-                            <div class="">
-                                <div class="" align="right">햄버거</div>
-                                <div class="" align="right">15,000원</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6 mb-4">
-                        <!--추천상품 2-->
-                        <div class="">
-                            <a class="" href="#"> <img class="img-thumbnail"
-                                src="./img/innerbox_sample2.jpg" alt="..." />
-                            </a>
-                            <div class="">
-                                <div class="" align="right">마카롱</div>
-                                <div class="" align="right">15,000원</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 mb-4">
-                        <!--추천상품 3-->
-                        <div class="">
-                            <a class="" href="#"> <img class="img-thumbnail" src="./img/innerbox_sample3.jpg" alt="..." />
-                            </a>
-                            <div class="">
-                                <div class="" align="right">뭐드라</div>
-                                <div class="" align="right">15,000원</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-sm-6 mb-4">
-                        <!--추천상품 4-->
-                        <div class="">
-                            <a class="" href="#">
-                                 <img class="img-thumbnail" src="./img/innerbox_sample1.jpg" alt="..." />
-                            </a>
-                            <div class="">
-                                <div class="" align="right">햄버거</div>
-                                <div class="" align="right">15,000원</div>
-                            </div>
-                        </div>
-                    </div>
-
+            <!--  caousel -->
+            <div id="carouselExampleCaptions" class="carousel slide"
+                data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide-to="0" class="active" aria-current="true"
+                        aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./img/carousel_sample1.jpg" class="d-block w-100"
+                            height="500" alt="sampletest1">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>산딸기</h5>
+                            <p>It's a fresh raspberry, actually, it's a snake berry lol</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/carousel_sample2.jpg" class="d-block w-100 "
+                            height="500" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>스테이크</h5>
+                            <p>The steak looks very tasty. How much is it?</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/carousel_sample3.jpg" class="d-block w-100 "
+                            height="500" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>직화 숯불 꼬지</h5>
+                            <p>Look so damn delicious I want to go camping</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+    <!--  caousel END -->
 
-			<!--  Footer -->
-			<hr>
 
-			<div class="text=center">
-				<p>ITWILL 1 TEAM PROJECT_BC TEST FOOTER @2021-2021 DEAD</p>
 
-			</div>
-		</div>
-	</div>
+
+
+
+            <!-- 영역 레벨 시작  -->
+            <div id="D1706000841" class="area_lv1">
+
+
+                <!-- 영역 레벨 시작  -->
+                <div id="D1706000845" class="area_lv1">
+
+                    <!-- MD 추천 -->
+                    <article class="article md-article">
+                        <div class="title-wrap">
+                            <div class="title-type">MD 추천</div>
+                        </div>
+                        <div class="inner-box">
+                            <!-- 2020-07-08 레이아웃 변경 -->
+                            <div class="tab-wrap">
+                                <ul class="tab-type js-tab">
+                                    <li class="active"><a href="#md-01" id="TAB_D2007000995">오늘은
+                                            이거 어때요?</a></li>
+                                    <li><a href="#md-02" id="TAB_D2007000997">집밥선생추천!</a>
+                                    </li>
+                                    <li><a href="#md-03" id="TAB_D2007001032">집밥처럼먹고싶을때</a>
+                                    </li>
+                                    <li><a href="#md-04" id="TAB_D2007001033">국밥 먹고싶다</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content active" id="md-01">
+                                    <div class="prd-slider md-slider slick-initialized slick-slider" id="MD_D2007000995">
+                                        <p class="title-type2" id="SUB_D2007000995"></p>
+                                        <div aria-live="polite" class="slick-list draggable">
+                                            <div class="slick-track" style="opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);" role="listbox">
+                                                <div class="list slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false"
+                                                    style="width: 1280px;" tabindex="-1" role="option"aria-describedby="slick-slide70">
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                    onclick=" "
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick= ""
+                                                                tabindex="0"> <img
+                                                                src="img/innerbox_sample1.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                    onclick=" "
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick= ""
+                                                                tabindex="0"> <img
+                                                                src="img/innerbox_sample1.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                    onclick=" "
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick= ""
+                                                                tabindex="0"> <img
+                                                                src="img/innerbox_sample1.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                    onclick=" "
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick= ""
+                                                                tabindex="0"> <img
+                                                                src="img/innerbox_sample1.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-content active" id="md-02">
+                                    <div class="prd-slider md-slider slick-initialized slick-slider" id="MD_D2007000997">
+                                        <p class="title-type2" id="SUB_D2007000997"></p>
+                                        <div aria-live="polite" class="slick-list draggable">
+                                            <div class="slick-track" style="opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);" role="listbox">
+                                                <div class="list slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" 
+                                                style="width: 1280px;" tabindex="-1" role="option" aria-describedby="slick-slide80">
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "  onclick=" " tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" " onclick= "" tabindex="0"> 
+                                                            <img src="img/innerbox_sample2.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "  onclick=" " tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" " onclick= "" tabindex="0"> 
+                                                            <img src="img/innerbox_sample2.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "  onclick=" " tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" " onclick= "" tabindex="0"> 
+                                                            <img src="img/innerbox_sample2.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "  onclick=" " tabindex="0"> <i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                            <a href=" " onclick= "" tabindex="0"> 
+                                                            <img src="img/innerbox_sample2.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href="#"  onclick="" tabindex="0">
+                                                                <p class="subject">햄버거!</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,520</strong>원
+                                                                    </p>
+                                                                    <p class="original">11,900원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content" id="md-03">
+                                    <div
+                                        class="prd-slider md-slider slick-initialized slick-slider"
+                                        id="MD_D2007001032">
+                                        <p class="title-type2" id="SUB_D2007001032"></p>
+                                        <div aria-live="polite" class="slick-list draggable">
+                                            <div class="slick-track"
+                                                style="opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);"
+                                                role="listbox">
+                                                <div class="list slick-slide slick-current slick-active"
+                                                    data-slick-index="0" aria-hidden="false"
+                                                    style="width: 1280px;" tabindex="-1" role="option"
+                                                    aria-describedby="slick-slide90">
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/253/210615000027253.jpg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">NEW 스키야키(넉넉한2인분)</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>19,800</strong>원
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/294/201026000026294.jpg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">고구마 품은 라자냐(450g)</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>9,600</strong>원
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/373/200608000025373.jpg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[프레시지]감바스 알 아히요</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>12,900</strong>원
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/292/201026000026292.jpg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[남향푸드또띠아] 간편브리또 8종 (2개 세트)</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>5,800</strong>원
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content" id="md-04">
+                                    <div
+                                        class="prd-slider md-slider slick-initialized slick-slider"
+                                        id="MD_D2007001033">
+                                        <p class="title-type2" id="SUB_D2007001033"></p>
+                                        <div aria-live="polite" class="slick-list draggable">
+                                            <div class="slick-track"
+                                                style="opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);"
+                                                role="listbox">
+                                                <div class="list slick-slide slick-current slick-active"
+                                                    data-slick-index="0" aria-hidden="false"
+                                                    style="width: 1280px;" tabindex="-1" role="option"
+                                                    aria-describedby="slick-slide100">
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                    onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/112/210429000027112.jpg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[미트Q] 돼지 항정살(구이용/200g/냉동)</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>4,900</strong>원
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/120/210429000027120.jpg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[미트Q] 돼지 갈매기살(구이용/200g/냉동)</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>4,700</strong>원
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/953/210319000026953.jpg">
+                                                                <span class="tag sale v3"><strong>10</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[미트Q] 돌돌말이 대패삼겹살 (500g/냉동)</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>7,920</strong>원
+                                                                    </p>
+                                                                    <p class="original">8,800원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
+                                                                </a>
+                                                            </div>
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/818/200722000025818.jpg">
+                                                                <span class="tag sale v3"><strong>20</strong>%</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[미트Q] 금천육우 등심(구이용/200g)</p>
+                                                                <div class="price">
+                                                                    <p>
+                                                                        <strong>12,160</strong>원
+                                                                    </p>
+                                                                    <p class="original">15,200원</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 2020-07-08 레이아웃 변경 -->
+                        </div>
+                    </article>
+                    <!-- //MD 추천 -->
+                </div>
+                <!-- //영역 레벨 끝 -->
+                <!-- 영역 레벨 시작  -->
+                <div id="D1706000843" class="area_lv1">
+
+
+
+                    <article class="article sale-article">
+                        <div class="inner-box">
+                            <div class="title-wrap">
+                                <a href=" "
+                                
+                                    class="title-type arrow"> 할인 특가 </a>
+                            </div>
+                            <div class="sale-wrap">
+                                <div class="sale-box primary">
+
+                                    <div class="item">
+                                        <div class="thumb">
+                                            <a href=" "
+                                                onclick="">
+                                                <img
+                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/480/627/210108000026627.jpg"
+                                                width="420" height="420" alt="[생생빵상회] 미니 메이플피칸"
+                                                onerror="this.src='/common/images/common/noimg_480.jpg'">
+                                                <span class="tag sale v3"> <strong>20</strong>%
+                                            </span>
+                                                                                            
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <a href=" "
+                                            onclick="">
+                                                <p class="subject">[생생빵상회] 미니 메이플피칸</p>
+                                                <div class="price">
+
+                                                    <p>
+                                                        <strong>7,200</strong><span class="is-noto">원</span>
+                                                    </p>
+                                                    <p class="original">
+                                                        8,980<span class="is-noto">원</span>
+                                                    </p>
+
+                                                </div>
+                                            </a>
+                                            <div class="btn-cart">
+                                                <a href=" "
+                                                onclick="">
+                                                    class="ico-cart2"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="sale-box list">
+
+                                    <ul>
+
+                                        <li>
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <img
+                                                        src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/676/210115000026676.jpg"
+                                                        width="170" height="170" alt="[윙잇] 한입 인절미"
+                                                        onerror="this.src='/common/images/common/noimg_170.jpg'">
+
+                                                        <span class="tag sale v3"><strong>20 </strong>%</span>
+
+
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <p class="subject">[윙잇] 한입 인절미</p>
+                                                        <div class="price">
+
+                                                            <p>
+                                                                <strong>3,920</strong><span class="is-noto">원</span>
+                                                            </p>
+                                                            <p class="original">
+                                                                4,900<span class="is-noto">원</span>
+                                                            </p>
+
+                                                        </div>
+                                                    </a>
+                                                    <div class="btn-cart">
+                                                        <a href=" "
+                                                        onclick="">
+                                                            class="ico-cart2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <img
+                                                        src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/674/210115000026674.jpg"
+                                                        width="170" height="170" alt="[윙잇] 우유백설기 (90g*6ea)"
+                                                        onerror="this.src='/common/images/common/noimg_170.jpg'">
+
+                                                        <span class="tag sale v3"><strong>30 </strong>%</span>
+
+
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <p class="subject">[윙잇] 우유백설기 (90g*6ea)</p>
+                                                        <div class="price">
+
+                                                            <p>
+                                                                <strong>6,930</strong><span class="is-noto">원</span>
+                                                            </p>
+                                                            <p class="original">
+                                                                9,900<span class="is-noto">원</span>
+                                                            </p>
+
+                                                        </div>
+                                                    </a>
+                                                    <div class="btn-cart">
+                                                        <a href=" "
+                                                        onclick="">
+                                                            class="ico-cart2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <img
+                                                        src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/812/200722000025812.jpg"
+                                                        width="170" height="170" alt="[미트Q] 금천한돈 칼집 목살(구이용/570g)"
+                                                        onerror="this.src='/common/images/common/noimg_170.jpg'">
+
+                                                        <span class="tag sale v3"><strong>30 </strong>%</span>
+
+
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <p class="subject">[미트Q] 금천한돈 칼집 목살(구이용/570g)</p>
+                                                        <div class="price">
+
+                                                            <p>
+                                                                <strong>11,760</strong><span class="is-noto">원</span>
+                                                            </p>
+                                                            <p class="original">
+                                                                16,800<span class="is-noto">원</span>
+                                                            </p>
+
+                                                        </div>
+                                                    </a>
+                                                    <div class="btn-cart">
+                                                        <a href=" "
+                                                        onclick="">
+                                                            class="ico-cart2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <img
+                                                        src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/804/200722000025804.jpg"
+                                                        width="170" height="170" alt="[미트Q] 금천한돈 칼집 삼겹살(구이용/570g)"
+                                                        onerror="this.src='/common/images/common/noimg_170.jpg'">
+
+                                                        <span class="tag sale v3"><strong>10 </strong>%</span>
+
+
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <p class="subject">[미트Q] 금천한돈 칼집 삼겹살(구이용/570g)</p>
+                                                        <div class="price">
+
+                                                            <p>
+                                                                <strong>15,750</strong><span class="is-noto">원</span>
+                                                            </p>
+                                                            <p class="original">
+                                                                17,500<span class="is-noto">원</span>
+                                                            </p>
+
+                                                        </div>
+                                                    </a>
+                                                    <div class="btn-cart">
+                                                        <a href=" "
+                                                        onclick="">
+                                                            class="ico-cart2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <img
+                                                        src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/214/210528000027214.jpg"
+                                                        width="170" height="170" alt="[미트Q] 금천한돈 목살(수육용/300g)"
+                                                        onerror="this.src='/common/images/common/noimg_170.jpg'">
+
+                                                        <span class="tag sale v3"><strong>30 </strong>%</span>
+
+
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <p class="subject">[미트Q] 금천한돈 목살(수육용/300g)</p>
+                                                        <div class="price">
+
+                                                            <p>
+                                                                <strong>5,950</strong><span class="is-noto">원</span>
+                                                            </p>
+                                                            <p class="original">
+                                                                8,500<span class="is-noto">원</span>
+                                                            </p>
+
+                                                        </div>
+                                                    </a>
+                                                    <div class="btn-cart">
+                                                        <a href=" "
+                                                        onclick="">
+                                                            class="ico-cart2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <img
+                                                        src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/810/200722000025810.jpg"
+                                                        width="170" height="170" alt="[미트Q] 금천한돈 삼겹살(수육용/300g)"
+                                                        onerror="this.src='/common/images/common/noimg_170.jpg'">
+
+                                                        <span class="tag sale v3"><strong>25 </strong>%</span>
+
+
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <a href=" "
+                                                    onclick="">
+                                                        <p class="subject">[미트Q] 금천한돈 삼겹살(수육용/300g)</p>
+                                                        <div class="price">
+
+                                                            <p>
+                                                                <strong>7,350</strong><span class="is-noto">원</span>
+                                                            </p>
+                                                            <p class="original">
+                                                                9,800<span class="is-noto">원</span>
+                                                            </p>
+
+                                                        </div>
+                                                    </a>
+                                                    <div class="btn-cart">
+                                                        <a href=" "
+                                                        onclick="">
+                                                            class="ico-cart2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- //할인 메뉴 -->
+
+
+                    <!-- 새로나옸어요 -->
+                    <article class="article md-article bdNone">
+                        <div class="title-wrap">
+                            <a href=" "
+                                onclick=""
+                                class="title-type arrow"> 신상품 </a>
+                        </div>
+                        <div class="inner-box">
+                            <!-- 2020-07-08 레이아웃 변경 -->
+                            <div class="tab-wrap">
+                                <div class="tab-content active">
+                                    <div
+                                        class="prd-slider md-sliderSecond pt0 slick-initialized slick-slider slick-dotted"
+                                        role="toolbar">
+                                        <button type="button" data-role="none"
+                                            class="slick-prev slick-arrow" aria-label="Previous"
+                                            role="button" style="display: block;">Previous</button>
+
+                                        <div aria-live="polite" class="slick-list draggable">
+                                            <div class="slick-track"
+                                                style="opacity: 1; width: 6400px; transform: translate3d(-1280px, 0px, 0px);"
+                                                role="listbox">
+                                                <div class="list slick-slide slick-cloned"
+                                                    data-slick-index="-1" aria-hidden="true"
+                                                    style="width: 1280px;" tabindex="-1">
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/637/210927000027637.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬]참치쌈장 양배추 쌈세트"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[동원참치x더반찬]참치쌈장 양배추 쌈세트</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>4,500</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="list slick-slide slick-current slick-active"
+                                                    data-slick-index="0" aria-hidden="false"
+                                                    style="width: 1280px;" tabindex="-1" role="option"
+                                                    aria-describedby="slick-slide60">
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/635/210927000027635.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬]참치 두부 고추장찌개"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[동원참치x더반찬]참치 두부 고추장찌개</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>6,300</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/629/210924000027629.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬] 묵은지 참치 말이 키트"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[동원참치x더반찬] 묵은지 참치 말이 키트</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>5,900</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/637/210927000027637.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬]참치쌈장 양배추 쌈세트"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[동원참치x더반찬]참치쌈장 양배추 쌈세트</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>4,500</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/478/210802000027478.jpg"
+                                                                width="300" height="300" alt="[바르게 만든] 키즈 한우무국(5set)"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+                                                                <span class="tag sale v3"><strong>12 </strong>%</span>
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="0">
+                                                                <p class="subject">[바르게 만든] 키즈 한우무국(5set)</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>19,900</strong><span class="is-noto">원</span>
+                                                                    </p>
+                                                                    <p class="original">
+                                                                        22,500<span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="0"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="list slick-slide" data-slick-index="1"
+                                                    aria-hidden="true" style="width: 1280px;" tabindex="-1"
+                                                    role="option" aria-describedby="slick-slide61">
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/480/210802000027480.jpg"
+                                                                width="300" height="300" alt="[바르게 만든] 키즈 한우미역국(5set)"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+                                                                <span class="tag sale v3"><strong>12 </strong>%</span>
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[바르게 만든] 키즈 한우미역국(5set)</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>19,900</strong><span class="is-noto">원</span>
+                                                                    </p>
+                                                                    <p class="original">
+                                                                        22,500<span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/449/210730000027449.jpg"
+                                                                width="300" height="300" alt="치킨마요덮밥재료(200g)"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">치킨마요덮밥재료(200g)</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>4,200</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/446/210729000027446.jpg"
+                                                                width="300" height="300" alt="돼지고기고추장찌개(600g)"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">돼지고기고추장찌개(600g)</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>7,900</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/635/210927000027635.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬]참치 두부 고추장찌개"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[동원참치x더반찬]참치 두부 고추장찌개</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>6,300</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="list slick-slide" data-slick-index="2"
+                                                    aria-hidden="true" style="width: 1280px;" tabindex="-1"
+                                                    role="option" aria-describedby="slick-slide62">
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/637/210927000027637.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬]참치쌈장 양배추 쌈세트"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[동원참치x더반찬]참치쌈장 양배추 쌈세트</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>4,500</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="list slick-slide slick-cloned"
+                                                    data-slick-index="3" aria-hidden="true"
+                                                    style="width: 1280px;" tabindex="-1">
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/635/210927000027635.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬]참치 두부 고추장찌개"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[동원참치x더반찬]참치 두부 고추장찌개</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>6,300</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/629/210924000027629.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬] 묵은지 참치 말이 키트"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[동원참치x더반찬] 묵은지 참치 말이 키트</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>5,900</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/637/210927000027637.jpg"
+                                                                width="300" height="300" alt="[동원참치x더반찬]참치쌈장 양배추 쌈세트"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[동원참치x더반찬]참치쌈장 양배추 쌈세트</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>4,500</strong><span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1"> <img
+                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/326/478/210802000027478.jpg"
+                                                                width="300" height="300" alt="[바르게 만든] 키즈 한우무국(5set)"
+                                                                onerror="this.src='/common/images/common/noimg_326.jpg'">
+
+                                                                <span class="tag sale v3"><strong>12 </strong>%</span>
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="info">
+                                                            <a href=" "
+                                                            onclick=""
+                                                                tabindex="-1">
+                                                                <p class="subject">[바르게 만든] 키즈 한우무국(5set)</p>
+                                                                <div class="price">
+
+                                                                    <p>
+                                                                        <strong>19,900</strong><span class="is-noto">원</span>
+                                                                    </p>
+                                                                    <p class="original">
+                                                                        22,500<span class="is-noto">원</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </a>
+                                                            <div class="btn-cart">
+                                                                <a href=" "
+                                                                onclick=""
+                                                                    tabindex="-1"><i class="ico-cart2"></i>장바구니 담기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <button type="button" data-role="none"
+                                            class="slick-next slick-arrow" aria-label="Next"
+                                            role="button" style="display: block;">Next</button>
+                                        <ul class="slick-dots" style="display: block;" role="tablist">
+                                            <li class="slick-active" aria-hidden="false"
+                                                role="presentation" aria-selected="true"
+                                                aria-controls="navigation60" id="slick-slide60"
+                                                style="width: 33.3333%;"><a href="#"
+                                                onclick="return false;"><span>undefined</span></a></li>
+                                            <li aria-hidden="true" role="presentation"
+                                                aria-selected="false" aria-controls="navigation61"
+                                                id="slick-slide61" style="width: 33.3333%;"><a href="#"
+                                                onclick="return false;"><span>undefined</span></a></li>
+                                            <li aria-hidden="true" role="presentation"
+                                                aria-selected="false" aria-controls="navigation62"
+                                                id="slick-slide62" style="width: 33.3333%;"><a href="#"
+                                                onclick="return false;"><span>undefined</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- // 2020-07-08 레이아웃 변경 -->
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+
+    
+                </div>
+                <!-- //영역 레벨 끝 -->
+                <!-- 영역 레벨 시작  -->
+                <div id="D1706000847" class="area_lv1"></div>
+                <!-- //영역 레벨 끝 -->
+                <!-- 영역 레벨 시작  -->
+                <div id="D1706000852" class="area_lv1">
+
+                    <!-- 카테고리별 베스트 -->
+
+                    <jsp:include page="inc/bottom.jsp" />
+
+
+                    <!-- //APP LAYER -->
+
+</div></div></section></div>
+
 
 </body>
 </html>

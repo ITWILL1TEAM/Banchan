@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.MemberLoginProAction;
+import action.MemberLogoutAction;
 import action.SellerJoinProAction;
 import action.customerJoinProAction;
 import vo.ActionForward;
@@ -18,6 +19,7 @@ import vo.ActionForward;
 @WebServlet("*.me")
 public class MemberController extends HttpServlet {
 
+	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("MemberController");
 		// POST 방식 요청에 대한 한글 처리(UTF-8)
@@ -68,11 +70,22 @@ public class MemberController extends HttpServlet {
 			action = new MemberLoginProAction();
 			try {
 				forward = action.execute(request, response);
+				forward = null;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberLogout.me")) {
+			action = new MemberLogoutAction();
+			try {
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+
+		
 		
 //	}
 		

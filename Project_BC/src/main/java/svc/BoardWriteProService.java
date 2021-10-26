@@ -11,11 +11,9 @@ import dao.BoardDAO;
 import vo.BoardBean;
 
 public class BoardWriteProService {
-    
- 
-    
 
     public boolean registArticle(BoardBean board) {
+    	System.out.println("registArticle - WriteProService");
         // 1. 글쓰기 작업 요청 처리 결과를 저장할 boolean 타입 변수 선언
         boolean isWriteSuccess = false;
         
@@ -28,6 +26,7 @@ public class BoardWriteProService {
         
         // 4. BoardDAO 객체에서 DB 작업을 수행하기 위해 Connection 객체를 전달하기(공통)
         dao.setConnection(con);
+        System.out.println(board.getProduct_name().toString());
         
 
         int insertCount = dao.insertArticle(board);

@@ -11,19 +11,35 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
+	var roadAddress;
+	var zonecode
 function openWindow() {
-
 	new daum.Postcode({
 	    oncomplete: function(data) {
-        var roadAddress = data.roadAddress; // 도로명 주소
+        roadAddress = data.roadAddress; // 도로명 주소
         var jibunAddress = data.jibunAddress; // 지번 주소
-        var zonecode = data.zonecode; // 우편번호
-	            
-		document.fr.address.value = zonecode + ", " + roadAddress;
+        zonecode = data.zonecode; // 우편번호
+        var element = document.getElementById('addr_area');
+		element.innerHTML = "<h1>"+zonecode + ", " + roadAddress+"</h1>";
 	    }
 	}).open();
 	
+	if(roadAddress!=null){
+		
+		var element = document.getElementById('base_addr_info')
+		element.innerHTML = "";
+		element.style = "display: none;";
+	}
+	
 }	
+
+function getAddress() {
+	var dtl_addr = document.getElementById("dtl_addr").value;
+	alert(dtl_addr);
+	location.href = "AddAddress.my?roadAddress="+ roadAddress+"&zonecode="+ zonecode+"&dtl_addr="+ dtl_addr;
+	window.opener.location.reload();
+	window.close();
+}
 </script>
 </head>
 <body>
@@ -41,7 +57,7 @@ function openWindow() {
 						</span>
 						<!-- 검색결과 -->
 						<span class="txt" id="addr_area"></span>
-						<input type="text" name="dtl_addr" id="dtl_addr" class="insert_name" title="상세주소 입력" maxlength="133" data-role="input" data-check="text" data-message="상세 주소를 입력해 주세요" data-input="input" data-input-name="dtl_addr">
+						<input type="text" name="dtl_addr" id="dtl_addr" class="insert_name" title="상세주소 입력" maxlength="50" data-role="input" data-check="text" data-message="상세 주소를 입력해 주세요" data-input="input" data-input-name="dtl_addr">
 					</div>
 					<span class="caution" data-input="display" data-input-name="dtl_addr" style="display: none;">상세 주소를 입력해 주세요</span>
 				</div>
@@ -50,7 +66,7 @@ function openWindow() {
 				<input type="checkbox" id="set_default">
 				<label for="set_default">기본배송지로 설정</label>
 			</div>
-			<button class="save" id="save_dlvp_button"><em>저장</em></button>
+			<button class="save" id="save_dlvp_button" onclick="getAddress()"><em>저장</em></button>
 		</div>
 	</div>
 </body>

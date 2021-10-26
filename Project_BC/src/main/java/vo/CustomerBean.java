@@ -12,7 +12,7 @@ package vo;
    );
  */
 public class CustomerBean extends MemberBean {
-	private String costomer_id;
+	private String customer_id;
 	private String phone;
 	private String eamil;
 	private String recommend_id;
@@ -26,21 +26,21 @@ public class CustomerBean extends MemberBean {
 	
 	
 	
-	public CustomerBean(String costomer_id, String phone, String eamil, String recommend_id, int personal_data) {
+	public CustomerBean(String customer_id, String phone, String eamil, String recommend_id, int personal_data) {
 		super();
-		this.costomer_id = costomer_id;
+		this.customer_id = customer_id;
 		this.phone = phone;
 		this.eamil = eamil;
 		this.recommend_id = recommend_id;
 		this.personal_data = personal_data;
 	}
 
-	public String getCostomer_id() {
-		return costomer_id;
+	public String getCustomer_id() {
+		return customer_id;
 	}
 
-	public void setCostomer_id(String costomer_id) {
-		this.costomer_id = costomer_id;
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
 
 	public String getPhone() {

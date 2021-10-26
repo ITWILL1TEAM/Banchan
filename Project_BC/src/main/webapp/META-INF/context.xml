@@ -23,12 +23,13 @@ password 속성 : DB 접속 패스워드
 Project_BC
  -->
  
+ 
      <Resource 
       name="jdbc/MySQL"
       auth="Container"
       type="javax.sql.DataSource"
       driverClassName="com.mysql.jdbc.Driver"
-      url="jdbc:mysql://localhost:8080/BC_DB"
+      url="jdbc:mysql://localhost:3306/bc_db"
       username="root"
       password="1234"
    />

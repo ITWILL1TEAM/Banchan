@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/script.js"></script> 
+<script src="js/idScript.js"></script> 
+<script src="js/submit.js"></script> 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
@@ -17,6 +18,7 @@
 <body>
 <div class="content" style="padding-top: 269px;">
 		<!-- WRAP -->
+		
 		<div class="wrap mem">
 			<!-- LOCATION SELECT -->
 			<dl class="location_slt">
@@ -25,7 +27,7 @@
 			</dl>
 			
 	<form action="SellerJoinPro.me" name="fr" id="joinForm" method="post" autocomplete="off" onsubmit="return checkSubmit()">			
-		<input type="hidden" name="grade" value="3">
+		<input type="hidden" name="grade" value="2">
 			<!--// LOCATION SELECT -->
 			<div class="join_box" id="join_box">
 				<h2><em>더반찬&amp;</em> 사업자 회원가입</h2>
@@ -62,7 +64,7 @@
 					<span class="caution" id="checkPasswdResult" style="display: none;"><!-- - --></span>
 					
 					<label for="join_name" class="ir">이름</label>
-					<input type="text" id="join_name" name="member_name" class="login_input" maxlength="20" placeholder="이름" onkeyup="checkName(this.value)"
+					<input type="text" id="join_name" name="member_name" class="login_input" maxlength="20" placeholder="이름" required="required" onkeyup="checkName(this.value)"
 					onclick="checkPasswdValue()">
 
 					<!-- 이름/성별 오류시 노출 -->
@@ -120,7 +122,7 @@
 					<span class="caution ir" id="auth_msg">인증번호  입력시간이 초과되었습니다</span>
 					
 					<label for="email"></label>
-					<input type="text" id="email" name="member_email" maxlength="50" placeholder="이메일">
+					<input type="text" id="email" name="member_email" maxlength="50" placeholder="이메일" required="required">
 					
 					<div class="info_txt">※ 주문관련 정보에 대한 이메일과 <em class="thm">SMS</em>는 자동으로 전송됩니다.</div>
 					<span class="caution ir" id="caution5"></span>

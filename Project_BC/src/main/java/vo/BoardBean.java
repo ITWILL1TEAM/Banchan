@@ -5,24 +5,18 @@ import java.sql.Date;
 public class BoardBean {
 
 
-    private int product_num; //어디에 들어있는 이미지 인지 
-    private String product_name;
-    private String Sname;
-    private String product_category;
-    private int product_price;
-    private int product_weight;
-    private int product_discount;
-    private int product_count;
-    private Date product_date;
-    private int product_stock;
-    private String product_expiration_date;
-    private String product_handling;
-    private String product_material;
-    
-    
-    
-    
-    
+    private int product_num; // 제품 번호
+    private String product_name; //상품이름
+    private String Sname; // 회사이름
+    private String product_category;// 상품 카테고리
+    private int product_price; // 상품 가격
+    private int product_weight; // 상품 무게
+    private int product_discount; // 할인율
+    private Date product_date; // 게시글 등록 일
+    private int product_stock; // 제품 수량
+    private String product_expiration_date;// 제품 유통기한
+    private String product_handling; // 제품 보관방법
+    private String product_material;//  제품 원재료명 및 함량.
     
     public int getProduct_num() {
         return product_num;
@@ -66,12 +60,7 @@ public class BoardBean {
     public void setProduct_discount(int product_discount) {
         this.product_discount = product_discount;
     }
-    public int getProduct_count() {
-        return product_count;
-    }
-    public void setProduct_count(int product_count) {
-        this.product_count = product_count;
-    }
+
     public Date getProduct_date() {
         return product_date;
     }

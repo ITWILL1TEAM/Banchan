@@ -4,7 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <%
 
-// 	ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>)request.getAttribute("articleList");
+// 	ArrayList<NoticeBean> articleist = (ArrayList<NoticeBean>)request.getAttribute("articleList");
 
 %>
 <!DOCTYPE html>

@@ -19,7 +19,7 @@ public class NoticeBoardDAO {
             instance = new NoticeBoardDAO();
         }
         
-        // 인스턴스 리턴
+        // 인스턴스 턴
         return instance;
     }
     // ========================================================================

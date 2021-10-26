@@ -37,7 +37,7 @@ public class customerJoinProAction implements Action {
 		cBean.setName(name);
 		cBean.setGrade(grade);
 	
-		cBean.setCostomer_id(customer_id);
+		cBean.setCustomer_id(customer_id);
 		cBean.setPhone(phone);
 		cBean.setEamil(email);
 		cBean.setRecommend_id(recommendId);
