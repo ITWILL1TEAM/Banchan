@@ -22,6 +22,7 @@ function changeDomain(domain){
 	document.joinForm.email2.value = damain.value;
 }
 
+
 function checkRetypePasswd(retypePassword) { 
 	var password = document.fr.join_pw.value;
 
