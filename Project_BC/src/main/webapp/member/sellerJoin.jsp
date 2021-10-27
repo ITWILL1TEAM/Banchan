@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/idScript.js"></script> 
-<script src="js/submit.js"></script> 
+<script src="js/sellerJoin.js"></script> 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
@@ -18,9 +17,10 @@
 <body>
 <div class="content" style="padding-top: 269px;">
 		<!-- WRAP -->
-		
 		<div class="wrap mem">
 			<!-- LOCATION SELECT -->
+			
+			
 			<dl class="location_slt">
 				<dt><a href="#">Home</a></dt>
 				<dd><a href="#">사업자회원가입</a></dd>
