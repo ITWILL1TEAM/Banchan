@@ -87,7 +87,7 @@ function category(e){
                           상품등록
                             </div>
                             <div class="card-body">
-                            <form name="product" action="ProductWritePro.ad" method="GET">
+                            <form name="product" action="ProductWritePro.ad" method="GET" enctype="multipart/form-data">
                                 <table class="table table-bordered talbe-light" >
                                    <tbody>
                                          
@@ -112,8 +112,8 @@ function category(e){
 									    	<td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>
 									    
 										    <td>				    
-										   		<select>
-										   			<option value="1">주 이미지</option>
+										   		<select name="imgValue">
+										   			<option  value="1">주 이미지</option>
 										   			<option value="2">상세 이미지</option>
 										   		</select>
 										   	</td>

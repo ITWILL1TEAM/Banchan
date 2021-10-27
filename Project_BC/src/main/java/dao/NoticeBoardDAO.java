@@ -45,8 +45,8 @@ public class NoticeBoardDAO {
             // => 등록일(board_date)은 now() 함수 활용
             String sql = "INSERT INTO notice VALUES (null,?,?,now())";
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, board.getBoard_subject());
-            pstmt.setString(2, board.getBoard_content());
+            pstmt.setString(1, board.getNotice_subject());
+            pstmt.setString(2, board.getNotice_content());
          
             // INSERT 구문 실행 및 결과 리턴받기 => insertCount 에 저장
             insertCount = pstmt.executeUpdate();

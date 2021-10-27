@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import vo.BoardBean;
+import vo.*;
 
 import static db.JdbcUtil.*;
 
@@ -27,6 +27,7 @@ public class BoardDAO {
     // ========================================================================
     // DB 작업을 수행하기 위해 사용하는 Connection 타입 멤버변수 선언
     Connection con;
+
 
     // Connection 객체를 외부로부터 전달받아 저장하기 위한 Setter 메서드 정의
     public void setConnection(Connection con) {
@@ -79,7 +80,7 @@ public class BoardDAO {
 //            pstmt.setDate(num, null);
             
             // INSERT 구문 실행 및 결과 리턴받기 => insertCount 에 저장IN
-            insertCount = pstmt.executeUpdate();
+            insertCount = pstmt.executeUpdate();        
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -226,5 +227,45 @@ public class BoardDAO {
 		}
 		
 		return article;
+	}
+
+	public boolean insertImgArticle(ProductImg productimg) {
+		
+		boolean isImgSuccess=false;
+
+
+		
+		
+		
+		return isImgSuccess;
+	}
+
+	public int getProductNum(BoardBean boardBean) {
+		int productNum=0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			
+			// 3단계. SQL 구문 작성 및 전달
+			// -> 글번호(num)에 해당하는 게시물 상세 정보 조회 후 BoardBean 객체에 저장
+			 String sql = "SELECT MAX(product_num) FROM product";
+	            pstmt = con.prepareStatement(sql);
+	            rs = pstmt.executeQuery();		
+			
+			if(rs.next()) {
+				productNum=rs.getInt("product_num");				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 반환
+			close(rs);
+			close(pstmt);
+		}
+		return productNum;
 	}
 }

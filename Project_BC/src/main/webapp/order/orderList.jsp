@@ -1,0 +1,140 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>주문완료 | theBanchan</title>
+	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
+	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211026000" type="text/css">	
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211026000" type="text/css">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211026000" type="text/css">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211026000" type="text/css">
+	
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
+
+<!-- CONTENT -->
+<div id="content" class="content">
+
+	<!-- WRAP -->
+	<div class="wrap odr"><!-- wrap addClass -->
+
+		<h2 class="odr_cpl_tit">주문완료</h2>
+		<div class="odr_top">
+			<ol>
+				<li><em>01</em> 장바구니</li>
+				<li><em>02</em> 주문서</li>
+				<li class="on"><em>03</em> 결제완료</li>
+			</ol>
+		</div>
+
+		
+		<!-- odr_cpl_info -->
+		<div class="odr_cplPrc">
+			<h3>결제정보</h3><div class="total">
+				<table>
+					<caption>결제정보 금액 | 주문 합계 금액 , 쿠폰/할인 금액, 배송비, 최종 결제금액을 제공하는 표</caption>
+					<colgroup>
+						<col style="width:25%;">
+						<col style="width:25%;">
+						<col style="width:25%;">
+						<col style="width:25%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>
+								<strong>주문 합계 금액</strong>
+								<span><b>31,440</b>원</span>
+								<span class="mis"><em class="ir">-(빼기)</em></span>
+							</th>
+							<th>
+								<strong>쿠폰/할인 금액</strong>
+								<span><b>0</b>원</span>
+								<span class="pls"><em class="ir">+(더하기)</em></span>
+							</th>
+							<th>
+								<strong>배송비</strong>
+								<span>무료</span>
+								<span class="eql"><em class="ir">=(합계)</em></span>
+							</th>
+							<th>
+								<strong>최종 결제금액</strong>
+								<span class="prc" id="real_prc"><b>31,440</b>원</span>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td><span class="pls"><em class="ir">+(더하기)</em></span></td>
+							<td>
+								<em>30,000원 이상 구매 시 무료</em>
+							</td>
+							<td>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- 무통장 -->
+			<div class="msd">
+				<table>
+					<caption>무통장 결제수단 , 입금하실 금액, 계좌, 환불수단 정보를 제공하는 표</caption>
+					<colgroup>
+						<col style="width:170px;" />
+						<col />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>결제수단</th>
+							<td>무통장입금</td>
+						</tr>
+						<tr>
+							<th>입금하실 금액</th>
+							<td>31,440원</td>
+						</tr>
+						<tr>
+							<th>입금계좌/마감일</th>
+							<td>농협은행 79018613743185 (예금주 : 동원디어푸드 주식회사)
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--// 무통장 -->		
+		
+		<!--세금 계산서 발행 여부 추가 -->
+		
+
+			<div class="btn">
+				<span>
+					<a href="https://www.thebanchan.co.kr/mypage/initOrderDetailList.action?ord_no=202110265263427"  >주문/배송 내역보기</a>
+					<a href="https://www.thebanchan.co.kr">계속 쇼핑하기</a>
+				</span>
+			</div>
+
+		</div>
+		<!--// odr_cpl_info -->
+
+		<!-- odr_cpl_banner -->
+		<div class="odr_cplBn">
+		</div>
+		<!--// odr_cpl_banner -->
+
+	</div> 
+	<!--// WRAP -->
+
+</div>
+<!-- //CONTENT -->
+
+
+
+</body>
+</html>
+

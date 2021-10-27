@@ -91,7 +91,7 @@
 </script>
 </head>
 <body>
-<%-- 	<%@include file="../inc/top.jsp" %> --%>
+	<%@include file="../inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
