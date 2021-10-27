@@ -5,11 +5,35 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
 ArrayList<CustomerAddress> memberAddress = (ArrayList<CustomerAddress>)request.getAttribute("memberAddress");
 ArrayList<CustomerBean> customerInfo = (ArrayList<CustomerBean>)request.getAttribute("customerInfo");
 ArrayList<MemberBean> memberInfo = (ArrayList<MemberBean>)request.getAttribute("memberInfo");
+
+
+int total_price = 0;
+
+for(int i=0; i<cartList.size(); i++){
+	total_price += (cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty());
+};
+
+int total_discount=0;
+for(int i=0; i<cartList.size(); i++){
+	total_discount += (cartList.get(i).getProduct_discount()*cartList.get(i).getProduct_qty());
+};
+
+
+
+int shipping_fee=2500;
+if(total_price -total_discount >=30000){
+	shipping_fee=0;
+}
+
+int payment_price = total_price -total_discount +shipping_fee;
+
+
 %>
 
 <!DOCTYPE html>
@@ -79,41 +103,66 @@ function execDaumPostcode() {
 }
 //주소 찾기 위한 다음 우편번호검색 API 스크립트 끝
 
-// 주소록 팝업을 위한 스크립트
-function openAddrList(){
-	
-window.open("AddrBook.ad", "startpop", "top=0, left=0, width=820, height=500, scrollbars=no, resizable=no ,status=no ,toolbar=no");
-// 	window.open("AddrBook.ad");
 
+function Addr(test) {
+
+      var addrType = document.getElementById(test.getAttribute('id')).getAttribute('id');
+//       alert(addrType);
+      
+      if(addrType=="defaultAddr"){
+         
+    	  document.getElementById("buy_name").value = '<%=memberInfo.get(0).getName() %>';
+    	  document.getElementById("postcode").value = '<%=memberAddress.get(0).getZonecode() %>';
+    	  document.getElementById("address").value = '<%=memberAddress.get(0).getRoadAddress() %>';
+    	  document.getElementById("detailAddress").value = '<%=memberAddress.get(0).getDtl_addr() %>';
+    	  document.getElementById("buy_phone").value = '<%=customerInfo.get(0).getPhone()%>';
+    	  document.getElementById("order_memo").value = '';
+         
+      }else {
+    	  document.getElementById("buy_name").value = '';
+    	  document.getElementById("postcode").value = '';
+    	  document.getElementById("address").value = '';
+    	  document.getElementById("detailAddress").value = '';
+    	  document.getElementById("buy_phone").value = '';
+    	  document.getElementById("order_memo").value = '';
+      }
+         
 }
-// 주소록 팝업 스크립트 끝
-
-$(document).ready(function(){
-	 
-    // 라디오버튼 클릭시 이벤트 발생
-    $("input:radio[name=place]").click(function(){
- 
-        if($("input[name=place]:checked").val() == "1"){
-            $("input:text[name=buy_name]").attr("disabled",false);
-            // radio 버튼의 value 값이 1이라면 활성화
- 
-        }else if($("input[name=place]:checked").val() == "0"){
-              $("input:text[name=buy_name]").attr("disabled",true);
-            // radio 버튼의 value 값이 0이라면 비활성화
-        }
-    });
-});
 
 
+function payMethod(method) {
+
+    var payment = document.getElementById(method.getAttribute('id')).getAttribute('id');
+//     alert(payment);
+    
+    if(payment=="btnCard"){
+    	document.getElementById("pay_bx_1").style.display = 'block';
+    	document.getElementById("pay_bx_2").style.display = 'none';
+       
+    }else {
+    	document.getElementById("pay_bx_2").style.display = 'block';
+    	document.getElementById("pay_bx_1").style.display = 'none';
+    }
+       
+}
 </script>
-
-
 
 </head>
 <body>
 <!-- ACCESSIBILITY -->
-<form action="" method="post"  >
+<form action="order/paymentTest.jsp" method="get" >
 
+
+	<input type="hidden" id="payment_price" name="payment_price" value="<%=total_price%>">
+	<input type="hidden" id="payment_price" name="payment_price" value="<%=total_discount%>">
+	<input type="hidden" id="payment_price" name="payment_price" value="<%=shipping_fee%>">
+	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
+	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
+	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
+	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
+	
+	
+	
 <div id="accessibility" class="accessibility">
 	<dl>
 		<dt class="ir"><strong>바로가기 메뉴</strong></dt>
@@ -182,7 +231,11 @@ $(document).ready(function(){
 				<tbody>
 				<%
 	for(int i = 0 ; i < cartList.size() ; i++){
+		
 		%>
+		
+		<input type="hidden" name="num" id="num" value="<%=cartList.get(i).getProduct_num()%>">
+		<input type="hidden" name="num" id="num" value="<%=cartList.get(i).getCutomer_id()%>">  
 					<tr>
 					
 						<td>
@@ -200,12 +253,12 @@ $(document).ready(function(){
 						
 						<td><span class="prc"><b
 								name="goods_apply_dc_price_display"
-								data-cart-seq="0"><%=cartList.get(i).getProduct_discount()%></b>원</span></td>
-						<td><span class="ori"><b><%=cartList.get(i).getProduct_price()%></b>원</span>
+								data-cart-seq="0"><fmt:formatNumber value="<%=cartList.get(i).getProduct_discount()%>" pattern="#,###"/></b>원</span></td>
+						<td><span class="ori"><b><fmt:formatNumber value="<%=cartList.get(i).getProduct_price()%>" pattern="#,###"/></b>원</span>
 						</td>
 						<td><span class="nm"><%=cartList.get(i).getProduct_qty()%></span></td>
 						<td colspan="2"><span class="ori"><b name="goods_pay_amt_display"
-								data-cart-seq="0"><%=cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty()%></b>원</span></td>
+								data-cart-seq="0"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty()%>" pattern="#,###"/></b>원</span></td>
 					</tr>
 					<%} %>
 				</tbody>
@@ -260,11 +313,9 @@ $(document).ready(function(){
 					<span name="info_idx_area"></span>. 배송지정보
 				</h3>
 				<span class="dlv_tx">
-				<input type="radio" value="default"
-												form="order_form" name="place" id="defaultAddr" value="0" onclick="Addr(test)"> 기본
-												배송지 &nbsp;&nbsp;<input type="radio" name="place"
-												form="order_form" id="newAddr" value="1" onclick="Addr(test)"> 신규
-												배송지 &nbsp;
+				<input type="radio" value="default" form="order_form" name="place" id="defaultAddr" onclick="Addr(this)" checked="checked"> 기본배송지 
+				&nbsp;&nbsp;
+				<input type="radio" id="newAddr" value="" name="place" form="order_form" onclick="Addr(this)"> 신규배송지 &nbsp;
 				</span>
 				<table>
 					<caption>배송지정보 | 받으시는 분, 주소, 휴대전화, 배송정보 및 특이사항 정보를 제공하는 표</caption>
@@ -276,21 +327,16 @@ $(document).ready(function(){
 						
 						<tr>
 							<th>받으시는 분<em class="pt">*</em></th>
-							<td><div class="inf"><input type="text" id="buy_name" name="buy_name" value=""></div></td>
+							<td><div class="inf"><input type="text" id="buy_name" name="buy_name" value =<%=memberInfo.get(0).getName() %> required="required"></div></td>
 						</tr>
 						<tr>
 							<th>주소<em class="pt" >*</em></th>
 							<td><div class="inf">
-									<input type="text" name="postcode" id="postcode"
-																placeholder="우편번호" class="MS_input_txt w80" /> <input
-																type="button" onclick="execDaumPostcode()" value="주소 찾기"
-																class="btn-white"> <br> <input type="text"
-																name="address" id="address" placeholder="주소"
-																class="MS_input_txt w240" /> <input type="text"
-																name="detailAddress" id="detailAddress"
-																placeholder="상세주소" class="MS_input_txt w240" />  <input
-																type="text" name="extraAddress" id="extraAddress"
-																placeholder="참고항목" style="display: none;" />
+									<input type="text" name="postcode" id="postcode" value="<%=memberAddress.get(0).getZonecode() %>" placeholder="우편번호" class="MS_input_txt w80" required="required"/>
+									<input type="button" onclick="execDaumPostcode()" value="주소 찾기" class="btn-white"> <br> 
+									<input type="text" name="address" id="address" value="<%=memberAddress.get(0).getRoadAddress() %>" placeholder="주소" class="MS_input_txt w240" required="required" /> 
+									<input type="text" name="detailAddress" id="detailAddress" value="<%=memberAddress.get(0).getDtl_addr() %>" placeholder="상세주소" class="MS_input_txt w240" required="required"/>  
+									<input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" style="display: none;" />
 									</div></td>
 						</tr>
 						
@@ -298,7 +344,7 @@ $(document).ready(function(){
 							<th>휴대전화<em class="pt">*</em></th>
 							<td>
 								<div class="inf">
-									<span class="phone"><input type="text" id="buy_phone" name="buy_phone" value=""></span>
+									<span class="phone"><input type="text" id="buy_phone" name="buy_phone" value="<%=customerInfo.get(0).getPhone()%>" required="required"></span>
 									
 								</div>
 							</td>
@@ -307,7 +353,7 @@ $(document).ready(function(){
 							<th>배송 메시지(50자 이내)</th>
 							<td>
 								<div class="inf">
-									<textarea id="ord_memo_cont" cols="30" rows="5" maxlength="50"
+									<textarea id="order_memo" name="order_memo" cols="30" rows="5" maxlength="50"
 										></textarea>
 								</div>
 							</td>
@@ -334,22 +380,19 @@ $(document).ready(function(){
 							<th>
 								<ul class="pay_rdo">	
 									
-									<li><span class="dwCk"><input type="radio"
-											name="pay_rdo" id="pay_rdo_3"
-											data-pay-seq="3" data-role="ord_pay"
-											data-pay-mean-cd="11"
-											data-pay-info-name="card" required="required"/><label
-											for="pay_rdo_3">신용카드</label></span></li>
+									<li><span class="dwCk">
+									<input type="radio" name="pay_rdo" id="btnCard" data-pay-seq="3" 
+									data-role="ord_pay" data-pay-mean-cd="11" data-pay-info-name="card" value="card" onclick="payMethod(this)" required="required"/>
+									<label for="pay_rdo_3">신용카드</label>
+									</span></li>
 									
-									<li><span class="dwCk"><input type="radio"
-											name="pay_rdo" id="pay_rdo_5"
-											data-pay-seq="5" data-role="ord_pay"
-											data-pay-mean-cd="13"
-											data-pay-info-name="virt" required="required"/><label
-											for="pay_rdo_5">무통장 입금</label></span></li>
+									<li><span class="dwCk">
+									<input type="radio" name="pay_rdo" id="btnBank" data-pay-seq="5" 
+									data-role="ord_pay" data-pay-mean-cd="13" data-pay-info-name="virt" value="bank"  onclick="payMethod(this)" required="required"/>
+									<label for="pay_rdo_5">무통장 입금</label>
+									</span></li>
 									
 								    
-									
                                 </ul>
 							</th>
 							<td class="pay_bx">
@@ -361,13 +404,7 @@ $(document).ready(function(){
 											<li>신용카드 결제 신청 시, '중지', '새로고침'을 누르지 마시고 결과 화면이 나타날 때까지 기다려 주세요.<br />
 												승인까지 다소 시간이 소요될 수 있습니다.
 											</li>
-											<li>결제하기 버튼 클릭 후 결제창이 나타나지 않거나 안전결제 모듈이 설치되지 않을 경우,<br />
-												더반찬 사이트를 모두 닫으시고 아래 설치파일을 다운 받아 ActiveX를 수동설치하시고 결제를 진행하여 주십시오.
-											</li>
-										</ul>
-										<button type="button" class="mdl"
-											onclick="urlOpen('https://www.tosspayments.com/renewal/html/guide_popup/menu_04.htm', 600, 600, 'yes'); return false;">
-											수동설치하기</button>
+										
 									</dd>
 								</dl>
 								<dl id="pay_bx_1" name="pay_info_area" data-pay-info-name="bank"
@@ -391,7 +428,7 @@ $(document).ready(function(){
 											<li>입금 기한 내 입금이 확인되지 않으면 주문이 자동 취소됩니다.</li>
 											<li>현금영수증을 신청하시면 세금계산서를 발급 받을 수 없습니다. 결제 시, 현금영수증 신청 여부를 꼭 확인해주세요.</li>
 										</ul>
-										<!-- button type="button" class="mdl">U+ 결제모듈 수동 설치</button-->
+										
 									</dd>
 								</dl>
 								
@@ -416,27 +453,34 @@ $(document).ready(function(){
 								<b>최종결제정보</b>
 							</dt>
 							<dd class="tp">
-								<strong>주문 합계 금액</strong><span><b id="total_goods_price">0</b>원</span>
+								<strong>주문 합계 금액</strong><span><b id="total_goods_price"><fmt:formatNumber value="<%=total_price %>" pattern="#,###"/></b>원</span>
 							</dd>
 							<dd class="tp">
 								<strong>할인 적용 금액</strong><span><b
-									name="total_dc_price_display">0</b>원</span>
+									name="total_dc_price_display"><fmt:formatNumber value="<%=total_discount %>" pattern="#,###"/></b>원</span>
 								<p name="dc_price_list_display"></p>
 							</dd>
 							<dd class="tp">
-								<strong>배송비</strong><span id="total_deli_price_display"><b>0</b>원</span>
-								
+								<strong>배송비</strong><span id="total_deli_price_display"><b><fmt:formatNumber value="<%=shipping_fee %>" pattern="#,###"/></b>원</span>
+								<p class="dv">
+									<em id="nonPassInfoText">30,000원
+										이상 실 결제 시 무료</em>
+								</p>
 							</dd>
 							
 							
 						</dl>
 						<div class="total_prc">
-							<span class="prc"><strong>최종 결제금액</strong>
+							<span class="prc"><strong>최종 결제금액</strong><span><b><fmt:formatNumber value="<%=payment_price %>" pattern="#,###"/></b>원</span>
 							</span>
 						</div>
 					</div>
+					
+					
+					
+					
 <!-- 					<input type="submit" class="odr_total_ok" id="check_order_button" value="결제하기"> -->
-					<button type="submit" class="odr_total_ok" id="check_order_button">
+					<button type="submit" class="odr_total_ok" id="check_order_button" >
 						결제하기
 					</button>
 				</div>
