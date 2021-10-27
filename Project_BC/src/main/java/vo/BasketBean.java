@@ -10,6 +10,8 @@ public class BasketBean {
 	private int product_qty;
 	private int product_discount;
 	private String product_img;
+	private String Sname;
+	
 	
 	public int getBasket_idx() {
 		return basket_idx;
@@ -59,7 +61,12 @@ public class BasketBean {
 	public void setProduct_img(String product_img) {
 		this.product_img = product_img;
 	}
-	
+	public String getSname() {
+		return Sname;
+	}
+	public void setSname(String sname) {
+		Sname = sname;
+	}
 	
 
 }
