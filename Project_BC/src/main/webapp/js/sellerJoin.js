@@ -223,7 +223,6 @@ function checkPasswdValue() {
 		}
 	}
 }
-
 function checkNameValue() {
 	if(document.fr.member_name.value == ""){
 		if(document.fr.member_phone2.focus){
