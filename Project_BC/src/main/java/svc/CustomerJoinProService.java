@@ -16,7 +16,6 @@ public class CustomerJoinProService {
 		// TODO Auto-generated method stub
 		boolean isJoinSuccess = false;
 		
-		
 		Connection con = getConnection();
 		
 		MemberDAO dao = MemberDAO.getInstance();

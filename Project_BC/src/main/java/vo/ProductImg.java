@@ -10,7 +10,6 @@ public class ProductImg {
     
     
     
-    
     public int getProduct_num() {
         return product_num;
     }
@@ -29,13 +28,13 @@ public class ProductImg {
     public void setProduct_img(String product_img) {
         Product_img = product_img;
     }
-    public int getProduct_img_location() {
-        return product_img_location;
-    }
-    public void setProduct_img_location(int product_img_location) {
-        this.product_img_location = product_img_location;
-    }
-    
+	public int getProduct_img_location() {
+		return product_img_location;
+	}
+	public void setProduct_img_location(int product_img_location) {
+		this.product_img_location = product_img_location;
+	}
+
     
     
     

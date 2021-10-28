@@ -20,8 +20,6 @@ public class SellerJoinProService {
 		MemberDAO dao = MemberDAO.getInstance();
 		int insertCount = 0;
 
-		
-		
 		dao.setConnection(con);
 		insertCount = dao.insertSeller(sBean);
 

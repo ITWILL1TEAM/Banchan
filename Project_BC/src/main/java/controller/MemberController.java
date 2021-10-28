@@ -19,6 +19,7 @@ import vo.ActionForward;
 @WebServlet("*.me")
 public class MemberController extends HttpServlet {
 
+	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("MemberController");
 		// POST 방식 요청에 대한 한글 처리(UTF-8)
@@ -32,7 +33,6 @@ public class MemberController extends HttpServlet {
 		ActionForward forward = null;
 		// 각 Action 클래스의 인스턴스를 공통으로 관리하는 Action 타입 변수 선언
 		Action action = null;
-		
 		
 		if(command.equals("/CustomerJoinForm.me")) {
 			forward = new ActionForward();

@@ -28,6 +28,7 @@ public class BoardDAO {
     // DB 작업을 수행하기 위해 사용하는 Connection 타입 멤버변수 선언
     Connection con;
 
+
     // Connection 객체를 외부로부터 전달받아 저장하기 위한 Setter 메서드 정의
     public void setConnection(Connection con) {
         this.con = con;
@@ -79,7 +80,7 @@ public class BoardDAO {
 //            pstmt.setDate(num, null);
             
             // INSERT 구문 실행 및 결과 리턴받기 => insertCount 에 저장IN
-            insertCount = pstmt.executeUpdate();
+            insertCount = pstmt.executeUpdate();        
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -227,7 +228,6 @@ public class BoardDAO {
 		
 		return article;
 	}
-
 
 	public int insertImgArticle(ProductImg productimg) {
 		

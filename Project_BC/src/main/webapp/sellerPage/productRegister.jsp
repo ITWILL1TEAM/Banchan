@@ -7,25 +7,27 @@
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 var count=0;
+var imgcount=1;
 
 $(document).ready(function () {
 	$('#tagplus').click(function () {		
 		count++;
-		
+		imgcount++;
 		
 		if(count>3){
 			alert('더 추가할수 없습니다.');
 			count=3;
 			return;
 		}
-		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img' size=10></td><td><select><option value='1'>주 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   
+		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img"+imgcount+"' size=10></td><td><select name='imgValue"+imgcount+"'><option value='1'>주 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   
 			   $('tbody').append(plus);
 		
 	});
 });
 $(document).ready(function () {
 	$('#tagminus').click(function () {
-		count--;		
+		count--;
+		imgcount--;
 		if(count<0){
 			alert('더이상 태그를 지울수 없습니다');
 			count=0;
@@ -87,11 +89,7 @@ function category(e){
                           상품등록
                             </div>
                             <div class="card-body">
-<<<<<<< HEAD
                             <form name="product" action="ProductWritePro.ad" method="POST" enctype="multipart/form-data">
-=======
-                            <form name="product" action="ProductWritePro.ad" method="GET">
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
                                 <table class="table table-bordered talbe-light" >
                                  		<tr><td>상품명</td><td colspan="2"><input type="text" name = "product_name" size=10></td></tr>
 										<tr><td>회사명</td><td colspan="2"><input type="text" name = "Sname" size=10></td></tr>
@@ -111,10 +109,10 @@ function category(e){
 										<tr><td>제품원재료명 및 함량</td><td colspan="2"><textarea rows="5" cols="30" name="product_material"></textarea></td></tr>
 <!-- 										<tr><td>제품품목</td><td colspan="2"><input type="text" name = product_category size=10></td></tr> -->
 									    <tr>
-									    	<td>이미지추가</td><td><input type="file" name="product_original_img" size=10></td>									    
+									    	<td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>									    
 										    <td>				    
-										   		<select>
-										   			<option value="1">주 이미지</option>
+										   		<select name="imgValue1">
+										   			<option  value="1">주 이미지</option>
 										   			<option value="2">상세 이미지</option>
 										   		</select>
 										   	</td>
@@ -139,7 +137,7 @@ function category(e){
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/assets/demo/datatables-simple-demo.js"></script> 
         <script src="js/assets/demo/datatables-simple-demo.js"></script>
-        <script src="js/assets/demo/chart-area-demo.js"></script>
+
     </body>
 
 

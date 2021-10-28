@@ -18,11 +18,11 @@ public class SellerJoinProAction implements Action {
 		System.out.println("SellerJoinProAction 작동");
 		ActionForward forward = null;
 
+		
 		String id = request.getParameter("member_id");
 		String password = request.getParameter("member_pass");
 		String name = request.getParameter("member_name"); 
 		int grade = Integer.parseInt(request.getParameter("grade"));
-		
 		
 		
 		String seller_id = request.getParameter("member_id");
@@ -33,8 +33,6 @@ public class SellerJoinProAction implements Action {
 					   request.getParameter("member_phone3");
 		String email = request.getParameter("member_email");
 	
-		
-		
 		System.out.println(sName);
 		System.out.println(name);
 		System.out.println(adress);

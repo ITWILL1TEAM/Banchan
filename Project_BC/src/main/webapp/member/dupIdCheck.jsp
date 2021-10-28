@@ -9,17 +9,25 @@
 <meta charset="UTF-8">
 <title>dupCheckID</title>
 </head>
+<<<<<<< HEAD
+<script src="../js/idScript.js"></script> 
+<link href="../CSS/mem.css" rel="stylesheet" type="text/css">
+<link href="../CSS/common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+<link href="../CSS/sub.css" rel="stylesheet" type="text/css">
+<link href="../CSS/font.css" rel="stylesheet" type="text/css">
+=======
 <script src="../js/dupCheck.js"></script> 
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
 <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
 <link href="CSS/sub.css" rel="stylesheet" type="text/css">
 <link href="CSS/font.css" rel="stylesheet" type="text/css">
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 <link rel="shortcut icon" href="#">
 <body>
 <%
 String id = request.getParameter("id");
-
 
 // 조회할 아이디 값이 있을 경우 (null이 아니고 널스트링이 아닐 경우)에만 중복 확인 수행
 if(id != null && !id.equals("")){

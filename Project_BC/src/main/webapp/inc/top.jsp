@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!-- Bootstrap CSS -->
 <!-- <link -->
 <!--     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" -->
@@ -95,7 +95,7 @@
 <!--                             </div> -->
 <!--                         </div> -->
 <!--                 
-	        <button class="sch_bt" type="button"> -->
+            <button class="sch_bt" type="button"> -->
 <!--                             <em class="ir">검색하기</em> -->
 <!--                         </button> -->
 
@@ -111,28 +111,49 @@
                 <!-- 2020.07.10 MAIN 수정  -->
                 <div class="util-wrap">
                     <ul>
-  		 <%
-		// "sId" 세션값을 가져와서 id 변수에 저장
-		String sId = (String)session.getAttribute("sId");
-		
+         <%
+        // "sId" 세션값을 가져와서 id 변수에 저장
+        String sId = (String)session.getAttribute("sId");
+        
+        
+        
         %> 
+       
+       
         <%
         
         if(sId==null){
-		
-		%>
-		<!-- 세션에 "id" 속성값이 없을 경우 login, join 버튼 표시 -->
- 		<li><a id="head_login_a" href="MemberLoginForm.me" onclick='window.open("MemberLoginForm.me","_blank","height=500,width=500, status=yes,toolbar=no,menubar=no,location=no");return false'>로그인</a></li>
- 	    <li><a id="head_login_b" href="MemberJoinForm.me">회원가입</a></li>
+        
+        %>
+        <!-- 세션에 "id" 속성값이 없을 경우 login, join 버튼 표시 -->
+        <li><a id="head_login_a" href="MemberLoginForm.me" onclick='window.open("MemberLoginForm.me","_blank","height=500,width=500, status=yes,toolbar=no,menubar=no,location=no");return false'>로그인</a></li>
+        <li><a id="head_login_b" href="MemberJoinForm.me">회원가입</a></li>
         <li><a href="">고객센터</a></li>   
-		<%
-		}else{
-		%>
-		<!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->	
-	    <li><a id="head_login_a" href="MemberLogout.me">로그아웃</a></li>
-		<li><a href="">고객센터</a></li>  
-		<%}
-		%>                    </ul>
+        <%
+        }else{
+        int grade = (Integer)session.getAttribute("grade");
+            
+        %>
+        <li><%=sId %> 님 반갑습니다.</li>
+        <!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->   
+        <li><a id="head_login_a" href="MemberLogout.me">로그아웃</a></li>
+        <li><a href="">고객센터</a></li> 
+            <%  if(grade==1){
+                pageContext.forward("/main.ad");
+            %>
+<!--              <li><a href="main.ad"> 관리자페이지로</a></li> -->
+            <%  }else if(grade==2){
+                    pageContext.forward("/Seller.sc");
+            %>
+<%--                   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li> --%>
+            <%  }else if(grade==3){%>
+               <li><a href="Besong.my"> 마이페이지로</a></li>    
+            <%  }else{//grade==4
+                //휴면계정 
+                } %>
+            
+        <%}%>                   
+         </ul>
                 </div>
                 <div id="myWrap" class="my-wrap">
                     <ul>

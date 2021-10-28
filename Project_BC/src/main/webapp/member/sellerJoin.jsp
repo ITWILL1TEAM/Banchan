@@ -17,17 +17,17 @@
 <body>
 <div class="content" style="padding-top: 269px;">
 		<!-- WRAP -->
-		
-		
 		<div class="wrap mem">
 			<!-- LOCATION SELECT -->
+			
+			
 			<dl class="location_slt">
 				<dt><a href="#">Home</a></dt>
 				<dd><a href="#">사업자회원가입</a></dd>
 			</dl>
 			
 	<form action="SellerJoinPro.me" name="fr" id="joinForm" method="post" autocomplete="off" onsubmit="return checkSubmit()">			
-		<input type="hidden" name="grade" value="3">
+		<input type="hidden" name="grade" value="2">
 			<!--// LOCATION SELECT -->
 			<div class="join_box" id="join_box">
 				<h2><em>더반찬&amp;</em> 사업자 회원가입</h2>

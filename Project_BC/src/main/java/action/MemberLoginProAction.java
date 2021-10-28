@@ -18,21 +18,27 @@ public class MemberLoginProAction implements Action {
 		System.out.println("MemberLoginProAction");
 		ActionForward forward = null;
 		String checkedLoginyn = request.getParameter("cookie_login_yn");
-		String cookie_login_id = request.getParameter("cookie_login_id"); /* login.jsp에서 쿠키값이 있으면 쿠키값의 로그인시킬id가 넘어옴 */
+		String cookie_login_id = request.getParameter("cookie_login_id"); /* login.jsp에서 쿠키값이 있으면 쿠키값의 로그인시킬id가 넘어옴 */		
 		String login_id = null;
+		int grade = 0;			
 		boolean isLoginSuccess = false;
-		
 		
 		if(cookie_login_id != "") {
 			isLoginSuccess = true;
 			login_id = cookie_login_id;
+			
 		} else {
 			MemberLoginProService service = new MemberLoginProService();
 			MemberBean member = new MemberBean();
 			member.setId(request.getParameter("login_id"));
-			member.setPassword(request.getParameter("login_pass"));
-			isLoginSuccess = service.loginMember(member);
-			login_id = member.getId();
+			member.setPassword(request.getParameter("login_pass"));	
+			grade = service.loginMember(member);
+			if(grade>0) {
+				isLoginSuccess = true;			
+			}
+			login_id = member.getId();		
+						
+			
 		}
 
 		if(!isLoginSuccess) {
@@ -44,10 +50,14 @@ public class MemberLoginProAction implements Action {
 			out.println("</script>");
 		} else { // 로그인 성공 시 
 			// 세션 객체에 로그인 아이디 정보를 저장(속성명 sId)
+			// 세션 등급(grade) 정보 저장.
+			
 			// 1. request 객체로부터 HttpSession 객체 가져오기
 			HttpSession session = request.getSession();
-			// 2. 세션 객체의 setAttribute() 메서드를 호출하여 세션 정보 저장하기
+			// 2. 세션 객체의 setAttribute() 메서드를 호출하여 세션 정보 저장하기			
 			session.setAttribute("sId", login_id);
+			session.setAttribute("grade", grade);
+		
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();

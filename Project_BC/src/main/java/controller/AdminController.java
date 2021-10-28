@@ -55,6 +55,28 @@ public class AdminController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/adminPage/productRegister.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+
+		}else if(command.equals("/NoticeWrite.ad")) {          
+            forward = new ActionForward();
+            forward.setPath("/adminPage/NoticeWrite.jsp");
+            forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+        }else if(command.equals("/NoticeWritePro.ad")) {
+            action = new NoticeWriteProAction();
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if(command.equals("/NoticeBoardList.ad")) {
+
+            action = new BoardListAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 		}else if (command.equals("/ProductWritePro.ad")) {
 			action = new BoardWriteProAction();
 			try {
@@ -65,14 +87,16 @@ public class AdminController extends HttpServlet {
 			}
 			// 위임받은 Exception 예외처리 필요..!
 		}
+
 		
 		
 		if(forward != null) {
-			if(forward.isRedirect()) { // true = Redirect 방식
+			if(forward.isRedirect()) { // true = Redirect 
 				response.sendRedirect(forward.getPath());
 			} else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
+				
 			}
 		}
 	}

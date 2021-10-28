@@ -30,7 +30,6 @@ public class customerJoinProAction implements Action {
 		String recommendId = request.getParameter("member_recommendID");
 		int personal_data = Integer.parseInt(request.getParameter("member_personalData")); // customerBean
 
-		
 	
 		CustomerBean cBean = new CustomerBean();
 		cBean.setId(id);
