@@ -10,6 +10,7 @@
 </head>
 <body>
 <div class="member_wrap">
+
    <div class="member_gate">
    <strong class="tit"></strong>
    <h1 class="join" align="center">신규 회원가입</h1>

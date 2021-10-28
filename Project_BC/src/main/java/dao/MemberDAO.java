@@ -20,6 +20,7 @@ public class MemberDAO {
 	
 	private MemberDAO() {}
 
+	
 	public static MemberDAO getInstance() {
 
 		return instance;
@@ -50,7 +51,7 @@ public class MemberDAO {
 			pstmt.setString(3, cBean.getName());
 			pstmt.setInt(4, cBean.getGrade());
 
-			 insertCount = pstmt.executeUpdate();
+			insertCount = pstmt.executeUpdate();
 
 			close(pstmt);	
 					
@@ -146,7 +147,8 @@ public class MemberDAO {
 
 	public boolean dupCheckId(String id) {
 		boolean isDuplicate = false;
-	
+		
+		System.out.println(id);
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -159,10 +161,8 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			System.out.println("dwdqwewfgefew");
-			System.out.println(id);
-			if(rs.next()) {
 			
+			if(rs.next()) {
 				// 아이디 붕복 체크 변수값을 true(중복)으로 변경
 				isDuplicate = true;
 			}

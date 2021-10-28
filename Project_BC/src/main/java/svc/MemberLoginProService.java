@@ -13,6 +13,7 @@ public class MemberLoginProService {
 		System.out.println("MemberLoginProService");
 		boolean isLoginSuccess = false;
 		
+		
 		Connection con = getConnection();
 		
 		MemberDAO dao = MemberDAO.getInstance();
