@@ -100,13 +100,10 @@ public class BoardWriteProAction implements Action {
         	if(productNum>0) {  
         		boolean isImgSuccess=false;
         		
-        		ProductImg productimg = new ProductImg();   		
-
-        		 
+        		ProductImg productimg = new ProductImg();   	        		 
         		 
         		Enumeration files = multi.getFileNames();//Enumeration형식으로 업로드되 파일 이름 리턴
-        		
-        		  
+        		        		  
         		int i=1,j=1,z=1;
         		
         		  while(files.hasMoreElements()) {
