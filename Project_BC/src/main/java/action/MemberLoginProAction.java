@@ -21,6 +21,7 @@ public class MemberLoginProAction implements Action {
 		String cookie_login_id = request.getParameter("cookie_login_id"); /* login.jsp에서 쿠키값이 있으면 쿠키값의 로그인시킬id가 넘어옴 */
 		String login_id = null;
 		boolean isLoginSuccess = false;
+		int grade = Integer.parseInt(request.getParameter("grade"));
 		
 		if(cookie_login_id != "") {
 			isLoginSuccess = true;
@@ -48,6 +49,7 @@ public class MemberLoginProAction implements Action {
 			HttpSession session = request.getSession();
 			// 2. 세션 객체의 setAttribute() 메서드를 호출하여 세션 정보 저장하기
 			session.setAttribute("sId", login_id);
+			session.setAttribute("gId", grade);
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
