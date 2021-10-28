@@ -46,7 +46,7 @@ CREATE TABLE `seller` (
   `phone` varchar(45) COLLATE utf8_bin NOT NULL,
   `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `status` int(11) DEFAULT '0',
-  PRIMARY KEY (`Sname`),
+  PRIMARY KEY (`seller_id`),
   KEY `seller_id` (`seller_id`),
   CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `member` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -54,21 +54,21 @@ CREATE TABLE `seller` (
 CREATE TABLE `product` (
   `product_num` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(45) COLLATE utf8_bin NOT NULL,
-  `Sname` varchar(20) COLLATE utf8_bin NOT NULL,
+  `seller_id` varchar(15) COLLATE utf8_bin NOT NULL,
   `product_category` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_price` int(11) NOT NULL,
   `product_weight` int(11) NOT NULL,
   `product_discount` int(11) NOT NULL DEFAULT '0',
   `product_date` date NOT NULL,
-  `product_stock` int(11) NOT NULL,
+  `product_stock` int(11) NOT NULL DEFAULT '0',
   `product_expiration_date` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_handling` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_material` varchar(1000) COLLATE utf8_bin NOT NULL,
   `product_review_score` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_num`),
-  KEY `pd_pnum_fk` (`Sname`),
-  CONSTRAINT `pd_pnum_fk` FOREIGN KEY (`Sname`) REFERENCES `seller` (`Sname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  KEY `pr_se_fk` (`seller_id`),
+  CONSTRAINT `pr_se_fk` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `product_img` (
   `product_num` int(11) DEFAULT NULL,
