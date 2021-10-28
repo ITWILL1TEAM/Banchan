@@ -7,18 +7,18 @@
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 var count=0;
-var imgtag = 1;
+
 $(document).ready(function () {
 	$('#tagplus').click(function () {		
 		count++;
-		imgtag++;
+		
 		
 		if(count>3){
 			alert('더 추가할수 없습니다.');
 			count=3;
 			return;
 		}
-		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img"+imgtag+"' size=10></td><td><select><option value='1'>주 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   
+		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img' size=10></td><td><select><option value='1'>주 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   
 			   $('tbody').append(plus);
 		
 	});
@@ -87,10 +87,8 @@ function category(e){
                           상품등록
                             </div>
                             <div class="card-body">
-                            <form name="product" action="ProductWritePro.ad" method="GET" enctype="multipart/form-data">
+                            <form name="product" action="ProductWritePro.ad" method="POST" enctype="multipart/form-data">
                                 <table class="table table-bordered talbe-light" >
-                                   <tbody>
-                                         
                                  		<tr><td>상품명</td><td colspan="2"><input type="text" name = "product_name" size=10></td></tr>
 										<tr><td>회사명</td><td colspan="2"><input type="text" name = "Sname" size=10></td></tr>
                                         <tr><td>카테고리</td><td colspan="2"><select onchange="category(this) " name = "product_category">                                                                                
@@ -109,7 +107,7 @@ function category(e){
 										<tr><td>제품원재료명 및 함량</td><td colspan="2"><textarea rows="5" cols="30" name="product_material"></textarea></td></tr>
 <!-- 										<tr><td>제품품목</td><td colspan="2"><input type="text" name = product_category size=10></td></tr> -->
 									    <tr>
-									    	<td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>
+									    	<td>이미지추가</td><td><input type="file" name="product_original_img" size=10></td>
 									    
 										    <td>				    
 										   		<select name="imgValue">
@@ -118,8 +116,6 @@ function category(e){
 										   		</select>
 										   	</td>
 										</tr>
-										
-                                    </tbody>
                                 </table>
                                 <button type="button" id="tagplus" >태그추가</button>&nbsp;<button type="button" id="tagminus" >태그삭제</button>
                                 <section id= commandCell>

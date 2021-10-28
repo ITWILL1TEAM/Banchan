@@ -55,7 +55,7 @@ public class BoardWriteProService {
 		
 		productNum = dao.getProductNum(boardBean);
 		
-		
+		close(con);
 		
 		return productNum;
 	}
@@ -79,7 +79,7 @@ public class BoardWriteProService {
 			rollback(con);
 		}
 		
-
+		close(con);
 		
 
 		return isImgSuccess;

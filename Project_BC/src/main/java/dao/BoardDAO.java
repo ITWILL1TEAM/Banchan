@@ -62,11 +62,11 @@ public class BoardDAO {
             
             // 글 등록 작업을 위한 INSERT 작업 수행
             // => 등록일(board_date)은 now() 함수 활용
-            sql = "INSERT INTO product VALUES (null,?,?,?,?,?,?,now(),?,?,?,?)";
+            sql = "INSERT INTO product VALUES (null,?,?,?,?,?,?,now(),?,?,?,?,0)";
             pstmt = con.prepareStatement(sql);
             //첫 문장은 auto_increment 이므로 null값 넣음
             pstmt.setString(1, board.getProduct_name()); //					상품명
-            pstmt.setString(2, board.getSname());//							회사명
+            pstmt.setString(2, board.getSname());//							회사명-FK
             pstmt.setString(3, board.getProduct_category());//				상품 카테고리
             pstmt.setInt(4, board.getProduct_price());  // 					상품가격
             pstmt.setInt(5, board.getProduct_weight());// 					상품무게
@@ -234,9 +234,8 @@ public class BoardDAO {
 		int imgCount=0;
 		
 		 PreparedStatement pstmt = null;
-	     ResultSet rs = null;
-	     try {        
-	           
+	     
+	     try {                 
 	            
 	           
 	            String sql = "INSERT INTO product_img VALUES (?,?,?,?)";
@@ -253,7 +252,7 @@ public class BoardDAO {
 	            System.out.println("insertArticle() 오류 - " + e.getMessage());
 	        } finally {
 
-	            close(rs);
+	           
 	            close(pstmt);
 	        }
 	        
@@ -262,7 +261,7 @@ public class BoardDAO {
 
 	public int getProductNum(BoardBean boardBean) {
 		int productNum=0;
-		
+		System.out.println("BoardDAO- getProductNum");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -276,7 +275,7 @@ public class BoardDAO {
 	            rs = pstmt.executeQuery();		
 			
 			if(rs.next()) {
-				productNum=rs.getInt("product_num");				
+				productNum=rs.getInt("MAX(product_num)");				
 			}
 			
 		} catch (Exception e) {
