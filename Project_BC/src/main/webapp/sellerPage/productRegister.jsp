@@ -107,8 +107,7 @@ function category(e){
 										<tr><td>제품원재료명 및 함량</td><td colspan="2"><textarea rows="5" cols="30" name="product_material"></textarea></td></tr>
 <!-- 										<tr><td>제품품목</td><td colspan="2"><input type="text" name = product_category size=10></td></tr> -->
 									    <tr>
-									    	<td>이미지추가</td><td><input type="file" name="product_original_img" size=10></td>
-									    
+									    	<td>이미지추가</td><td><input type="file" name="product_original_img" size=10></td>									    
 										    <td>				    
 										   		<select name="imgValue">
 										   			<option  value="1">주 이미지</option>

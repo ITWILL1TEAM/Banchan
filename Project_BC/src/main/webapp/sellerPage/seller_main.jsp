@@ -12,9 +12,7 @@
       
 </head>
 <body class="sb-nav-fixed">
- <%
-  String id = request.getParameter("id");
- %>
+ 
   <jsp:include page="../inc/seller_top.jsp"/>
      
                 <!--  메인 Content -->
@@ -22,7 +20,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4" style="background-color: #ddeefc;">
-                        <h1 class=""><%= id %> 판매자님 어서오십시오</h1>
+                        <h1 class="">@@@판매자님 어서오십시오</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">DashBoard</li>&nbsp;&nbsp;&nbsp;
                             <li><a href="AddProduct.sc" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a></li>

@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <%
 String cookie_login_id = "";
-
 Cookie[] cookie = request.getCookies();
 
 if(cookie != null){
@@ -29,6 +27,8 @@ if(cookie != null){
 		}	
 	});
 	
+	
+	
 </script>
 </head>
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211005130" type="text/css">
@@ -41,6 +41,7 @@ if(cookie != null){
 
    <h2 id="tit">로그인</h2>
    <div class="login_set">
+   
    
       <form action="MemberLoginPro.me" name="fr" id="loginLayerForm" method="post">
          <input type="hidden" name="scheme" id="scheme" value="">

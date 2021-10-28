@@ -34,7 +34,7 @@ public class BoardBean {
         return Sname;
     }
     public void setSname(String sname) {
-        this.Sname = sname;
+        Sname = sname;
     }
     public String getProduct_category() {
         return product_category;

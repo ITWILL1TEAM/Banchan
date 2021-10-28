@@ -1,25 +1,12 @@
    
       <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
-    
-    
-        <%
-//             String sId = (String)session.getAttribute("sId");
-//             int grade = (Integer)session.getAttribute("grade");
-        %>
-    
-    
-    
-    
                   <!-- 상단nav -->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="main.ad">집밥선생</a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>  
-            <a href="MemberLogout.me">로그아웃</a>     
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>       
          
             <!-- Navbar-->            
         </nav>
