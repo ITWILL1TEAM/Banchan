@@ -68,7 +68,16 @@ public class BoardWriteProService {
 		BoardDAO dao = BoardDAO.getInstance();		
 		dao.setConnection(con);
 		
-		isImgSuccess = dao.insertImgArticle(productimg);
+		int insertCount = dao.insertImgArticle(productimg);		 
+
+		if (insertCount > 0) { // 작업 성공 시
+//          JdbcUtil.commit(con);
+			commit(con);
+			isImgSuccess = true;
+		} else { // 작업 실패 시
+//          JdbcUtil.rollback(con);
+			rollback(con);
+		}
 		
 
 		

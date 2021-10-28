@@ -108,7 +108,7 @@ public class BoardWriteProAction implements Action {
         		 productimg.setProduct_num(productNum);
         		 productimg.setProduct_original_img(productImgOriginal);
         		 productimg.setProduct_img(productImg);
-        		 productimg.setProduct_img_location(request.getParameter("imgValue"));
+        		 productimg.setProduct_img_location(Integer.parseInt(request.getParameter("imgValue")));
         		 
         		 isImgSuccess = service.registImgArticle(productimg);
         		 

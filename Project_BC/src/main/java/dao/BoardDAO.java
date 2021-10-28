@@ -229,16 +229,36 @@ public class BoardDAO {
 		return article;
 	}
 
-	public boolean insertImgArticle(ProductImg productimg) {
+	public int insertImgArticle(ProductImg productimg) {
 		
-		boolean isImgSuccess=false;
+		int imgCount=0;
+		
+		 PreparedStatement pstmt = null;
+	     ResultSet rs = null;
+	     try {        
+	           
+	            
+	           
+	            String sql = "INSERT INTO product_img VALUES (?,?,?,?)";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setInt(1,productimg.getProduct_num());
+	            pstmt.setString(2,productimg.getProduct_original_img());
+	            pstmt.setString(3, productimg.getProduct_img());
+	            pstmt.setInt(4, productimg.getProduct_img_location());
 
+	            imgCount = pstmt.executeUpdate();        
+	            
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            System.out.println("insertArticle() 오류 - " + e.getMessage());
+	        } finally {
 
-		
-		
-		
-		return isImgSuccess;
-	}
+	            close(rs);
+	            close(pstmt);
+	        }
+	        
+	        return imgCount;
+	    }
 
 	public int getProductNum(BoardBean boardBean) {
 		int productNum=0;
