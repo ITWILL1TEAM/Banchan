@@ -1,6 +1,6 @@
 package action;
 
-import java.io.*;
+import java.io.PrintWriter;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +23,7 @@ public class BoardWriteProAction implements Action {
         
         BoardBean boardBean = new BoardBean();
         
+
         
         String realFolder = "C:\\Users\\JSW\\git\\Banchan\\Project_BC\\src\\main\\webapp\\upload";//실제경로
         String path = request.getRealPath("./upload");//아 왜안대ㅐ
@@ -75,9 +76,7 @@ public class BoardWriteProAction implements Action {
         // 2) BoardWriteProService 인스턴스의 registArticle() 메서드 호출하여 게시물 등록 요청
         //    => 파라미터 : BoardBean 객체, 리턴타입 : boolean(isWriteSuccess)
         boolean isWriteSuccess = service.registArticle(boardBean);
-        boolean isImageSuccess = false;
-       
- 
+        
         // 글쓰기 결과(isWriteSuccess)를 판별 
         if(!isWriteSuccess) { // 작업 결과가 false 일 경우
             // 1) 실패 시 자바스크립트를 사용하여 "게시물 등록 실패!" 출력 후 이전페이지로 돌아가기
@@ -92,6 +91,7 @@ public class BoardWriteProAction implements Action {
             // ActionForward 객체를 생성하여 BoardList.bo 서블릿 주소 요청
             // => request 객체 유지 불필요, 주소 유지 불필요
             // => 새로운 요청을 발생시키므로 Redirect 방식 포워딩
+
         	System.out.println("product업데이트완료");
         	int productNum=0;
             
@@ -161,9 +161,8 @@ public class BoardWriteProAction implements Action {
 //        		 productimg.setProduct_img_location();    	
         		
         	}       	
-        	
+        	           
 
-            
             forward = new ActionForward();
             forward.setPath("ProductList.ad");
             forward.setRedirect(true);

@@ -87,7 +87,11 @@ function category(e){
                           상품등록
                             </div>
                             <div class="card-body">
+<<<<<<< HEAD
                             <form name="product" action="ProductWritePro.ad" method="POST" enctype="multipart/form-data">
+=======
+                            <form name="product" action="ProductWritePro.ad" method="GET">
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
                                 <table class="table table-bordered talbe-light" >
                                  		<tr><td>상품명</td><td colspan="2"><input type="text" name = "product_name" size=10></td></tr>
 										<tr><td>회사명</td><td colspan="2"><input type="text" name = "Sname" size=10></td></tr>
@@ -109,8 +113,8 @@ function category(e){
 									    <tr>
 									    	<td>이미지추가</td><td><input type="file" name="product_original_img" size=10></td>									    
 										    <td>				    
-										   		<select name="imgValue">
-										   			<option  value="1">주 이미지</option>
+										   		<select>
+										   			<option value="1">주 이미지</option>
 										   			<option value="2">상세 이미지</option>
 										   		</select>
 										   	</td>
