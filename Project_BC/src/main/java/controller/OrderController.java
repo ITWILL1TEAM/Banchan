@@ -40,17 +40,10 @@ public class OrderController extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-//			}else if(command.equals("/ReviewList.re")) {
-//	//			
-//				action = new ReviewListAction();
-//				
-//				try {
-//					forward =action.execute(request, response);
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-				
+			}else if(command.equals("/Payment.or")) {
+				System.out.println("Payment.or 포워딩");
+				forward = new ActionForward();
+				forward.setPath("/order/payment.jsp");
 			}
 			
 			

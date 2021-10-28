@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.AddCartProService;
 import vo.ActionForward;
 import vo.BasketBean;
 
@@ -44,30 +45,29 @@ public class AddCartProAction implements Action {
         basket.setProduct_discount(discount);
         // 이미지도 해야하나?
         
-        
-        
-//        // 2) BoardWriteProService 인스턴스의 registArticle() 메서드 호출하여 게시물 등록 요청
-//        //    => 파라미터 : BoardBean 객체, 리턴타입 : boolean(isWriteSuccess)
-//        boolean isWriteSuccess = service.registArticle(board);
-//        
-//        // 글쓰기 결과(isWriteSuccess)를 판별 
-//        if(!isWriteSuccess) { // 작업 결과가 false 일 경우
-//            // 1) 실패 시 자바스크립트를 사용하여 "게시물 등록 실패!" 출력 후 이전페이지로 돌아가기
-//            response.setContentType("text/html; charset=UTF-8");
-//            PrintWriter out = response.getWriter();
-//            out.println("<script>");
-//            out.println("alert('게시물 등록 실패!')");
-//            out.println("history.back()");
-//            out.println("</script>");
-//        } else { // 작업 결과가 true 일 경우
-//            // 2) 성공 시 ActionForward 객체를 통해 BoardList.bo 경로, Redirect 방식 포워딩 설정
-//            // ActionForward 객체를 생성하여 BoardList.bo 서블릿 주소 요청
-//            // => request 객체 유지 불필요, 주소 유지 불필요
-//            // => 새로운 요청을 발생시키므로 Redirect 방식 포워딩
-//            forward = new ActionForward();
-//            forward.setPath("productList.ad");
-//            forward.setRedirect(true);
-//        }
+        // 2) AddCartProService 인스턴스의 AddCart() 메서드 호출하여 장바구니 데이터베이스에 등록 요청
+        AddCartProService service = new AddCartProService();
+        boolean isInsertSuccess = service.AddCart(basket);
+
+
+        // 등록 결과(isInsertSuccess)를 판별 
+        if(!isInsertSuccess) { // 작업 결과가 false 일 경우
+            // 1) 실패 시 자바스크립트를 사용하여 "게시물 등록 실패!" 출력 후 이전페이지로 돌아가기
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('장바구니 담기 실패!')");
+            out.println("history.back()");
+            out.println("</script>");
+        } else { // 작업 결과가 true 일 경우
+            // 2) 성공 시 ActionForward 객체를 통해 BoardList.bo 경로, Redirect 방식 포워딩 설정
+            // ActionForward 객체를 생성하여 BoardList.bo 서블릿 주소 요청
+            // => request 객체 유지 불필요, 주소 유지 불필요
+            // => 새로운 요청을 발생시키므로 Redirect 방식 포워딩
+            forward = new ActionForward();
+            forward.setPath("productList.ad");
+            forward.setRedirect(true);
+        }
         
         return forward;
     }
