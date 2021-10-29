@@ -26,8 +26,9 @@ public class BoardWriteProAction implements Action {
         
         ServletContext context = request.getServletContext();
         
-        String realFolder = "C:\\Users\\JSW\\git\\Banchan\\Project_BC\\src\\main\\webapp\\upload";//실제경로
-//        String path = request.getRealPath("./upload");//아 왜안대ㅐ
+//        String realFolder = "C:\\Users\\JSW\\git\\Banchan\\Project_BC\\src\\main\\webapp\\upload";//실제경로
+        String path = request.getRealPath("/upload");//아 왜안대ㅐ
+        System.out.println(path);
 //        String saveFolder = "/upload";
         String saveFolder = "/upload";
 //        String realFolder = context.getRealPath(saveFolder);
@@ -37,7 +38,7 @@ public class BoardWriteProAction implements Action {
 		
 		  MultipartRequest multi  = new MultipartRequest(
 		    		request, //request객체
-		    		realFolder, // 업로드 폴더
+		    		path, // 업로드 폴더
 		    		size,// 업로드 파일 사이즈
 		    		"UTF-8", //업로드 파일 인코딩 타입
 		    		new DefaultFileRenamePolicy()//중복 파일 처리        		    		
@@ -115,18 +116,18 @@ public class BoardWriteProAction implements Action {
             		  
             		  if(imgVal==1) {
             			 if(i<10) {
-            				 board_file = name+"0"+imgVal+"0"+i;
+            				 board_file = name+"0_"+imgVal+"0"+i;
             				 
             			 }else {
-            				 board_file = name+"0"+imgVal+""+i;
+            				 board_file = name+"0_"+imgVal+""+i;
             			 }
             			 i++;
             		  }else {
             			  if(j<10) {
-             				 board_file = name+"0"+imgVal+"0"+j;
+             				 board_file = name+"0_"+imgVal+"0"+j;
              				 
              			 }else {
-             				 board_file = name+"0"+imgVal+""+j;
+             				 board_file = name+"0_"+imgVal+""+j;
              			 }
              			 j++;
             		  }
