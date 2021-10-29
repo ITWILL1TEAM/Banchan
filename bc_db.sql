@@ -18,7 +18,7 @@ CREATE TABLE `admin` (
 CREATE TABLE `customer` (
   `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
   `phone` varchar(45) COLLATE utf8_bin NOT NULL,
-  `eamil` varchar(45) COLLATE utf8_bin NOT NULL,
+  `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `recommend_id` int(11) NOT NULL DEFAULT '0',
   `personal_data` int(11) NOT NULL,
   UNIQUE KEY `eamil_UNIQUE` (`eamil`),
