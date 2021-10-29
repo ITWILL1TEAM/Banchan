@@ -14,7 +14,7 @@ package vo;
 public class CustomerBean extends MemberBean {
 	private String customer_id;
 	private String phone;
-	private String eamil;
+	private String email;
 	private String recommend_id;
 	private int personal_data;
 	
@@ -30,7 +30,7 @@ public class CustomerBean extends MemberBean {
 		super();
 		this.customer_id = customer_id;
 		this.phone = phone;
-		this.eamil = eamil;
+		this.email = eamil;
 		this.recommend_id = recommend_id;
 		this.personal_data = personal_data;
 	}
@@ -51,12 +51,12 @@ public class CustomerBean extends MemberBean {
 		this.phone = phone;
 	}
 
-	public String getEamil() {
-		return eamil;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEamil(String eamil) {
-		this.eamil = eamil;
+	public void setEmail(String eamil) {
+		this.email = eamil;
 	}
 
 	public String getRecommend_id() {

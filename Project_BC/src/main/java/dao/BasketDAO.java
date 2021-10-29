@@ -3,10 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vo.BasketBean;
-import vo.BoardBean;
 
 import static db.JdbcUtil.*;
 
@@ -39,12 +39,25 @@ public class BasketDAO {
         int insertCount = 0;
         
         PreparedStatement pstmt = null;
-        ResultSet rs = null;
+//        ResultSet rs = null;
         
         try {
+        	
+        	// product_img는 product_img 테이블에서 product_num으로 조회해서 제품번호에 맞는 이미지 찾아서 
+        	// 변수에 저장하고 밑에 set하기
+//        	String product_img = null;
+//        	String sql = "SELECT product_original_img FROM product_img WHERE product_num=?";
+//        	pstmt = con.prepareStatement(sql);
+//        	pstmt.setInt(1, basket.getProduct_num());
+//        	rs = pstmt.executeQuery();
+//        	
+//        	if(rs.next()) {
+//        		product_img = rs.getString(1);
+//        	}
+        	
         
             // 데이터 추가 작업을 위한 INSERT 작업 수행
-            String sql = "INSERT INTO product VALUES (null,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO basket VALUES (null,?,?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(sql);
             
             // 첫 컬럼은 auto_increment 이므로 null값 넣음
@@ -65,12 +78,54 @@ public class BasketDAO {
             System.out.println("insertBasket() 오류 - " + e.getMessage());
         } finally {
         	// 자원 반환
-            close(rs);
+//        	close(rs);
             close(pstmt);
         }
         
         return insertCount;
     }
+
+	public ArrayList<BasketBean> selectCartList(String customer_id) {
+		System.out.println("BasketDAO - selectCartList()");
+		ArrayList<BasketBean> cartList = null;
+		
+		PreparedStatement pstmt = null;
+        ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM basket WHERE customer_id=? ORDER BY basket_idx DESC";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, customer_id);
+			rs = pstmt.executeQuery();
+			
+			cartList = new ArrayList<BasketBean>();
+			
+			while(rs.next()) {
+				BasketBean basket = new BasketBean();
+				
+				basket.setProduct_num(rs.getInt("product_num"));
+				basket.setProduct_name(rs.getString("product_name"));
+				basket.setProduct_price(rs.getInt("product_price"));
+				basket.setProduct_qty(rs.getInt("product_qty"));
+				basket.setProduct_discount(rs.getInt("discount"));
+				basket.setProduct_img(rs.getString("product_img"));
+				basket.setSname(rs.getString("Sname"));
+				
+				cartList.add(basket);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        	// 자원 반환
+        	close(rs);
+            close(pstmt);
+        }
+		
+		
+		return cartList;
+	}
 
 
     

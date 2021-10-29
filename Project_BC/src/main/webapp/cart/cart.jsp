@@ -1,6 +1,13 @@
+<%@page import="vo.BasketBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
+	
+	
+%>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -10,11 +17,6 @@
 <link href="CSS/sub.css" rel="stylesheet" type="text/css">
 <link href="CSS/font.css" rel="stylesheet" type="text/css">
 <link href="CSS/ord.css" rel="stylesheet" type="text/css">
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script> -->
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script> -->
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script> -->
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script> -->
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script> -->
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -50,14 +52,6 @@
     <%@include file="../inc/top.jsp" %>
 
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/order/overpass.cart.base.js?v=1633854217145"></script> -->
-<!-- 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/order/overpass.cart.js?v=1633854217145"></script> -->
-	<!-- 왠진 모르겠으나 아래 코드는 수량조절 버튼과 관련되어 있으므로 삭제 금지 -->
-	<script type="text/javascript">
-	<!--
-		window.CART.data = {"return_values":[],"deli":{"10":{"0000001":{"r_deli_cost_form_cd":"10","r_deli_cost_poli_no":"0000363181","st_amt":30000,"r_deli_coupon_rsc_no":"","r_city_exp_deli_cost":0,"goods":["0","1","4"],"r_deli_coupon_promo_nm":"","r_deli_coupon_aval_end":"","r_deli_coupon_promo_no":"","deli_cost_amt":2500,"coupon_yn":"N","d_r_goods_deli_sale_prc":38100,"r_deli_cost_amt":0,"dawn_deli_cost_amt":2900,"deli_cost_limit_amt":0,"r_dawn_deli_cost_amt":0,"r_dawn_deli_cost_amt2":0,"r_deli_cost_amt2":0}}},"member":{"site_no":"1300001","client_no":"C00001","staff_yn":"N","login":true},"goods":{"0":{"svd_frs_poli_cd":"","svd_frs_except_price":0,"goods_dc_amt":0,"benefits":[{"select_yn":"N","sess":[{"ord_cnt":1,"benefit_session_idx":2,"dc_price":0,"apply_seq":1,"save_amt":0}],"promo_nm":"","promo_type_no":"","benefit_seq":0,"gift_mgmt_no":"","bene_val_divi_cd":"","dc_rate":0,"aval_end_dtime":"","resou_no":"","dc_price":0,"resou_nos_info":[""],"promo_no":"","aval_start_dtime":"","apply_poss_yn":"N","sum_dc_price_pr":0,"resou_nos":[""],"save_amt":0,"bene_poli_cd":""}],"svd_frs_divi_cd":"","cart_divi_cd":"10","svd_upper_conr_set_cmps_no":"","goods_no":"1911013538","sale_unit_val":0,"margin_rate":100,"item_nm":"단품없음","cart_no":"211000043144232","svd_set_cd":"","cart_grp_cd":"10","item_no":"00000","tax_divi_cd":"10","deli_map":{"ITEM_NO":"00000","DAWN_DELI_COST_AMT":2900,"R_DELI_COST_AMT":0,"DELI_COST_AMT":2500,"R_CITY_EXP_DELI_COST":0,"R_ORD_DELI_COST_SEQ":"","R_DELI_COUPON_AVAL_END":"","R_DELI_COST_FORM_CD":"10","STD_GSGR_NO_LEV1":"1700056235","R_DELI_COUPON_RSC_NO":"","RET_METHOD_CD":"","STD_GSGR_NO_LEV2":"1700056245","R_GOODS_DELI_SALE_PRC":5400,"PKG_APPLY_QTY":0,"ROW_RN":0,"SEQ_NO":"211000043144232","R_DELI_GRP_NO":1,"GOODS_NO":"1911013538","VIR_VEND_NO":"VV17002724","DELI_FORM_CD":"20","DELI_COST_CHARGE_MAIN_CD":"","R_ONEW_RTNR_GB":"","ORG_DELI_COST_FORM_CD":"10","MARGIN_RATE":100,"ST_AMT":30000,"DLVP_NO":1,"R_CITY_EXP_YN":"N","PREPAY_PERMIT_FORM_CD":"","DELI_COST_CHANGE_FLAG":"","ORD_TEMP_GOODS_SEQ":"","INPK_CD":"0","ORD_CNT":1,"DELI_RULE":"0000363181","R_DAWN_DELI_COST_AMT":0,"R_DELI_COST_POLI_NO":"0000363181","BRAND_NO":"1700002614","DELI_COST_POLI_NO":"0000363181","R_DELI_COUPON_PROMO_NO":"","DELI_COST_LIMIT_AMT":0,"POLI_ST_NO":"VV17002723","GOODS_SALE_PRICE":21500,"DLVP_SEQ":"0000001","ORG_DELI_COST_AMT":0,"D_R_GOODS_DELI_SALE_PRC":38100},"ord_qty":1,"svd_conr_set_cmps_no":"","ord_poss_min_qty":1,"sale_poss_qty":999999,"disp_goods_nm":"도라지오이무침(185g)","coupon_list":[],"svd_frs_dc_amt":0,"ord_poss_max_qty":0,"set_items":[],"gsgr":"1700056235","dlvp_seq":"0000001","item_status":"00","sale_price":5400,"vir_vend_no":"VV17002724","svd_items":[],"svd_frs_bene_val":0,"save_amt":0},"1":{"svd_frs_poli_cd":"","svd_frs_except_price":0,"goods_dc_amt":0,"benefits":[{"select_yn":"Y","sess":[{"ord_cnt":1,"benefit_session_idx":0,"dc_price":3800,"apply_seq":1,"save_amt":0}],"promo_nm":"","promo_type_no":"103","benefit_seq":0,"gift_mgmt_no":"","bene_val_divi_cd":"20","dc_rate":3800,"aval_end_dtime":"","resou_no":"","dc_price":3800,"resou_nos_info":[""],"promo_no":"","aval_start_dtime":"","apply_poss_yn":"Y","sum_dc_price_pr":3800,"resou_nos":[""],"save_amt":0,"bene_poli_cd":"10"}],"svd_frs_divi_cd":"","cart_divi_cd":"10","svd_upper_conr_set_cmps_no":"","goods_no":"2107015727","sale_unit_val":0,"margin_rate":0,"item_nm":"단품없음","cart_no":"211000043153633","svd_set_cd":"","cart_grp_cd":"10","item_no":"00000","tax_divi_cd":"10","deli_map":{"ITEM_NO":"00000","DAWN_DELI_COST_AMT":2900,"R_DELI_COST_AMT":0,"DELI_COST_AMT":2500,"R_CITY_EXP_DELI_COST":0,"R_ORD_DELI_COST_SEQ":"","R_DELI_COUPON_AVAL_END":"","R_DELI_COST_FORM_CD":"10","STD_GSGR_NO_LEV1":"1700056744","R_DELI_COUPON_RSC_NO":"","RET_METHOD_CD":"","STD_GSGR_NO_LEV2":"1700056745","R_GOODS_DELI_SALE_PRC":21500,"PKG_APPLY_QTY":0,"ROW_RN":0,"SEQ_NO":"211000043153633","R_DELI_GRP_NO":1,"GOODS_NO":"2107015727","VIR_VEND_NO":"VV17002724","DELI_FORM_CD":"20","DELI_COST_CHARGE_MAIN_CD":"","R_ONEW_RTNR_GB":"","ORG_DELI_COST_FORM_CD":"10","MARGIN_RATE":0,"ST_AMT":30000,"DLVP_NO":1,"R_CITY_EXP_YN":"N","PREPAY_PERMIT_FORM_CD":"","DELI_COST_CHANGE_FLAG":"","ORD_TEMP_GOODS_SEQ":"","INPK_CD":"0","ORD_CNT":1,"DELI_RULE":"0000363181","R_DAWN_DELI_COST_AMT":0,"R_DELI_COST_POLI_NO":"0000363181","BRAND_NO":"1700002614","DELI_COST_POLI_NO":"0000363181","R_DELI_COUPON_PROMO_NO":"","DELI_COST_LIMIT_AMT":0,"POLI_ST_NO":"VV17002723","GOODS_SALE_PRICE":21500,"DLVP_SEQ":"0000001","ORG_DELI_COST_AMT":0,"D_R_GOODS_DELI_SALE_PRC":38100},"ord_qty":1,"pkg_goods_no":"2107015727","svd_conr_set_cmps_no":"","ord_poss_min_qty":1,"sale_poss_qty":1,"disp_goods_nm":"더반찬& 집밥만찬 2종 골라담기 (5,000원 부터~)","coupon_list":[],"svd_frs_dc_amt":0,"ord_poss_max_qty":0,"set_items":[{"cmps_grp_seq":"0001","ord_qty":1,"vir_vend_no":"VV17002724","pkg_goods_no":"2107015727","goods_no":"2108015738","cart_seq":2,"cart_no":"211000043153634","disp_goods_nm":"서울식소불고기전골(880g)","item_no":"00000","pkg_goods_seq":1},{"cmps_grp_seq":"0002","ord_qty":1,"vir_vend_no":"VV17002724","pkg_goods_no":"2107015727","goods_no":"2106015407","cart_seq":3,"cart_no":"211000043153635","disp_goods_nm":"더반찬& 양념소불고기","item_no":"00000","pkg_goods_seq":2}],"gsgr":"1700056744","dlvp_seq":"0000001","item_status":"00","sale_price":21500,"vir_vend_no":"VV17002724","svd_items":[],"svd_frs_bene_val":0,"save_amt":0},"4":{"svd_frs_poli_cd":"","svd_frs_except_price":0,"goods_dc_amt":0,"benefits":[{"select_yn":"N","sess":[{"ord_cnt":1,"benefit_session_idx":1,"dc_price":0,"apply_seq":1,"save_amt":0}],"promo_nm":"","promo_type_no":"","benefit_seq":0,"gift_mgmt_no":"","bene_val_divi_cd":"","dc_rate":0,"aval_end_dtime":"","resou_no":"","dc_price":0,"resou_nos_info":[""],"promo_no":"","aval_start_dtime":"","apply_poss_yn":"N","sum_dc_price_pr":0,"resou_nos":[""],"save_amt":0,"bene_poli_cd":""}],"svd_frs_divi_cd":"","cart_divi_cd":"10","svd_upper_conr_set_cmps_no":"","goods_no":"0000014985","sale_unit_val":0,"margin_rate":100,"item_nm":"단품없음","cart_no":"211000043234511","svd_set_cd":"","cart_grp_cd":"10","item_no":"00000","tax_divi_cd":"10","deli_map":{"ITEM_NO":"00000","DAWN_DELI_COST_AMT":2900,"R_DELI_COST_AMT":0,"DELI_COST_AMT":2500,"R_CITY_EXP_DELI_COST":0,"R_ORD_DELI_COST_SEQ":"","R_DELI_COUPON_AVAL_END":"","R_DELI_COST_FORM_CD":"10","STD_GSGR_NO_LEV1":"1700056237","R_DELI_COUPON_RSC_NO":"","RET_METHOD_CD":"","STD_GSGR_NO_LEV2":"2000061885","R_GOODS_DELI_SALE_PRC":11200,"PKG_APPLY_QTY":0,"ROW_RN":0,"SEQ_NO":"211000043234511","R_DELI_GRP_NO":1,"GOODS_NO":"0000014985","VIR_VEND_NO":"VV17002724","DELI_FORM_CD":"20","DELI_COST_CHARGE_MAIN_CD":"","R_ONEW_RTNR_GB":"","ORG_DELI_COST_FORM_CD":"10","MARGIN_RATE":100,"ST_AMT":30000,"DLVP_NO":1,"R_CITY_EXP_YN":"N","PREPAY_PERMIT_FORM_CD":"","DELI_COST_CHANGE_FLAG":"","ORD_TEMP_GOODS_SEQ":"","INPK_CD":"0","ORD_CNT":1,"DELI_RULE":"0000363181","R_DAWN_DELI_COST_AMT":0,"R_DELI_COST_POLI_NO":"0000363181","BRAND_NO":"1700002614","DELI_COST_POLI_NO":"0000363181","R_DELI_COUPON_PROMO_NO":"","DELI_COST_LIMIT_AMT":0,"POLI_ST_NO":"VV17002723","GOODS_SALE_PRICE":21500,"DLVP_SEQ":"0000001","ORG_DELI_COST_AMT":0,"D_R_GOODS_DELI_SALE_PRC":38100},"ord_qty":1,"svd_conr_set_cmps_no":"","ord_poss_min_qty":1,"sale_poss_qty":999999,"disp_goods_nm":"양장피","coupon_list":[],"svd_frs_dc_amt":0,"ord_poss_max_qty":0,"set_items":[],"gsgr":"1700056237","dlvp_seq":"0000001","item_status":"00","sale_price":11200,"vir_vend_no":"VV17002724","svd_items":[],"svd_frs_bene_val":0,"save_amt":0}},"promo_type_base":{"1000000003":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"Y"},"1000000026":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"},"1000000007":{"deli_cost_st_apply_yn":"Y","custmd_price_st_apply_yn":"N"},"1000000029":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"},"1000000008":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"},"1000000005":{"deli_cost_st_apply_yn":"Y","custmd_price_st_apply_yn":"Y"},"1000000016":{"deli_cost_st_apply_yn":"Y","custmd_price_st_apply_yn":"Y"},"1000000027":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"},"1000000006":{"deli_cost_st_apply_yn":"Y","custmd_price_st_apply_yn":"N"},"1000000028":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"},"100":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"},"1000000010":{"deli_cost_st_apply_yn":"Y","custmd_price_st_apply_yn":"Y"},"103":{"deli_cost_st_apply_yn":"Y","custmd_price_st_apply_yn":"Y"},"1000000011":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"},"104":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"Y"},"1000000030":{"deli_cost_st_apply_yn":"N","custmd_price_st_apply_yn":"N"}},"real_coupons":{},"dlvp":{},"usable_settle":{}};
-	//-->
-	</script>
 	<!-- CONTENT -->
 	<div id="content" class="content">
 
@@ -95,115 +89,39 @@
 						</tr>
 					</thead>
 					<tbody>
+					<%for (int i = 0; i < cartList.size(); i++) { %>
 						<tr>
 							<td class="chck">
 								<input type="checkbox" id="crt_4" name="cart_checkbox" checked="checked"  />
-								<label for="crt_4">양장피</label>								
+								<label for="crt_4"><%=cartList.get(i).getProduct_name() %></label>								
 							</td>
 							<td class="info">
 								<div class="img">
 									<a href="Product.do" name="go_detail_button" data-cart-seq="4" ><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
-										<span class="ir">양장피</span>
+										<span class="ir"><%=cartList.get(i).getProduct_name() %></span>
 									</a>
 								</div>
 								<div class="txt">
-								<span class="name">[더반찬] 양장피</span>
+								<span class="name">[<%=cartList.get(i).getSname() %>] <%=cartList.get(i).getProduct_name() %></span>
 									<span class="opt"></span>
                                     <div class="deli_type_tag"></div>
 								</div>
-							</td><td class="prc_ori"><span class="om"><em class="thm">11,200</em>원</span>
+							</td><td class="prc_ori"><span class="om"><em class="thm"><%=cartList.get(i).getProduct_price() %></em>원</span>
 							</td>
 							<td class="qty_set">
 								<div class="qty">
-									<input name="cart_qty" class="input" id="qty_4" data-cart-seq="4" type="text" maxlength="3" value="1" title="옵션수량입력" readonly="readonly">
+									<input name="cart_qty" class="input" id="qty_4" data-cart-seq="4" type="text" maxlength="3" value="<%=cartList.get(i).getProduct_qty() %>" title="옵션수량입력" readonly="readonly">
 									<button class="minus" name="change_qty_button" data-role="-" data-cart-seq="4" type="button" title="수량감소">수량감소</button>
 									<button class="plus" name="change_qty_button" data-role="+" data-cart-seq="4" type="button" title="수량증가">수량증가</button>
 								</div>
 								<button class="qty_edit" type="button" name="save_qty_button" data-cart-seq="4" title="수량수정">수정</button>
 							</td>
-							<td class="prc_dl"><span class="thm">11,200</span><em>원</em></td><td class="func_btn"><div class="del_bx">
+							<td class="prc_dl"><span class="thm"><%=cartList.get(i).getProduct_price() * cartList.get(i).getProduct_qty()%></span><em>원</em></td><td class="func_btn"><div class="del_bx">
 									<button class="del" type="button" title="제품삭제하기" name="delete_button" data-cart-seq="4"  data-role="cart" >삭제</button>
 								</div>
 							</td>
-				
-						<tr>
-							<td class="chck">
-								<input type="checkbox" id="crt_1" name="cart_checkbox" checked="checked"  />
-								<label for="crt_1">더반찬& 집밥만찬 2종 골라담기 (5,000원 부터~)</label>								
-							</td>
-							<td class="info">
-								<div class="img">
-									<a href="Product.do" name="go_detail_button" data-cart-seq="1" ><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/610/210917000027610.jpg" width="100" height="100" alt="더반찬& 집밥만찬 2종 골라담기 (5,000원 부터~)" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
-										<span class="ir">더반찬& 집밥만찬 2종 골라담기 (5,000원 부터~)</span>
-									</a>
-								</div>
-								<div class="txt">
-								<span class="name">
-									[더반찬] 더반찬& 집밥만찬 2종 골라담기 (5,000원 부터~)
-									
-								</span>
-								<div class="opt set">
-										<ul><li>필수선택 1 : 서울식소불고기전골(880g)</li><li>필수선택 2 : 더반찬& 양념소불고기</li>
-										</ul>
-									</div>
-									<span class="opt">
-									</span>
- 
-                                    <div class="deli_type_tag">
-
-                                    </div>
-								</div>
-							</td><td class="prc_ori"><span class="om"><em class="thm">21,500</em>원</span>
-							</td>
-							<td class="qty_set">
-								<div class="qty">
-									<input name="cart_qty" class="input" id="qty_1" data-cart-seq="1" type="text" maxlength="3" value="1" title="옵션수량입력" readonly="readonly">
-									<button class="minus" name="change_qty_button" data-role="-" data-cart-seq="1" type="button" title="수량감소">수량감소</button>
-									<button class="plus" name="change_qty_button" data-role="+" data-cart-seq="1" type="button" title="수량증가">수량증가</button>
-								</div>
-								<button class="qty_edit" type="button" name="save_qty_button" data-cart-seq="1" title="수량수정">수정</button>
-							</td>
-							<td class="prc_dl"><span class="thm">21,500</span><em>원</em></td><td class="func_btn"><div class="del_bx">
-									<button class="del" type="button" title="제품삭제하기" name="delete_button" data-cart-seq="1"  data-role="cart" >삭제</button>
-								</div>
-							</td>
-				
-						<tr>
-							<td class="chck">
-								<input type="checkbox" id="crt_0" name="cart_checkbox" checked="checked"  />
-								<label for="crt_0">도라지오이무침(185g)</label>								
-							</td>
-							<td class="info">
-								<div class="img">
-									<a href="Product.do" name="go_detail_button" data-cart-seq="0" ><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/673/200717000025673.jpg" width="100" height="100" alt="도라지오이무침(185g)" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
-										<span class="ir">도라지오이무침(185g)</span>
-									</a>
-								</div>
-								<div class="txt">
-								<span class="name">[더반찬] 도라지오이무침(185g)</span>
-								
-									<span class="opt">
-									</span>
- 
-                                    <div class="deli_type_tag">
-
-                                    </div>
-								</div>
-							</td><td class="prc_ori"><span class="om"><em class="thm">5,400</em>원</span>
-							</td>
-							<td class="qty_set">
-								<div class="qty">
-									<input name="cart_qty" class="input" id="qty_0" data-cart-seq="0" type="text" maxlength="3" value="1" title="옵션수량입력" readonly="readonly">
-									<button class="minus" name="change_qty_button" data-role="-" data-cart-seq="0" type="button" title="수량감소">수량감소</button>
-									<button class="plus" name="change_qty_button" data-role="+" data-cart-seq="0" type="button" title="수량증가">수량증가</button>
-								</div>
-								<button class="qty_edit" type="button" name="save_qty_button" data-cart-seq="0" title="수량수정">수정</button>
-							</td>
-							<td class="prc_dl"><span class="thm">5,400</span><em>원</em></td><td class="func_btn"><div class="del_bx">
-									<button class="del" type="button" title="제품삭제하기" name="delete_button" data-cart-seq="0"  data-role="cart" >삭제</button>
-								</div>
-							</td>
-				
+						</tr>
+					<%} %>
 					</tbody>
 				</table>
 				<div class="odr_slt_btn">

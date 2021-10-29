@@ -24,7 +24,6 @@ public class ProductDetailAction implements Action {
 		
 		// BoardDetailService 클래스 인스턴스 생성 후 
 		ProductDetailService service = new ProductDetailService();
-		ReviewListService review = new ReviewListService();
 		
 		// getArticle() 메소드 호출하여 board_num에 대한 게시물 상세 정보 리턴받기
 		// -> 파라미터 : 글번호(board_num)  리턴타입 : Boardbean(article)

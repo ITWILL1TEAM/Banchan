@@ -208,8 +208,8 @@
 						<!-- BTN. -->
 						<div class="gd_btns">
 							<!-- TOOLTIP -->
-							<button type="submit" class="cart" id="msg_open_cart" formaction="Cart.do" title="장바구니 상품 알림 레이어 열기"><em>장바구니</em></button>
-							<button type="submit" class="buy" formaction="Order.do" title="주문하기 페이지 이동"><em>바로구매</em></button>
+							<button type="submit" class="cart" id="msg_open_cart" formaction="AddCart.ca" title="장바구니 상품 알림 레이어 열기"><em>장바구니</em></button>
+							<button type="submit" class="buy" formaction="OrderSheet.or" title="주문하기 페이지 이동"><em>바로구매</em></button>
 						</div>
 						<!-- //BTN. -->
 		
@@ -519,6 +519,7 @@
 <!-- 			</script> -->
 		
 			<!-- 리뷰 -->
+<%-- 			<jsp:include page="../review/productReview.jsp"/> --%>
 		
 			<!-- TAB4 -->
 			<div class="gds_cont" id="gds_cont4">
@@ -537,11 +538,6 @@
 							<li>10,000원 이상부터 주문 가능해요!
 								<span class="no_bg">집밥선생은 신선하고 안전한 배송을 위해 박스, 보냉제, 완충제 등 기본 포장비가 발생되어 10,000원 이상부터 주문하실 수 있어요</span>
 							</li>
-<!-- 							<li>배송 방법에 따라 선택 가능한 배송일이 달라질 수 있어요 -->
-<!-- 								<span class="no_bg">새벽배송은 오늘 밤 9시까지 주문하면 다음날 새벽 도착해요.</span> -->
-<!-- 								<span class="no_bg">일반택배는 오늘 낮 1시까지 주문하면 다음날까지 도착해요.</span> -->
-<!-- 								<span class="no_bg bold">※ 일부 제품의 경우, 주문량이 늘어나면 일찍 마감되거나 배송일 선택이 제한될 수 있어요. 상품 상세페이지에서 정확한 배송일자를 확인해 주세요.</span> -->
-<!-- 							</li> -->
 							<li>쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요
 								<span class="no_bg">30,000원 미만인 경우 새벽배송은 2,900원, 일반택배(업체배송 포함) 2,500원의 배송비가 추가됩니다.</span>
 							</li>
