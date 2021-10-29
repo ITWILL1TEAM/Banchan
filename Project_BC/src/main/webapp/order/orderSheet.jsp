@@ -10,7 +10,7 @@
 ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
 ArrayList<CustomerAddress> memberAddress = (ArrayList<CustomerAddress>)request.getAttribute("memberAddress");
 ArrayList<CustomerBean> customerInfo = (ArrayList<CustomerBean>)request.getAttribute("customerInfo");
-ArrayList<MemberBean> memberInfo = (ArrayList<MemberBean>)request.getAttribute("memberInfo");
+// ArrayList<MemberBean> memberInfo = (ArrayList<MemberBean>)request.getAttribute("memberInfo");
 
 
 int total_price = 0;
@@ -111,7 +111,7 @@ function Addr(test) {
       
       if(addrType=="defaultAddr"){
          
-    	  document.getElementById("buy_name").value = '<%=memberInfo.get(0).getName() %>';
+    	  document.getElementById("buy_name").value = '<%=customerInfo.get(0).getName() %>';
     	  document.getElementById("postcode").value = '<%=memberAddress.get(0).getZonecode() %>';
     	  document.getElementById("address").value = '<%=memberAddress.get(0).getRoadAddress() %>';
     	  document.getElementById("detailAddress").value = '<%=memberAddress.get(0).getDtl_addr() %>';
@@ -196,7 +196,7 @@ function payMethod(method) {
 		<div class="odr_insTop">
 			<dl class="ntx">
 				<dt>
-					더반찬& <%=memberInfo.get(0).getName() %>고객님<br />확인해 주세요!
+					더반찬& <%=customerInfo.get(0).getName() %>고객님<br />확인해 주세요!
 				</dt>
 				<dd>
 					* 제조일로부터 냉장보관 3일인 제품의 경우, 희망배송일 전일 생산하며, 일부 제품(외부 상품, 냉동국/염장류 등)은 고객님의 주문량에 따라 미리 생산하고 있어요.
@@ -289,7 +289,7 @@ function payMethod(method) {
 							data-role="cert" data-cert-yn="Y">
 							<th>주문자<em class="pt">*</em></th>
 							<td><div class="inf" name="member_info_display"
-									data-role="orderer_nm"><%=memberInfo.get(0).getName() %></div></td>
+									data-role="orderer_nm"><%=customerInfo.get(0).getName() %></div></td>
 						</tr>
 						<tr 
 							data-role="cert" data-cert-yn="Y">
@@ -301,7 +301,7 @@ function payMethod(method) {
 							data-role="cert" data-cert-yn="Y">
 							<th>이메일<em class="pt">*</em></th>
 							<td><div class="inf" name="member_info_display"
-									data-role="email"><%=customerInfo.get(0).getEamil()%></div></td>
+									data-role="email"><%=customerInfo.get(0).getEmail()%></div></td>
 						</tr>
 
 					</tbody>
@@ -327,7 +327,7 @@ function payMethod(method) {
 						
 						<tr>
 							<th>받으시는 분<em class="pt">*</em></th>
-							<td><div class="inf"><input type="text" id="buy_name" name="buy_name" value =<%=memberInfo.get(0).getName() %> required="required"></div></td>
+							<td><div class="inf"><input type="text" id="buy_name" name="buy_name" value =<%=customerInfo.get(0).getName() %> required="required"></div></td>
 						</tr>
 						<tr>
 							<th>주소<em class="pt" >*</em></th>

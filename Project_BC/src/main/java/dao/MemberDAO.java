@@ -59,7 +59,7 @@ public class MemberDAO {
 			
 			pstmt.setString(1, cBean.getCustomer_id());
 			pstmt.setString(2,cBean.getPhone());
-			pstmt.setString(3, cBean.getEamil());
+			pstmt.setString(3, cBean.getEmail());
 			pstmt.setInt(4, cBean.getPersonal_data());
 
 			insertCount = pstmt.executeUpdate();

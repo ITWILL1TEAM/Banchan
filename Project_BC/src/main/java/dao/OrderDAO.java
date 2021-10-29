@@ -79,41 +79,41 @@ public class OrderDAO {
 	}
 	
 	//------------------------------멤버 정보 가져오기
-	public ArrayList<MemberBean> selectMemberInfo(String customer_id) {
-		System.out.println("orderDAO - selectMemberInfo()!");
-		ArrayList<MemberBean> memberInfo =null;
-		
-		PreparedStatement pstmt = null;
-	    ResultSet rs = null;
-	    
-	    try {
-			String sql ="Select * from member where id =?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, customer_id);
-			
-			rs = pstmt.executeQuery();
-			
-			memberInfo = new ArrayList<MemberBean>();
-			while(rs.next()) {
-			      // BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
-			      // -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
-			      MemberBean member = new MemberBean();         
-			      
-			      member.setName(rs.getString("name"));
-			      
-			      memberInfo.add(member);
-			      
-			     }
-	    } catch (Exception e) {
-			System.out.println("selectMemberInfo() 오류! - "+e.getMessage());
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		
-		return memberInfo;
-	}
+//	public ArrayList<MemberBean> selectMemberInfo(String customer_id) {
+//		System.out.println("orderDAO - selectMemberInfo()!");
+//		ArrayList<MemberBean> memberInfo =null;
+//		
+//		PreparedStatement pstmt = null;
+//	    ResultSet rs = null;
+//	    
+//	    try {
+//			String sql ="select m.id, m.name, c.phone, c.email, ca.customer_roadAddress, ca.customer_zonecode, ca.customer_dtl_addr from member m left join customer c on m.id= c.customer_id join customer_address ca on m.id=ca.customer_id where id=?";
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, customer_id);
+//			
+//			rs = pstmt.executeQuery();
+//			
+//			memberInfo = new ArrayList<MemberBean>();
+//			while(rs.next()) {
+//			      // BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
+//			      // -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
+//			      MemberBean member = new MemberBean();         
+//			      
+//			      member.setName(rs.getString("name"));
+//			      
+//			      memberInfo.add(member);
+//			      
+//			     }
+//	    } catch (Exception e) {
+//			System.out.println("selectMemberInfo() 오류! - "+e.getMessage());
+//			e.printStackTrace();
+//		}finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		
+//		return memberInfo;
+//	}
 	
 	public ArrayList<CustomerAddress> selectMemberAddress(String customer_id) {
 		System.out.println("orderDAO - selectMemberInfo()!");
@@ -139,6 +139,7 @@ public class OrderDAO {
 			      address.setRoadAddress(rs.getString("customer_roadAddress"));
 			      address.setZonecode(rs.getString("customer_zonecode"));
 			      address.setDtl_addr(rs.getString("customer_dtl_addr"));
+			      
 			      memberAddress.add(address); 
 			}
 	    } catch (Exception e) {
@@ -162,7 +163,7 @@ public class OrderDAO {
 	    ResultSet rs = null;
 	    
 	    try {
-			String sql ="Select * from customer where customer_id =?";
+			String sql ="select m.id, m.name, c.phone, c.email from member m left join customer c on m.id= c.customer_id where id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, customer_id);
 			
@@ -175,8 +176,8 @@ public class OrderDAO {
 			      // -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
 				CustomerBean customer = new CustomerBean();         
 			      
-				customer.setEamil(rs.getString("eamil"));
-//				customer.setName(rs.getString("name"));
+				customer.setName(rs.getString("name"));
+				customer.setEmail(rs.getString("email"));
 				customer.setPhone(rs.getString("phone"));
 				
 				customerInfo.add(customer); 

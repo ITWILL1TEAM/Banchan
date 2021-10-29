@@ -51,14 +51,25 @@ public class OrderFormAction implements Action {
 		request.setAttribute("cartList", cartList);
 		
 		
+//		ArrayList<MemberBean> memberInfo = new ArrayList<MemberBean>();
+//		memberInfo =  orderService.getMemberInfo(customer_id);
+//		
+//		for(int i = 0 ; i <memberInfo.size() ; i++) {
+//			
+//			System.out.println("도로명 : "+memberInfo.get(i).getRoadAddress());
+//			System.out.println("우편번호 : "+memberInfo.get(i).getZonecode());
+//			System.out.println("상세주소 : "+memberInfo.get(i).getDtl_addr());
+//			System.out.println("커스터머 이메일 : "+memberInfo.get(i).getEamil());
+//			System.out.println("커스터머 네임 : "+memberInfo.get(i).getName());
+//			System.out.println("커스터머 폰 : "+memberInfo.get(i).getPhone());
+//		}
 		
-		
-		ArrayList<MemberBean> memberInfo = new ArrayList<MemberBean>();
-		memberInfo =  orderService.getMemberInfo(customer_id);
-		
-		for(int i = 0 ; i <memberInfo.size() ; i++) {
-			System.out.println("Action List : "+memberInfo.get(i).getName());
-		}
+//		ArrayList<MemberBean> memberInfo = new ArrayList<MemberBean>();
+//		memberInfo =  orderService.getMemberInfo(customer_id);
+//		
+//		for(int i = 0 ; i <memberInfo.size() ; i++) {
+//			System.out.println("Action List : "+memberInfo.get(i).getName());
+//		}
 		
 		
 		ArrayList<CustomerAddress> memberAddress = new ArrayList<CustomerAddress>();
@@ -79,12 +90,12 @@ public class OrderFormAction implements Action {
 		customerInfo = orderService.getCustomerAddress(customer_id);
 		
 		for(int i = 0 ; i <customerInfo.size() ; i++) {
-			System.out.println("커스터머 이메일 : "+customerInfo.get(i).getEamil());
-//			System.out.println("커스터머 네임 : "+customerInfo.get(i).getName());
+			System.out.println("커스터머 이메일 : "+customerInfo.get(i).getEmail());
+			System.out.println("커스터머 네임 : "+customerInfo.get(i).getName());
 			System.out.println("커스터머 폰 : "+customerInfo.get(i).getPhone());
 		}
 
-		request.setAttribute("memberInfo", memberInfo);
+//		request.setAttribute("memberInfo", memberInfo);
 		request.setAttribute("memberAddress", memberAddress);
 		request.setAttribute("customerInfo", customerInfo);
 		

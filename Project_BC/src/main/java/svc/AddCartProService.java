@@ -1,9 +1,6 @@
 package svc;
 
-import static db.JdbcUtil.close;
-import static db.JdbcUtil.commit;
-import static db.JdbcUtil.getConnection;
-import static db.JdbcUtil.rollback;
+import static db.JdbcUtil.*;
 
 import java.sql.Connection;
 
@@ -22,7 +19,7 @@ public class AddCartProService {
 		BasketDAO dao = BasketDAO.getInstance();
 		dao.setConnection(con);
 		
-		// BasketDAO 객체의 insertBasket() 메소드를 호출하여 장바구니 디비에 추가 작업 수행
+		// BasketDAO 객체의 insertBasket() 메소드를 호출하여 장바구니 테이블에 추가 작업 수행
 		int insertCount = dao.insertBasket(basket);
 		
 		if(insertCount > 0) {
