@@ -32,7 +32,7 @@ public class BoardListAction implements Action {
 		// getListCount() 메서드를 호출하여 전체 게시물 수 조회 작업 요청
 		// => 파라미터 : 없음, 리턴타입 : int(listCount)
 		BoardListService service = new BoardListService();
-		int listCount = service.getListCount();
+		int listCount = service.getListCount();//글갯수 불러옴.
 		
 		
 		
@@ -72,7 +72,7 @@ public class BoardListAction implements Action {
 		//    요청받은 URL(BoardList.bo)이 유지되어야 함(qna_board_list.jsp 주소 숨김)
 		// => 따라서, Dispatcher 방식 포워딩
 		forward = new ActionForward();
-		forward.setPath("/board/qna_board_list.jsp");
+		forward.setPath("/sellerPage/seller_productList.jsp");
 		forward.setRedirect(false);
 		
 		// ActionForward 객체 리턴

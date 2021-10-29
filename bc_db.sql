@@ -18,7 +18,7 @@ CREATE TABLE `admin` (
 CREATE TABLE `customer` (
   `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
   `phone` varchar(45) COLLATE utf8_bin NOT NULL,
-  `eamil` varchar(45) COLLATE utf8_bin NOT NULL,
+  `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `recommend_id` int(11) NOT NULL DEFAULT '0',
   `personal_data` int(11) NOT NULL,
   UNIQUE KEY `eamil_UNIQUE` (`eamil`),
@@ -129,3 +129,26 @@ CREATE TABLE `order_product` (
   CONSTRAINT `order_num_product_num_fk` FOREIGN KEY (`order_num`) REFERENCES `order` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE `qna` (
+  `qna_idx` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
+  `product_num` int(11) NOT NULL,
+  `qna_subject` varchar(50) COLLATE utf8_bin NOT NULL,
+  `qna_password` varchar(20) COLLATE utf8_bin NOT NULL,
+  `qna_content` varchar(500) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`qna_idx`),
+  KEY `qna_cus_cus_id_fk` (`customer_id`),
+  KEY `qna_pro_pro_num_fk` (`product_num`),
+  CONSTRAINT `qna_cus_cus_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
+  CONSTRAINT `qna_pro_pro_num_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `qna_reply` (
+  `qna_idx` int(11) NOT NULL,
+  `seller_id` varchar(15) COLLATE utf8_bin NOT NULL,
+  `qna_reply_content_varchar` varchar(500) COLLATE utf8_bin NOT NULL DEFAULT '',
+  KEY `qna_re_sel_id_fk` (`seller_id`),
+  KEY `qna_re_qna_idx_fk` (`qna_idx`),
+  CONSTRAINT `qna_re_qna_idx_fk` FOREIGN KEY (`qna_idx`) REFERENCES `qna` (`qna_idx`),
+  CONSTRAINT `qna_re_sel_id_fk` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <title>Tables - SB Admin</title>
+ <title>집밥선생</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="CSS/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -56,7 +56,7 @@ int ListCount = pageInfo.getListCount();
                                             <th>상품번호</th>
                                             <th>회사명</th>
                                             <th>상품명</th>
-                                            <th>판매수량</th>
+                                            <th>가격</th>
                                             <th>판매시작일</th>
                                             <th>총 판매금액</th>
                                             <th>관리</th>
@@ -67,29 +67,32 @@ int ListCount = pageInfo.getListCount();
                                             <th>상품번호</th>
                                             <th>판매자</th>
                                             <th>상품이름</th>
-                                            <th>판매수량</th>
+                                            <th>가격</th>
                                             <th>판매시작일</th>
                                             <th>총 판매금액</th>
                                             <th>관리</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                       <tr>
                                         <%for(int i=0; i<articleList.size(); i++){ %>
+                                       <tr>
                                             <td><%=articleList.get(i).getProduct_num() %></td>
                                             <td><%=articleList.get(i).getSname() %></td>
-                                            <td><a href="#"><%=articleList.get(i).getProduct_name() %></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
+                                            <td>
+                                            <a href="ProductDetail.do?product_num=<%=articleList.get(i).getProduct_num() %>">
+                                            <%=articleList.get(i).getProduct_name() %></a>
+                                            </td><!-- 클릭시 상품 디테일 페이지로 이동. -->
                                             <td><%=articleList.get(i).getProduct_stock() %></td>
                                             <td><%=articleList.get(i).getProduct_date() %></td>
                                             <td>$<%=articleList.get(i).getProduct_price() %></td>
                                             <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                            <%}
-                                        }%>
                                         </tr>
+                                            <%} %>
                                     </tbody>
                                 </table>
+                                <%}%>
                             </div>
-                           <a href="ProductRegister.ad" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a>
+                           <a href="AddProduct.sc" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a>
                         </div>
                     </div>
                 </main>
