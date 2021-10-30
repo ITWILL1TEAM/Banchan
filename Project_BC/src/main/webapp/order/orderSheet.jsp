@@ -151,7 +151,7 @@ function payMethod(method) {
 </head>
 <body>
 <!-- ACCESSIBILITY -->
-<form action="order/paymentTest.jsp" method="get" >
+<form action="Payment.or" method="post" >
 
 
 	<input type="hidden" id="total_price" name="total_price" value="<%=total_price%>">

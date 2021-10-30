@@ -43,7 +43,7 @@ public class OrderController extends HttpServlet {
 			}else if(command.equals("/Payment.or")) {
 				System.out.println("Payment.or 포워딩");
 				forward = new ActionForward();
-				forward.setPath("/order/payment.jsp");
+				forward.setPath("/order/orderComplete.jsp");
 			}
 			
 			
