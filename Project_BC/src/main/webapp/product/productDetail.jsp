@@ -1,11 +1,14 @@
+<%@page import="vo.ProductImg"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="vo.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
+    ProductImg productImg = (ProductImg)request.getAttribute("productImg");
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
+	
 %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
