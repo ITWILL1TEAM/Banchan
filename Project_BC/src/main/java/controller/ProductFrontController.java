@@ -44,12 +44,6 @@ public class ProductFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		} else if(command.equals("/Order.do")) {
-			// 주문하기 페이지로 포워딩
-			forward = new ActionForward();
-			forward.setPath("/product/orderTest.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-			
 		} else if(command.equals("/BoardWriteForm.do")) {
 	            // 글쓰기 작업을 위한 뷰페이지로 포워딩
 	            forward = new ActionForward();
