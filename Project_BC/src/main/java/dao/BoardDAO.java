@@ -142,12 +142,10 @@ public class BoardDAO {
             //    (참조글번호를 기준으로 내림차순, 순서번호를 기준으로 오름차순 정렬)
             // => 단, 시작행번호부터 페이지당 게시물수 만큼만 조회
             //    LIMIT 시작행번호,페이지당게시물수
-            String sql = "SELECT * FROM product "
-                    + "ORDER BY board_re_ref DESC,board_re_seq ASC "
-                    + "LIMIT ?,?";
+            String sql = "SELECT * FROM product ORDER BY product_num DESC";
             pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, startRow); // 시작행번호
-            pstmt.setInt(2, limit); // 페이지당 게시물 수
+//            pstmt.setInt(1, startRow); // 시작행번호
+//            pstmt.setInt(2, limit); // 페이지당 게시물 수
             
             // 4단계. SQL 구문 실행 및 결과 처리
             rs = pstmt.executeQuery();
@@ -163,9 +161,11 @@ public class BoardDAO {
                 BoardBean board = new BoardBean();
                 board.setProduct_num(rs.getInt("product_num"));
                 board.setProduct_name(rs.getString("product_name"));
-                board.setSname(rs.getString("Sname "));
+                board.setSname(rs.getString("Sname"));
                 board.setProduct_date(rs.getDate("product_date"));
-                
+                board.setProduct_category(rs.getString("product_category"));
+                board.setProduct_price(rs.getInt("product_price"));
+                board.setProduct_stock(rs.getInt("product_stock"));
            
                   
                 // 1개 레코드가 저장된 BoardBean 객체를 List 객체에 추가
@@ -286,5 +286,16 @@ public class BoardDAO {
 			close(pstmt);
 		}
 		return productNum;
+	}
+
+	public ArrayList<BoardBean> selectList() {
+		
+		
+		
+		
+		
+		
+		
+		return null;
 	}
 }

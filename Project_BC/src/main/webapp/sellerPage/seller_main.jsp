@@ -1,3 +1,6 @@
+<%@page import="vo.PageInfo"%>
+<%@page import="vo.BoardBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,16 +16,16 @@
 </head>
 <body class="sb-nav-fixed">
  <%
-  String id = request.getParameter("id");
+ String sId = (String)session.getAttribute("sId");
  %>
-  <jsp:include page="../inc/seller_top.jsp"/>
+  <jsp:include page="../inc/dashBoard_top.jsp"/>
      
                 <!--  메인 Content -->
                  <!--  첫차트. -->
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4" style="background-color: #ddeefc;">
-                        <h1 class=""><%= id %> 판매자님 어서오십시오</h1>
+                        <h1 class=""><%= sId %> 판매자님 어서오십시오</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">DashBoard</li>&nbsp;&nbsp;&nbsp;
                             <li><a href="AddProduct.sc" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a></li>
@@ -114,20 +117,34 @@
                                         </table>
                                     </div>
                                 </div>
-                                </div>  
+                                </div> 
+                                
+                                
+                                
+                                <!-- 상품관리. --> 
+                                <%
+ ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
+PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+int ListCount = pageInfo.getListCount();
+
+
+%>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                상품관리
+                                <a href="ProductList.sc">상품관리</a>
                             </div>
                             <div class="card-body">
                                <table id="datatablesSimple">
                                     <thead>
+                                    <%
+                                       if(articleList != null && ListCount >0){
+                                    %>
                                         <tr>
                                             <th>상품번호</th>
-                                            <th>판매자</th>
-                                            <th>상품이름</th>
-                                            <th>판매수량</th>
+                                            <th>회사명</th>
+                                            <th>상품명</th>
+                                            <th>가격</th>
                                             <th>판매시작일</th>
                                             <th>총 판매금액</th>
                                             <th>관리</th>
@@ -138,59 +155,27 @@
                                             <th>상품번호</th>
                                             <th>판매자</th>
                                             <th>상품이름</th>
-                                            <th>판매수량</th>
+                                            <th>가격</th>
                                             <th>판매시작일</th>
                                             <th>총 판매금액</th>
                                             <th>관리</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
+                                        <%for(int i=0; i<articleList.size(); i++){ %>
+                                       <tr>
+                                            <td><%=articleList.get(i).getProduct_num() %></td>
+                                            <td><%=articleList.get(i).getSname() %></td>
+                                            <td><a href="#"><%=articleList.get(i).getProduct_name() %></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
+                                            <td><%=articleList.get(i).getProduct_stock() %></td>
+                                            <td><%=articleList.get(i).getProduct_date() %></td>
+                                            <td>$<%=articleList.get(i).getProduct_price() %></td>
                                             <td><a href="#"><img src="assets/img/Edit.png"></a>
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>  
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>  
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>   <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>                                                            
+                                            <%} %>
                                     </tbody>
                                 </table>
+                                <%}%>
                             </div>
                         </div>
                     </div>
@@ -198,7 +183,7 @@
                     
                 </main>
                 
-               <jsp:include page="../inc/seller_bottom.jsp"/>
+               <jsp:include page="../inc/dashBoard_bottom.jsp"/>
             
             </div>
     

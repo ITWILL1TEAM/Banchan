@@ -4,8 +4,8 @@
 	pageEncoding="UTF-8"%>
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
-	String id = (String)session.getAttribute("id");
-	int price = article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
+	String id = (String)session.getAttribute("sId");
+	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
 %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -91,7 +91,7 @@
 </script>
 </head>
 <body>
-	<%@include file="../inc/top.jsp" %>
+	<%@ include file="/inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	

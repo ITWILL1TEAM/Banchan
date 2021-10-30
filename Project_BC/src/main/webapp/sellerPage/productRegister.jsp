@@ -75,7 +75,7 @@ function category(e){
     
     
     <body class="sb-nav-fixed">
-        <jsp:include page="../inc/seller_top.jsp"/>
+        <jsp:include page="../inc/dashBoard_top.jsp"/>
            
             <div id="layoutSidenav_content">
                 <main>
@@ -129,7 +129,7 @@ function category(e){
                         </div>
                     </div>
                 </main>
-                <jsp:include page="../inc/seller_bottom.jsp"/>
+                <jsp:include page="../inc/dashBoard_bottom.jsp"/>
             </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
