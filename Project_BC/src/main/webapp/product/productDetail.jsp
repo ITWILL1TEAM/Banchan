@@ -21,7 +21,7 @@
 <link href="CSS/gds.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	var qty;
-	var price = <%=article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount()) %>;
+	var price = <%=price %>;
 	var max_qty = <%=article.getProduct_stock() %>
 	var total_amt;
 	$(document).ready(function() {

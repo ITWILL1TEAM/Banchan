@@ -12,6 +12,7 @@ import vo.ActionForward;
 import vo.BasketBean;
 import vo.CustomerAddress;
 import vo.CustomerBean;
+import vo.CustomerInfo;
 import vo.MemberBean;
 
 
@@ -72,31 +73,34 @@ public class OrderFormAction implements Action {
 //		}
 		
 		
-		ArrayList<CustomerAddress> memberAddress = new ArrayList<CustomerAddress>();
-		memberAddress = orderService.getMemberAddress(customer_id);
-		
-		for(int i = 0 ; i <memberAddress.size() ; i++) {
-			System.out.println("도로명 : "+memberAddress.get(i).getRoadAddress());
-			System.out.println("우편번호 : "+memberAddress.get(i).getZonecode());
-			System.out.println("상세주소 : "+memberAddress.get(i).getDtl_addr());
-		}
-		
+//		ArrayList<CustomerAddress> memberAddress = new ArrayList<CustomerAddress>();
+//		memberAddress = orderService.getMemberAddress(customer_id);
+//		
+//		for(int i = 0 ; i <memberAddress.size() ; i++) {
+//			System.out.println("도로명 : "+memberAddress.get(i).getRoadAddress());
+//			System.out.println("우편번호 : "+memberAddress.get(i).getZonecode());
+//			System.out.println("상세주소 : "+memberAddress.get(i).getDtl_addr());
+//		}
+//		
 
 		
 		forward = new ActionForward();
 		forward.setPath("/order/orderSheet.jsp");
 		
-		ArrayList<CustomerBean> customerInfo = new ArrayList<CustomerBean>();
-		customerInfo = orderService.getCustomerAddress(customer_id);
+		ArrayList<CustomerInfo> customerInfo = new ArrayList<CustomerInfo>();
+		customerInfo = orderService.getCustomerInfo(customer_id);
 		
 		for(int i = 0 ; i <customerInfo.size() ; i++) {
 			System.out.println("커스터머 이메일 : "+customerInfo.get(i).getEmail());
 			System.out.println("커스터머 네임 : "+customerInfo.get(i).getName());
 			System.out.println("커스터머 폰 : "+customerInfo.get(i).getPhone());
+			System.out.println("도로명 : "+customerInfo.get(i).getRoadAddress());
+			System.out.println("우편번호 : "+customerInfo.get(i).getZonecode());
+			System.out.println("상세주소 : "+customerInfo.get(i).getDtl_addr());
 		}
 
 //		request.setAttribute("memberInfo", memberInfo);
-		request.setAttribute("memberAddress", memberAddress);
+//		request.setAttribute("memberAddress", memberAddress);
 		request.setAttribute("customerInfo", customerInfo);
 		
 		return forward;

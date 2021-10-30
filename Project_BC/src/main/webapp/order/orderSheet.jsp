@@ -1,3 +1,4 @@
+<%@page import="vo.CustomerInfo"%>
 <%@page import="vo.MemberBean"%>
 <%@page import="vo.CustomerBean"%>
 <%@page import="vo.CustomerAddress"%>
@@ -8,8 +9,8 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
-ArrayList<CustomerAddress> memberAddress = (ArrayList<CustomerAddress>)request.getAttribute("memberAddress");
-ArrayList<CustomerBean> customerInfo = (ArrayList<CustomerBean>)request.getAttribute("customerInfo");
+// ArrayList<CustomerAddress> memberAddress = (ArrayList<CustomerAddress>)request.getAttribute("memberAddress");
+ArrayList<CustomerInfo> customerInfo = (ArrayList<CustomerInfo>)request.getAttribute("customerInfo");
 // ArrayList<MemberBean> memberInfo = (ArrayList<MemberBean>)request.getAttribute("memberInfo");
 
 
@@ -112,9 +113,9 @@ function Addr(test) {
       if(addrType=="defaultAddr"){
          
     	  document.getElementById("buy_name").value = '<%=customerInfo.get(0).getName() %>';
-    	  document.getElementById("postcode").value = '<%=memberAddress.get(0).getZonecode() %>';
-    	  document.getElementById("address").value = '<%=memberAddress.get(0).getRoadAddress() %>';
-    	  document.getElementById("detailAddress").value = '<%=memberAddress.get(0).getDtl_addr() %>';
+    	  document.getElementById("postcode").value = '<%=customerInfo.get(0).getZonecode() %>';
+    	  document.getElementById("address").value = '<%=customerInfo.get(0).getRoadAddress() %>';
+    	  document.getElementById("detailAddress").value = '<%=customerInfo.get(0).getDtl_addr() %>';
     	  document.getElementById("buy_phone").value = '<%=customerInfo.get(0).getPhone()%>';
     	  document.getElementById("order_memo").value = '';
          
@@ -153,12 +154,9 @@ function payMethod(method) {
 <form action="order/paymentTest.jsp" method="get" >
 
 
-	<input type="hidden" id="payment_price" name="payment_price" value="<%=total_price%>">
-	<input type="hidden" id="payment_price" name="payment_price" value="<%=total_discount%>">
-	<input type="hidden" id="payment_price" name="payment_price" value="<%=shipping_fee%>">
-	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
-	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
-	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
+	<input type="hidden" id="total_price" name="total_price" value="<%=total_price%>">
+	<input type="hidden" id="total_discount" name="total_discount" value="<%=total_discount%>">
+	<input type="hidden" id="shipping_fee" name="shipping_fee" value="<%=shipping_fee%>">
 	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
 	
 	
@@ -179,10 +177,10 @@ function payMethod(method) {
 	<!-- WRAP -->
 	<div class="wrap odr">
 		<!-- wrap addClass -->
-		<input type='hidden' name='loginId' 	id='loginId' 	value="iamyj95"/>
+		<input type='hidden' name='loginId' 	id='loginId' 	value="<%=cartList.get(0).getCutomer_id()%>"/>
 		<input type='hidden' name='loginNo' 	id='loginNo' 	value="0000184627"/>
 		<input type='hidden' name='loginName' 	id='loginName' 	value="유여진"/>
-
+		
 		<h2 class="odr_ins_tit">주문서</h2>
 		<div class="odr_top">
 			<ol>
@@ -235,7 +233,7 @@ function payMethod(method) {
 		%>
 		
 		<input type="hidden" name="num" id="num" value="<%=cartList.get(i).getProduct_num()%>">
-		<input type="hidden" name="num" id="num" value="<%=cartList.get(i).getCutomer_id()%>">  
+		
 					<tr>
 					
 						<td>
@@ -332,10 +330,10 @@ function payMethod(method) {
 						<tr>
 							<th>주소<em class="pt" >*</em></th>
 							<td><div class="inf">
-									<input type="text" name="postcode" id="postcode" value="<%=memberAddress.get(0).getZonecode() %>" placeholder="우편번호" class="MS_input_txt w80" required="required"/>
+									<input type="text" name="postcode" id="postcode" value="<%=customerInfo.get(0).getZonecode() %>" placeholder="우편번호" class="MS_input_txt w80" required="required"/>
 									<input type="button" onclick="execDaumPostcode()" value="주소 찾기" class="btn-white"> <br> 
-									<input type="text" name="address" id="address" value="<%=memberAddress.get(0).getRoadAddress() %>" placeholder="주소" class="MS_input_txt w240" required="required" /> 
-									<input type="text" name="detailAddress" id="detailAddress" value="<%=memberAddress.get(0).getDtl_addr() %>" placeholder="상세주소" class="MS_input_txt w240" required="required"/>  
+									<input type="text" name="address" id="address" value="<%=customerInfo.get(0).getRoadAddress() %>" placeholder="주소" class="MS_input_txt w240" required="required" /> 
+									<input type="text" name="detailAddress" id="detailAddress" value="<%=customerInfo.get(0).getDtl_addr() %>" placeholder="상세주소" class="MS_input_txt w240" required="required"/>  
 									<input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" style="display: none;" />
 									</div></td>
 						</tr>
