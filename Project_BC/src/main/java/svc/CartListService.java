@@ -18,11 +18,9 @@ public class CartListService {
 		BasketDAO dao = BasketDAO.getInstance();
 		dao.setConnection(con);
 		
-		// 게시물 목록 조회를 수행하는 getArticleList() 메소드 호출
-		// -> 파라미터 : 페이지번호(page), 게시물 개수(limit)   리턴타입 : ArrayList<BoardBean> 객체(articleList)
+		// 장바구니 목록 조회를 수행하는 getCartList() 메소드 호출
 		ArrayList<BasketBean> cartList = null;
 		cartList = dao.selectCartList(customer_id);
-		
 		
 		close(con);
 		
