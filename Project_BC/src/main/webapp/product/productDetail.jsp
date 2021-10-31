@@ -73,25 +73,6 @@
 	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 	
-	var id = <%=id %>
-	
-// 	function checkLogin() {
-// 		if(id == null) {
-// 			alert('로그인이 필요합니다.');
-// 			location.href = 'MemberLoginForm.me';
-// 			return false;
-// 		} 
-// 	}
-
-// 	function checkLoginCart() {
-// 		if(id == null) {
-// 			alert('로그인이 필요합니다.');
-// 			location.href = 'MemberLoginForm.me';
-// 		} else {
-// 			location.href = 'Cart.do';
-// 		}
-// 	}
-	
 </script>
 </head>
 <body>
@@ -99,7 +80,7 @@
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
-	<form method="post" name="pdDetail" onsubmit="return checkLogin()">
+	<form method="post" name="pdDetail">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 		

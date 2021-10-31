@@ -153,6 +153,7 @@ public class BasketDAO {
 			while(rs.next()) {
 				BasketBean basket = new BasketBean();
 				
+				basket.setBasket_idx(rs.getInt("basket_idx"));
 				basket.setProduct_num(rs.getInt("product_num"));
 				basket.setProduct_name(rs.getString("product_name"));
 				basket.setProduct_price(rs.getInt("product_price"));
@@ -176,6 +177,57 @@ public class BasketDAO {
 		
 		
 		return cartList;
+	}
+	
+	// 장바구니 제품 수량 수정
+	public int updateCart(int product_num, int product_qty, String customer_id) {
+		System.out.println("BasketDAO - updateCart()");
+		int updateCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE basket SET product_qty=? WHERE product_num=? AND customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_qty);
+			pstmt.setInt(2, product_num);
+			pstmt.setString(3, customer_id);
+			
+			updateCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("updateCart() 오류 - " + e.getMessage());
+		} finally {
+        	// 자원 반환
+            close(pstmt);
+        }
+		
+		return updateCount;
+	}
+
+	// 장바구니에서 제품 삭제
+	public int deleteCart(int product_num, String customer_id) {
+		System.out.println("basketDAO - deleteCart()");
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM basket WHERE product_num=? AND customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+			pstmt.setString(2, customer_id);
+			
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        	// 자원 반환
+            close(pstmt);
+        }
+		
+		return deleteCount;
 	}
 	
     
