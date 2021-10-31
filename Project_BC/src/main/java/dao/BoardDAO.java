@@ -305,11 +305,11 @@ public class BoardDAO {
 			
 			articleImg = new ArrayList<ProductImg>();
 
-			if (rs.next()) {
+			while (rs.next()) {
 				// 조회된 상세 정보를 BoardBean 객체에 저장
 			ProductImg productImg = new ProductImg();
 				
-				
+				 
 				 productImg.setProduct_original_img(rs.getString("product_original_img"));
 				 productImg.setProduct_img(rs.getString("product_img"));
 				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
