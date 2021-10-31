@@ -286,8 +286,8 @@ public class BoardDAO {
 	}
 	
 
-	public ProductImg selectArticleImg(int product_num) {
-		ProductImg articleImg = null;
+	public ArrayList<ProductImg> selectArticleImg(int product_num) {
+		ArrayList<ProductImg> articleImg = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -302,14 +302,19 @@ public class BoardDAO {
 			pstmt.setInt(1, product_num);
 
 			rs = pstmt.executeQuery();
+			
+			articleImg = new ArrayList<ProductImg>();
 
 			if (rs.next()) {
 				// 조회된 상세 정보를 BoardBean 객체에 저장
-				articleImg = new ProductImg();
+			ProductImg productImg = new ProductImg();
 				
-				articleImg.setProduct_original_img("product_original_img");
-				articleImg.setProduct_original_img("product_img");
-				articleImg.setProduct_original_img("product_img_location");
+				
+				 productImg.setProduct_original_img(rs.getString("product_original_img"));
+				 productImg.setProduct_img(rs.getString("product_img"));
+				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
+				 
+				 articleImg.add(productImg);
 			}
 
 		} catch (Exception e) {

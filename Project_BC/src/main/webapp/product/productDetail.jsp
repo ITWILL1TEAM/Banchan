@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="vo.ProductImg"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="vo.BoardBean"%>
@@ -5,7 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
-    ProductImg productImg = (ProductImg)request.getAttribute("productImg");
+    ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
 	
@@ -123,7 +124,11 @@
 						<div class="gd_img_bx">
 							 <div class="fade_slide gd_img" >
 								<ul class="cont">
-									<li class="active" style="background-image:url('//localhost:8081/Project_BC/upload/001.png')"><span class="ir">양장피 이미지1</span></li>
+									<li class="active" 
+									style="background-image:url('//localhost:8081/Project_BC/upload/')">
+									
+									
+									<span class="ir">양장피 이미지1</span></li>
 								</ul>		
 							</div>
 							
