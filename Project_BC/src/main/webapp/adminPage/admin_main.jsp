@@ -13,7 +13,7 @@
 </head>
 <body class="sb-nav-fixed">
  
-  <jsp:include page="../inc/admin_top.jsp"/>
+  <jsp:include page="../inc/dashBoard_top.jsp"/>
      
                 <!--  메인 Content -->
                  <!--  첫차트. -->
@@ -220,7 +220,7 @@
                     
                 </main>
                 
-               <jsp:include page="../inc/admin_bottom.jsp"/>
+               <jsp:include page="../inc/dashBoard_bottom.jsp"/>
             
             </div>
         </div>

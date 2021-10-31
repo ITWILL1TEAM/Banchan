@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.Action;
+import action.*;
 import vo.ActionForward;
 
 /**
@@ -27,18 +27,35 @@ public class SellerController extends HttpServlet {
         Action action = null;
         ActionForward forward = null;
         
-        if(command.equals("/AddProduct.sc")) {
+        
+        if(command.equals("/Seller.sc")) {
+//            메인 들어갈떄  갱신될것들 공지 상품 리뷰.
+        	
+        	action = new sellerDashBoardAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        
+        } else if(command.equals("/AddProduct.sc")) {
             // 글쓰기 작업을 위한 뷰페이지로 포워딩
-            forward = new ActionForward();
+            forward = new ActionForward();        
             forward.setPath("/sellerPage/productRegister.jsp");
             forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-        } else if(command.equals("/Seller.sc")) {
+        }else if(command.equals("/ProductList.sc")) {
             // 글쓰기 작업을 위한 뷰페이지로 포워딩
-            forward = new ActionForward();
-            forward.setPath("/sellerPage/seller_main.jsp");
-            forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
-        }
+        	action = new BoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// 위임받은 Exception 예외처리 필요..!
 
+		}
         
         
         if(forward != null) {

@@ -34,8 +34,57 @@ public class BasketDAO {
         this.con = con;
     }
     
+	// 사용자의 장바구니에 해당 상품이 이미 존재하는지 체크 후 존재할 경우 수량만 업데이트
+	public int checkDupProduct(BasketBean basket) {
+		System.out.println("BasketDAO - checkDupProduct()");
+		int updateCount = 0;
+		
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+        ResultSet rs = null;
+        
+        try {
+        	
+    		String sql = "SELECT product_qty FROM basket WHERE product_num=? AND customer_id=?";
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setInt(1, basket.getProduct_num());
+    		pstmt.setString(2, basket.getCutomer_id());
+    		rs = pstmt.executeQuery();
+    		
+    		int qty = 0;
+    		if(rs.next()) {
+    			// 기존에 장바구니에 담겨있던 제품 수량을 저장
+    			qty = rs.getInt("product_qty");
+    			
+    			String sql2 = "UPDATE basket SET product_qty=? WHERE product_num=? AND customer_id=?";
+    			pstmt2 = con.prepareStatement(sql2);
+    			pstmt2.setInt(1, qty + basket.getProduct_qty());
+    			pstmt2.setInt(2, basket.getProduct_num());
+    			pstmt2.setString(3, basket.getCutomer_id());
+    			
+    			updateCount = pstmt2.executeUpdate();
+    			
+    		}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("checkDupProduct() 오류 - " + e.getMessage());
+		} finally {
+        	// 자원 반환
+        	close(rs);
+        	if(pstmt2 != null) {
+        		close(pstmt2);
+        	}
+            close(pstmt);
+        }
+        
+		
+		return updateCount;
+	}
+    
+    // 장바구니에 새로운 제품 담기
     public int insertBasket(BasketBean basket) {
-    	System.out.println("insertBasket - BasketDAO");
+    	System.out.println("BasketDAO - insertBasket()");
         int insertCount = 0;
         
         PreparedStatement pstmt = null;
@@ -84,7 +133,8 @@ public class BasketDAO {
         
         return insertCount;
     }
-
+    
+    // 장바구니 페이지에 출력할 내용을 ArrayList에 저장
 	public ArrayList<BasketBean> selectCartList(String customer_id) {
 		System.out.println("BasketDAO - selectCartList()");
 		ArrayList<BasketBean> cartList = null;
@@ -103,11 +153,12 @@ public class BasketDAO {
 			while(rs.next()) {
 				BasketBean basket = new BasketBean();
 				
+				basket.setBasket_idx(rs.getInt("basket_idx"));
 				basket.setProduct_num(rs.getInt("product_num"));
 				basket.setProduct_name(rs.getString("product_name"));
 				basket.setProduct_price(rs.getInt("product_price"));
 				basket.setProduct_qty(rs.getInt("product_qty"));
-				basket.setProduct_discount(rs.getInt("discount"));
+				basket.setProduct_discount(rs.getInt("product_discount"));
 				basket.setProduct_img(rs.getString("product_img"));
 				basket.setSname(rs.getString("Sname"));
 				
@@ -117,6 +168,7 @@ public class BasketDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("selectCartList() 오류 - " + e.getMessage());
 		} finally {
         	// 자원 반환
         	close(rs);
@@ -126,6 +178,7 @@ public class BasketDAO {
 		
 		return cartList;
 	}
+
 //-------------결제후 장바구니 비우기 작업 - 삭제할수도 있음
 	public int cartDelete(int[] nums) {
 		System.out.println("CartDAO - cartDelete");
@@ -162,5 +215,57 @@ public class BasketDAO {
 		return deleteCount;
 	}
 
-    
+=======
+	
+	// 장바구니 제품 수량 수정
+	public int updateCart(int product_num, int product_qty, String customer_id) {
+		System.out.println("BasketDAO - updateCart()");
+		int updateCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE basket SET product_qty=? WHERE product_num=? AND customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_qty);
+			pstmt.setInt(2, product_num);
+			pstmt.setString(3, customer_id);
+			
+			updateCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("updateCart() 오류 - " + e.getMessage());
+		} finally {
+        	// 자원 반환
+            close(pstmt);
+        }
+		
+		return updateCount;
+	}
+
+	// 장바구니에서 제품 삭제
+	public int deleteCart(int product_num, String customer_id) {
+		System.out.println("basketDAO - deleteCart()");
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM basket WHERE product_num=? AND customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+			pstmt.setString(2, customer_id);
+			
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        	// 자원 반환
+            close(pstmt);
+        }
+		
+		return deleteCount;
+	}
+	
 }

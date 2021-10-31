@@ -1,13 +1,11 @@
 package action;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import svc.AddCartProService;
 import svc.CartListService;
 import vo.ActionForward;
 import vo.BasketBean;
@@ -22,46 +20,20 @@ public class CartListAction implements Action {
         ActionForward forward = null;
         
         // 세션으로 커스터머 아이디 받아오기
-        
-        BasketBean basket = new BasketBean();
-        
         HttpSession session = request.getSession();
-        String customer_id = (String)session.getAttribute("sId");
-        
-        int num = Integer.parseInt(request.getParameter("product_num"));
-        String name = request.getParameter("product_name");
-        String Sname = request.getParameter("Sname");
-        int price = Integer.parseInt(request.getParameter("product_price"));        
-        int discount = Integer.parseInt(request.getParameter("product_discount"));
-        int product_qty = Integer.parseInt(request.getParameter("ord_qty"));
-        int total_amt = Integer.parseInt(request.getParameter("total_amt"));
-        String product_img = "yang_thum.jpg";
-        
-        
-        System.out.println("아이디 : " + customer_id);
-        System.out.println("제품번호 : "  + num);
-        System.out.println("제품명 : " + name);
-        System.out.println("제품가격 : " + price);
-        System.out.println("주문 수량 : " + product_qty);
-        System.out.println("할인율 : " + discount);
-        System.out.println("총 주문 금액 : " + total_amt);
-        System.out.println("이미지 : " + product_img);
-        System.out.println("회사명 : " + Sname);
-        
-        basket.setCutomer_id(customer_id);
-        basket.setProduct_num(num);
-        basket.setProduct_name(name);
-        basket.setProduct_price(price);
-        basket.setProduct_qty(product_qty);
-        basket.setProduct_discount(discount);
-        basket.setProduct_img(product_img); 
-        basket.setSname(Sname);
-        
+        String customer_id = (String)session.getAttribute("sId");        
         
         CartListService cart = new CartListService();
         ArrayList<BasketBean> cartList = cart.getCartList(customer_id);
         
+        // 장바구니에 있는 제품의 총 가격을 합산할 변수
+        int total_amt = 0;
+        for(int i = 0; i < cartList.size(); i++) {
+        	total_amt += cartList.get(i).getProduct_price() * cartList.get(i).getProduct_qty();
+        }
+        
         request.setAttribute("cartList", cartList);
+        request.setAttribute("total_amt", total_amt);
 
         forward = new ActionForward();
         forward.setPath("/cart/cart.jsp");

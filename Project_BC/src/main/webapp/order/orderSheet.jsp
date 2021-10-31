@@ -378,7 +378,8 @@ function payMethod(method) {
 						<col />
 					</colgroup>
 					<tbody>
-						<tr>
+						<tr>  
+						
 							<th>
 								<ul class="pay_rdo">	
 									
