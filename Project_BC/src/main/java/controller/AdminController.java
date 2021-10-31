@@ -43,10 +43,15 @@ public class AdminController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/category/sidedish.jsp");
 
-		}else if(command.equals("/ProductList.ad")) {			
-			forward = new ActionForward();
-			forward.setPath("/adminPage/productList.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/ProductList.ad")) {
+            // 글쓰기 작업을 위한 뷰페이지로 포워딩
+        	action = new BoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
 		}else if(command.equals("/Notice.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/Notice.jsp");

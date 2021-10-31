@@ -74,10 +74,10 @@
 <!--             </div> -->
 <!--         </div> -->
         <!-- header top -->
-        <div class="header-top" style="background-color:#90EE90;">
+        <div class="header-top" style="background-color:#02CB5D;">
             <div class="inner-box">
                 <h1 class="logo">
-                    <a href="#"
+                    <a href="main.jsp"
                         style="width: 184px; height: 150px; background-image: url('img/TestLogo.png')">집밥선생</a>
                 </h1>
                 <!-- 검색 영역 [S] -->
@@ -143,9 +143,9 @@
             %>
 <!--              <li><a href="main.ad"> 관리자페이지로</a></li> -->
             <%  }else if(grade==2){
-                    pageContext.forward("/Seller.sc");
+//                     pageContext.forward("/Seller.sc");//잠시보류
             %>
-<%--                   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li> --%>
+                  <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li>
             <%  }else if(grade==3){%>
                <li><a href="Besong.my"> 마이페이지로</a></li>    
             <%  }else{//grade==4
