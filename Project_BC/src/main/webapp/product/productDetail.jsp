@@ -123,13 +123,13 @@
 						<div class="gd_img_bx">
 							 <div class="fade_slide gd_img" >
 								<ul class="cont">
-									<li class="active" style="background-image:url('//cdn.thebanchan.co.kr/upload/C00001/goods/prd/510/764/200721000025764.jpg')"><span class="ir">양장피 이미지1</span></li>
+									<li class="active" style="background-image:url('//localhost:8081/Project_BC/upload/001.png')"><span class="ir">양장피 이미지1</span></li>
 								</ul>		
 							</div>
 							
 							<div class="indi">
 								<ul class="page">
-									<li class="on"><a href="#gd_img_bx"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/><em class="ir">양장피 이미지1 보기</em></a></li>
+									<li class="on"><a href="#gd_img_bx"><img src="//localhost:8081/Project_BC/upload/001.png" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/><em class="ir">양장피 이미지1 보기</em></a></li>
 								</ul>
 							</div>
 						</div>
