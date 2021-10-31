@@ -3,6 +3,7 @@ package action;
 import java.io.*;
 import java.util.*;
 
+import javax.naming.*;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,14 +25,14 @@ public class BoardWriteProAction implements Action {
         
         BoardBean boardBean = new BoardBean();
         
-        ServletContext context = request.getServletContext();
         
-        String realFolder = "C:\\Users\\JSW\\git\\Banchan\\Project_BC\\src\\main\\webapp\\upload";//실제경로
-//        String path = request.getRealPath("./upload");//아 왜안대ㅐ
-//        String saveFolder = "/upload";
+        String realFolder = "";
         String saveFolder = "/upload";
 //        String realFolder = context.getRealPath(saveFolder);
 		       		      		    		    
+        ServletContext context = request.getServletContext();
+        realFolder=context.getRealPath(saveFolder);
+        System.out.println(realFolder);
 	     		 
 		 int size = 1024 * 1024 * 10;
 		
@@ -115,18 +116,18 @@ public class BoardWriteProAction implements Action {
             		  
             		  if(imgVal==1) {
             			 if(i<10) {
-            				 board_file = name+"0"+imgVal+"0"+i;
+            				 board_file = name+"0_"+imgVal+"0"+i;
             				 
             			 }else {
-            				 board_file = name+"0"+imgVal+""+i;
+            				 board_file = name+"0_"+imgVal+""+i;
             			 }
             			 i++;
             		  }else {
             			  if(j<10) {
-             				 board_file = name+"0"+imgVal+"0"+j;
+             				 board_file = name+"0_"+imgVal+"0"+j;
              				 
              			 }else {
-             				 board_file = name+"0"+imgVal+""+j;
+             				 board_file = name+"0_"+imgVal+""+j;
              			 }
              			 j++;
             		  }

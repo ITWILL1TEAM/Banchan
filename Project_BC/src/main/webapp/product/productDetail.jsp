@@ -1,11 +1,14 @@
+<%@page import="vo.ProductImg"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="vo.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
-	String id = (String)session.getAttribute("id");
-	int price = article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
+    ProductImg productImg = (ProductImg)request.getAttribute("productImg");
+	String id = (String)session.getAttribute("sId");
+	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
+	
 %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -21,7 +24,7 @@
 <link href="CSS/gds.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	var qty;
-	var price = <%=article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount()) %>;
+	var price = <%=price %>;
 	var max_qty = <%=article.getProduct_stock() %>
 	var total_amt;
 	$(document).ready(function() {
@@ -91,7 +94,7 @@
 </script>
 </head>
 <body>
-	<%@include file="../inc/top.jsp" %>
+	<%@ include file="/inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	

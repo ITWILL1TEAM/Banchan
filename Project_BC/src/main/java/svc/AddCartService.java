@@ -8,10 +8,10 @@ import dao.BasketDAO;
 import vo.BasketBean;
 
 
-public class AddCartProService {
+public class AddCartService {
 	
 	public boolean AddCart(BasketBean basket) {
-		System.out.println("AddCartProService - AddCart()");
+		System.out.println("AddCartService - AddCart()");
 		boolean isInsertSuccess = false;
 		
 		Connection con = getConnection();
@@ -33,5 +33,7 @@ public class AddCartProService {
 		
 		return isInsertSuccess;
 	}
+
+	
 
 }
