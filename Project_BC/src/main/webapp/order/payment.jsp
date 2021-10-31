@@ -74,55 +74,53 @@ IMP.request_pay({
         msg += '에러내용 : ' + rsp.error_msg;
 		alert(msg);
     }
+    $("#status").attr('value', rsp.status);
     $("#imp_uid").attr('value',rsp.imp_uid);
-    $("#pay_method").attr('value','<%=pay_method%>');
-    $("#buyer_name").attr('value','<%=buyer_name%>');
-    $("#buyer_tel").attr('value','<%=buyer_tel%>');
-    $("#buyer_email").attr('value','<%=buyer_email%>');
-    $("#buyer_postcode").attr('value','<%=postcode%>');
-    $("#shipping_addr").attr('value','<%=address+"_"+detailAddress%>');
-		$("#paid_amount").attr('value', rsp.paid_amount);
-		$("#status").attr('value', rsp.status);
-		$("#shipping_name").attr('value', '<%=shipping_name%>');
-		$("#shipping_phone").attr('value', '<%=shipping_phone%>');
-		$("#shipping_memo").attr('value', '<%=shipping_memo%>');
-		$(".imp_uid").text($("#imp_uid").val());
-		$(".buyer_name").text($("#buyer_name").val());
-		$(".buyer_tel").text($("#buyer_tel").val());
-		$(".buyer_addr").text($("#buyer_addr").val());
-		$(".pay_method").text($("#pay_method").val());
-		$(".paid_amount").text($("#paid_amount").val());
-		$(".shipping_memo").text($("#shipping_memo").val());
-
+    $(".imp_uid").text($("#imp_uid").val());
 		if ($('#status').val() == "paid") {
 			$('.fail').attr("src",'order/payment_success.jpg')
 			document.paymentForm.submit();
 		} else {
-			$('.page-body').show();
-			$('.paybutton').show();
+			
 			$('.fail').attr("src",'order/payment_fail.jpg')
 			$('.fail').show();
 		}
 	});
- });
 
 </script>
 </head>
 <body>
+<%=customer_id %>
+<%=buyer_name %>
+<%=buyer_tel %>
+<%=buyer_email %>
+<%=postcode %>
+<%=address %>
+<%=detailAddress %>
+<%=shipping_name %>
+<%=shipping_phone %>
+<%=shipping_memo %>
+<%=pay_method %>
+<%=status %>
+
 <form action="OrderPro.or" method="post" name="paymentForm">
-<input type="hidden" value="" id="imp_uid" name="imp_uid">
-<input type="hidden" value="" id="paid_amount" name="paid_amount"> 
-<input type="hidden" value="" id="pay_method" name="pay_method">
-<input type="hidden" value="" id="buyer_name" name="buyer_name"> 
-<input type="hidden" value="" id="buyer_tel" name="buyer_tel">
-<input type="hidden" value="" id="buyer_email" name="buyer_email"> 
-<input type="hidden" value="" id="postcode" name="postcode">
-<input type="hidden" value="" id="shipping_addr" name="shipping_addr">
-<input type="hidden" value="" id="status" name="status">
-<input type="hidden" value="" id="shipping_name" name="shipping_name">
-<input type="hidden" value="" id="shipping_phone" name="shipping_phone">
-<input type="hidden" value="" id="shipping_memo" name="shipping_memo">
-<input type="hidden" value="<%=customer_id %>" id="customer_id" name="customer_id">
+<div class="tbl-order">
+	<img alt="" src="" class="fail" onerror="this.style.display='none'">
+</div>
+
+<input type="text" value="" id="imp_uid" name="imp_uid">
+<input type="text" value="<%=amount%>" id="paid_amount" name="paid_amount"> 
+<input type="text" value="<%=pay_method%>" id="pay_method" name="pay_method">
+<input type="text" value="<%=buyer_name %>" id="buyer_name" name="buyer_name"> 
+<input type="text" value="<%=buyer_tel %>" id="buyer_tel" name="buyer_tel">
+<input type="text" value="<%=buyer_email %>" id="buyer_email" name="buyer_email"> 
+<input type="text" value="<%=postcode %>" id="postcode" name="postcode">
+<input type="text" value="<%=address %>" id="shipping_addr" name="shipping_addr">
+<input type="text" value="" id="status" name="status">
+<input type="text" value="<%=shipping_name %>" id="shipping_name" name="shipping_name">
+<input type="text" value="<%=shipping_phone %>" id="shipping_phone" name="shipping_phone">
+<input type="text" value="<%=shipping_memo %>" id="shipping_memo" name="shipping_memo">
+<input type="text" value="<%=customer_id %>" id="customer_id" name="customer_id">
 
 </form>
 </body>

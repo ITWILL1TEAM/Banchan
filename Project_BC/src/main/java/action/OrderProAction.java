@@ -18,7 +18,31 @@ public class OrderProAction implements Action {
 		ActionForward forward = null;
 		Timestamp date = new Timestamp(System.currentTimeMillis());
 		PrintWriter out = response.getWriter();
+		
+		String id =request.getParameter("imp_uid");
+		System.out.println(id);
+		String customer_id =request.getParameter("customer_id");
+		System.out.println(customer_id);
+		String shipping_name =request.getParameter("shipping_name");
+		System.out.println(shipping_name);
+		String shipping_phone =request.getParameter("shipping_phone");
+		System.out.println(shipping_phone);
+		String postcode =request.getParameter("postcode");
+		System.out.println(postcode);
+		String shipping_addr =request.getParameter("shipping_addr");
+		System.out.println(shipping_addr);
+		String shipping_memo =request.getParameter("shipping_memo");
+		System.out.println(shipping_memo);
+		String pay_method =request.getParameter("pay_method");
+		System.out.println(pay_method);
+		String paid_amount =request.getParameter("paid_amount");
+		System.out.println(paid_amount);
+		
+		
+		
+		
 		OrderBean order = new OrderBean();
+		
 		order.setCode(request.getParameter("imp_uid"));
 		order.setCustomer_id(request.getParameter("customer_id"));
 		order.setShipping_name(request.getParameter("shipping_name"));
