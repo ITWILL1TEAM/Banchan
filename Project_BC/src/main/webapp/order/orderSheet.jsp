@@ -32,7 +32,7 @@ if(total_price -total_discount >=30000){
 	shipping_fee=0;
 }
 
-int payment_price = total_price -total_discount +shipping_fee;
+int amount = total_price -total_discount +shipping_fee;
 
 
 %>
@@ -112,20 +112,20 @@ function Addr(test) {
       
       if(addrType=="defaultAddr"){
          
-    	  document.getElementById("buy_name").value = '<%=customerInfo.get(0).getName() %>';
+    	  document.getElementById("shipping_name").value = '<%=customerInfo.get(0).getName() %>';
     	  document.getElementById("postcode").value = '<%=customerInfo.get(0).getZonecode() %>';
     	  document.getElementById("address").value = '<%=customerInfo.get(0).getRoadAddress() %>';
     	  document.getElementById("detailAddress").value = '<%=customerInfo.get(0).getDtl_addr() %>';
-    	  document.getElementById("buy_phone").value = '<%=customerInfo.get(0).getPhone()%>';
-    	  document.getElementById("order_memo").value = '';
+    	  document.getElementById("shipping_phone").value = '<%=customerInfo.get(0).getPhone()%>';
+    	  document.getElementById("shipping_memo").value = '';
          
       }else {
-    	  document.getElementById("buy_name").value = '';
+    	  document.getElementById("shipping_name").value = '';
     	  document.getElementById("postcode").value = '';
     	  document.getElementById("address").value = '';
     	  document.getElementById("detailAddress").value = '';
-    	  document.getElementById("buy_phone").value = '';
-    	  document.getElementById("order_memo").value = '';
+    	  document.getElementById("shipping_phone").value = '';
+    	  document.getElementById("shipping_memo").value = '';
       }
          
 }
@@ -157,7 +157,11 @@ function payMethod(method) {
 	<input type="hidden" id="total_price" name="total_price" value="<%=total_price%>">
 	<input type="hidden" id="total_discount" name="total_discount" value="<%=total_discount%>">
 	<input type="hidden" id="shipping_fee" name="shipping_fee" value="<%=shipping_fee%>">
-	<input type="hidden" id="payment_price" name="payment_price" value="<%=payment_price%>">
+	<input type="hidden" id="amount" name="amount" value="<%=amount%>">
+	<!-- 주문자 정보 전달 -->
+	<input type="hidden" id="buyer_name" name="buyer_name" value="<%=customerInfo.get(0).getName()%>">
+	<input type="hidden" id="buyer_tel" name="buyer_tel" value="<%=customerInfo.get(0).getPhone()%>">
+	<input type="hidden" id="buyer_email" name="buyer_email" value="<%=customerInfo.get(0).getEmail()%>">
 	
 	
 	
@@ -177,9 +181,9 @@ function payMethod(method) {
 	<!-- WRAP -->
 	<div class="wrap odr">
 		<!-- wrap addClass -->
-		<input type='hidden' name='loginId' 	id='loginId' 	value="<%=cartList.get(0).getCutomer_id()%>"/>
-		<input type='hidden' name='loginNo' 	id='loginNo' 	value="0000184627"/>
-		<input type='hidden' name='loginName' 	id='loginName' 	value="유여진"/>
+		<input type='hidden' name='customer_id' 	id='customer_id' 	value="<%=cartList.get(0).getCutomer_id()%>"/>
+
+		<input type='hidden' name='loginName' 	id='loginName' 	value="<%=customerInfo.get(0).getName()%>"/>
 		
 		<h2 class="odr_ins_tit">주문서</h2>
 		<div class="odr_top">
@@ -322,10 +326,10 @@ function payMethod(method) {
 						<col />
 					</colgroup>
 					<tbody>
-						
+						<!-- 배송받는사람 정보 전달 -->
 						<tr>
 							<th>받으시는 분<em class="pt">*</em></th>
-							<td><div class="inf"><input type="text" id="buy_name" name="buy_name" value =<%=customerInfo.get(0).getName() %> required="required"></div></td>
+							<td><div class="inf"><input type="text" id="shipping_name" name="shipping_name" value =<%=customerInfo.get(0).getName() %> required="required"></div></td>
 						</tr>
 						<tr>
 							<th>주소<em class="pt" >*</em></th>
@@ -342,7 +346,7 @@ function payMethod(method) {
 							<th>휴대전화<em class="pt">*</em></th>
 							<td>
 								<div class="inf">
-									<span class="phone"><input type="text" id="buy_phone" name="buy_phone" value="<%=customerInfo.get(0).getPhone()%>" required="required"></span>
+									<span class="phone"><input type="text" id="shipping_phone" name="shipping_phone" value="<%=customerInfo.get(0).getPhone()%>" required="required"></span>
 									
 								</div>
 							</td>
@@ -351,7 +355,7 @@ function payMethod(method) {
 							<th>배송 메시지(50자 이내)</th>
 							<td>
 								<div class="inf">
-									<textarea id="order_memo" name="order_memo" cols="30" rows="5" maxlength="50"
+									<textarea id="shipping_memo" name="shipping_memo" cols="30" rows="5" maxlength="50"
 										></textarea>
 								</div>
 							</td>
@@ -469,7 +473,7 @@ function payMethod(method) {
 							
 						</dl>
 						<div class="total_prc">
-							<span class="prc"><strong>최종 결제금액</strong><span><b><fmt:formatNumber value="<%=payment_price %>" pattern="#,###"/></b>원</span>
+							<span class="prc"><strong>최종 결제금액</strong><span><b><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></b>원</span>
 							</span>
 						</div>
 					</div>

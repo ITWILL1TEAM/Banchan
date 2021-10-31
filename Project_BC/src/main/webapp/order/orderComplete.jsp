@@ -16,6 +16,7 @@ String detailAddress = request.getParameter("detailAddress");
 String buy_phone = request.getParameter("buy_phone");
 String order_memo = request.getParameter("order_memo");
 String pay_rdo = request.getParameter("pay_rdo");
+String buyer_email = request.getParameter("buyer_email");
 
 
 
@@ -37,6 +38,18 @@ String pay_rdo = request.getParameter("pay_rdo");
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211026000" type="text/css">
 	
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- CONTENT -->
 <div id="content" class="content">
