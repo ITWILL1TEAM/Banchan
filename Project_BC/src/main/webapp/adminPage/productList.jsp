@@ -1,3 +1,6 @@
+<%@page import="vo.PageInfo"%>
+<%@page import="vo.BoardBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,8 +12,17 @@
         <link href="CSS/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
+<%
+ ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
+PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+int ListCount = pageInfo.getListCount();
+
+
+%>
+
+
 <body>
- <%@include file="../inc/admin_top.jsp" %>
+ <%@include file="../inc/dashBoard_top.jsp" %>
 
 
 
@@ -37,6 +49,9 @@
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
+                                    <%
+                                       if(articleList != null && ListCount >0){
+                                    %>
                                         <tr>
                                             <th>상품번호</th>
                                             <th>회사명</th>
@@ -60,13 +75,16 @@
                                     </tfoot>
                                     <tbody>
                                        <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
+                                        <%for(int i=0; i<articleList.size(); i++){ %>
+                                            <td><%=articleList.get(i).getProduct_num() %></td>
+                                            <td><%=articleList.get(i).getSname() %></td>
+                                            <td><a href="#"><%=articleList.get(i).getProduct_name() %></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
+                                            <td><%=articleList.get(i).getProduct_stock() %></td>
+                                            <td><%=articleList.get(i).getProduct_date() %></td>
+                                            <td>$<%=articleList.get(i).getProduct_price() %></td>
                                             <td><a href="#"><img src="assets/img/Edit.png"></a>
+                                            <%}
+                                        }%>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -75,7 +93,7 @@
                         </div>
                     </div>
                 </main>
-                 <%@include file="../inc/admin_bottom.jsp" %>
+                 <%@include file="../inc/dashBoard_bottom.jsp" %>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

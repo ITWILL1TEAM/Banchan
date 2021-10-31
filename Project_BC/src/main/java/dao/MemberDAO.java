@@ -38,7 +38,7 @@ public class MemberDAO {
 		
 	int insertCount = 0;
 		
-		PreparedStatement pstmt = null;
+		PreparedStatement pstmt = null; 
 		
 		try {
 

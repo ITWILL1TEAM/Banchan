@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.AddCartAction;
 import action.CartListAction;
+import action.CartUpdateAction;
 import action.BoardListAction;
 import action.BoardWriteProAction;
+import action.CartDeleteAction;
 import action.ProductDetailAction;
 import vo.ActionForward;
 
@@ -47,6 +49,22 @@ public class CartController extends HttpServlet {
 		} else if(command.equals("/Cart.ca")) {
 			// 장바구니 리스트 출력
 			action = new CartListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/CartDel.ca")) {
+			// 장바구니에서 삭제 버튼을 누르면 해당 제품 삭제
+			action = new CartDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/CartUpdate.ca")) {
+			// 장바구니 제품 수량 업데이트
+			action = new CartUpdateAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

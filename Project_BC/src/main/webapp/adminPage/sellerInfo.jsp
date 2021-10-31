@@ -20,7 +20,7 @@
 </head>
 <body class="sb-nav-fixed">
         
-            <%@include file="../inc/admin_top.jsp" %>
+            <%@include file="../inc/dashBoard_top.jsp" %>
             
             
             <div id="layoutSidenav_content">
@@ -63,7 +63,7 @@
                     </div>
                 </main>
                 
-                <%@include file="../inc/admin_bottom.jsp" %>
+                <%@include file="../inc/dashBoard_bottom.jsp" %>
                 
             </div>
         </div>

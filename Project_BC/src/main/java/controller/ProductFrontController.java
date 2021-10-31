@@ -34,7 +34,7 @@ public class ProductFrontController extends HttpServlet {
 		// 각 Action 클래스의 인스턴스를 공통으로 관리하는 Action 타입 변수 선언
 		Action action = null;
 		
-		if(command.equals("/Product.do")) {
+		if(command.equals("/ProductDetail.do")) {
 			// 상품 상세 페이지로 포워딩
 			action = new ProductDetailAction();
 			
@@ -43,12 +43,6 @@ public class ProductFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		} else if(command.equals("/Order.do")) {
-			// 주문하기 페이지로 포워딩
-			forward = new ActionForward();
-			forward.setPath("/product/orderTest.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 			
 		} else if(command.equals("/BoardWriteForm.do")) {
 	            // 글쓰기 작업을 위한 뷰페이지로 포워딩
