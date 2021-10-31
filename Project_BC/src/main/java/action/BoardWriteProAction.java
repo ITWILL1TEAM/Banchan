@@ -3,6 +3,7 @@ package action;
 import java.io.*;
 import java.util.*;
 
+import javax.naming.*;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,21 +25,20 @@ public class BoardWriteProAction implements Action {
         
         BoardBean boardBean = new BoardBean();
         
-        ServletContext context = request.getServletContext();
         
-//        String realFolder = "C:\\Users\\JSW\\git\\Banchan\\Project_BC\\src\\main\\webapp\\upload";//실제경로
-        String path = request.getRealPath("/upload");//아 왜안대ㅐ
-        System.out.println(path);
-//        String saveFolder = "/upload";
+        String realFolder = "";
         String saveFolder = "/upload";
 //        String realFolder = context.getRealPath(saveFolder);
 		       		      		    		    
+        ServletContext context = request.getServletContext();
+        realFolder=context.getRealPath(saveFolder);
+        System.out.println(realFolder);
 	     		 
 		 int size = 1024 * 1024 * 10;
 		
 		  MultipartRequest multi  = new MultipartRequest(
 		    		request, //request객체
-		    		path, // 업로드 폴더
+		    		realFolder, // 업로드 폴더
 		    		size,// 업로드 파일 사이즈
 		    		"UTF-8", //업로드 파일 인코딩 타입
 		    		new DefaultFileRenamePolicy()//중복 파일 처리        		    		
