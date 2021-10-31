@@ -21,7 +21,7 @@ CREATE TABLE `customer` (
   `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `recommend_id` int(11) NOT NULL DEFAULT '0',
   `personal_data` int(11) NOT NULL,
-  UNIQUE KEY `eamil_UNIQUE` (`eamil`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
   PRIMARY KEY `costomer_id` (`customer_id`),
   CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `member` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
