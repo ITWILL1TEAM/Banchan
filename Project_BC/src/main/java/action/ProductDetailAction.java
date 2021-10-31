@@ -20,7 +20,7 @@ public class ProductDetailAction implements Action {
 		ActionForward forward = null;
 		
 		// request 객체를 통해 전달받은 파라미터(product_num) 가져오기
-		int product_num = 1;
+		int product_num = 2;
 		
 		// BoardDetailService 클래스 인스턴스 생성 후 
 		ProductDetailService service = new ProductDetailService();

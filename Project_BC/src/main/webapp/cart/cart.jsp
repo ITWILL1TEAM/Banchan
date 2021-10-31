@@ -7,6 +7,7 @@
 <%
 	ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
 	int total_amt = (int)request.getAttribute("total_amt");
+	int listCount = cartList.size();
 	
 %>
 <html lang="ko">
@@ -20,68 +21,88 @@
 <link href="CSS/ord.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
-	var qty;
-<%-- 	var price = <%=price %>; --%>
-<%-- 	var max_qty = <%=article.getProduct_stock() %> --%>
 	
 	$(document).ready(function() {
+		
+		if(<%=listCount %> == 0) {
+			$('#crt_all').hide();
+			$('#crt_all_text').hide();
+			$('.del').hide();
+		}
 		
 		$("#crt_all").click(function() {
 			if($("#crt_all").is(":checked")) {
 				$("input[name=cart_checkbox]").prop("checked", true);
+				
 			} else {
 				$("input[name=cart_checkbox]").prop("checked", false);
 			}
 		});
-		
-		qty = $('input[name=ord_qty]').val(); // 제품 수량
-		
-		// 수량조절 감소 버튼
-		$(".minus").click(function() {	
-			qty--;
-			if(qty < 1) {
-				alert('1개 이상부터 구매 가능합니다.');
-				return false;
-			} else {
-				$('input[name=ord_qty]').val(qty);
-			}
-		});
-		
-		// 수량조절 증가 버튼
-		$(".plus").click(function() {	
-			qty++;
-			if(qty > max_qty) {
-				alert('재고가 부족합니다.');
-				return false;
-			} else {
-				$('input[name=ord_qty]').val(qty);
-			}
+			
+		$("input[name=cart_checkbox]").click(function(){
+			$("#crt_all").prop("checked", false);
 		});
 		
 	});
+	
+	// 상품 수량 증가
+	function qtyUp(id) {
+		// 수량 증가 버튼의 id인 btn-upi의 up을 num으로 치환해 수량이 표시되는 텍스트박스의 id(btn-numi)로 바뀜
+		var numid = id.replace("up", "num");
+		var result = parseInt(numid)+1
+		var qty = Number($('#'+numid).val());
+		qty += 1;
 		
-// 		$("button[name=change_qty_button]").click(function() {	
-// 			var role = $('input[name=qty_button]').attr('data-role');
-// 			var cart_seq = $('input[name=qty_button]').attr("data-cart-seq");
-// 			var qty = $('input[name=qty_button]').eq(cart_seq).attr('value');
-			
-// 			alert(role + " | " + cart_seq + " | " + qty);
-			
-// 			if (role == "-" && qty > 1) {
-// 				input.val(qty - 1);
-// 			} else if (role == "+" && qty < 999) {
-// 				input.val(qty + 1);
-// 			};
-// 		});
+		$('#'+numid).val(qty);
+	};
+	
+	// 상품 수량 감소
+	function qtyDown(id) {
+		var numid = id.replace("down", "num");
 		
-	});
+		var qty = Number($('#'+numid).val());
+		if(qty > 1) {
+			qty -= 1;
+			$('#'+numid).val(qty);
+		}
+	};
+	
+	// 수량 변경
+	function qtyUpdate(product_num, id){
+		
+		var numid = id.replace("Save", "num");
+		var qty = Number($('#'+numid).val());
+		
+		location.href='CartUpdate.ca?product_num=' + product_num + '&qty=' + qty;
+	
+	};
+	
+	function deleteAction() {
+		var checkRow = "";
+		$('.checkRow:checked').each(function() {
+			checkRow = checkRow + $(this).val() + ",";
+		});
+		
+// 		checkRow = checkRow.substring(0, checkRow.lastIndexOf(",")); // 맨끝 콤마 지우기
+		
+		if(checkRow == "") {
+			alert('삭제할 제품을 산택해주세요.');
+			return false;
+		}
+		
+		if(confirm("선택한 제품을 삭제하시겠습니까?")) {
+			location.href = "CartDel.ca?chbox=" + checkRow;
+			
+		}
+	}
+	
 </script>
 </head>
 <body>
     <%@include file="../inc/top.jsp" %>
 
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
-	<form method="post">
+	<form action="CartDel.ca" method="post" name="cartForm">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 	
@@ -119,60 +140,66 @@
 							</tr>
 						</thead>
 						<tbody>
-						<%for (int i = 0; i < cartList.size(); i++) { %>
-							<tr>
-								<!-- 체크박스 -->
-								<td class="chck">
-									<input type="checkbox" id="crt_<%=i %>" name="cart_checkbox" checked="checked" />
-									<label for="crt_4"><%=cartList.get(i).getProduct_name() %></label>								
-								</td>
-								<!-- 사진 -->
-								<td class="info">
-									<div class="img">
-										<a href="Product.do?product_num=<%=cartList.get(i).getProduct_num() %>" name="go_detail_button" data-cart-seq="4" ><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
-											<span class="ir"><%=cartList.get(i).getProduct_name() %></span>
-										</a>
-									</div>
-									<!-- 판매자명과 상품명 -->
-									<div class="txt">
-									<span class="name">[<%=cartList.get(i).getSname() %>] <%=cartList.get(i).getProduct_name() %></span>
-										<span class="opt"></span>
-	                                    <div class="deli_type_tag"></div>
-									</div>
-								</td>
-								<!-- 제품가격 -->
-								<td class="prc_ori">
-									<span class="om"><em class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() %>" pattern="#,###"/></em>원</span>
-								</td>
-								<!-- 수량 조절 -->
-								<td class="qty_set">
-									<div class="qty">
-										<input name="cart_qty" class="input" id="qty_<%=i%>" data-cart-seq="<%=cartList.get(i).getBasket_idx()%>" value="<%=cartList.get(i).getProduct_qty() %>" title="옵션수량입력" readonly="readonly">
-										<button class="minus" name="change_qty_button" data-role="-" data-cart-seq="<%=cartList.get(i).getBasket_idx()%>" type="button" title="수량감소">수량감소</button>
-										<button class="plus" name="change_qty_button" data-role="+" data-cart-seq="<%=cartList.get(i).getBasket_idx()%>" type="button" title="수량증가">수량증가</button>
-									</div>
-									<button class="qty_edit" type="button" name="save_qty_button" data-cart-seq="<%=cartList.get(i).getBasket_idx()%>" title="수량수정">수정</button>
-								</td>
-								<!-- 총 구매 금액 -->
-								<td class="prc_dl">
-									<span class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() * cartList.get(i).getProduct_qty()%>" pattern="#,###"/></span><em>원</em>
-								</td>
-								<!-- 삭제버튼 -->
-								<td class="func_btn">
-									<div class="del_bx">
-										<button class="del" type="button" title="제품삭제하기" name="delete_button" 
-												data-cart-seq="<%=cartList.get(i).getBasket_idx()%>" data-role="cart" formaction="CartDel.ca">삭제</button>
-									</div>
-								</td>
-							</tr>
-						<%} %>
+						<%for (int i = 0; i < cartList.size(); i++) { 
+							if(cartList.size() > 0) { %>
+								<tr>
+									<!-- 체크박스 -->
+									<td class="chck">
+										<input type="checkbox" id="crt_<%=i %>" name="cart_checkbox" class="checkRow" checked="checked" data-cart-seq="<%=cartList.get(i).getProduct_num() %>" value="<%=cartList.get(i).getProduct_num() %>"/>
+										<label for="crt_<%=i%>"><%=cartList.get(i).getProduct_name() %></label>								
+									</td>
+									<!-- 사진 -->
+									<td class="info">
+										<div class="img">
+											<a href="Product.do?product_num=<%=cartList.get(i).getProduct_num() %>" name="go_detail_button" data-cart-seq="4" ><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
+												<span class="ir"><%=cartList.get(i).getProduct_name() %></span>
+											</a>
+										</div>
+										<!-- 판매자명과 상품명 -->
+										<div class="txt">
+										<span class="name">[<%=cartList.get(i).getSname() %>] <%=cartList.get(i).getProduct_name() %></span>
+											<span class="opt"></span>
+		                                    <div class="deli_type_tag"></div>
+										</div>
+									</td>
+									<!-- 제품가격 -->
+									<td class="prc_ori">
+										<span class="om"><em class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() %>" pattern="#,###"/></em>원</span>
+									</td>
+									<!-- 수량 조절 -->
+									<td class="qty_set">
+										<div class="qty">
+											<input name="cart_qty" class="input txt-spin" id="btn-num<%=i%>" value="<%=cartList.get(i).getProduct_qty() %>" title="옵션수량입력" readonly="readonly">
+											<button class="minus" name="change_qty_button" id="btn-down<%=i %>" data-role="-" type="button" title="수량감소" onclick="qtyDown(this.id)">수량감소</button>
+											<button class="plus" name="change_qty_button" id="btn-up<%=i %>" data-role="+" type="button" title="수량증가" onclick="qtyUp(this.id)">수량증가</button>
+										</div>
+										<button class="qty_edit" type="button" name="save_qty_button" id="btn-Save<%=i %>" onclick="qtyUpdate(<%=cartList.get(i).getProduct_num()%>, this.id)" title="수량수정">수정</button>
+									</td>
+									<!-- 총 구매 금액 -->
+									<td class="prc_dl">
+										<span class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() * cartList.get(i).getProduct_qty()%>" pattern="#,###"/></span><em>원</em>
+									</td>
+									<!-- 삭제버튼 -->
+									<td class="func_btn">
+										<div class="del_bx">
+											<button class="del" type="button" title="제품삭제하기" name="delete_button" data-role="cart" onclick="location.href='CartDel.ca?chk=<%=cartList.get(i).getProduct_num() %>'">삭제</button>
+										</div>
+									</td>
+								</tr>
+						<%	} else { %>
+								<tr>
+									<td colspan="6" class="no_prd">장바구니에 담긴 제품이 없습니다.</td>
+								</tr>				
+						<%	}
+						}
+						%>
 						</tbody>
 					</table>
 					<div class="odr_slt_btn">
 						<span><input type="checkbox" id="crt_all" style="margin-right:10px;" name="cart_all_checkbox" checked="checked" />
-									<label for="crt_all">전체 선택</label></span>
+									<label for="crt_all" id="crt_all_text">전체 선택</label></span>
 						<button type="button" class="w_del" title="품절/매진제품 전체 삭제" name="delete_button" data-role="sellout" style="display: none;"><em>품절 삭제</em></button>
-						<button type="button" class="del" title="선택한 항목 삭제하기" name="delete_button" data-role="checked" ><em>선택 삭제</em></button>
+						<button type="submit" class="del" title="선택한 항목 삭제하기" name="delete_button" data-role="checked" onclick="deleteAction()"><em>선택 삭제</em></button>
 					</div>
 					<div class="cart_info">
 	<!-- 					주문 마감은 <em>오후9시</em>입니다.
@@ -292,131 +319,6 @@
 				<button class="close" onclick="unBlockUI('layer_set_modify');return false;">세트 수정 닫기</button>
 			</div>
 		</div>
-		<div class="add_prd" style="display:none">
-			<h3>배송비 절약제품 <span>같이 주문하면 배송비를 아낄수 있어요!</span></h3>
-			<ul>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_1" data-goods_no="2101015039" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_1">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/711/210122000026711.jpg" width="170" height="170" alt="구이용 모둠쌈 채소 150g" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'2101015039', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2101015039', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">구이용 모둠쌈 채소 150g<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>3,700</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_2" data-goods_no="0000013994" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_2">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/430/180413000020430.jpg" width="170" height="170" alt="구운어묵볶음(220g)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000013994', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000013994', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">구운어묵볶음(220g)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>3,800</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_3" data-goods_no="2004014063" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_3">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/172/200420000025172.jpg" width="170" height="170" alt="[푸드렐라] 통통살 가라아게 (300g)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'2004014063', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2004014063', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">[푸드렐라] 통통살 가라아게 (300g)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>4,300</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_4" data-goods_no="1805011061" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_4">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/641/180503000020641.jpg" width="170" height="170" alt="서정느린수정과 (1L)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'1805011061', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'1805011061', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">서정느린수정과 (1L)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>4,400</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_5" data-goods_no="2107015736" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_5">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/476/210802000027476.jpg" width="170" height="170" alt="[바르게 만든] 키즈 한우미역국(330g)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'2107015736', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2107015736', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">[바르게 만든] 키즈 한우미역국(330g)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>4,500</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_6" data-goods_no="1803010840" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_6">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/434/180413000020434.jpg" width="170" height="170" alt="무말랭이무침(210g)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'1803010840', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'1803010840', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">무말랭이무침(210g)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>4,700</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_7" data-goods_no="0000013565" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_7">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/274/201023000026274.jpg" width="170" height="170" alt="싱글제육볶음(300g)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000013565', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000013565', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">싱글제육볶음(300g)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>4,900</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_8" data-goods_no="0000005504" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_8">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/749/210204000026749.jpg" width="170" height="170" alt="오징어무국(600g/2인분)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000005504', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000005504', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">오징어무국(600g/2인분)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>5,900</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_9" data-goods_no="0000007305" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_9">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/606/200715000025606.jpg" width="170" height="170" alt="쇠고기들깨탕(600g/2인분)" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000007305', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000007305', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">쇠고기들깨탕(600g/2인분)<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>6,800</b>원</em></span>
-					</a>
-				</li>
-				<li>
-					<span class="dwCk">
-						<input type="checkbox" id="cart_10" data-goods_no="2108015745" data-vir_vend_no="VV17002724" data-cart_grp_cd="null"/>
-						<label for="cart_10">
-							<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/170/503/210804000027503.jpg" width="170" height="170" alt="[프레시지] 고깃집 된장찌개" onerror="this.src='/common/images/common/noimg_170.jpg'"/><em class="ir">선택</em></span>
-						</label>
-					</span>
-					<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'2108015745', vir_vend_no:'VV17002724', sale_shop_divi_cd:'13', sale_shop_no:'1707002708', sale_area_no:'D1707000906', tr_yn:'Y', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2108015745', rel_divi_cd:'10', openwinyn:'Y', disp_ctg_no:''});">
-						<span class="tx">[프레시지] 고깃집 된장찌개<em class="ir">선택</em></span>
-						<span class="prc"><em class="on"><b class="ir">판매가</b><b>7,900</b>원</em></span>
-					</a>
-				</li>
-			</ul>
-			<button class="add_btn"><em>배송비 절약제품 추가</em></button>
 		</form>
 		
 		<jsp:include page="../inc/bottom.jsp"/>
