@@ -178,6 +178,44 @@ public class BasketDAO {
 		
 		return cartList;
 	}
+
+//-------------결제후 장바구니 비우기 작업 - 삭제할수도 있음
+	public int cartDelete(int[] nums) {
+		System.out.println("CartDAO - cartDelete");
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			for(int str : nums) {
+
+				String sql = "select * from basket where num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, str);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+
+					sql = "delete from cart where num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, str);
+					
+					deleteCount = pstmt.executeUpdate();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("cartDAO - cartDelete() 오류! - ");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
+
+
 	
 	// 장바구니 제품 수량 수정
 	public int updateCart(int product_num, int product_qty, String customer_id) {
@@ -230,5 +268,4 @@ public class BasketDAO {
 		return deleteCount;
 	}
 	
-    
 }

@@ -14,9 +14,9 @@ $(document).ready(function () {
 		count++;
 		imgcount++;
 		
-		if(count>3){
+		if(count>10){
 			alert('더 추가할수 없습니다.');
-			count=3;
+			count=10;
 			return;
 		}
 		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img"+imgcount+"' size=10></td><td><select name='imgValue"+imgcount+"'><option value='1'>주 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   

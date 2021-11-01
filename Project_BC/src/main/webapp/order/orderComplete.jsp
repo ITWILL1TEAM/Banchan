@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+int payment_price = Integer.parseInt(request.getParameter("payment_price"));
+int total_price = Integer.parseInt(request.getParameter("total_price"));
+int total_discount = Integer.parseInt(request.getParameter("total_discount"));
+int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
 
+String loginId = request.getParameter("loginId");
+String loginName = request.getParameter("loginName");
+String buy_name = request.getParameter("buy_name");
+String postcode = request.getParameter("postcode");
+String address = request.getParameter("address");
+String detailAddress = request.getParameter("detailAddress");
+String buy_phone = request.getParameter("buy_phone");
+String order_memo = request.getParameter("order_memo");
+String pay_rdo = request.getParameter("pay_rdo");
+String buyer_email = request.getParameter("buyer_email");
+
+
+
+%>
 
 
 <!DOCTYPE html>
@@ -18,6 +38,18 @@
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211026000" type="text/css">
 	
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- CONTENT -->
 <div id="content" class="content">
@@ -50,22 +82,29 @@
 						<tr>
 							<th>
 								<strong>주문 합계 금액</strong>
-								<span><b>31,440</b>원</span>
+								<span><b><fmt:formatNumber value="<%=total_price %>" pattern="#,###"/></b>원</span>
 								<span class="mis"><em class="ir">-(빼기)</em></span>
 							</th>
 							<th>
 								<strong>쿠폰/할인 금액</strong>
-								<span><b>0</b>원</span>
+								<span><b><fmt:formatNumber value="<%=total_discount %>" pattern="#,###"/></b>원</span>
 								<span class="pls"><em class="ir">+(더하기)</em></span>
 							</th>
 							<th>
 								<strong>배송비</strong>
-								<span>무료</span>
+								<span>
+								<%if(shipping_fee ==0){
+								%>
+								무료
+								<%}else{%>
+								<fmt:formatNumber value="<%=shipping_fee %>" pattern="#,###"/>
+								<%} %>
+								</span>
 								<span class="eql"><em class="ir">=(합계)</em></span>
 							</th>
 							<th>
 								<strong>최종 결제금액</strong>
-								<span class="prc" id="real_prc"><b>31,440</b>원</span>
+								<span class="prc" id="real_prc"><b><fmt:formatNumber value="<%=payment_price %>" pattern="#,###"/></b>원</span>
 							</th>
 						</tr>
 					</thead>
@@ -97,10 +136,10 @@
 						</tr>
 						<tr>
 							<th>입금하실 금액</th>
-							<td>31,440원</td>
+							<td><fmt:formatNumber value="<%=payment_price %>" pattern="#,###"/></td>
 						</tr>
 						<tr>
-							<th>입금계좌/마감일</th>
+							<th>입금계좌</th>
 							<td>농협은행 79018613743185 (예금주 : 동원디어푸드 주식회사)
 							</td>
 						</tr>

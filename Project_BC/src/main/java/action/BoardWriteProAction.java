@@ -109,33 +109,24 @@ public class BoardWriteProAction implements Action {
 					int imgVal = Integer.parseInt(multi.getParameter("imgValue" + z));
 					String board_file = null;
 
-					if (imgVal == 1) {
-						if (i < 10) {
-							board_file = name + "0" + imgVal + "_0" + i;
-
-						} else {
-							board_file = name + "0" + imgVal + "_" + i;
-						}
-						i++;
+					if (imgVal == 1) {						
+							board_file = name + "0" + imgVal + "_0" + i;	
+							i++;
 					} else {
-						if (j < 10) {
+					
 							board_file = name + "0" + imgVal + "_0" + j;
-
-						} else {
-							board_file = name + "0" + imgVal + "_" + j;
-						}
-						j++;
+							j++;
 					}
 					
 					
 					if (!filestr.equals("")) {
 
-						String fullFileName = realFolder + "/" + board_original_file;
+						String fullFileName = realFolder + "\\" + board_original_file;
 						System.out.println(fullFileName);
 						File f1 = new File(fullFileName);
 
 						if (f1.exists()) {
-							File newfile = new File(realFolder + "/" + board_file+".png");
+							File newfile = new File(realFolder + "\\" + board_file+".png");
 							System.out.println(newfile.toString());
 							f1.renameTo(newfile);
 						}
