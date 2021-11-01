@@ -20,6 +20,8 @@ for(int i=0; i<cartList.size(); i++){
 	total_price += (cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty());
 };
 
+int discount = 
+
 int total_discount=0;
 for(int i=0; i<cartList.size(); i++){
 	total_discount += (cartList.get(i).getProduct_discount()*cartList.get(i).getProduct_qty());

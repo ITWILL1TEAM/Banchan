@@ -68,7 +68,19 @@ function setStar(point) {
 <body>
 <!-- 아이디 받아오기(session) -->
 <%
-	//String id =(String)session.getAttribute("id");
+	String customer_id = (String)session.getAttribute("sId");  
+	if(customer_id==null){
+	%>
+	<script type="text/javascript">
+				alert('로그인 필수'); 
+				window.open('MemberLoginForm.me','_blank','height=500,width=500, status=yes,toolbar=no,menubar=no,location=no');
+		</script> 	
+	<%
+	
+	
+}else{
+
+
 
 %>
 
@@ -165,6 +177,8 @@ function setStar(point) {
 	</div>
 	</form>
 </div>
-
+<%
+}
+%>
 </body>
 </html>

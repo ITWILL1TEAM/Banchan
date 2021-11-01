@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -21,6 +22,25 @@ public class ReviewWriteProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ReviewWriteProAction");
 		ActionForward forward = null;
+		
+		HttpSession session = request.getSession();
+
+		String customer_id = (String)session.getAttribute("sId");  
+		
+		
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(customer_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인이 필요합니다.')");
+			out.println("window.open('MemberLoginForm.me','_blank','height=500,width=500, status=yes,toolbar=no,menubar=no,location=no')");
+			
+			out.println("</script>");
+			
+			
+		} else {
+		
 		
 		String realFolder = "";//업로드할 파일이 저장되는 실제경로
 		String saveFolder = "/review/reviewImg";//이클립스에서 관리하는 가상업로드 폴더
@@ -71,11 +91,11 @@ public class ReviewWriteProAction implements Action {
 		if(!isWriteSuccess) {
 			//1) 실패시 자바스크립트를 이용하여 실패
 			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('게시물 등록 실패!')");
-			out.println("history.back()");
-			out.println("</script>");
+			PrintWriter out1 = response.getWriter();
+			out1.println("<script>");
+			out1.println("alert('게시물 등록 실패!')");
+			out1.println("history.back()");
+			out1.println("</script>");
 		}else {
 			
 			//ActionForward 객테를 생성하여 BoardList.bo서블릿 주소 요청
@@ -90,7 +110,7 @@ public class ReviewWriteProAction implements Action {
 		}
 
 		
-		
+		}
 		return forward;
 	}
 

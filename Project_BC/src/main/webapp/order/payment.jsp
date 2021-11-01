@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <%
-// int amount = Integer.parseInt(request.getParameter("payment_price"));
-int amount = 1;
+int amount = Integer.parseInt(request.getParameter("amount"));
+
 int total_price = Integer.parseInt(request.getParameter("total_price"));
 int total_discount = Integer.parseInt(request.getParameter("total_discount"));
 int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
@@ -26,7 +26,17 @@ String status ="";
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<
+<title>주문완료 | theBanchan</title>
+	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
+	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211026000" type="text/css">	
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211026000" type="text/css">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211026000" type="text/css">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211026000" type="text/css">
+	
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
+
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -39,7 +49,8 @@ IMP.request_pay({
     pay_method : '<%=pay_method%>',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '주문명:결제테스트',
-    amount : <%=amount%>, //판매 가격
+    amount : 1, //판매 가격
+<%--     amount : <%=amount%>, //판매 가격 --%>
     buyer_email : '<%=buyer_email%>',
     buyer_name : '<%=buyer_name%>',
     buyer_tel : '<%=buyer_tel%>',
@@ -80,6 +91,7 @@ IMP.request_pay({
 		if ($('#status').val() == "paid") {
 			$('.fail').attr("src",'order/payment_success.jpg')
 			document.paymentForm.submit();
+			
 		} else {
 			
 			$('.fail').attr("src",'order/payment_fail.jpg')
@@ -90,38 +102,150 @@ IMP.request_pay({
 </script>
 </head>
 <body>
-<%=customer_id %>
-<%=buyer_name %>
-<%=buyer_tel %>
-<%=buyer_email %>
-<%=postcode %>
-<%=address %>
-<%=detailAddress %>
-<%=shipping_name %>
-<%=shipping_phone %>
-<%=shipping_memo %>
-<%=pay_method %>
-<%=status %>
 
 <form action="OrderPro.or" method="post" name="paymentForm">
 <div class="tbl-order">
 	<img alt="" src="" class="fail" onerror="this.style.display='none'">
 </div>
 
-<input type="text" value="" id="imp_uid" name="imp_uid">
-<input type="text" value="<%=amount%>" id="paid_amount" name="paid_amount"> 
-<input type="text" value="<%=pay_method%>" id="pay_method" name="pay_method">
-<input type="text" value="<%=buyer_name %>" id="buyer_name" name="buyer_name"> 
-<input type="text" value="<%=buyer_tel %>" id="buyer_tel" name="buyer_tel">
-<input type="text" value="<%=buyer_email %>" id="buyer_email" name="buyer_email"> 
-<input type="text" value="<%=postcode %>" id="postcode" name="postcode">
-<input type="text" value="<%=address %>" id="shipping_addr" name="shipping_addr">
-<input type="text" value="" id="status" name="status">
-<input type="text" value="<%=shipping_name %>" id="shipping_name" name="shipping_name">
-<input type="text" value="<%=shipping_phone %>" id="shipping_phone" name="shipping_phone">
-<input type="text" value="<%=shipping_memo %>" id="shipping_memo" name="shipping_memo">
-<input type="text" value="<%=customer_id %>" id="customer_id" name="customer_id">
+<input type="hidden" value="" id="imp_uid" name="imp_uid">
+<input type="hidden" value="<%=amount%>" id="paid_amount" name="paid_amount"> 
+<input type="hidden" value="<%=pay_method%>" id="pay_method" name="pay_method">
+<input type="hidden" value="<%=buyer_name %>" id="buyer_name" name="buyer_name"> 
+<input type="hidden" value="<%=buyer_tel %>" id="buyer_tel" name="buyer_tel">
+<input type="hidden" value="<%=buyer_email %>" id="buyer_email" name="buyer_email"> 
+<input type="hidden" value="<%=postcode %>" id="postcode" name="postcode">
+<input type="hidden" value="<%=address %>" id="shipping_addr" name="shipping_addr">
+<input type="hidden" value="" id="status" name="status">
+<input type="hidden" value="<%=shipping_name %>" id="shipping_name" name="shipping_name">
+<input type="hidden" value="<%=shipping_phone %>" id="shipping_phone" name="shipping_phone">
+<input type="hidden" value="<%=shipping_memo %>" id="shipping_memo" name="shipping_memo">
+<input type="hidden" value="<%=customer_id %>" id="customer_id" name="customer_id">
 
-</form>
+
+<!-- <!-- CONTENT --> -->
+<!-- <div id="content" class="content"> -->
+
+<!-- 	<!-- WRAP --> -->
+<!-- 	<div class="wrap odr">wrap addClass -->
+
+<!-- 		<h2 class="odr_cpl_tit">주문완료</h2> -->
+<!-- 		<div class="odr_top"> -->
+<!-- 			<ol> -->
+<!-- 				<li><em>01</em> 장바구니</li> -->
+<!-- 				<li><em>02</em> 주문서</li> -->
+<!-- 				<li class="on"><em>03</em> 결제완료</li> -->
+<!-- 			</ol> -->
+<!-- 		</div> -->
+
+		
+<!-- 		<!-- odr_cpl_info --> -->
+<!-- 		<div class="odr_cplPrc"> -->
+<!-- 			<h3>결제정보</h3><div class="total"> -->
+<!-- 				<table> -->
+<!-- 					<caption>결제정보 금액 | 주문 합계 금액 , 쿠폰/할인 금액, 배송비, 최종 결제금액을 제공하는 표</caption> -->
+<!-- 					<colgroup> -->
+<!-- 						<col style="width:25%;"> -->
+<!-- 						<col style="width:25%;"> -->
+<!-- 						<col style="width:25%;"> -->
+<!-- 						<col style="width:25%;"> -->
+<!-- 					</colgroup> -->
+<!-- 					<thead> -->
+<!-- 						<tr> -->
+<!-- 							<th> -->
+<!-- 								<strong>주문 합계 금액</strong> -->
+<%-- 								<span><b><fmt:formatNumber value="<%=total_price %>" pattern="#,###"/></b>원</span> --%>
+<!-- 								<span class="mis"><em class="ir">-(빼기)</em></span> -->
+<!-- 							</th> -->
+<!-- 							<th> -->
+<!-- 								<strong>쿠폰/할인 금액</strong> -->
+<%-- 								<span><b><fmt:formatNumber value="<%=total_discount %>" pattern="#,###"/></b>원</span> --%>
+<!-- 								<span class="pls"><em class="ir">+(더하기)</em></span> -->
+<!-- 							</th> -->
+<!-- 							<th> -->
+<!-- 								<strong>배송비</strong> -->
+<!-- 								<span> -->
+<%-- 								<%if(shipping_fee ==0){ --%>
+<%-- 								%> --%>
+<!-- 								무료 -->
+<%-- 								<%}else{%> --%>
+<%-- 								<fmt:formatNumber value="<%=shipping_fee %>" pattern="#,###"/> --%>
+<%-- 								<%} %> --%>
+<!-- 								</span> -->
+<!-- 								<span class="eql"><em class="ir">=(합계)</em></span> -->
+<!-- 							</th> -->
+<!-- 							<th> -->
+<!-- 								<strong>최종 결제금액</strong> -->
+<%-- 								<span class="prc" id="real_prc"><b><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></b>원</span> --%>
+<!-- 							</th> -->
+<!-- 						</tr> -->
+<!-- 					</thead> -->
+<!-- 					<tbody> -->
+<!-- 						<tr> -->
+<!-- 							<td></td> -->
+<!-- 							<td><span class="pls"><em class="ir">+(더하기)</em></span></td> -->
+<!-- 							<td> -->
+<!-- 								<em>30,000원 이상 구매 시 무료</em> -->
+<!-- 							</td> -->
+<!-- 							<td> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 					</tbody> -->
+<!-- 				</table> -->
+<!-- 			</div> -->
+<!-- 			<!-- 무통장 --> -->
+<!-- 			<div class="msd"> -->
+<!-- 				<table> -->
+<!-- 					<caption>무통장 결제수단 , 입금하실 금액, 계좌, 환불수단 정보를 제공하는 표</caption> -->
+<!-- 					<colgroup> -->
+<!-- 						<col style="width:170px;" /> -->
+<!-- 						<col /> -->
+<!-- 					</colgroup> -->
+<!-- 					<tbody> -->
+<!-- 						<tr> -->
+<!-- 							<th>결제수단</th> -->
+<!-- 							<td>무통장입금</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<th>입금하실 금액</th> -->
+<%-- 							<td><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></td> --%>
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<th>입금계좌</th> -->
+<!-- 							<td>농협은행 79018613743185 (예금주 : 동원디어푸드 주식회사) -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 					</tbody> -->
+<!-- 				</table> -->
+<!-- 			</div> -->
+<!-- 			<!--// 무통장 -->		 -->
+		
+<!-- 		<!--세금 계산서 발행 여부 추가 --> -->
+		
+
+<!-- 			<div class="btn"> -->
+<!-- 				<span> -->
+<!-- 					<a href="https://www.thebanchan.co.kr/mypage/initOrderDetailList.action?ord_no=202110265263427"  >주문/배송 내역보기</a> -->
+<!-- 					<a href="https://www.thebanchan.co.kr">계속 쇼핑하기</a> -->
+<!-- 				</span> -->
+<!-- 			</div> -->
+
+<!-- 		</div> -->
+<!-- 		<!--// odr_cpl_info --> -->
+
+<!-- 		<!-- odr_cpl_banner --> -->
+<!-- 		<div class="odr_cplBn"> -->
+<!-- 		</div> -->
+<!-- 		<!--// odr_cpl_banner --> -->
+
+<!-- 	</div>  -->
+<!-- 	<!--// WRAP --> -->
+
+<!-- </div> -->
+<!-- <!-- //CONTENT --> -->
+
+
+
 </body>
 </html>
+
