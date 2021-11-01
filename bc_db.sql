@@ -93,7 +93,7 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE basket(
-   basket_idx int(11) PRIMARY KEY AUTO_INCREMENT,
+   basket_idx int(11) PRIMARY KEY,
    customer_id varchar(15) COLLATE utf8_bin NOT NULL,
    product_num int(11) NOT NULL,
    product_name varchar(45) COLLATE utf8_bin NOT NULL,
