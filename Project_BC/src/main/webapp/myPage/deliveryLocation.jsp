@@ -1,5 +1,11 @@
+<%@page import="vo.CustomerAddress"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	ArrayList<CustomerAddress> addressList = (ArrayList<CustomerAddress>)request.getAttribute("addressList");
+	
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +53,7 @@ function addAddress() {
 			<li>
 				<dl>
 					<dt style="text-align:left;margin-bottom: 12px">회원정보</dt>
-					<dd><a id="left_11" href="Besong.my" onclick="" class="on">배송지 관리</a></dd>
+					<dd><a id="left_11" href="DeliveryLocation.my" onclick="" class="on">배송지 관리</a></dd>
 					<!-- <dd><a id="left_12" href="#">주문정보 수신 설정</a></dd> -->
 					
 						<dd><a id="left_13" href="Mypage.my" onclick="">개인정보 수정</a></dd>
@@ -69,14 +75,26 @@ function addAddress() {
 			<h3 class="tit">배송지 관리</h3>
 			
 			<div class="mys_summ">
-				<div class="txt"><b>조정민</b> 님의 배송지 목록에 총 <b>0</b> 곳이 저장되어 있습니다.</div>
+				<div class="txt"><b>조정민</b> 님의 배송지 목록에 총 <b><%=addressList.size() %></b> 곳이 저장되어 있습니다.</div>
 				<button type="button" class="bx" title="배송지 추가 새창" name="modifyBtn" onclick="addAddress()">배송지 추가</button>
 			</div>
 			
-
+			<%if(addressList.size()==0){ %>
 			<div class="mys_none">
 				<span class="txt">등록된 배송지가 없습니다.<br>배송지 추가 버튼을 통해 배송지를 입력해 주세요.</span>
 			</div>
+			<%}else{ %>
+			<div class="mys_none">
+				<table>
+					<%for(int i=0;i<addressList.size();i++){ %>
+					<tr>
+						<th>주소</th>
+						<td><%=addressList.get(i).getRoadAddress()%> <%=addressList.get(i).getDtl_addr()%></td>
+					</tr>
+					<%} %>
+				</table>
+			</div>
+			<%} %>
 		</div>
 	</div>
 </div>

@@ -39,7 +39,7 @@
 			<li>
 				<dl>
 					<dt style="text-align:left;margin-bottom: 12px">회원정보</dt>
-					<dd><a id="left_11" href="Besong.my" onclick="">배송지 관리</a></dd>
+					<dd><a id="left_11" href="DeliveryLocation.my" onclick="">배송지 관리</a></dd>
 					<!-- <dd><a id="left_12" href="#">주문정보 수신 설정</a></dd> -->
 					
 						<dd><a id="left_13" href="Mypage.my" onclick="">개인정보 수정</a></dd>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.AddAddressAction;
+import action.ShowAddressAction;
 import vo.ActionForward;
 
 
@@ -28,10 +29,14 @@ public class MyPageController extends HttpServlet {
 		Action action = null;
 		
 		
-		if(command.equals("/Besong.my")) {
-			forward = new ActionForward();
-			forward.setPath("/myPage/besong.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		if(command.equals("/DeliveryLocation.my")) {
+			action = new ShowAddressAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(command.equals("/Resell.my")) {
 			forward = new ActionForward();
 			forward.setPath("/myPage/resell.jsp");
@@ -54,7 +59,6 @@ public class MyPageController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/myPage/myReview.jsp");
 		}else if(command.equals("/myPage/AddAddress.my")) {
-			System.out.println(command+"asdasdasdas");
 			action = new AddAddressAction();
 			try {
 				forward = action.execute(request, response);

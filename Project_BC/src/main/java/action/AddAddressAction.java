@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import svc.AddAddressService;
+import svc.AddressService;
 import vo.ActionForward;
 import vo.CustomerAddress;
 
@@ -15,15 +15,10 @@ public class AddAddressAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
-		String customerId;
+		String customerId = null;
 		HttpSession hs= request.getSession();
-		if(hs != null) {
-			customerId = (String) hs.getAttribute("customerId");
-			//나중에 값이들어오면 수정
-			customerId = "admin";
-		}else {
-			customerId = "admin";
-		}
+		customerId = (String)hs.getAttribute("sId");
+		
 		String roadAddress = request.getParameter("roadAddress");
 		String zonecode = request.getParameter("zonecode");
 		String dtl_addr = request.getParameter("dtl_addr");
@@ -36,7 +31,7 @@ public class AddAddressAction implements Action {
 		ca.setZonecode(zonecode);
 		ca.setDtl_addr(dtl_addr);
 		
-		AddAddressService service = new AddAddressService();
+		AddressService service = new AddressService();
 		boolean isAddressJoin = service.isAddress(ca);
 		
 		if(!isAddressJoin) {
