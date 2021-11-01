@@ -32,9 +32,9 @@ CREATE TABLE `customer_address` (
   `customer_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
   `customer_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
   `address_priority` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`customer_id`),
-  CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  KEY `customer_address_ibfk_1` (`customer_id`),
+  CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 
 CREATE TABLE `seller` (
   `seller_id` varchar(15) COLLATE utf8_bin NOT NULL,
