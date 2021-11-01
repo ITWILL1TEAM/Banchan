@@ -34,7 +34,7 @@ CREATE TABLE `customer_address` (
   `address_priority` int(11) NOT NULL DEFAULT '0',
   KEY `customer_address_ibfk_1` (`customer_id`),
   CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `seller` (
   `seller_id` varchar(15) COLLATE utf8_bin NOT NULL,
