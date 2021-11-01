@@ -64,8 +64,6 @@ private static AddressDAO instance = new AddressDAO();
 		try {
 			con = getConnection();
 
-			// 3단계. SQL 구문 작성 및 전달
-			// -> 글번호(num)에 해당하는 게시물 상세 정보 조회 후 BoardBean 객체에 저장
 			String sql = "SELECT * FROM customer_address WHERE customer_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);

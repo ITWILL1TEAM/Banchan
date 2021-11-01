@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.AddressDAO;
+import dao.MemberDAO;
 import vo.CustomerAddress;
 
 public class AddressService {
@@ -59,5 +60,23 @@ public class AddressService {
         
         return addressList;
     }
+
+	public String getCustomerName(String customer_id) {
+		 String customer_name = "";
+		 
+		 Connection con = getConnection();
+	        
+	        // 공통작업-2. BoardDAO 클래스로부터 BoardDAO 객체 가져오기
+	     MemberDAO dao = MemberDAO.getInstance();
+	        
+	        // 공통작업-3. BoardDAO 객체에 Connection 객체 전달하기
+	     dao.setConnection(con);
+		 
+	     customer_name = dao.getName(customer_id);
+	     
+	     close(con);
+	     
+		return customer_name;
+	}
 	
 }

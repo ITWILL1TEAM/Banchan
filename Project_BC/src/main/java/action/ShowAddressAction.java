@@ -22,7 +22,10 @@ public class ShowAddressAction implements Action {
         String customer_id = (String)session.getAttribute("sId");       
         AddressService service = new AddressService();
         ArrayList<CustomerAddress> addressList = service.getAddressList(customer_id);
+        String customer_name = service.getCustomerName(customer_id);
         request.setAttribute("addressList", addressList);
+        request.setAttribute("customer_name", customer_name);
+        
 
         forward = new ActionForward();
         forward.setPath("/myPage/deliveryLocation.jsp");

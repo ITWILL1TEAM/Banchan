@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <% 
 	ArrayList<CustomerAddress> addressList = (ArrayList<CustomerAddress>)request.getAttribute("addressList");
-	
+	String customer_name = (String)request.getAttribute("customer_name");
  %>
 <!DOCTYPE html>
 <html>
@@ -75,7 +75,7 @@ function addAddress() {
 			<h3 class="tit">배송지 관리</h3>
 			
 			<div class="mys_summ">
-				<div class="txt"><b>조정민</b> 님의 배송지 목록에 총 <b><%=addressList.size() %></b> 곳이 저장되어 있습니다.</div>
+				<div class="txt"><b><%=customer_name%></b> 님의 배송지 목록에 총 <b><%=addressList.size() %></b> 곳이 저장되어 있습니다.</div>
 				<button type="button" class="bx" title="배송지 추가 새창" name="modifyBtn" onclick="addAddress()">배송지 추가</button>
 			</div>
 			
