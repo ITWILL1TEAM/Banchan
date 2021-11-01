@@ -50,7 +50,6 @@ public class AddressService {
         // 공통작업-3. BoardDAO 객체에 Connection 객체 전달하기
         dao.setConnection(con);
         
-        
         // 게시물 목록 조회를 수행하는 selectArticleList() 메서드 호출
         // => 파라미터 : 페이지번호(page), 게시물 갯수(limit)
         //    리턴타입 : ArrayList<BoardBean> 객체(articleList)
