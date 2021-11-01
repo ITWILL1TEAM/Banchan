@@ -1,12 +1,14 @@
 package dao;
 
 import static db.JdbcUtil.close;
+import static db.JdbcUtil.getConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import vo.CustomerAddress;
-import vo.CustomerBean;
 
 public class AddressDAO {
 
@@ -33,7 +35,7 @@ private static AddressDAO instance = new AddressDAO();
 			
 			try {
 				System.out.println(ca.toString());
-				String sql="INSERT INTO customer_address VALUES (?,?,?,?)";
+				String sql="INSERT INTO customer_address VALUES (?,?,?,?,0)";
 				pstmt = con.prepareStatement(sql);
 				
 				pstmt.setString(1, ca.getCustomerId());
@@ -52,5 +54,45 @@ private static AddressDAO instance = new AddressDAO();
 			return insertCount;
 			
 		}
+
+	public ArrayList<CustomerAddress> selectAddressList(String id) {
+		ArrayList<CustomerAddress> addressList = new ArrayList();
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = getConnection();
+
+			String sql = "SELECT * FROM customer_address WHERE customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// 조회된 상세 정보를 BoardBean 객체에 저장
+				CustomerAddress address = new CustomerAddress();
+				
+				address.setCustomerId(rs.getString("customer_id"));
+				address.setRoadAddress(rs.getString("customer_roadAddress"));
+				address.setZonecode(rs.getString("customer_zonecode"));
+				address.setDtl_addr(rs.getString("customer_dtl_addr"));
+				address.setAddress_priority(rs.getInt("address_priority"));
+				
+				addressList.add(address);
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 반환
+			close(rs);
+			close(pstmt);
+		}
+
+		return addressList;
+	}
 	
 }

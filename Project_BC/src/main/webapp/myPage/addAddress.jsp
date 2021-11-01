@@ -35,9 +35,8 @@ function openWindow() {
 
 function getAddress() {
 	var dtl_addr = document.getElementById("dtl_addr").value;
-	alert(dtl_addr);
 	location.href = "AddAddress.my?roadAddress="+ roadAddress+"&zonecode="+ zonecode+"&dtl_addr="+ dtl_addr;
-	window.opener.location.reload();
+	window.opener.location.reload(true);
 	window.close();
 }
 </script>
