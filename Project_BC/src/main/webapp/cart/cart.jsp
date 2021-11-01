@@ -3,13 +3,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
 <%
 	ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
 	int total_amt = (int)request.getAttribute("total_amt");
 	int listCount = cartList.size();
 	
 %>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -51,7 +51,7 @@
 		var numid = id.replace("up", "num");
 		var result = parseInt(numid)+1
 		var qty = Number($('#'+numid).val());
-		qty += 1;
+		qty++;
 		
 		$('#'+numid).val(qty);
 	};
@@ -62,7 +62,7 @@
 		
 		var qty = Number($('#'+numid).val());
 		if(qty > 1) {
-			qty -= 1;
+			qty--;
 			$('#'+numid).val(qty);
 		}
 	};
@@ -80,18 +80,28 @@
 	function deleteAction() {
 		var checkRow = "";
 		$('.checkRow:checked').each(function() {
-			checkRow = checkRow + $(this).val() + ",";
+			checkRow += $(this).val() + "/";
 		});
 		
-// 		checkRow = checkRow.substring(0, checkRow.lastIndexOf(",")); // 맨끝 콤마 지우기
+// 		var chbox = new Array();
 		
-		if(checkRow == "") {
-			alert('삭제할 제품을 산택해주세요.');
+// 		chbox = checkRow.split("/"); // 맨끝 콤마 지우기
+		checkRow = checkRow.substring(0,checkRow.lastIndexOf( "/"));
+		
+		alert(checkRow);
+
+		if(checkRow == '') {
+			alert('삭제할 제품을 선택해주세요.');
 			return false;
 		}
 		
+// 		if(chbox.length == 0) {
+// 			alert('삭제할 제품을 선택해주세요.');
+// 			return false;
+// 		}
+		
 		if(confirm("선택한 제품을 삭제하시겠습니까?")) {
-			location.href = "CartDel.ca?chbox=" + checkRow;
+			location.href = "CartDel.ca?chk=" + checkRow;
 			
 		}
 	}
@@ -140,8 +150,12 @@
 							</tr>
 						</thead>
 						<tbody>
-						<%for (int i = 0; i < cartList.size(); i++) { 
-							if(cartList.size() > 0) { %>
+						<%for (int i = 0; i < cartList.size(); i++) { %>
+<!-- 								<tr> -->
+<!-- 									<td colspan="6" class="no_prd">장바구니에 담긴 제품이 없습니다.</td> -->
+<!-- 								</tr>	 -->
+								
+						
 								<tr>
 									<!-- 체크박스 -->
 									<td class="chck">
@@ -186,11 +200,8 @@
 										</div>
 									</td>
 								</tr>
-						<%	} else { %>
-								<tr>
-									<td colspan="6" class="no_prd">장바구니에 담긴 제품이 없습니다.</td>
-								</tr>				
-						<%	}
+											
+						<%
 						}
 						%>
 						</tbody>
@@ -199,7 +210,7 @@
 						<span><input type="checkbox" id="crt_all" style="margin-right:10px;" name="cart_all_checkbox" checked="checked" />
 									<label for="crt_all" id="crt_all_text">전체 선택</label></span>
 						<button type="button" class="w_del" title="품절/매진제품 전체 삭제" name="delete_button" data-role="sellout" style="display: none;"><em>품절 삭제</em></button>
-						<button type="submit" class="del" title="선택한 항목 삭제하기" name="delete_button" data-role="checked" onclick="deleteAction()"><em>선택 삭제</em></button>
+						<button type="button" class="del" title="선택한 항목 삭제하기" name="delete_button" data-role="checked" onclick="deleteAction()"><em>선택 삭제</em></button>
 					</div>
 					<div class="cart_info">
 	<!-- 					주문 마감은 <em>오후9시</em>입니다.

@@ -35,7 +35,7 @@ public class CartDeleteService {
 	}
 	
 	// 특정 제품의 삭제 버튼을 클릭해 하나의 제품만 삭제할 경우
-	public boolean cartDelete(int product_num, String customer_id) {
+	public boolean cartDelete(String product_num, String customer_id) {
 		System.out.println("CartDeleteService - cartDelete()");
 		boolean isDeleted = false;
 		
@@ -44,7 +44,7 @@ public class CartDeleteService {
 		BasketDAO dao = BasketDAO.getInstance();
 		dao.setConnection(con);
 		
-		int deleteCount = dao.deleteCart(product_num, customer_id);
+		int deleteCount = dao.deleteCart(Integer.parseInt(product_num), customer_id);
 		
 		if(deleteCount > 0) {
 			commit(con);
