@@ -31,10 +31,10 @@ public class AddCartAction implements Action {
         
         if(customer_id == null) {
 			// 사용자가 로그인하지 않았을 경우
-			out.println("<script>");
-			out.println("alert('로그인이 필요합니다!')");
-			out.println("history.back()");
-			out.println("</script>");
+        	out.println("<script>");
+	        out.println("alert('로그인이 필요합니다.')");
+	        out.println("window.open('MemberLoginForm.me','_blank','height=500,width=500, status=yes,toolbar=no,menubar=no,location=no')");
+	        out.println("</script>");
 		} else {
 			 BasketBean basket = new BasketBean();
 			 
