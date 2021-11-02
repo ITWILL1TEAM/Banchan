@@ -196,7 +196,7 @@ public class BasketDAO {
 	}
 
 //-------------결제후 장바구니 비우기 작업 - 삭제할수도 있음
-	public int cartDelete(int[] nums) {
+	public int cartDelete(String[] nums) {
 		System.out.println("CartDAO - cartDelete");
 		int deleteCount = 0;
 		
@@ -204,18 +204,18 @@ public class BasketDAO {
 		ResultSet rs = null;
 		
 		try {
-			for(int str : nums) {
+			for(String str : nums) {
 
-				String sql = "select * from basket where num=?";
+				String sql = "select * from basket where product_num=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, str);
+				pstmt.setInt(1, Integer.parseInt(str));
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
 
-					sql = "delete from cart where num = ?";
+					sql = "delete from cart where product_num = ?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, str);
+					pstmt.setInt(1, Integer.parseInt(str));
 					
 					deleteCount = pstmt.executeUpdate();
 				}

@@ -17,7 +17,7 @@ import vo.ReviewBean;
 
 public class OrderFormService {
 
-	public ArrayList<BasketBean> getSelectCart(int[] nums) {
+	public ArrayList<BasketBean> getSelectCart(String[] nums) {
 		System.out.println("orderService - getSelectCart()");
 		// 공통작업-1. Connection Pool 로부터 Connection 객체 가져오기
 		Connection con = getConnection();
@@ -33,8 +33,8 @@ public class OrderFormService {
 		basket = new BasketBean();
 		
 		while(cartList.size()!=nums.length) {
-			for(int num : nums) {
-				basket = dao.selectBasket(num);
+			for(String num : nums) {
+				basket = dao.selectBasket(Integer.parseInt(num));
 				
 				cartList.add(basket);
 				}

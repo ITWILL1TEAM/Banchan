@@ -145,22 +145,21 @@ public class OrderDAO {
 			// 하나의 메서드에서 복수개의 PreparedStatement 가 생성되는 것을 방지
 			close(pstmt);
 			
-			sql = "INSERT INTO order_list VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO order_list VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, order.getCode());
-			pstmt.setInt(2, num);
-			pstmt.setString(3, order.getCustomer_id());
-			pstmt.setString(4, order.getShipping_name());
-			pstmt.setString(5, order.getShipping_phone());
-			pstmt.setString(6, order.getShipping_zonecode());
-//			pstmt.setString(6, "12345");
-			pstmt.setString(7, order.getShipping_address());
-			pstmt.setString(8, order.getShipping_memo());
-			pstmt.setInt(9, order.getOrder_price());
-			pstmt.setString(10, order.getPay_method());
-			pstmt.setTimestamp(11, order.getOrder_date());
-			pstmt.setString(12, order.getOrder_status());
-			pstmt.setString(13, order.getTrans_num());
+			pstmt.setInt(1, num);
+			pstmt.setString(2, order.getCustomer_id());
+			pstmt.setString(3, order.getShipping_name());
+			pstmt.setString(4, order.getShipping_phone());
+			pstmt.setString(5, order.getShipping_zonecode());
+
+			pstmt.setString(6, order.getShipping_address());
+			pstmt.setString(7, order.getShipping_memo());
+			pstmt.setInt(8, order.getOrder_price());
+			pstmt.setString(9, order.getPay_method());
+			pstmt.setTimestamp(10, order.getOrder_date());
+			pstmt.setString(11, order.getOrder_status());
+			pstmt.setString(12, order.getTrans_num());
 			
 			
 			insertCount = pstmt.executeUpdate();
@@ -177,7 +176,7 @@ public class OrderDAO {
 	
 	
 	
-	public int insertDetailOrder(int[] nums, String code) {
+	public int insertDetailOrder(String[] nums, String code) {
 		System.out.println("OrderDAO - insertDetailOrder()-1!");
 		int insertCount = 0;
 		
@@ -187,17 +186,17 @@ public class OrderDAO {
 		int num1=0;
 
 		try {
-			String sql = "select * from order_product where order_num=?";
+			String sql = "select * from order_detail where order_num=?";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				num1 =  rs.getInt(1)+1;
 			}
-			for(int str : nums) {
-			sql = "select * from basket where num = ?";
+			for(String str : nums) {
+			sql = "select * from basket where product_num = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, str);
+			pstmt.setInt(1, Integer.parseInt(str));
 			rs = pstmt.executeQuery();
 			 
 			if(rs.next()) {

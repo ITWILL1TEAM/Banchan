@@ -8,6 +8,9 @@ int total_price = Integer.parseInt(request.getParameter("total_price"));
 int total_discount = Integer.parseInt(request.getParameter("total_discount"));
 int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
 
+String[] qty = request.getParameterValues("qty");
+String[] nums = request.getParameterValues("num");
+
 String customer_id = request.getParameter("customer_id");
 String buyer_name = request.getParameter("buyer_name");
 String buyer_tel = request.getParameter("buyer_tel");
@@ -122,130 +125,12 @@ IMP.request_pay({
 <input type="hidden" value="<%=shipping_memo %>" id="shipping_memo" name="shipping_memo">
 <input type="hidden" value="<%=customer_id %>" id="customer_id" name="customer_id">
 
-
-<!-- <!-- CONTENT --> -->
-<!-- <div id="content" class="content"> -->
-
-<!-- 	<!-- WRAP --> -->
-<!-- 	<div class="wrap odr">wrap addClass -->
-
-<!-- 		<h2 class="odr_cpl_tit">주문완료</h2> -->
-<!-- 		<div class="odr_top"> -->
-<!-- 			<ol> -->
-<!-- 				<li><em>01</em> 장바구니</li> -->
-<!-- 				<li><em>02</em> 주문서</li> -->
-<!-- 				<li class="on"><em>03</em> 결제완료</li> -->
-<!-- 			</ol> -->
-<!-- 		</div> -->
-
-		
-<!-- 		<!-- odr_cpl_info --> -->
-<!-- 		<div class="odr_cplPrc"> -->
-<!-- 			<h3>결제정보</h3><div class="total"> -->
-<!-- 				<table> -->
-<!-- 					<caption>결제정보 금액 | 주문 합계 금액 , 쿠폰/할인 금액, 배송비, 최종 결제금액을 제공하는 표</caption> -->
-<!-- 					<colgroup> -->
-<!-- 						<col style="width:25%;"> -->
-<!-- 						<col style="width:25%;"> -->
-<!-- 						<col style="width:25%;"> -->
-<!-- 						<col style="width:25%;"> -->
-<!-- 					</colgroup> -->
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<th> -->
-<!-- 								<strong>주문 합계 금액</strong> -->
-<%-- 								<span><b><fmt:formatNumber value="<%=total_price %>" pattern="#,###"/></b>원</span> --%>
-<!-- 								<span class="mis"><em class="ir">-(빼기)</em></span> -->
-<!-- 							</th> -->
-<!-- 							<th> -->
-<!-- 								<strong>쿠폰/할인 금액</strong> -->
-<%-- 								<span><b><fmt:formatNumber value="<%=total_discount %>" pattern="#,###"/></b>원</span> --%>
-<!-- 								<span class="pls"><em class="ir">+(더하기)</em></span> -->
-<!-- 							</th> -->
-<!-- 							<th> -->
-<!-- 								<strong>배송비</strong> -->
-<!-- 								<span> -->
-<%-- 								<%if(shipping_fee ==0){ --%>
-<%-- 								%> --%>
-<!-- 								무료 -->
-<%-- 								<%}else{%> --%>
-<%-- 								<fmt:formatNumber value="<%=shipping_fee %>" pattern="#,###"/> --%>
-<%-- 								<%} %> --%>
-<!-- 								</span> -->
-<!-- 								<span class="eql"><em class="ir">=(합계)</em></span> -->
-<!-- 							</th> -->
-<!-- 							<th> -->
-<!-- 								<strong>최종 결제금액</strong> -->
-<%-- 								<span class="prc" id="real_prc"><b><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></b>원</span> --%>
-<!-- 							</th> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<td></td> -->
-<!-- 							<td><span class="pls"><em class="ir">+(더하기)</em></span></td> -->
-<!-- 							<td> -->
-<!-- 								<em>30,000원 이상 구매 시 무료</em> -->
-<!-- 							</td> -->
-<!-- 							<td> -->
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-<!-- 				</table> -->
-<!-- 			</div> -->
-<!-- 			<!-- 무통장 --> -->
-<!-- 			<div class="msd"> -->
-<!-- 				<table> -->
-<!-- 					<caption>무통장 결제수단 , 입금하실 금액, 계좌, 환불수단 정보를 제공하는 표</caption> -->
-<!-- 					<colgroup> -->
-<!-- 						<col style="width:170px;" /> -->
-<!-- 						<col /> -->
-<!-- 					</colgroup> -->
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<th>결제수단</th> -->
-<!-- 							<td>무통장입금</td> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<th>입금하실 금액</th> -->
-<%-- 							<td><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></td> --%>
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<th>입금계좌</th> -->
-<!-- 							<td>농협은행 79018613743185 (예금주 : 동원디어푸드 주식회사) -->
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-<!-- 				</table> -->
-<!-- 			</div> -->
-<!-- 			<!--// 무통장 -->		 -->
-		
-<!-- 		<!--세금 계산서 발행 여부 추가 --> -->
-		
-
-<!-- 			<div class="btn"> -->
-<!-- 				<span> -->
-<!-- 					<a href="https://www.thebanchan.co.kr/mypage/initOrderDetailList.action?ord_no=202110265263427"  >주문/배송 내역보기</a> -->
-<!-- 					<a href="https://www.thebanchan.co.kr">계속 쇼핑하기</a> -->
-<!-- 				</span> -->
-<!-- 			</div> -->
-
-<!-- 		</div> -->
-<!-- 		<!--// odr_cpl_info --> -->
-
-<!-- 		<!-- odr_cpl_banner --> -->
-<!-- 		<div class="odr_cplBn"> -->
-<!-- 		</div> -->
-<!-- 		<!--// odr_cpl_banner --> -->
-
-<!-- 	</div>  -->
-<!-- 	<!--// WRAP --> -->
-
-<!-- </div> -->
-<!-- <!-- //CONTENT --> -->
-
-
-
+<%
+for(int i = 0 ; i < nums.length ; i ++){
+%>
+<input type="hidden" value="<%=nums[i]%>" name="num" id="num">
+<%}	%>
+</form>
 </body>
 </html>
 
