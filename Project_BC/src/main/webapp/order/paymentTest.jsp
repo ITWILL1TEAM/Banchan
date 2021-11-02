@@ -8,11 +8,14 @@
 </head>
 <body>
 <%
-
+String[] qty = request.getParameterValues("qty");
+String[] nums = request.getParameterValues("num");
 
 
 %>
 
-<%=request.getParameter("payment_price") %>
+<%=qty %>
+<%=nums %>
+
 </body>
 </html>

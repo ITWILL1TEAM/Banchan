@@ -88,9 +88,24 @@ public class BasketDAO {
         int insertCount = 0;
         
         PreparedStatement pstmt = null;
-//        ResultSet rs = null;
+        PreparedStatement pstmt2 = null;
+        ResultSet rs = null;
         
+        int idx = 1; // 새 글 번호를 저장할 변수 선언
+		
         try {
+        	// 현재 basket 테이블의 인덱스 최대 번호를 조회하여 조회된 결과 값에 + 1 값을 새 인덱스 번호로 지정
+        	// => 만약, 조회된 제품이 하나도 없을 경우 새 인덱스 번호는 1번 그대로 사용
+        	String sql = "SELECT MAX(basket_idx) FROM basket WHERE customer_id=?";
+        	pstmt = con.prepareStatement(sql);
+        	pstmt.setString(1, basket.getCutomer_id());
+        	rs = pstmt.executeQuery();
+        	
+        	// 조회된 인덱스 번호가 하나라도 존재할 경우
+        	if(rs.next()) {
+        		idx = rs.getInt(1) + 1;
+        	}
+        	
         	
         	// product_img는 product_img 테이블에서 product_num으로 조회해서 제품번호에 맞는 이미지 찾아서 
         	// 변수에 저장하고 밑에 set하기
@@ -106,29 +121,30 @@ public class BasketDAO {
         	
         
             // 데이터 추가 작업을 위한 INSERT 작업 수행
-            String sql = "INSERT INTO basket VALUES (null,?,?,?,?,?,?,?,?)";
-            pstmt = con.prepareStatement(sql);
+            String sql2 = "INSERT INTO basket VALUES (?,?,?,?,?,?,?,?,?)";
+            pstmt2 = con.prepareStatement(sql2);
             
-            // 첫 컬럼은 auto_increment 이므로 null값 넣음
-            pstmt.setString(1, basket.getCutomer_id());		//		고객 아이디
-            pstmt.setInt(2, basket.getProduct_num());   	//		재품 번호
-            pstmt.setString(3, basket.getProduct_name());	//		제품명
-            pstmt.setInt(4, basket.getProduct_price());  	// 		재품 가격
-            pstmt.setInt(5, basket.getProduct_qty());		// 		주문 수량
-            pstmt.setInt(6, basket.getProduct_discount());  //		상품 할인률
-            pstmt.setString(7, basket.getProduct_img()); 	//		제품 이미지
-            pstmt.setString(8, basket.getSname());			// 		회사명
+            pstmt2.setInt(1, idx); // 인덱스
+            pstmt2.setString(2, basket.getCutomer_id());		//		고객 아이디
+            pstmt2.setInt(3, basket.getProduct_num());   	//		재품 번호
+            pstmt2.setString(4, basket.getProduct_name());	//		제품명
+            pstmt2.setInt(5, basket.getProduct_price());  	// 		재품 가격
+            pstmt2.setInt(6, basket.getProduct_qty());		// 		주문 수량
+            pstmt2.setInt(7, basket.getProduct_discount());  //		상품 할인률
+            pstmt2.setString(8, basket.getProduct_img()); 	//		제품 이미지
+            pstmt2.setString(9, basket.getSname());			// 		회사명
                
             // INSERT 구문 실행 및 결과 리턴받기
-            insertCount = pstmt.executeUpdate();
+            insertCount = pstmt2.executeUpdate();
             
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("insertBasket() 오류 - " + e.getMessage());
         } finally {
         	// 자원 반환
-//        	close(rs);
+        	close(rs);
             close(pstmt);
+            close(pstmt2);
         }
         
         return insertCount;
@@ -153,6 +169,7 @@ public class BasketDAO {
 			while(rs.next()) {
 				BasketBean basket = new BasketBean();
 				
+				basket.setBasket_idx(rs.getInt("basket_idx"));
 				basket.setProduct_num(rs.getInt("product_num"));
 				basket.setProduct_name(rs.getString("product_name"));
 				basket.setProduct_price(rs.getInt("product_price"));
@@ -177,6 +194,94 @@ public class BasketDAO {
 		
 		return cartList;
 	}
+
+//-------------결제후 장바구니 비우기 작업 - 삭제할수도 있음
+	public int cartDelete(String[] nums) {
+		System.out.println("CartDAO - cartDelete");
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			for(String str : nums) {
+
+				String sql = "select * from basket where product_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(str));
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+
+					sql = "delete from cart where product_num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, Integer.parseInt(str));
+					
+					deleteCount = pstmt.executeUpdate();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("cartDAO - cartDelete() 오류! - ");
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
+
+
 	
-    
+	// 장바구니 제품 수량 수정
+	public int updateCart(int product_num, int product_qty, String customer_id) {
+		System.out.println("BasketDAO - updateCart()");
+		int updateCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE basket SET product_qty=? WHERE product_num=? AND customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_qty);
+			pstmt.setInt(2, product_num);
+			pstmt.setString(3, customer_id);
+			
+			updateCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("updateCart() 오류 - " + e.getMessage());
+		} finally {
+        	// 자원 반환
+            close(pstmt);
+        }
+		
+		return updateCount;
+	}
+
+	// 장바구니에서 제품 삭제
+	public int deleteCart(int product_num, String customer_id) {
+		System.out.println("basketDAO - deleteCart()");
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM basket WHERE product_num=? AND customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+			pstmt.setString(2, customer_id);
+			
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        	// 자원 반환
+            close(pstmt);
+        }
+		
+		return deleteCount;
+	}
+	
 }

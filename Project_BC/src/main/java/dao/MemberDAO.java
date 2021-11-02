@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import vo.BasketBean;
 import vo.CustomerBean;
 import vo.MemberBean;
 import vo.SellerBean;
@@ -214,9 +215,33 @@ public class MemberDAO {
 			close(pstmt);
 			
 		}
-
-		
 		
 		return grade;
+	}
+
+	
+	public String getName(String id) {
+		String name = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT name FROM member WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				name = rs.getString("name");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return name;
 	}
 }

@@ -19,6 +19,7 @@ public class ProductDetailAction implements Action {
 		
 		// request 객체를 통해 전달받은 파라미터(product_num) 가져오기
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
+
 	
 		
 		System.out.println("detail"+product_num);
@@ -29,7 +30,7 @@ public class ProductDetailAction implements Action {
 		// getArticle() 메소드 호출하여 board_num에 대한 게시물 상세 정보 리턴받기
 		// -> 파라미터 : 글번호(board_num)  리턴타입 : Boardbean(article)
 		BoardBean article = service.getArticle(product_num);
-		ProductImg productImg= service.getArticleImg(product_num);
+		ArrayList<ProductImg> productImg= service.getArticleImg(product_num);
 //		int listCount = review.getListCount();
 //		ArrayList<ReviewBean> reviewList = service.getReviewList(product_num, page, limit);
 		

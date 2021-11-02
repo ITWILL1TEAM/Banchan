@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="vo.ProductImg"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="vo.BoardBean"%>
@@ -5,11 +6,14 @@
 	pageEncoding="UTF-8"%>
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
-    ProductImg productImg = (ProductImg)request.getAttribute("productImg");
+    ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
 	
+	
+	
 %>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -90,10 +94,15 @@
 // 			location.href = 'Cart.do';
 // 		}
 // 	}
+for()
+function ChangeImg() {
+	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png";
 	
+}	
 </script>
 </head>
 <body>
+<%= productImg.size()%>
 	<%@ include file="/inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
@@ -122,14 +131,27 @@
 					<div class="gds_img" id="gds_img">
 						<div class="gd_img_bx">
 							 <div class="fade_slide gd_img" >
-								<ul class="cont">
-									<li class="active" style="background-image:url('//cdn.thebanchan.co.kr/upload/C00001/goods/prd/510/764/200721000025764.jpg')"><span class="ir">양장피 이미지1</span></li>
+								<ul class="cont">							
+									<li class="active" id="tumnail" style="background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(0).getProduct_img()%>.png">	
+									<span class="ir"><%=article.getProduct_name()%> </span></li>
+									
+									
 								</ul>		
 							</div>
 							
 							<div class="indi">
 								<ul class="page">
-									<li class="on"><a href="#gd_img_bx"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/><em class="ir">양장피 이미지1 보기</em></a></li>
+								<%for(int i=0;i<productImg.size();i++){
+                                       if(productImg.get(i).getProduct_img_location()==1){
+                                   
+                                    %>
+									<li class="on"><a href="#gd_img_bx">
+									<img src="//localhost:8081/Project_BC/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
+									
+									
+									<em class="ir"><%=article.getProduct_name()+i %></em></a></li>
+									<%} 
+                                    }%>
 								</ul>
 							</div>
 						</div>
@@ -381,10 +403,18 @@
 					<h3 class="ir">제품 상세정보</h3>
 					<div class="gd_detail">
 						<div align="center">
-							<img alt="" src="http://image.thebanchan.co.kr/upload/C00001/fckeditor/tempgoodsdesc/202108/1627890102803.jpg" />
-							<img alt="" src="http://image.thebanchan.co.kr/upload/C00001/fckeditor/tempgoodsdesc/202007/1594965586148.jpg" />
-							<img alt="" src="http://image.thebanchan.co.kr/upload/C00001/fckeditor/tempgoodsdesc/202007/1594965612158.jpg" />
-							<img alt="" src="http://image.thebanchan.co.kr/upload/C00001/fckeditor/tempgoodsdesc/201902/1550221060331.jpg" />
+						
+						<%for(int i=0;i<productImg.size();i++){
+						if(productImg.get(i).getProduct_img_location()==2){%>
+   
+							<img alt="" src="//localhost:8081/Project_BC/upload/<%=productImg.get(i).getProduct_img()%>.png"/>
+							
+							
+							 <%}
+							 }%>
+    
+   
+							
 						</div>
 					</div>
 					<!-- DETAIL -->
