@@ -20,8 +20,6 @@ for(int i=0; i<cartList.size(); i++){
 	total_price += (cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty());
 };
 
-int discount = 
-
 int total_discount=0;
 for(int i=0; i<cartList.size(); i++){
 	total_discount += (cartList.get(i).getProduct_discount()*cartList.get(i).getProduct_qty());
@@ -153,6 +151,7 @@ function payMethod(method) {
 </head>
 <body>
 <!-- ACCESSIBILITY -->
+<!-- <form action="Payment.or" method="post" > -->
 <form action="Payment.or" method="post" >
 
 
@@ -261,6 +260,7 @@ function payMethod(method) {
 						<td><span class="ori"><b><fmt:formatNumber value="<%=cartList.get(i).getProduct_price()%>" pattern="#,###"/></b>원</span>
 						</td>
 						<td><span class="nm"><%=cartList.get(i).getProduct_qty()%></span></td>
+						<input type="hidden" id="qty" name="qty" value="<%=cartList.get(i).getProduct_qty()%>">
 						<td colspan="2"><span class="ori"><b name="goods_pay_amt_display"
 								data-cart-seq="0"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty()%>" pattern="#,###"/></b>원</span></td>
 					</tr>
@@ -485,7 +485,7 @@ function payMethod(method) {
 					
 					
 <!-- 					<input type="submit" class="odr_total_ok" id="check_order_button" value="결제하기"> -->
-					<button type="submit" class="odr_total_ok" id="check_order_button" >
+					<button type="submit" class="odr_total_ok" id="check_order_button" onclick="">
 						결제하기
 					</button>
 				</div>

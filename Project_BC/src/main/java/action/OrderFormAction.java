@@ -40,9 +40,9 @@ public class OrderFormAction implements Action {
 			
 		} else {
 		
-		int[] nums = {1,2};// 체크박스 항목에서 넘값
+		String[] nums = request.getParameterValues("cart_checkbox");// 체크박스 항목에서 넘값
 		
-		for(int num : nums) {
+		for(String num : nums) {
 			System.out.println("액션에서의 : "+num);
 			System.out.println(num);
 		}

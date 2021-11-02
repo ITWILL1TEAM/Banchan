@@ -38,7 +38,7 @@ public class OrderProService {
 		return isInsertSuccess;
 	}
 
-	public boolean insertDetailOrder(int[] nums, String code) {
+	public boolean insertDetailOrder(String[] nums, String code) {
 		System.out.println("OrderProService - InsertDetailOrder!");
 		boolean isInsertSuccess = false;
 		
@@ -48,7 +48,7 @@ public class OrderProService {
 		
 		orderDAO.setConnection(con);
 		
-		for(int str : nums) {
+		for(String str : nums) {
 			System.out.println("orderPro : "+str);
 		}
 		int insertCount = orderDAO.insertDetailOrder(nums,code);
