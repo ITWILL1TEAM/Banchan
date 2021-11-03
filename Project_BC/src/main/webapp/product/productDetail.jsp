@@ -104,11 +104,11 @@
 // 			location.href = 'Cart.do';
 // 		}
 // 	}
-// for()
-// function ChangeImg() {
-<%-- 	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png"; --%>
+for()
+function ChangeImg() {
+	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png";
 	
-// }	
+}	
 </script>
 </head>
 <body>
