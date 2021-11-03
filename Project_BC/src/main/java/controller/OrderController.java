@@ -24,7 +24,7 @@ public class OrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	response.setContentType("application/x-json; charset=utf8");
+	response.setContentType("application/text; charset=utf8");
 	
 	request.setCharacterEncoding("UTF-8");
 			
