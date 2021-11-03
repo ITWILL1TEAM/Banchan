@@ -27,11 +27,11 @@ public class OrderDetailAction implements Action {
 //			
 //			forward.setPath("MemberLoginForm.mo");
 //		}else {
-//		String[] nums = request.getParameterValues("num");
-		int[] nums = {2,3,4};
+		String[] nums = request.getParameterValues("num");
+		
 		String code = request.getParameter("imp_uid");
 
-		for(int str : nums) {
+		for(String str : nums) {
 			System.out.println("orderDetailProAction : "+str);
 //		}
 		

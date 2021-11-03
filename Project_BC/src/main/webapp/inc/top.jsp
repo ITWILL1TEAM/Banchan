@@ -193,7 +193,7 @@
             <div class="gnb-wrap">
                 <div class="inner-box" >
                     <ul>
-                        <li class="mnu-all"><a href=" "> <span class="icon">
+                        <li class="mnu-all"><a href="SideDish.side"> <span class="icon">
                                     <img
                                     src="//www.thebanchan.co.kr/fo/images/ico/ico_category.png"
                                     class="off"> <img
@@ -202,9 +202,9 @@
                             </span> 카테고리
                         </a></li>
 
-                        <li><a href=" " onclick=" ">할인특가</a></li>
-                        <li><a href=" " onclick=" ">신상품</a></li>
-                        <li class="gbnLine"><a href=" " onclick=" ">베스트</a></li>
+                        <li><a href="Sale.side" onclick=" ">할인특가</a></li>
+                        <li><a href="BrandNew.side" onclick=" ">신상품</a></li>
+                        <li class="gbnLine"><a href="Best.side" onclick=" ">베스트</a></li>
 
                     </ul>
                 </div>

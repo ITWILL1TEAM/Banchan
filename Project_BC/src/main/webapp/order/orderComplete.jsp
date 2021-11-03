@@ -2,23 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
-int payment_price = Integer.parseInt(request.getParameter("payment_price"));
+int amount = Integer.parseInt(request.getParameter("amount"));
+
 int total_price = Integer.parseInt(request.getParameter("total_price"));
 int total_discount = Integer.parseInt(request.getParameter("total_discount"));
 int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
 
-String loginId = request.getParameter("loginId");
-String loginName = request.getParameter("loginName");
-String buy_name = request.getParameter("buy_name");
+String customer_id = request.getParameter("customer_id");
+String buyer_name = request.getParameter("buyer_name");
+String buyer_tel = request.getParameter("buyer_tel");
+String buyer_email = request.getParameter("buyer_email");
 String postcode = request.getParameter("postcode");
 String address = request.getParameter("address");
 String detailAddress = request.getParameter("detailAddress");
-String buy_phone = request.getParameter("buy_phone");
-String order_memo = request.getParameter("order_memo");
-String pay_rdo = request.getParameter("pay_rdo");
-String buyer_email = request.getParameter("buyer_email");
-
-
+String shipping_name = request.getParameter("shipping_name");
+String shipping_phone = request.getParameter("shipping_phone");
+String shipping_memo = request.getParameter("shipping_memo");
+String pay_method = request.getParameter("pay_rdo");
+String status ="";
 
 %>
 
@@ -104,7 +105,7 @@ String buyer_email = request.getParameter("buyer_email");
 							</th>
 							<th>
 								<strong>최종 결제금액</strong>
-								<span class="prc" id="real_prc"><b><fmt:formatNumber value="<%=payment_price %>" pattern="#,###"/></b>원</span>
+								<span class="prc" id="real_prc"><b><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></b>원</span>
 							</th>
 						</tr>
 					</thead>
@@ -136,7 +137,7 @@ String buyer_email = request.getParameter("buyer_email");
 						</tr>
 						<tr>
 							<th>입금하실 금액</th>
-							<td><fmt:formatNumber value="<%=payment_price %>" pattern="#,###"/></td>
+							<td><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></td>
 						</tr>
 						<tr>
 							<th>입금계좌</th>

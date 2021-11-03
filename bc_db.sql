@@ -32,8 +32,8 @@ CREATE TABLE `customer_address` (
   `customer_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
   `customer_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
   `address_priority` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`customer_id`),
-  CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE
+  KEY `customer_address_ibfk_1` (`customer_id`),
+  CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `seller` (
@@ -93,10 +93,15 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE basket(
-   basket_idx int(11) PRIMARY KEY AUTO_INCREMENT,
-   product_num int(11) NOT NULL,
+   basket_idx int(11) PRIMARY KEY,
    customer_id varchar(15) COLLATE utf8_bin NOT NULL,
-   item_qty INT NOT NULL DEFAULT 1,
+   product_num int(11) NOT NULL,
+   product_name varchar(45) COLLATE utf8_bin NOT NULL,
+   product_price int(11) NOT NULL,
+   product_qty INT NOT NULL DEFAULT 1,
+   product_discount int(11) NOT NULL DEFAULT '0',
+   product_img varchar(45) COLLATE utf8_bin NOT NULL,
+   Sname VARCHAR(45) COLLATE utf8_bin NOT NULL,
    CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
    CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

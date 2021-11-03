@@ -2,11 +2,14 @@
     pageEncoding="UTF-8"%>
     
 <%
-// int amount = Integer.parseInt(request.getParameter("payment_price"));
-int amount = 1;
+int amount = Integer.parseInt(request.getParameter("amount"));
+
 int total_price = Integer.parseInt(request.getParameter("total_price"));
 int total_discount = Integer.parseInt(request.getParameter("total_discount"));
 int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
+
+String[] qty = request.getParameterValues("qty");
+String[] nums = request.getParameterValues("num");
 
 String customer_id = request.getParameter("customer_id");
 String buyer_name = request.getParameter("buyer_name");
@@ -26,7 +29,17 @@ String status ="";
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<
+<title>주문완료 | theBanchan</title>
+	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
+	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211026000" type="text/css">	
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211026000" type="text/css">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211026000" type="text/css">
+	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211026000" type="text/css">
+	
+<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
+
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -39,7 +52,8 @@ IMP.request_pay({
     pay_method : '<%=pay_method%>',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '주문명:결제테스트',
-    amount : <%=amount%>, //판매 가격
+    amount : 1, //판매 가격
+<%--     amount : <%=amount%>, //판매 가격 --%>
     buyer_email : '<%=buyer_email%>',
     buyer_name : '<%=buyer_name%>',
     buyer_tel : '<%=buyer_tel%>',
@@ -80,6 +94,7 @@ IMP.request_pay({
 		if ($('#status').val() == "paid") {
 			$('.fail').attr("src",'order/payment_success.jpg')
 			document.paymentForm.submit();
+			
 		} else {
 			
 			$('.fail').attr("src",'order/payment_fail.jpg')
@@ -90,38 +105,32 @@ IMP.request_pay({
 </script>
 </head>
 <body>
-<%=customer_id %>
-<%=buyer_name %>
-<%=buyer_tel %>
-<%=buyer_email %>
-<%=postcode %>
-<%=address %>
-<%=detailAddress %>
-<%=shipping_name %>
-<%=shipping_phone %>
-<%=shipping_memo %>
-<%=pay_method %>
-<%=status %>
 
 <form action="OrderPro.or" method="post" name="paymentForm">
 <div class="tbl-order">
 	<img alt="" src="" class="fail" onerror="this.style.display='none'">
 </div>
 
-<input type="text" value="" id="imp_uid" name="imp_uid">
-<input type="text" value="<%=amount%>" id="paid_amount" name="paid_amount"> 
-<input type="text" value="<%=pay_method%>" id="pay_method" name="pay_method">
-<input type="text" value="<%=buyer_name %>" id="buyer_name" name="buyer_name"> 
-<input type="text" value="<%=buyer_tel %>" id="buyer_tel" name="buyer_tel">
-<input type="text" value="<%=buyer_email %>" id="buyer_email" name="buyer_email"> 
-<input type="text" value="<%=postcode %>" id="postcode" name="postcode">
-<input type="text" value="<%=address %>" id="shipping_addr" name="shipping_addr">
-<input type="text" value="" id="status" name="status">
-<input type="text" value="<%=shipping_name %>" id="shipping_name" name="shipping_name">
-<input type="text" value="<%=shipping_phone %>" id="shipping_phone" name="shipping_phone">
-<input type="text" value="<%=shipping_memo %>" id="shipping_memo" name="shipping_memo">
-<input type="text" value="<%=customer_id %>" id="customer_id" name="customer_id">
+<input type="hidden" value="" id="imp_uid" name="imp_uid">
+<input type="hidden" value="<%=amount%>" id="paid_amount" name="paid_amount"> 
+<input type="hidden" value="<%=pay_method%>" id="pay_method" name="pay_method">
+<input type="hidden" value="<%=buyer_name %>" id="buyer_name" name="buyer_name"> 
+<input type="hidden" value="<%=buyer_tel %>" id="buyer_tel" name="buyer_tel">
+<input type="hidden" value="<%=buyer_email %>" id="buyer_email" name="buyer_email"> 
+<input type="hidden" value="<%=postcode %>" id="postcode" name="postcode">
+<input type="hidden" value="<%=address %>" id="shipping_addr" name="shipping_addr">
+<input type="hidden" value="" id="status" name="status">
+<input type="hidden" value="<%=shipping_name %>" id="shipping_name" name="shipping_name">
+<input type="hidden" value="<%=shipping_phone %>" id="shipping_phone" name="shipping_phone">
+<input type="hidden" value="<%=shipping_memo %>" id="shipping_memo" name="shipping_memo">
+<input type="hidden" value="<%=customer_id %>" id="customer_id" name="customer_id">
 
+<%
+for(int i = 0 ; i < nums.length ; i ++){
+%>
+<input type="hidden" value="<%=nums[i]%>" name="num" id="num">
+<%}	%>
 </form>
 </body>
 </html>
+
