@@ -46,12 +46,12 @@ $(document).ready(function() {
 });
 </script>
 <!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
-<link href="../CSS/common.css" rel="stylesheet" type="text/css">
-<link href="../CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+<link href="CSS/common.css" rel="stylesheet" type="text/css">
+<link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
 <link href="CSS/sub.css" rel="stylesheet" type="text/css">
-<link href="../CSS/font.css" rel="stylesheet" type="text/css">
-<link href="../CSS/font.css" rel="stylesheet" type="text/css">
-<link href="../CSS/gds.css" rel="stylesheet" type="text/css">
+<link href="CSS/font.css" rel="stylesheet" type="text/css">
+<link href="CSS/font.css" rel="stylesheet" type="text/css">
+<link href="CSS/gds.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211010170" type="text/css">   
 </head>
