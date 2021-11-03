@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.OrderDetailAction;
+//import action.OrderDetailAction;
 import action.OrderFormAction;
+import action.OrderListAction;
 import action.OrderProAction;
 import vo.ActionForward;
 
@@ -23,7 +24,8 @@ public class OrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	response.setContentType("application/text; charset=utf8");
+	
 	request.setCharacterEncoding("UTF-8");
 			
 			String command = request.getServletPath();
@@ -39,15 +41,23 @@ public class OrderController extends HttpServlet {
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}                                                                                                                                                     
 			}else if(command.equals("/Payment.or")) {
 				System.out.println("Payment.or 포워딩");
 				forward = new ActionForward();
 				forward.setPath("/order/payment.jsp");
+			
 			}else if(command.equals("/orderComplete.or")) {
-				
-				forward = new ActionForward();
-				forward.setPath("/order/orderComplete.jsp");
+				action = new OrderListAction();
+				//업캐스팅 후에도 공통메서드(상속받음 메서드)는 호출이 가능하므로 
+				//Action 차입으로 execute() 메서드 호출 가능함
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 			}else if(command.equals("/OrderPro.or")) {			
 				action = new OrderProAction();
 				//업캐스팅 후에도 공통메서드(상속받음 메서드)는 호출이 가능하므로 
@@ -58,16 +68,7 @@ public class OrderController extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else if(command.equals("/OrderDetail.or")) {			
-				action = new OrderDetailAction();
-				//업캐스팅 후에도 공통메서드(상속받음 메서드)는 호출이 가능하므로 
-				//Action 차입으로 execute() 메서드 호출 가능함
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+
 			}
 			
 			
