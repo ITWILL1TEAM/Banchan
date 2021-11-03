@@ -23,13 +23,13 @@ String shipping_phone = request.getParameter("shipping_phone");
 String shipping_memo = request.getParameter("shipping_memo");
 String pay_method = request.getParameter("pay_rdo");
 String status ="";
-
+response.setContentType("text/html;charset=utf-8");     
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<
+
 <title>주문완료 | theBanchan</title>
 	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
 	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
@@ -124,6 +124,12 @@ IMP.request_pay({
 <input type="hidden" value="<%=shipping_phone %>" id="shipping_phone" name="shipping_phone">
 <input type="hidden" value="<%=shipping_memo %>" id="shipping_memo" name="shipping_memo">
 <input type="hidden" value="<%=customer_id %>" id="customer_id" name="customer_id">
+
+<!-- 주문정보를 히든으로 넘겨주기 -->
+<input type="hidden" value="<%=total_price %>" id="total_price" name="total_price">
+<input type="hidden" value="<%=total_discount %>" id="total_discount" name="total_discount">
+<input type="hidden" value="<%=shipping_fee %>" id="shipping_fee" name="shipping_fee">
+
 
 <%
 for(int i = 0 ; i < nums.length ; i ++){
