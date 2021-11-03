@@ -111,19 +111,11 @@
 // 		} else {
 // 			location.href = 'Cart.do';
 // 		}
-// 	}
-for()
-function ChangeImg() {
-	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png";
-	
-}	
+
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 	<%@ include file="/inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
@@ -140,7 +132,7 @@ function ChangeImg() {
 					<input type="hidden" id="product_name" name="product_name" value="<%=article.getProduct_name()%>"/>
 					<input type="hidden" id="product_discount" name="product_discount" value="<%=article.getProduct_discount()%>"/>
 					<input type="hidden" id="product_stock" name="product_stock" value="<%=article.getProduct_stock()%>"/>
-					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSname()%>"/>
+					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSeller_id() %>"/>
 					<input type="hidden" id="product_price" name="product_price" value="<%=article.getProduct_price()%>"/>
 					<input type="hidden" id="total_amt" name="total_amt" value=""/>
 				</div>
@@ -185,7 +177,7 @@ function ChangeImg() {
 						<!-- BRAND -->
 						<div class="gd_brd">	
 							<dl>
-								<dt><%=article.getSname() %></dt>
+								<dt><%=article.getSeller_id() %></dt>
 							</dl>
 						</div>
 						<!-- NAME -->
@@ -264,7 +256,7 @@ function ChangeImg() {
 				</div>
 				<!-- GOODS VIEW -->
 		
-<<<<<<< HEAD
+
 				<!-- GOODS RELATION -->
 				<div class="gds_rel">
 					<div class="gd_rel">
@@ -409,8 +401,7 @@ function ChangeImg() {
 				</div>
 				<!-- //GOODS RELATION -->
 		
-=======
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
+
 				<!-- GOODS CONTENT -->
 				<!-- TAB1 -->
 				<div class="gds_cont" id="gds_cont1">
@@ -551,7 +542,7 @@ function ChangeImg() {
 	</div>
 	<!--// MAIN_NOTICE_LAYER -->
 
-<<<<<<< HEAD
+
 	<!-- 아래는 추천 제품과 관련되어 있으므로 삭제 금지 -->
 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ui.js?v=20211010210"></script>
 	<script type="text/javascript">
@@ -577,7 +568,6 @@ function ChangeImg() {
 		}
 		//}
 	</script>
-=======
->>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
+
 </body>
 </html>

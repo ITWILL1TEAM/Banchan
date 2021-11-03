@@ -107,9 +107,9 @@ public class QnaBoardDAO {
 	
 	
 	// 글 상세 정보 조회를 위한 selectArticle() 메서드 정의
-	public QnaBoardBean selectArticle(int qna_idx) {
-	    QnaBoardBean article = null;
-		
+	public ArrayList<QnaBoardBean> selectArticleList(String seller_id) {
+		QnaBoardBean qna = null;
+		ArrayList<QnaBoardBean> qnaList =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -121,20 +121,23 @@ public class QnaBoardDAO {
 			        + "   ON PRO.seller_id = SEL.seller_id WHERE PRO.seller_id = ?"
 			        + " )ORDER BY qna_idx asc";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, qna_idx);
+			pstmt.setString(1, seller_id);
 			
+			qnaList = new ArrayList<QnaBoardBean>();
 			// 4단계. SQL 구문 실행 및 결과 처리
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				// 조회된 상세 정보를 BoardBean 객체에 저장
-				article = new QnaBoardBean();
-				article.setQna_idx(rs.getInt("qna_idx"));
-				article.setCustomer_id(rs.getString("customer_id"));
-				article.setProduct_num(rs.getInt("product_num"));
-				article.setQna_subject(rs.getString("qna_subject"));
-		        article.setQna_password(rs.getString("qna_password"));
-		        article.setQna_content(rs.getString("qna_content"));
+				qna = new QnaBoardBean();
+				qna.setQna_idx(rs.getInt("qna_idx"));
+				qna.setCustomer_id(rs.getString("customer_id"));
+				qna.setProduct_num(rs.getInt("product_num"));
+				qna.setQna_subject(rs.getString("qna_subject"));
+				qna.setQna_password(rs.getString("qna_password"));
+				qna.setQna_content(rs.getString("qna_content"));
+		        
+				qnaList.add(qna);
 			
 			}
 		} catch (Exception e) {
@@ -145,7 +148,7 @@ public class QnaBoardDAO {
  			close(pstmt);
 		}
 		
-		return article;
+		return qnaList;
 	}
 	
 

@@ -39,7 +39,7 @@ public class QnaListService {
 		return listCount;
 	}
 
-	public ArrayList<QnaBoardBean> getArticleList(int page, int limit) {
+	public ArrayList<QnaBoardBean> getArticleList(String seller_id) {
 		// 공통작업-1. Connection Pool 로부터 Connection 객체 가져오기
 //		Connection con = JdbcUtil.getConnection();
 		Connection con = getConnection();
@@ -54,7 +54,7 @@ public class QnaListService {
 		// 게시물 목록 조회를 수행하는 selectArticleList() 메서드 호출
 		// => 파라미터 : 페이지번호(page), 게시물 갯수(limit)
 		//    리턴타입 : ArrayList<BoardBean> 객체(articleList)
-		ArrayList<QnaBoardBean> articleList = dao.selectArticleList(page, limit);
+		ArrayList<QnaBoardBean> articleList = dao.selectArticleList(seller_id);
 		
 		
 		// 공통작업-4. Connection 객체 반환

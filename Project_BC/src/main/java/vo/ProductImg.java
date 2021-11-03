@@ -6,7 +6,7 @@ public class ProductImg {
     private int product_num;
     private String product_original_img;
     private String Product_img;
-    private int product_img_location;
+    private int product_img_location;//1 -썸네일 2 - 상세이미지 
     
     
     

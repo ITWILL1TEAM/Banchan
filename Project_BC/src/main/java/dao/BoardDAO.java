@@ -67,7 +67,7 @@ public class BoardDAO {
 			pstmt = con.prepareStatement(sql);
 			// 첫 문장은 auto_increment 이므로 null값 넣음
 			pstmt.setString(1, board.getProduct_name()); // 상품명
-			pstmt.setString(2, board.getSname());// 회사명-FK
+			pstmt.setString(2, board.getSeller_id());// 회사명-FK
 			pstmt.setString(3, board.getProduct_category());// 상품 카테고리
 			pstmt.setInt(4, board.getProduct_price()); // 상품가격
 			pstmt.setInt(5, board.getProduct_weight());// 상품무게
@@ -161,7 +161,7 @@ public class BoardDAO {
 				BoardBean board = new BoardBean();
 				board.setProduct_num(rs.getInt("product_num"));
 				board.setProduct_name(rs.getString("product_name"));
-				board.setSname(rs.getString("Sname"));
+				board.setSeller_id(rs.getString("seller_id"));
 				board.setProduct_date(rs.getDate("product_date"));
 				board.setProduct_category(rs.getString("product_category"));
 				board.setProduct_price(rs.getInt("product_price"));
@@ -205,7 +205,7 @@ public class BoardDAO {
 
 				article.setProduct_num(rs.getInt("product_num"));
 				article.setProduct_name(rs.getString("product_name"));
-				article.setSname(rs.getString("Sname"));
+				article.setSeller_id(rs.getString("seller_id"));
 				article.setProduct_category(rs.getString("product_category"));
 				article.setProduct_price(rs.getInt("product_price"));
 				article.setProduct_weight(rs.getInt("product_weight"));
