@@ -59,7 +59,7 @@
 							<tr>
 								<td class="vert2">
 									
-									<a href="javascript:void(0);" onclick="overpass.goods.goDetail({goods_no : '2011014787', vir_vend_no : 'VV17002724'});">
+									<a href="">
 										<span class="img">
 										<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/392/201123000026392.jpg" width="80" height="80" alt="" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
 										</span>
@@ -68,7 +68,7 @@
 								</td>
 								<td class="none">	
 									
-									<a href="javascript:void(0);" onclick="overpass.goods.goDetail({goods_no : '2011014787', vir_vend_no : 'VV17002724'});">
+									<a href="">
 									
 										<span class="set"><b>[비비드키친]</b> [비비드키친] 닭갈비(500g)</span>
 										

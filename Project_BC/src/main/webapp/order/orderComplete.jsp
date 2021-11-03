@@ -29,18 +29,28 @@ int shipping_fee = Integer.parseInt(request.getAttribute("shipping_fee").toStrin
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211026000" type="text/css">
 	
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript"> 
+	$(document).ready(function() {
+		
+		if(<%=orderList.get(0).getPay_method().equals("card")%>){
+			$('.pay_method').text("카드결제");
+		}else{
+			$('.pay_method').text("무통장입금");
+		}
+		
+		
+		if($('.pay_method').text() =="카드결제"){
+			document.getElementById("BankAccount").style.display = 'none';
+		};
+		
+		});
+	
+	
+	
+	
+	
+</script>
 
 <!-- CONTENT -->
 <div id="content" class="content">
@@ -57,7 +67,7 @@ int shipping_fee = Integer.parseInt(request.getAttribute("shipping_fee").toStrin
 			</ol>
 		</div>
 
-		
+		오더넘 : <%=orderList.get(0).getOrder_num() %>
 		<!-- odr_cpl_info -->
 		<div class="odr_cplPrc">
 			<h3>결제정보</h3><div class="total">
@@ -113,7 +123,7 @@ int shipping_fee = Integer.parseInt(request.getAttribute("shipping_fee").toStrin
 				</table>
 			</div>
 			<!-- 무통장 -->
-			<div class="msd" id="msdBank" style="display: none;">
+			<div class="msd" id="msdBank" >
 				<table>
 					<caption>무통장 결제수단 , 입금하실 금액, 계좌, 환불수단 정보를 제공하는 표</caption>
 					<colgroup>
@@ -123,51 +133,29 @@ int shipping_fee = Integer.parseInt(request.getAttribute("shipping_fee").toStrin
 					<tbody>
 						<tr>
 							<th>결제수단</th>
-							<td>무통장입금</td>
+							<td class="pay_method">
+							
+							</td>
 						</tr>
 						<tr>
 							<th>입금하실 금액</th>
 							<td><fmt:formatNumber value="<%=orderList.get(0).getOrder_price() %>" pattern="#,###"/></td>
 						</tr>
-						<tr>
+						<tr  class="BankAccount" id="BankAccount">
 							<th>입금계좌</th>
-							<td>농협은행 79018613743185 (예금주 : 동원디어푸드 주식회사)
+							<td>우리은행 1002450792019 (예금주 : 유여진 주식회사)
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<!--// 무통장 -->		
-			<div class="msd" id="msdCard" style="display: none;">
-				<table>
-					<caption>무통장 결제수단 , 입금하실 금액, 계좌, 환불수단 정보를 제공하는 표</caption>
-					<colgroup>
-						<col style="width:170px;" />
-						<col />
-					</colgroup>
-					<tbody>
-						<tr>
-							<th>결제수단</th>
-							<td>카드결제</td>
-						</tr>
-						<tr>
-							<th>입금하실 금액</th>
-							<td><fmt:formatNumber value="<%=orderList.get(0).getOrder_price() %>" pattern="#,###"/></td>
-						</tr>
-						<tr>
-							<th>입금계좌</th>
-							<td>농협은행 79018613743185 (예금주 : 동원디어푸드 주식회사)
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			
 		<!--세금 계산서 발행 여부 추가 -->
 		
 
 			<div class="btn">
 				<span>
-					<a href="https://www.thebanchan.co.kr/mypage/initOrderDetailList.action?ord_no=202110265263427"  >주문/배송 내역보기</a>
+					<a href="OrderDetail.or?order_num=<%=orderList.get(0).getOrder_num() %>"  >주문/배송 내역보기</a>
 					<a href="<%=request.getContextPath() %>/">계속 쇼핑하기</a>
 				</span>
 			</div>
