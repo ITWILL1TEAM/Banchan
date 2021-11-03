@@ -54,15 +54,15 @@
 				<span class="icon"><img
 					src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"
 					style="width: 50px; height: 50px;"></span>
-					<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("밑반찬")||request.getParameter("category").equals("고기반찬")||request.getParameter("category").equals("생선반찬")){ %>
+					<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("side")||request.getParameter("category").equals("meat")||request.getParameter("category").equals("fish")){ %>
 					<strong>반찬</strong>
-					<%}else if(request.getParameter("category").equals("김치")){ %>
+					<%}else if(request.getParameter("category").equals("Kimchi")){ %>
 					<strong>김치</strong>
-					<%}else if(request.getParameter("category").equals("국")){ %>
+					<%}else if(request.getParameter("category").equals("Soup")){ %>
 					<strong>국</strong>
 					<%} %>
 			</div>
-			<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("밑반찬")||request.getParameter("category").equals("고기반찬")||request.getParameter("category").equals("생선반찬")){ %>
+			<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("side")||request.getParameter("category").equals("meat")||request.getParameter("category").equals("fish")){ %>
 			<div class="sort-box">
 				<div class="sort-type ctg">
 					<div class="cate-wrap">
@@ -88,7 +88,7 @@
 				</div>
 				
 			</div>
-			<%}else if(request.getParameter("category").equals("김치")){ %>
+			<%}else if(request.getParameter("category").equals("Kimchi")){ %>
 			 <div class="sort-box">
                 <div class="sort-type ctg">
                     <div class="cate-wrap">
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-			<%}else if(request.getParameter("category").equals("국")){ %>
+			<%}else if(request.getParameter("category").equals("Soup")){ %>
 			<div class="sort-box">
                 <div class="sort-type ctg">
                     <div class="cate-wrap">
