@@ -39,13 +39,15 @@ public class SideDAO {
 				
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
+					PreparedStatement pstmt2 = null;
+					ResultSet rs2 = null;
 					
 					try {
 						con = getConnection();
 
 						String sql = "";
 						if(category.equals("전체")) {
-							sql = "select * from product where product_category in('밑반찬','고기반찬', '생선반찬', '김치', '국');";
+							sql = "select * from product where product_category in('side','meat', 'fish', 'Kimchi', 'Soup');";
 							pstmt = con.prepareStatement(sql);
 						}else {
 							sql = "select * from product where product_category LIKE ?";
@@ -83,6 +85,7 @@ public class SideDAO {
 							sideList.add(board);
 
 						}
+						
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
