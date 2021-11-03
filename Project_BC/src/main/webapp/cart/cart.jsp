@@ -253,86 +253,8 @@
 	
 		</div>
 		<!-- //CONTENT -->
-		
-		<div class="layer_wrap" id="layer_set_modify">
-			<div class="lyr_box">
-				<h3 id="svd_set_name"></h3>
-				<div class="set_wrap">
-					<div class="left_side">
-						<h4>상품 찾기(<span id="svd_goods_display">0</span>)</h4>
-						<div class="tbody_set">
-							<table>
-								<caption>상품찾기</caption>
-								<col style="width:42px;" />
-								<col style="width:158px;" />
-								<thead>
-									<tr>
-										<th scope="col" class="chck">
-											<input type="checkbox" id="check_all_svd_items" />
-											<label for="check_all_svd_items">상품전체선택</label>
-										</th>
-										<th scope="col">상품명</th>
-									</tr>
-								</thead>
-								<tbody id="svd_goods_body">
-									<tr style="display: none;" id="svd_goods_template">
-										<td class="chck">
-											<input type="checkbox" name="goods_checkbox" id="svd_goods_checkbox"/>
-										</td>
-										<td>
-											<label for="svd_goods_checkbox"></label>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="btn_side">
-						<button id="add_svd_items_button"><em class="ir">상품 추가</em></button>
-					</div>
-					<div class="right_side">
-						<h4>세트 구성(<span id="svd_qty_display">0</span>/<span id="svd_set_qty_display"></span>)</h4>
-						<div class="tbody_set">
-							<table>
-								<caption>상품찾기</caption>
-								<col style="width:148px;" />
-								<col style="width:80px;" />
-								<col style="width:42px;" />
-								<thead>
-									<tr>
-										<th scope="col">상품명</th>
-										<th scope="col">수량</th>
-										<th scope="col"><span class="ir">삭제</span></th>
-									</tr>
-								</thead>
-								<tbody id="svd_selected_goods_body">
-									<tr id="svd_selected_goods_template" style="display: none;">
-										<td>
-											<label></label>
-										</td>
-										<td>
-											<div class="qty">
-												<input name="qty" class="input" type="text" title="옵션수량입력" maxlength="2" readonly="readonly" >
-												<button class="minus" type="button" title="수량감소"  data-role="-">수량감소</button>
-												<button class="plus" type="button" title="수량증가" data-role="+" >수량증가</button>
-											</div>
-										</td>
-										<td>
-											<button class="del" name="delete_svd_item_button"><em class="ir">삭제</em></button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<button class="save" id="update_svd_items_button"><em>저장</em></button>
-				<button class="close" onclick="unBlockUI('layer_set_modify');return false;">세트 수정 닫기</button>
-			</div>
-		</div>
 		</form>
 		
 		<jsp:include page="../inc/bottom.jsp"/>
-	</div>
 </body>
 </html>
