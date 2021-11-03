@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <meta name="robots" content="index, follow">
 
 <!-- Bootstrap CSS -->
@@ -24,9 +23,7 @@
 <script type="text/javascript">
    
 </script>
-<script type="text/javascript" charset="UTF-8"
-    src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-
+<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
 
 
 <title>집밥선생!Project_BC</title>

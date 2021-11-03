@@ -7,7 +7,7 @@ public class BoardBean {
 
     private int product_num; // 제품 번호
     private String product_name; //상품이름
-    private String Sname; // 회사이름
+    private String seller_id; // 회사이름
     private String product_category;// 상품 카테고리
     private int product_price; // 상품 가격
     private int product_weight; // 상품 무게
@@ -30,11 +30,11 @@ public class BoardBean {
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
     }
-    public String getSname() {
-        return Sname;
+    public String getSeller_id() {
+        return seller_id;
     }
-    public void setSname(String sname) {
-        this.Sname = sname;
+    public void setSeller_id(String seller_id) {
+        this.seller_id = seller_id;
     }
     public String getProduct_category() {
         return product_category;

@@ -80,7 +80,7 @@
                             </a>
                             <div class="collapse" id="CustomerSupport" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#"> 1:1문의</a>
+                                    <a class="nav-link" href="QnaList.qa"> 1:1문의</a>
                                     <a class="nav-link" href="#">자주묻는질문 FAQ</a>
                                     <a class="nav-link" href="Notice.ad">공지사항</a>
                                 </nav>
@@ -139,7 +139,7 @@
                     <div class="collapse" id="productmanagement"
                         aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="ProductList.sc"> 상품조회</a> <a
+                            <a class="nav-link" href="ProductList.sc?seller_id=<%=sId%>"> 상품조회</a> <a
                                 class="nav-link" href="#">리뷰관리</a>
                         </nav>
                     </div>
@@ -156,7 +156,7 @@
                     <div class="collapse" id="CustomerSupport"
                         aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="#"> 1:1문의</a> <a class="nav-link"
+                            <a class="nav-link" href="QnaList.qa"> 1:1문의</a> <a class="nav-link"
                                 href="#">자주묻는질문 FAQ</a>
                         </nav>
                     </div>

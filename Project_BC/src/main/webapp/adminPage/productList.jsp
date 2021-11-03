@@ -77,7 +77,7 @@ int ListCount = pageInfo.getListCount();
                                        <tr>
                                         <%for(int i=0; i<articleList.size(); i++){ %>
                                             <td><%=articleList.get(i).getProduct_num() %></td>
-                                            <td><%=articleList.get(i).getSname() %></td>
+                                            <td><%=articleList.get(i).getSeller_id() %></td>
                                             <td><a href="#"><%=articleList.get(i).getProduct_name() %></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
                                             <td><%=articleList.get(i).getProduct_stock() %></td>
                                             <td><%=articleList.get(i).getProduct_date() %></td>
@@ -89,7 +89,7 @@ int ListCount = pageInfo.getListCount();
                                     </tbody>
                                 </table>
                             </div>
-                           <a href="ProductRegister.ad" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a>
+                           <a href="ProductRegister.ad?" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a>
                         </div>
                     </div>
                 </main>

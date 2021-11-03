@@ -45,7 +45,7 @@ public class BoardWriteProAction implements Action {
 
 		// 상품정보 받아옴
 		String name = multi.getParameter("product_name");
-		String Sname = multi.getParameter("Sname");
+		String seller_id = multi.getParameter("seller_id");
 		String category = multi.getParameter("product_category") + multi.getParameter("product_category2");
 		int price = Integer.parseInt(multi.getParameter("product_price").trim());
 		int weight = Integer.parseInt(multi.getParameter("product_weight").trim());
@@ -58,7 +58,7 @@ public class BoardWriteProAction implements Action {
 //        System.out.println(name+"|"+Sname+"|"+category+"|"+price+"|"+weight+"|"+discount+"|"+stock+"|"+expiration+"|"+handling+"|"+material);
 
 		boardBean.setProduct_name(name);
-		boardBean.setSname(Sname);
+		boardBean.setSeller_id(seller_id);
 		boardBean.setProduct_category(category);
 		boardBean.setProduct_price(price);
 		boardBean.setProduct_weight(weight);

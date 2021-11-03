@@ -39,11 +39,11 @@ public class ProductDetailService {
 		
 		// 글 상세 정보 조회를 위해 BoardDAO 객체의 selectArticle() 메소드 호출
 		// -> 파라미터 : 글번호(board_num)  리턴타입 : BoardBean(article)
-		ArrayList<ProductImg> article = dao.selectArticleImg(product_num);
+		ArrayList<ProductImg> productImg = dao.selectArticleImg(product_num);
 		
 		close(con);
 		
-		return article;
+		return productImg;
 	}
 
 }

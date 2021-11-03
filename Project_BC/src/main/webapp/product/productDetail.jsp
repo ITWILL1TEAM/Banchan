@@ -20,12 +20,20 @@
 <head>
 <meta charset="utf-8">
 <title>집밥장인이 만든 온라인 식품몰 집밥선생</title>
-<script src="js/jquery-3.6.0.js"></script> 
+
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
 <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
 <link href="CSS/sub.css" rel="stylesheet" type="text/css">
-<link href="CSS/font.css" rel="stylesheet" type="text/css">
 <link href="CSS/gds.css" rel="stylesheet" type="text/css">
+
+<script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+   
+</script>
+<script type="text/javascript" charset="UTF-8"
+    src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+
+
 <script type="text/javascript">
 	var qty;
 	var price = <%=price %>;
@@ -103,12 +111,7 @@
 // 		} else {
 // 			location.href = 'Cart.do';
 // 		}
-// 	}
-for()
-function ChangeImg() {
-	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png";
-	
-}	
+
 </script>
 </head>
 <body>
@@ -129,7 +132,7 @@ function ChangeImg() {
 					<input type="hidden" id="product_name" name="product_name" value="<%=article.getProduct_name()%>"/>
 					<input type="hidden" id="product_discount" name="product_discount" value="<%=article.getProduct_discount()%>"/>
 					<input type="hidden" id="product_stock" name="product_stock" value="<%=article.getProduct_stock()%>"/>
-					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSname()%>"/>
+					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSeller_id() %>"/>
 					<input type="hidden" id="product_price" name="product_price" value="<%=article.getProduct_price()%>"/>
 					<input type="hidden" id="total_amt" name="total_amt" value=""/>
 				</div>
@@ -174,7 +177,7 @@ function ChangeImg() {
 						<!-- BRAND -->
 						<div class="gd_brd">	
 							<dl>
-								<dt><%=article.getSname() %></dt>
+								<dt><%=article.getSeller_id() %></dt>
 							</dl>
 						</div>
 						<!-- NAME -->
@@ -253,6 +256,152 @@ function ChangeImg() {
 				</div>
 				<!-- GOODS VIEW -->
 		
+
+				<!-- GOODS RELATION -->
+				<div class="gds_rel">
+					<div class="gd_rel">
+						<h3>추천제품 <em>(8)</em></h3>
+						<div class="fade_slide bn" id="gd_rel1">
+							<ul class="cont">
+		
+								<li class="active">
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">더반찬</span>
+											<span class="tit">두메산나물비빔밥재료</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>7,800</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/571/200714000025571.jpg" width="240" height="240" alt="두메산나물비빔밥재료" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
+									</div>
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">더반찬</span>
+											<span class="tit">명태회무침(200g)</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>6,900</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/135/180618000021135.jpg" width="240" height="240" alt="명태회무침(200g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=""><b class="ir">장바구니에 담기</b></button>
+									</div>
+		 
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">더반찬</span>
+											<span class="tit">낙지탕탕이 비빔젓갈(180g)</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>6,900</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/376/190920000024376.jpg" width="240" height="240" alt="낙지탕탕이 비빔젓갈(180g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
+									</div>
+		 
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">더반찬</span>
+											<span class="tit">낙지젓(180g)</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>6,900</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/592/200715000025592.jpg" width="240" height="240" alt="낙지젓(180g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
+									</div>
+								</li>
+								<li>						
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">더반찬</span>
+											<span class="tit">키즈멸치볶음(80g)</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>4,700</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/873/180807000021873.jpg" width="240" height="240" alt="키즈멸치볶음(80g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
+									</div>
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">크리스피 프레시</span>
+											<span class="tit">[크리스피프레시] 클래식콥 샐러드</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>4,500</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/292/200519000025292.jpg" width="240" height="240" alt="[크리스피프레시] 클래식콥 샐러드" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=""><b class="ir">장바구니에 담기</b></button>
+									</div>
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">더반찬</span>
+											<span class="tit">새우젓호박볶음(250g)</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>5,500</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img">
+												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/441/180706000021441.jpg" width="240" height="240" alt="새우젓호박볶음(250g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
+											</span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
+									</div>
+									<div class="li">
+										<a href=" "  onclick=" ">
+											<span class="brd">더반찬</span>
+											<span class="tit">쇠고기장조림(290g)</span>
+											<span class="prc">
+												<span>
+													<em class="on"><b class="ir">판매가</b><b>8,900</b>원</em>
+												</span>
+											</span>
+											<span class="pnt"></span>
+											<span class="img">
+												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/067/210409000027067.jpg" width="240" height="240" alt="쇠고기장조림(290g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
+											</span>
+										</a>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
+									</div>
+								</li>
+							</ul>
+							<div class="ctrl">
+								<a href=" " class="prev"><em class="ir">이전배너</em></a>
+								<a href=" " class="next"><em class="ir">다음배너</em></a>
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function() {
+							fade_slide('gd_rel1', 0, false, 'click', false, false, 0);
+						});
+					</script>
+				</div>
+				<!-- //GOODS RELATION -->
+		
+
 				<!-- GOODS CONTENT -->
 				<!-- TAB1 -->
 				<div class="gds_cont" id="gds_cont1">
@@ -392,6 +541,33 @@ function ChangeImg() {
 	<div class="main_ntc_lyr" id="main_ntc_lyr">
 	</div>
 	<!--// MAIN_NOTICE_LAYER -->
+
+
+	<!-- 아래는 추천 제품과 관련되어 있으므로 삭제 금지 -->
+	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ui.js?v=20211010210"></script>
+	<script type="text/javascript">
+		var top_banner_cookie_id = "TopBanner_10_200800000010574";
+		var top_banner_cookie_yn = overpass.util.getCookie(top_banner_cookie_id);
+		var top_banner_login_yn = false;
+		
+		//if("Y" != top_banner_cookie_yn){
+		$(document).ready(function(){
+			//if(!top_banner_login_yn){
+			
+			$('.banner-area').html('<a href=" " class="banner"  style="background-image:url(&#39;//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/90/432/200800000012432.jpg?v=20200805175837&#39;);"></a><div class="inner-box" ><div style="height: 100%; width: 97%;"  onclick="overpass.tracking.link({ openwinyn:&#39;N&#39;, tr_yn:&#39;Y&#39;, banner_kind_cd:&#39;90&#39;, conts_form_cd:&#39;130&#39;, conts_form_dtl_cd:&#39;13010&#39;, conts_divi_cd:&#39;&#39;, conts_dist_no:&#39;&#39;, sale_area_no:&#39;D1705000714&#39;, rel_divi_cd:&#39;20&#39;, rel_no:&#39;200800000010574&#39;, move_cont_no:&#39;&#39;, url:&#39;/shop/initPlanShop.action?disp_ctg_no=1907004700&#39;, param:&#39;&#39;});" ></div><a href=" " class="btn-banner-close"><i class="ico-close" data-banner_no="200800000010574" onclick="hideLayerCookie(&#39;top_lineBn&#39;);return false"></i>배너닫기</a></div>');
+			//}
+		});
+		
+		hideLayerCookie = function(id){
+			overpass.util.setCookie({ name: top_banner_cookie_id, value: "Y", age : 1, domain : overpass.global.cookie_domain});
+			//hideLayer('top_lineBn');
+			$(".banner-area").hide();
+			//배너가 사라진 만큼 BODY를 올려준다. 
+			var topPx = $("#content").css('padding-top').replace(/[^0-9]/g, "");
+			$("#content").css('padding-top', Number(topPx)-80 + 'px');
+		}
+		//}
+	</script>
 
 </body>
 </html>

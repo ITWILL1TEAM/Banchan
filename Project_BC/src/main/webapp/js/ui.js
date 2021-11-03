@@ -121,7 +121,7 @@ var UI = (function () {
 				}
 			})
 			.fail(function(p) {
-				console.error("Faild is data load", p);
+//				console.error("Faild is data load", p);
 			});
 		},
 		event: function () {

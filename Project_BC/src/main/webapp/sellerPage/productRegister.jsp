@@ -65,6 +65,7 @@ function category(e){
 }
 
 </script>
+ 
   <head>
       
         
@@ -92,7 +93,7 @@ function category(e){
                             <form name="product" action="ProductWritePro.ad" method="POST" enctype="multipart/form-data">
                                 <table class="table table-bordered talbe-light" >
                                  		<tr><td>상품명</td><td colspan="2"><input type="text" name = "product_name" size=10></td></tr>
-										<tr><td>회사명</td><td colspan="2"><input type="text" name = "Sname" size=10></td></tr>
+										<tr><td>판매자 명</td><td colspan="2"><input type="text" name = "seller_id" value="<%=request.getParameter("seller_id") %>" size=10></td></tr>
                                         <tr><td>카테고리</td><td colspan="2"><select onchange="category(this) " name = "product_category">                                                                                
                                                                                 <option value="SideDish" selected="selected">반찬</option>
                                                                                 <option value="Soup">국</option>
