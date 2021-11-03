@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/sellerJoin.js"></script> 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/customerJoin.js"></script> 
+<script src="js/submit.js"></script> 
 </head>
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
@@ -148,7 +148,7 @@
 							<input type="hidden" id="base_addr" name="base_addr"> 
 							<input type="hidden" id="road_base_addr" name="road_base_addr"> 
 							<input type="hidden" id="road_dtl_addr" name="road_dtl_addr">	
-							<input type="text" id="addr_view" name="address"  placeholder="사업장 소재지" readonly="readonly">
+							<input type="text" id="addr_view" name="address"  placeholder="사업장 소재지" >
 							<label for="addr_view" class="ir">주소</label>
 							<!-- <input type="text" id="road_base_addr_view" disabled="disabled" />
 							<label for="road_base_addr_view" class="ir">주소</label> -->

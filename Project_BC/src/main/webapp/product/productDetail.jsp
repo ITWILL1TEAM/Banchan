@@ -132,7 +132,7 @@ function ChangeImg() {
 						<div class="gd_img_bx">
 							 <div class="fade_slide gd_img" >
 								<ul class="cont">							
-									<li class="active" id="tumnail" style="background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(0).getProduct_img()%>.png">	
+									<li class="active" id="tumnail" style="background-image:url('${pageContext.request.contextPath}/upload/<%= productImg.get(0).getProduct_img()%>.png">	
 									<span class="ir"><%=article.getProduct_name()%> </span></li>
 									
 									
@@ -146,7 +146,7 @@ function ChangeImg() {
                                    
                                     %>
 									<li class="on"><a href="#gd_img_bx">
-									<img src="//localhost:8081/Project_BC/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
+									<img src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
 									
 									
 									<em class="ir"><%=article.getProduct_name()+i %></em></a></li>
@@ -407,7 +407,7 @@ function ChangeImg() {
 						<%for(int i=0;i<productImg.size();i++){
 						if(productImg.get(i).getProduct_img_location()==2){%>
    
-							<img alt="" src="//localhost:8081/Project_BC/upload/<%=productImg.get(i).getProduct_img()%>.png"/>
+							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png"/>
 							
 							
 							 <%}

@@ -79,7 +79,7 @@ int ListCount = pageInfo.getListCount();
                                             <td><%=articleList.get(i).getProduct_num() %></td>
                                             <td><%=articleList.get(i).getSname() %></td>
                                             <td>
-                                            <a href="ProductDetail.do?product_num=<%=articleList.get(i).getProduct_num() %>">
+                                            <a href="Product.do?product_num=<%=articleList.get(i).getProduct_num() %>">
                                             <%=articleList.get(i).getProduct_name() %></a>
                                             </td><!-- 클릭시 상품 디테일 페이지로 이동. -->
                                             <td><%=articleList.get(i).getProduct_stock() %></td>

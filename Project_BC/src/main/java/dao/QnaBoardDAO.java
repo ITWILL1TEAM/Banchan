@@ -51,7 +51,7 @@ public class QnaBoardDAO {
 			String sql = "INSERT INTO qna VALUES (null,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, board.getCustomer_id());
-			pstmt.setString(2, board.getProduct_num());			
+			pstmt.setInt(2, board.getProduct_num());			
 			pstmt.setString(3, board.getQna_subject());
 			pstmt.setString(4, board.getQna_password());
 			pstmt.setString(5, board.getQna_content());
@@ -131,7 +131,7 @@ public class QnaBoardDAO {
 				article = new QnaBoardBean();
 				article.setQna_idx(rs.getInt("qna_idx"));
 				article.setCustomer_id(rs.getString("customer_id"));
-				article.setProduct_num(rs.getString("product_num"));
+				article.setProduct_num(rs.getInt("product_num"));
 				article.setQna_subject(rs.getString("qna_subject"));
 		        article.setQna_password(rs.getString("qna_password"));
 		        article.setQna_content(rs.getString("qna_content"));

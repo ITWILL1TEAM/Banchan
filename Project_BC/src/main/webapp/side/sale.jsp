@@ -74,6 +74,7 @@
                   int discountPrice = (int)(saleList.get(i).getProduct_price()*(100-saleList.get(i).getProduct_discount())/100); 
                   int price =  saleList.get(i).getProduct_price();
                   int discount = saleList.get(i).getProduct_discount(); 
+                  int productNum = saleList.get(i).getProduct_num();
                   String product_name = saleList.get(i).getProduct_name();
             %>   
                 <li >
@@ -86,14 +87,14 @@
                             </div>
                             <a href=""
                                 onclick="">
-                                <img src="img/<%=productImgName %>.jpg"
+                                  <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>.png"
                                 width="296" height="296"
                                 alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)"
                                 ><span
                                 class="tag sale"><span></span><strong><%=discount %></strong>%</span></a>
                         </div>
                         <div class="info">
-                            <a href=" "
+                            <a href="Product.do?product_num=<%=productNum %>"
                                 onclick="">
                                     <p class="subject"><%=product_name %></p>
                                 <div class="price">

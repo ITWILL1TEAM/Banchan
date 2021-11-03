@@ -85,14 +85,8 @@
 				<tr>
 					<td align="center"><%=articleList.get(i).getQna_idx() %></td>
 					<td>
-					<%if(articleList.get(i).getBoard_re_lev() != 0) { %>
-							<%for(int j = 0; j <= articleList.get(i).getBoard_re_lev() * 2; j++) { %>
-									&nbsp;
-							<%} %>
-							▶
-					<%} else { %>
-						&nbsp;&nbsp;
-					<%} %>
+				
+				
 						<a href="QnaDetail.qa?board_num=<%=articleList.get(i).getQna_idx() %>&page=<%=nowPage %>">
 						<%=articleList.get(i).getQna_subject() %>
 						</a>
@@ -101,7 +95,7 @@
 			
 				</tr>
 				
-				<%}%>
+			
 		</table>
 	</section>
 	<section id="buttonArea">
@@ -124,13 +118,11 @@
 	
 	<%if(nowPage >= maxPage) { %>
 			<input type="button" value="다음">
-	<%} else { %>
+	<%} else{ %>
 			<input type="button" value="다음" onclick="location.href='QnaList.bo?page=<%=nowPage + 1 %>'">
 	<%} %>
 	</section>
-	<%
-	} else {
-	%>
+	<%else{ %>
 	<section id="emptyArea">등록된 글이 없습니다</section>
 	<%
 	}
