@@ -19,6 +19,7 @@ public class ProductDetailAction implements Action {
 		
 		// request 객체를 통해 전달받은 파라미터(product_num) 가져오기
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
+//		int product_num = 2;
 
 	
 		

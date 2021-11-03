@@ -54,15 +54,15 @@
 				<span class="icon"><img
 					src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"
 					style="width: 50px; height: 50px;"></span>
-					<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("밑반찬")||request.getParameter("category").equals("고기반찬")||request.getParameter("category").equals("생선반찬")){ %>
+					<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("side")||request.getParameter("category").equals("meat")||request.getParameter("category").equals("fish")){ %>
 					<strong>반찬</strong>
-					<%}else if(request.getParameter("category").equals("김치")){ %>
+					<%}else if(request.getParameter("category").equals("Kimchi")){ %>
 					<strong>김치</strong>
-					<%}else if(request.getParameter("category").equals("국")){ %>
+					<%}else if(request.getParameter("category").equals("Soup")){ %>
 					<strong>국</strong>
 					<%} %>
 			</div>
-			<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("밑반찬")||request.getParameter("category").equals("고기반찬")||request.getParameter("category").equals("생선반찬")){ %>
+			<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("side")||request.getParameter("category").equals("meat")||request.getParameter("category").equals("fish")){ %>
 			<div class="sort-box">
 				<div class="sort-type ctg">
 					<div class="cate-wrap">
@@ -88,7 +88,7 @@
 				</div>
 				
 			</div>
-			<%}else if(request.getParameter("category").equals("김치")){ %>
+			<%}else if(request.getParameter("category").equals("Kimchi")){ %>
 			 <div class="sort-box">
                 <div class="sort-type ctg">
                     <div class="cate-wrap">
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-			<%}else if(request.getParameter("category").equals("국")){ %>
+			<%}else if(request.getParameter("category").equals("Soup")){ %>
 			<div class="sort-box">
                 <div class="sort-type ctg">
                     <div class="cate-wrap">
@@ -130,6 +130,7 @@
                   int discountPrice = (int)(sideList.get(i).getProduct_price()*(100-sideList.get(i).getProduct_discount())/100); 
                   int price =  sideList.get(i).getProduct_price();
                   int discount = sideList.get(i).getProduct_discount(); 
+                  int productNum = sideList.get(i).getProduct_num();
                   String product_name = sideList.get(i).getProduct_name();
             %>	 
 				<li >
@@ -142,14 +143,14 @@
 							</div>
 							<a href=""
 								onclick="">
-								<img src="img/<%=productImgName %>.jpg"
+								  <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>.png"
 								width="296" height="296"
 								alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)"
 								><span
 								class="tag sale"><span></span><strong><%=discount %></strong>%</span></a>
 						</div>
 						<div class="info">
-							<a href=" "
+							 <a href="Product.do?product_num=<%=productNum %>"
 								onclick="">
 								    <p class="subject"><%=product_name %></p>
 								<div class="price">

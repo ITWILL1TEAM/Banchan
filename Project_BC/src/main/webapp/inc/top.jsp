@@ -12,27 +12,13 @@
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211014190" type="text/css">   
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211014190" type="text/css">
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211014190" type="text/css">
-    <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/asset/css/font.css?v=20211014190" type="text/css">
-    
 
     
 
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.common.js?v=20211014190"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.fn.js?v=20211014190"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.delihopedate.js?v=20211014190"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.login.base.js?v=20211014190"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.member.js?v=20211014190"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.fo.js?v=20211014190"></script>     -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.popup.js?v=20211014190"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/overpass.login.js?v=20211014190"></script>  -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ds.appinterface.dongwon.js?v=20211014190"></script>     APP 스킴용 -->
     
+
+ 
     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/slick.min.js"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/TweenMax.min.js"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/visaulSlder.js"></script> -->
-<!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/overpass.sns.js"></script> -->
-
 
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
@@ -193,7 +179,7 @@
             <div class="gnb-wrap">
                 <div class="inner-box" >
                     <ul>
-                        <li class="mnu-all"><a href=" "> <span class="icon">
+                        <li class="mnu-all"><a href="SideDish.side"> <span class="icon">
                                     <img
                                     src="//www.thebanchan.co.kr/fo/images/ico/ico_category.png"
                                     class="off"> <img
@@ -202,9 +188,9 @@
                             </span> 카테고리
                         </a></li>
 
-                        <li><a href=" " onclick=" ">할인특가</a></li>
-                        <li><a href=" " onclick=" ">신상품</a></li>
-                        <li class="gbnLine"><a href=" " onclick=" ">베스트</a></li>
+                        <li><a href="Sale.side" onclick=" ">할인특가</a></li>
+                        <li><a href="BrandNew.side" onclick=" ">신상품</a></li>
+                        <li class="gbnLine"><a href="Best.side" onclick=" ">베스트</a></li>
 
                     </ul>
                 </div>

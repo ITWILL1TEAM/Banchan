@@ -40,9 +40,9 @@ $(document).ready(function () {
 
 function category(e){
 	
-	var sideDish = ["밑반찬","고기반찬","생선반찬"];
-	var soup=["국"];
-	var kimchi=["김치"];
+	var sideDish = ["side","meat","fish"];
+	var soup=["Soup"];
+	var kimchi=["Kimchi"];
 	
 	var target = document.getElementById("select");
 
