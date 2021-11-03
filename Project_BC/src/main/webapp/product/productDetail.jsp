@@ -20,18 +20,38 @@
 <head>
 <meta charset="utf-8">
 <title>집밥장인이 만든 온라인 식품몰 집밥선생</title>
-<script src="js/jquery-3.6.0.js"></script> 
+
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
 <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
 <link href="CSS/sub.css" rel="stylesheet" type="text/css">
-<link href="CSS/font.css" rel="stylesheet" type="text/css">
 <link href="CSS/gds.css" rel="stylesheet" type="text/css">
+
+<script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+   
+</script>
+<script type="text/javascript" charset="UTF-8"
+    src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+
+
 <script type="text/javascript">
 	var qty;
 	var price = <%=price %>;
 	var max_qty = <%=article.getProduct_stock() %>
 	var total_amt;
 	$(document).ready(function() {
+		
+		var sendFormData = $('form').serialize();
+		
+		$.ajax({
+			type: "GET",
+			url: "ReviewList.re",
+			data: sendFormData,
+			dataType: 'text',
+			success: function(msg) {
+				$('#reviewArea').html(msg);
+			} 
+		});
 		
 		qty = $('input[name=ord_qty]').val(); // 제품 수량
 		
@@ -75,9 +95,7 @@
 	function priceToString(price) {
 	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
-	
-	var id = <%=id %>
-	
+
 // 	function checkLogin() {
 // 		if(id == null) {
 // 			alert('로그인이 필요합니다.');
@@ -93,16 +111,11 @@
 // 		} else {
 // 			location.href = 'Cart.do';
 // 		}
-// 	}
-for()
-function ChangeImg() {
-	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png";
-	
-}	
+
 </script>
 </head>
 <body>
-<%= productImg.size()%>
+
 	<%@ include file="/inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
@@ -119,7 +132,7 @@ function ChangeImg() {
 					<input type="hidden" id="product_name" name="product_name" value="<%=article.getProduct_name()%>"/>
 					<input type="hidden" id="product_discount" name="product_discount" value="<%=article.getProduct_discount()%>"/>
 					<input type="hidden" id="product_stock" name="product_stock" value="<%=article.getProduct_stock()%>"/>
-					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSname()%>"/>
+					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSeller_id() %>"/>
 					<input type="hidden" id="product_price" name="product_price" value="<%=article.getProduct_price()%>"/>
 					<input type="hidden" id="total_amt" name="total_amt" value=""/>
 				</div>
@@ -132,7 +145,7 @@ function ChangeImg() {
 						<div class="gd_img_bx">
 							 <div class="fade_slide gd_img" >
 								<ul class="cont">							
-									<li class="active" id="tumnail" style="background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(0).getProduct_img()%>.png">	
+									<li class="active" id="tumnail" style="background-image:url('${pageContext.request.contextPath}/upload/<%= productImg.get(0).getProduct_img()%>.png">	
 									<span class="ir"><%=article.getProduct_name()%> </span></li>
 									
 									
@@ -146,7 +159,7 @@ function ChangeImg() {
                                    
                                     %>
 									<li class="on"><a href="#gd_img_bx">
-									<img src="//localhost:8081/Project_BC/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
+									<img src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
 									
 									
 									<em class="ir"><%=article.getProduct_name()+i %></em></a></li>
@@ -164,7 +177,7 @@ function ChangeImg() {
 						<!-- BRAND -->
 						<div class="gd_brd">	
 							<dl>
-								<dt><%=article.getSname() %></dt>
+								<dt><%=article.getSeller_id() %></dt>
 							</dl>
 						</div>
 						<!-- NAME -->
@@ -243,6 +256,7 @@ function ChangeImg() {
 				</div>
 				<!-- GOODS VIEW -->
 		
+
 				<!-- GOODS RELATION -->
 				<div class="gds_rel">
 					<div class="gd_rel">
@@ -252,7 +266,7 @@ function ChangeImg() {
 		
 								<li class="active">
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">더반찬</span>
 											<span class="tit">두메산나물비빔밥재료</span>
 											<span class="prc">
@@ -263,10 +277,10 @@ function ChangeImg() {
 											<span class="pnt"></span>
 											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/571/200714000025571.jpg" width="240" height="240" alt="두메산나물비빔밥재료" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
 									</div>
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000014151', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000014151', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">더반찬</span>
 											<span class="tit">명태회무침(200g)</span>
 											<span class="prc">
@@ -277,11 +291,11 @@ function ChangeImg() {
 											<span class="pnt"></span>
 											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/135/180618000021135.jpg" width="240" height="240" alt="명태회무침(200g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'0000014151', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000014151', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=""><b class="ir">장바구니에 담기</b></button>
 									</div>
 		 
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'1908013265', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'1908013265', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">더반찬</span>
 											<span class="tit">낙지탕탕이 비빔젓갈(180g)</span>
 											<span class="prc">
@@ -292,11 +306,11 @@ function ChangeImg() {
 											<span class="pnt"></span>
 											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/376/190920000024376.jpg" width="240" height="240" alt="낙지탕탕이 비빔젓갈(180g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'1908013265', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'1908013265', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
 									</div>
 		 
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000014150', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000014150', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">더반찬</span>
 											<span class="tit">낙지젓(180g)</span>
 											<span class="prc">
@@ -307,12 +321,12 @@ function ChangeImg() {
 											<span class="pnt"></span>
 											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/592/200715000025592.jpg" width="240" height="240" alt="낙지젓(180g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'0000014150', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000014150', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
 									</div>
 								</li>
 								<li>						
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000013958', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000013958', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">더반찬</span>
 											<span class="tit">키즈멸치볶음(80g)</span>
 											<span class="prc">
@@ -323,10 +337,10 @@ function ChangeImg() {
 											<span class="pnt"></span>
 											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/873/180807000021873.jpg" width="240" height="240" alt="키즈멸치볶음(80g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'0000013958', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000013958', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
 									</div>
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'2005014144', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2005014144', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">크리스피 프레시</span>
 											<span class="tit">[크리스피프레시] 클래식콥 샐러드</span>
 											<span class="prc">
@@ -337,10 +351,10 @@ function ChangeImg() {
 											<span class="pnt"></span>
 											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/292/200519000025292.jpg" width="240" height="240" alt="[크리스피프레시] 클래식콥 샐러드" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'2005014144', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2005014144', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=""><b class="ir">장바구니에 담기</b></button>
 									</div>
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'0000012792', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000012792', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">더반찬</span>
 											<span class="tit">새우젓호박볶음(250g)</span>
 											<span class="prc">
@@ -353,10 +367,10 @@ function ChangeImg() {
 												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/441/180706000021441.jpg" width="240" height="240" alt="새우젓호박볶음(250g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
 											</span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'0000012792', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'0000012792', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
 									</div>
 									<div class="li">
-										<a href="javascript:void(0);"  onclick="overpass.tracking.link({  goods_no:'2105015367', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2105015367', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});">
+										<a href=" "  onclick=" ">
 											<span class="brd">더반찬</span>
 											<span class="tit">쇠고기장조림(290g)</span>
 											<span class="prc">
@@ -369,13 +383,13 @@ function ChangeImg() {
 												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/067/210409000027067.jpg" width="240" height="240" alt="쇠고기장조림(290g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
 											</span>
 										</a>
-										<button class="bt_crt" type="button"  onclick="overpass.goods.addCart({  goods_no:'2105015367', vir_vend_no:'VV17002724', sale_shop_divi_cd:'99', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'20', rel_no:'2105015367', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'', obj : this});"><b class="ir">장바구니에 담기</b></button>
+										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
 									</div>
 								</li>
 							</ul>
 							<div class="ctrl">
-								<a href="javascript:void(0);" class="prev"><em class="ir">이전배너</em></a>
-								<a href="javascript:void(0);" class="next"><em class="ir">다음배너</em></a>
+								<a href=" " class="prev"><em class="ir">이전배너</em></a>
+								<a href=" " class="next"><em class="ir">다음배너</em></a>
 							</div>
 						</div>
 					</div>
@@ -387,6 +401,7 @@ function ChangeImg() {
 				</div>
 				<!-- //GOODS RELATION -->
 		
+
 				<!-- GOODS CONTENT -->
 				<!-- TAB1 -->
 				<div class="gds_cont" id="gds_cont1">
@@ -407,7 +422,7 @@ function ChangeImg() {
 						<%for(int i=0;i<productImg.size();i++){
 						if(productImg.get(i).getProduct_img_location()==2){%>
    
-							<img alt="" src="//localhost:8081/Project_BC/upload/<%=productImg.get(i).getProduct_img()%>.png"/>
+							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png"/>
 							
 							
 							 <%}
@@ -469,90 +484,10 @@ function ChangeImg() {
 				</div>
 				<!-- //TAB2 -->
 				
-<!-- 			<div class="gd_lst"> -->
-<!-- 				<h3> -->
-<!-- 					<span><b>더반찬</b>브랜드의 다른 제품들</span> -->
-<!-- 					<a href="javascript:void(0);" onclick="overpass.link('BRAND',{brand_no:'1700002614'});">더보기</a> -->
-<!-- 				</h3> -->
-<!-- 				<div class="lst"> -->
-<!-- 					<ul> -->
-<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2110015914', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2110015914', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
-<!-- 								<span class="tit">국/찌개/전골류 2종 골라담기 (11,000원 부터~)</span> -->
-<!-- 								<span class="prc"> -->
-<!-- 									<span> -->
-<!-- 										<em class="on"><b class="ir">가격할인</b><b>11,000</b>원</em> -->
-<!-- 									</span> -->
-<!-- 								</span> -->
-<!-- 								<span class="pnt"></span> -->
-<!-- 								<span class="img"> -->
-<!-- 									<div class="deli_type_tag"></div> -->
-<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/658/211008000027658.jpg" width="235" height="235" alt="국/찌개/전골류 2종 골라담기 (11,000원 부터~)" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
-<!-- 								</span> -->
-<!-- 							</a> -->
-<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2110015914', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2110015914', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'20', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
-<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2010014696', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2010014696', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
-<!-- 								<span class="tit">[남향푸드또띠아] 간편브리또 8종 (2개 세트)</span> -->
-<!-- 								<span class="prc"> -->
-<!-- 									<span> -->
-<!-- 										<em class="on"><b class="ir">가격할인</b><b>5,800</b>원</em> -->
-<!-- 									</span> -->
-<!-- 								</span> -->
-<!-- 								<span class="pnt"></span> -->
-<!-- 								<span class="img"> -->
-<!-- 									<div class="deli_type_tag"></div> -->
-<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/292/201026000026292.jpg" width="235" height="235" alt="[남향푸드또띠아] 간편브리또 8종 (2개 세트)" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
-<!-- 								</span> -->
-<!-- 							</a> -->
-<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2010014696', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2010014696', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'20', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
-<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
-<!-- 								<span class="tit">두메산나물비빔밥재료</span> -->
-<!-- 								<span class="prc"> -->
-<!-- 									<span> -->
-<!-- 										<em class="on"><b class="ir">판매가</b><b>7,800</b>원</em> -->
-<!-- 									</span> -->
-<!-- 								</span> -->
-<!-- 								<span class="pnt"></span> -->
-<!-- 								<span class="img"> -->
-<!-- 									<div class="deli_type_tag"></div> -->
-<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/571/200714000025571.jpg" width="235" height="235" alt="두메산나물비빔밥재료" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
-<!-- 								</span> -->
-<!-- 							</a> -->
-<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'1712010310', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'1712010310', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'10', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
-<!-- 						<li><a href="javascript:void(0);" onclick="overpass.tracking.link({  goods_no:'2108015821', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_form_cd:'100', conts_form_dtl_cd:'10010', conts_dist_no:'', conts_divi_cd:'', rel_no:'2108015821', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:''});" > -->
-<!-- 								<span class="tit">[북창동순두부 X 더반찬&] 북창동순두부찌개(600g)</span> -->
-<!-- 								<span class="prc"> -->
-<!-- 									<span> -->
-<!-- 										<em class="on"><b class="ir">판매가</b><b>7,200</b>원</em> -->
-<!-- 									</span> -->
-<!-- 								</span> -->
-<!-- 								<span class="pnt"></span> -->
-<!-- 								<span class="img"> -->
-<!-- 									<div class="deli_type_tag"></div> -->
-<!-- 									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/568/210826000027568.jpg" width="235" height="235" alt="[북창동순두부 X 더반찬&] 북창동순두부찌개(600g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/> -->
-<!-- 								</span> -->
-<!-- 							</a> -->
-<!-- 						<button type="button" class="bt_crt" onclick="overpass.goods.addCart({  goods_no:'2108015821', vir_vend_no:'VV17002724', sale_shop_divi_cd:'', sale_shop_no:'', sale_area_no:'', tr_yn:'', conts_dist_no:'', conts_divi_cd:'', rel_no:'2108015821', rel_divi_cd:'10', openwinyn:'', disp_ctg_no:'', goods_cmps_divi_cd:'10', obj : this});"><b class="ir">장바구니에 담기</b></button></li> -->
-<!-- 					</ul> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-	
-<!-- 			<script type="text/javascript"> -->
-<!-- 			$(document).ready(function(){ -->
-<!-- 				var param = { -->
-<!-- 						goods_no: "2106015489", -->
-<!-- 						vir_vend_no : "VV17002724", -->
-<!-- 						goods_type_dtl_cd : "2012", -->
-<!-- 						goods_detail_yn : "Y" -->
-<!-- 					}; -->
-				
-				
-<!-- 				overpass.goodsDetail.fnEval.fnLoadEval(param, "#goodsEvalDiv"); -->
-	
-<!-- 			}); -->
-<!-- 			</script> -->
 		
-			<!-- 리뷰 -->
-<%-- 			<jsp:include page="../review/productReview.jsp"/> --%>
+			<!-- 리뷰가 에이젝스로 연동될 공간 -->
+			<div id="reviewArea">
+			</div>
 		
 			<!-- TAB4 -->
 			<div class="gds_cont" id="gds_cont4">
@@ -590,7 +525,7 @@ function ChangeImg() {
 								<span class="no_bg bold">※ 집밥선생은 부분 취소가 어려우며, 번거로우시겠지만 전체 주문 취소 후 재주문해 주세요.</span>
 							</li>
 							<li>제품의 특성상 고객님의 단순 변심에 의해 교환 및 반품이 불가능합니다.
-								<span class="no_bg">제품에 이상이 있는 경우 <a href="javascript:;" onclick="overpass.custcenter.goCounsel()">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
+								<span class="no_bg">제품에 이상이 있는 경우 <a href="#">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
 								<span class="no_bg">입고 지연, 생산 이슈에 따라 일부 제품이 발송이 어려운 경우 부분취소될 수 있습니다.</span>
 							</li>
 						</ul>
@@ -607,6 +542,7 @@ function ChangeImg() {
 	</div>
 	<!--// MAIN_NOTICE_LAYER -->
 
+
 	<!-- 아래는 추천 제품과 관련되어 있으므로 삭제 금지 -->
 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ui.js?v=20211010210"></script>
 	<script type="text/javascript">
@@ -618,7 +554,7 @@ function ChangeImg() {
 		$(document).ready(function(){
 			//if(!top_banner_login_yn){
 			
-			$('.banner-area').html('<a href="javascript:void(0);" class="banner"  style="background-image:url(&#39;//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/90/432/200800000012432.jpg?v=20200805175837&#39;);"></a><div class="inner-box" ><div style="height: 100%; width: 97%;"  onclick="overpass.tracking.link({ openwinyn:&#39;N&#39;, tr_yn:&#39;Y&#39;, banner_kind_cd:&#39;90&#39;, conts_form_cd:&#39;130&#39;, conts_form_dtl_cd:&#39;13010&#39;, conts_divi_cd:&#39;&#39;, conts_dist_no:&#39;&#39;, sale_area_no:&#39;D1705000714&#39;, rel_divi_cd:&#39;20&#39;, rel_no:&#39;200800000010574&#39;, move_cont_no:&#39;&#39;, url:&#39;/shop/initPlanShop.action?disp_ctg_no=1907004700&#39;, param:&#39;&#39;});" ></div><a href="javascript:void(0);" class="btn-banner-close"><i class="ico-close" data-banner_no="200800000010574" onclick="hideLayerCookie(&#39;top_lineBn&#39;);return false"></i>배너닫기</a></div>');
+			$('.banner-area').html('<a href=" " class="banner"  style="background-image:url(&#39;//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/90/432/200800000012432.jpg?v=20200805175837&#39;);"></a><div class="inner-box" ><div style="height: 100%; width: 97%;"  onclick="overpass.tracking.link({ openwinyn:&#39;N&#39;, tr_yn:&#39;Y&#39;, banner_kind_cd:&#39;90&#39;, conts_form_cd:&#39;130&#39;, conts_form_dtl_cd:&#39;13010&#39;, conts_divi_cd:&#39;&#39;, conts_dist_no:&#39;&#39;, sale_area_no:&#39;D1705000714&#39;, rel_divi_cd:&#39;20&#39;, rel_no:&#39;200800000010574&#39;, move_cont_no:&#39;&#39;, url:&#39;/shop/initPlanShop.action?disp_ctg_no=1907004700&#39;, param:&#39;&#39;});" ></div><a href=" " class="btn-banner-close"><i class="ico-close" data-banner_no="200800000010574" onclick="hideLayerCookie(&#39;top_lineBn&#39;);return false"></i>배너닫기</a></div>');
 			//}
 		});
 		
@@ -632,5 +568,6 @@ function ChangeImg() {
 		}
 		//}
 	</script>
+
 </body>
 </html>

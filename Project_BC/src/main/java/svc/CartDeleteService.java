@@ -31,6 +31,8 @@ public class CartDeleteService {
 			rollback(con);
 		}
 		
+		close(con);
+		
 		return isDeleted;
 	}
 	
@@ -52,7 +54,7 @@ public class CartDeleteService {
 		} else {
 			rollback(con);
 		}
-		
+		close(con);
 		return isDeleted;
 	}
 

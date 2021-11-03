@@ -6,7 +6,7 @@ public class orderProductBean {
 	 private String customer_id;
 	 private int product_num;
 	 private int product_stock;
-	 private String product_img;
+
 	  
 	  
 	public int getOrder_num() {
@@ -33,12 +33,7 @@ public class orderProductBean {
 	public void setProduct_stock(int product_stock) {
 		this.product_stock = product_stock;
 	}
-	public String getProduct_img() {
-		return product_img;
-	}
-	public void setProduct_img(String product_img) {
-		this.product_img = product_img;
-	}
+	
 
 	
 	

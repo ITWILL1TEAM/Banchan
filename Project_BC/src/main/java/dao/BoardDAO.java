@@ -58,6 +58,7 @@ public class BoardDAO {
 
 			// 다음 작업을 위해 PreparedStatement 객체 반환
 			// 하나의 메서드에서 복수개의 PreparedStatement 가 생성되는 것을 방지
+			close(rs);
 			close(pstmt);
 
 			// 글 등록 작업을 위한 INSERT 작업 수행
@@ -66,7 +67,7 @@ public class BoardDAO {
 			pstmt = con.prepareStatement(sql);
 			// 첫 문장은 auto_increment 이므로 null값 넣음
 			pstmt.setString(1, board.getProduct_name()); // 상품명
-			pstmt.setString(2, board.getSname());// 회사명-FK
+			pstmt.setString(2, board.getSeller_id());// 회사명-FK
 			pstmt.setString(3, board.getProduct_category());// 상품 카테고리
 			pstmt.setInt(4, board.getProduct_price()); // 상품가격
 			pstmt.setInt(5, board.getProduct_weight());// 상품무게
@@ -88,8 +89,7 @@ public class BoardDAO {
 		} finally {
 			// 자원 반환(주의! Connection 객체는 DAO 에서 반환하지 않도록 해야한다!)
 //          if(rs != null) try { rs.close(); } catch(Exception e) {}
-//          if(pstmt != null) try { pstmt.close(); } catch(Exception e) {}
-			close(rs);
+//          if(pstmt != null) try { pstmt.close(); } catch(Exception e) {}			
 			close(pstmt);
 		}
 
@@ -161,7 +161,7 @@ public class BoardDAO {
 				BoardBean board = new BoardBean();
 				board.setProduct_num(rs.getInt("product_num"));
 				board.setProduct_name(rs.getString("product_name"));
-				board.setSname(rs.getString("Sname"));
+				board.setSeller_id(rs.getString("seller_id"));
 				board.setProduct_date(rs.getDate("product_date"));
 				board.setProduct_category(rs.getString("product_category"));
 				board.setProduct_price(rs.getInt("product_price"));
@@ -205,7 +205,7 @@ public class BoardDAO {
 
 				article.setProduct_num(rs.getInt("product_num"));
 				article.setProduct_name(rs.getString("product_name"));
-				article.setSname(rs.getString("Sname"));
+				article.setSeller_id(rs.getString("seller_id"));
 				article.setProduct_category(rs.getString("product_category"));
 				article.setProduct_price(rs.getInt("product_price"));
 				article.setProduct_weight(rs.getInt("product_weight"));
@@ -306,10 +306,8 @@ public class BoardDAO {
 			articleImg = new ArrayList<ProductImg>();
 
 			while (rs.next()) {
-				// 조회된 상세 정보를 BoardBean 객체에 저장
-			ProductImg productImg = new ProductImg();
 				
-				 
+				 ProductImg productImg = new ProductImg();			
 				 productImg.setProduct_original_img(rs.getString("product_original_img"));
 				 productImg.setProduct_img(rs.getString("product_img"));
 				 productImg.setProduct_img_location(rs.getInt("product_img_location"));

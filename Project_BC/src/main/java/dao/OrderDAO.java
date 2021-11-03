@@ -123,7 +123,7 @@ public class OrderDAO {
 		return customerInfo;
 	}
 //--------------------------------------멤버 객체 가져오기 끝
-	public int insertOrder(OrderBean order) {
+	public int insertOrder(OrderBean order, String[] nums) {
 		System.out.println("OrderDAO - insertOrder()!");
 		int insertCount = 1;
 		
@@ -139,6 +139,7 @@ public class OrderDAO {
 			// 조회된 글 번호가 하나라도 존재할 경우
 			if(rs.next()) {
 				num = rs.getInt(1) + 1;
+				order.setOrder_num(num);
 			}
 			
 			// 다음 작업을 위해 PreparedStatement 객체 반환
@@ -160,11 +161,51 @@ public class OrderDAO {
 			pstmt.setTimestamp(10, order.getOrder_date());
 			pstmt.setString(11, order.getOrder_status());
 			pstmt.setString(12, order.getTrans_num());
+				
 			
 			
-			insertCount = pstmt.executeUpdate();
-			System.out.println("insertCount : " +insertCount);
-		} catch (Exception e) {
+			int insertOrderCount = pstmt.executeUpdate();
+			
+			if(insertOrderCount>0) {
+				sql = "SELECT MAX(order_num) FROM order_product";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				// 조회된 글 번호가 하나라도 존재할 경우
+				if(rs.next()) {
+					num = rs.getInt(1) + 1;
+					order.setOrder_num(num);
+				}
+				close(pstmt);
+				for(String str : nums) {
+					sql = "select * from basket where product_num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, Integer.parseInt(str));
+					rs = pstmt.executeQuery();
+					 
+					if(rs.next()) {
+						System.out.println("OrderDAO - insertDetailOrder()-2!");
+
+						int qty =  rs.getInt("product_qty");
+						
+							sql = "insert into order_product values(?,?,?,?)";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, num);
+							pstmt.setString(2, order.getCustomer_id());
+							
+							pstmt.setInt(3, Integer.parseInt(str));
+							pstmt.setInt(4, qty);
+							
+							
+							
+							insertCount = pstmt.executeUpdate();
+						}
+						
+					}
+				}
+			
+		}
+			catch (Exception e) {
 			System.out.println("OrderDAO insertOrder() 오류! - " +e.getMessage());
 			e.printStackTrace();
 		} finally {
@@ -172,76 +213,56 @@ public class OrderDAO {
 		}
 		
 		return insertCount;
+		
 	}
 	
-	
-	
-	public int insertDetailOrder(String[] nums, String code) {
-		System.out.println("OrderDAO - insertDetailOrder()-1!");
-		int insertCount = 0;
+//오더넘에 해당하는 오더리스트 출력
+
+	public OrderBean selectOrderList(int order_num) {
+		System.out.println("orderDAO - selectCart()!");
+		OrderBean order = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		int num1=0;
-
 		try {
-			String sql = "select * from order_detail where order_num=?";
+			String sql = "select * from order_list where order_num = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, order_num);
+			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				num1 =  rs.getInt(1)+1;
-			}
-			for(String str : nums) {
-			sql = "select * from basket where product_num = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(str));
-			rs = pstmt.executeQuery();
-			 
-			if(rs.next()) {
-				System.out.println("OrderDAO - insertDetailOrder()-2!");
-				String customer_id = rs.getString("customer_id");
-				String name = rs.getString("product_name");
-				int price =  rs.getInt("product_price");
-				int cnt =  rs.getInt("product_qty");
-		
-				String product_num = rs.getString("product_num");
-				String main_img = rs.getString("product_img");
-				sql = "select * from order_list where code = ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setNString(1, code);
-				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					System.out.println("OrderDAO - insertDetailOrder()-3!");
-
-					sql = "insert into order_product values(?,?,?,?,?)";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, num1);
-					pstmt.setString(2, product_num);
-					pstmt.setString(3, customer_id);
-
-					pstmt.setInt(4, cnt);
-					pstmt.setString(5, main_img);
+			order = new OrderBean();
+			
+			while(rs.next()) {
+				order.setOrder_num(rs.getInt("order_num"));
+				order.setCustomer_id(rs.getString("customer_id"));
+				order.setShipping_name(rs.getString("shipping_name"));
+				order.setShipping_phone(rs.getString("shipping_phone"));
+				order.setShipping_zonecode(rs.getString("shipping_zonecode"));
+				order.setShipping_address(rs.getString("shipping_address"));
+				order.setOrder_price(rs.getInt("order_price"));
+				order.setPay_method(rs.getString("pay_method"));
+				order.setOrder_date(rs.getTimestamp("order_date"));
+				order.setOrder_status(rs.getString("order_status"));
+				order.setTrans_num(rs.getString("trans_num"));
 				
-					num1+=1;
-					
-					
-					insertCount = pstmt.executeUpdate();
-				}
-				
-			}
 			}
 		} catch (Exception e) {
-			System.out.println("OrderDAO insertDetailOrder() 오류! - " +e.getMessage());
+			System.out.println("selectCart() 오류! - "+e.getMessage());
 			e.printStackTrace();
-		} finally {
+		}finally {
 			close(rs);
 			close(pstmt);
 		}
 		
-		return insertCount;
+		
+		
+		return order;
 	}
+	
+	
+
 }
 
 

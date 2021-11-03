@@ -1,34 +1,24 @@
+<%@page import="vo.OrderBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%
-int amount = Integer.parseInt(request.getParameter("amount"));
 
-int total_price = Integer.parseInt(request.getParameter("total_price"));
-int total_discount = Integer.parseInt(request.getParameter("total_discount"));
-int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
+ArrayList<OrderBean> orderList = (ArrayList<OrderBean>)request.getAttribute("orderList");
 
-String customer_id = request.getParameter("customer_id");
-String buyer_name = request.getParameter("buyer_name");
-String buyer_tel = request.getParameter("buyer_tel");
-String buyer_email = request.getParameter("buyer_email");
-String postcode = request.getParameter("postcode");
-String address = request.getParameter("address");
-String detailAddress = request.getParameter("detailAddress");
-String shipping_name = request.getParameter("shipping_name");
-String shipping_phone = request.getParameter("shipping_phone");
-String shipping_memo = request.getParameter("shipping_memo");
-String pay_method = request.getParameter("pay_rdo");
-String status ="";
+int total_price = Integer.parseInt(request.getAttribute("total_price").toString());
+int total_discount = Integer.parseInt(request.getAttribute("total_discount").toString());
+int shipping_fee = Integer.parseInt(request.getAttribute("shipping_fee").toString());
 
 %>
-
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>주문완료 | theBanchan</title>
 	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
@@ -105,7 +95,7 @@ String status ="";
 							</th>
 							<th>
 								<strong>최종 결제금액</strong>
-								<span class="prc" id="real_prc"><b><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></b>원</span>
+								<span class="prc" id="real_prc"><b><fmt:formatNumber value="<%=orderList.get(0).getOrder_price() %>" pattern="#,###"/></b>원</span>
 							</th>
 						</tr>
 					</thead>
@@ -123,7 +113,7 @@ String status ="";
 				</table>
 			</div>
 			<!-- 무통장 -->
-			<div class="msd">
+			<div class="msd" id="msdBank" style="display: none;">
 				<table>
 					<caption>무통장 결제수단 , 입금하실 금액, 계좌, 환불수단 정보를 제공하는 표</caption>
 					<colgroup>
@@ -137,7 +127,7 @@ String status ="";
 						</tr>
 						<tr>
 							<th>입금하실 금액</th>
-							<td><fmt:formatNumber value="<%=amount %>" pattern="#,###"/></td>
+							<td><fmt:formatNumber value="<%=orderList.get(0).getOrder_price() %>" pattern="#,###"/></td>
 						</tr>
 						<tr>
 							<th>입금계좌</th>
@@ -148,14 +138,37 @@ String status ="";
 				</table>
 			</div>
 			<!--// 무통장 -->		
-		
+			<div class="msd" id="msdCard" style="display: none;">
+				<table>
+					<caption>무통장 결제수단 , 입금하실 금액, 계좌, 환불수단 정보를 제공하는 표</caption>
+					<colgroup>
+						<col style="width:170px;" />
+						<col />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>결제수단</th>
+							<td>카드결제</td>
+						</tr>
+						<tr>
+							<th>입금하실 금액</th>
+							<td><fmt:formatNumber value="<%=orderList.get(0).getOrder_price() %>" pattern="#,###"/></td>
+						</tr>
+						<tr>
+							<th>입금계좌</th>
+							<td>농협은행 79018613743185 (예금주 : 동원디어푸드 주식회사)
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		<!--세금 계산서 발행 여부 추가 -->
 		
 
 			<div class="btn">
 				<span>
 					<a href="https://www.thebanchan.co.kr/mypage/initOrderDetailList.action?ord_no=202110265263427"  >주문/배송 내역보기</a>
-					<a href="https://www.thebanchan.co.kr">계속 쇼핑하기</a>
+					<a href="<%=request.getContextPath() %>/">계속 쇼핑하기</a>
 				</span>
 			</div>
 

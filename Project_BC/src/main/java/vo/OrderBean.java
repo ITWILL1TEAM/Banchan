@@ -20,6 +20,28 @@ public class OrderBean {
 	  private String trans_num;
 	
 	  
+	  public int getTotal_price() {
+		return total_price;
+	}
+	public void setTotal_price(int total_price) {
+		this.total_price = total_price;
+	}
+	public int getTotal_discount() {
+		return total_discount;
+	}
+	public void setTotal_discount(int total_discount) {
+		this.total_discount = total_discount;
+	}
+	public int getShipping_fee() {
+		return shipping_fee;
+	}
+	public void setShipping_fee(int shipping_fee) {
+		this.shipping_fee = shipping_fee;
+	}
+	private int total_price;
+	  private int total_discount;
+	  private int shipping_fee; 
+	  
 	  
 	public String getCode() {
 		return code;
