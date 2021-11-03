@@ -24,6 +24,9 @@ public class SideAction implements Action {
 		
 		request.setAttribute("sideList", sideList);
 		
+		
+		
+		
 		if(sideList.size()==0) {
 			// html로 목록 없음 출력
 			response.setContentType("text/html; charset=UTF-8");

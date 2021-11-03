@@ -58,6 +58,7 @@ public class BoardDAO {
 
 			// 다음 작업을 위해 PreparedStatement 객체 반환
 			// 하나의 메서드에서 복수개의 PreparedStatement 가 생성되는 것을 방지
+			close(rs);
 			close(pstmt);
 
 			// 글 등록 작업을 위한 INSERT 작업 수행
@@ -88,8 +89,7 @@ public class BoardDAO {
 		} finally {
 			// 자원 반환(주의! Connection 객체는 DAO 에서 반환하지 않도록 해야한다!)
 //          if(rs != null) try { rs.close(); } catch(Exception e) {}
-//          if(pstmt != null) try { pstmt.close(); } catch(Exception e) {}
-			close(rs);
+//          if(pstmt != null) try { pstmt.close(); } catch(Exception e) {}			
 			close(pstmt);
 		}
 
@@ -306,10 +306,8 @@ public class BoardDAO {
 			articleImg = new ArrayList<ProductImg>();
 
 			while (rs.next()) {
-				// 조회된 상세 정보를 BoardBean 객체에 저장
-			ProductImg productImg = new ProductImg();
 				
-				 
+				 ProductImg productImg = new ProductImg();			
 				 productImg.setProduct_original_img(rs.getString("product_original_img"));
 				 productImg.setProduct_img(rs.getString("product_img"));
 				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
