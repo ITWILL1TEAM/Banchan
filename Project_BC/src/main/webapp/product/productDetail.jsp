@@ -41,6 +41,18 @@
 	var total_amt;
 	$(document).ready(function() {
 		
+		var sendFormData = $('form').serialize();
+		
+		$.ajax({
+			type: "GET",
+			url: "ReviewList.re",
+			data: sendFormData,
+			dataType: 'text',
+			success: function(msg) {
+				$('#reviewArea').html(msg);
+			} 
+		});
+		
 		qty = $('input[name=ord_qty]').val(); // 제품 수량
 		
 		// 수량조절 감소 버튼
@@ -83,9 +95,7 @@
 	function priceToString(price) {
 	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
-	
-	var id = <%=id %>
-	
+
 // 	function checkLogin() {
 // 		if(id == null) {
 // 			alert('로그인이 필요합니다.');
@@ -102,10 +112,18 @@
 // 			location.href = 'Cart.do';
 // 		}
 // 	}
-
+for()
+function ChangeImg() {
+	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png";
+	
+}	
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 	<%@ include file="/inc/top.jsp" %>
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
@@ -246,6 +264,7 @@
 				</div>
 				<!-- GOODS VIEW -->
 		
+<<<<<<< HEAD
 				<!-- GOODS RELATION -->
 				<div class="gds_rel">
 					<div class="gd_rel">
@@ -390,6 +409,8 @@
 				</div>
 				<!-- //GOODS RELATION -->
 		
+=======
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 				<!-- GOODS CONTENT -->
 				<!-- TAB1 -->
 				<div class="gds_cont" id="gds_cont1">
@@ -470,9 +491,12 @@
 					</div>
 					
 				</div>
+				<!-- //TAB2 -->
 				
-			<!-- 리뷰 -->
-<%-- 			<jsp:include page="../review/productReview.jsp"/> --%>
+		
+			<!-- 리뷰가 에이젝스로 연동될 공간 -->
+			<div id="reviewArea">
+			</div>
 		
 			<!-- TAB4 -->
 			<div class="gds_cont" id="gds_cont4">
@@ -510,7 +534,7 @@
 								<span class="no_bg bold">※ 집밥선생은 부분 취소가 어려우며, 번거로우시겠지만 전체 주문 취소 후 재주문해 주세요.</span>
 							</li>
 							<li>제품의 특성상 고객님의 단순 변심에 의해 교환 및 반품이 불가능합니다.
-								<span class="no_bg">제품에 이상이 있는 경우 <a href="javascript:;" onclick="">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
+								<span class="no_bg">제품에 이상이 있는 경우 <a href="#">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
 								<span class="no_bg">입고 지연, 생산 이슈에 따라 일부 제품이 발송이 어려운 경우 부분취소될 수 있습니다.</span>
 							</li>
 						</ul>
@@ -527,6 +551,7 @@
 	</div>
 	<!--// MAIN_NOTICE_LAYER -->
 
+<<<<<<< HEAD
 	<!-- 아래는 추천 제품과 관련되어 있으므로 삭제 금지 -->
 	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ui.js?v=20211010210"></script>
 	<script type="text/javascript">
@@ -552,5 +577,7 @@
 		}
 		//}
 	</script>
+=======
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 </body>
 </html>

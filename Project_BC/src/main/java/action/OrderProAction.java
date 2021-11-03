@@ -2,10 +2,8 @@ package action;
 
 import java.io.PrintWriter;
 import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import svc.OrderProService;
 import vo.ActionForward;
 import vo.OrderBean;
@@ -15,30 +13,26 @@ public class OrderProAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("OrderProAction!");
+		
 		ActionForward forward = null;
 		Timestamp date = new Timestamp(System.currentTimeMillis());
 		PrintWriter out = response.getWriter();
-		
-		String id =request.getParameter("imp_uid");
-		System.out.println(id);
-		String customer_id =request.getParameter("customer_id");
-		System.out.println(customer_id);
-		String shipping_name =request.getParameter("shipping_name");
-		System.out.println(shipping_name);
-		String shipping_phone =request.getParameter("shipping_phone");
-		System.out.println(shipping_phone);
-		String postcode =request.getParameter("postcode");
-		System.out.println(postcode);
-		String shipping_addr =request.getParameter("shipping_addr");
-		System.out.println(shipping_addr);
-		String shipping_memo =request.getParameter("shipping_memo");
-		System.out.println(shipping_memo);
-		String pay_method =request.getParameter("pay_method");
-		System.out.println(pay_method);
-		String paid_amount =request.getParameter("paid_amount");
-		System.out.println(paid_amount);
+
+		//주문 금액 할인정보 배송비
+		int total_price = Integer.parseInt(request.getParameter("total_price"));
+//		total_price = new (total_price.getBytes("8859_1"),"UTF-8".toString();
+		int total_discount = Integer.parseInt(request.getParameter("total_discount"));
+		int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
 		
 		
+		
+		String[] nums = request.getParameterValues("num");
+		
+		String code = request.getParameter("imp_uid");
+		System.out.println(code);
+		for(String str : nums) {
+			System.out.println("orderDetailProAction : "+str);
+		}
 		
 		
 		OrderBean order = new OrderBean();
@@ -60,7 +54,8 @@ public class OrderProAction implements Action {
 		
 		OrderProService orderService = new OrderProService();
 		
-		boolean isInsertSuccecc = orderService.InsertOrder(order);
+		
+		boolean isInsertSuccecc = orderService.InsertOrder(order, nums);
 		
 		if(!isInsertSuccecc) {
 			out.println("<script>");
@@ -69,13 +64,22 @@ public class OrderProAction implements Action {
 			out.println("</script>");
 
 		} else {
+			System.out.println("넘어갈 오더넘:"+order.getOrder_num());
+			int order_num =order.getOrder_num();
+			request.setAttribute("order_num", order_num);
+			request.setAttribute("total_price", total_price);
+			request.setAttribute("total_discount", total_discount);
+			request.setAttribute("shipping_fee", shipping_fee);
 			forward = new ActionForward();
-			forward.setPath("OrderDetail.or");
+			forward.setPath("orderComplete.or");
 		}
 		
 		
 		return forward;
 	}
+	
+	
+	
 		
 	
 
