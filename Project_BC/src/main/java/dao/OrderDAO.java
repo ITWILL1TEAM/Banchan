@@ -15,6 +15,7 @@ import vo.CustomerInfo;
 import vo.MemberBean;
 import vo.OrderBean;
 import vo.ReviewBean;
+import vo.orderProductBean;
 
 public class OrderDAO {
 	private OrderDAO() {}
@@ -219,7 +220,7 @@ public class OrderDAO {
 //오더넘에 해당하는 오더리스트 출력
 
 	public OrderBean selectOrderList(int order_num) {
-		System.out.println("orderDAO - selectCart()!");
+		System.out.println("orderDAO - selectOrderList()!");
 		OrderBean order = null;
 		
 		PreparedStatement pstmt = null;
@@ -259,6 +260,49 @@ public class OrderDAO {
 		
 		
 		return order;
+	}
+	
+	
+	public ArrayList<orderProductBean> selectOrderDetail(int order_num) {
+		System.out.println("orderDAO - selectMemberInfo()!");
+		ArrayList<orderProductBean> orderProduct =null;
+		
+		PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    
+	    try {
+			String sql ="select * from order_product where order_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, order_num);
+			
+			rs = pstmt.executeQuery();
+			
+			orderProduct = new ArrayList<orderProductBean>();
+			
+			while(rs.next()) {
+			      // BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
+			      // -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
+				orderProductBean order = new orderProductBean();         
+			      
+				order.setOrder_num(rs.getInt("order_num"));
+				order.setCustomer_id(rs.getString("customer_id"));
+				order.setProduct_num(rs.getInt("product_num"));
+				order.setProduct_stock(rs.getInt("product_stock"));
+				
+				
+				orderProduct.add(order); 
+			}
+	    
+	    } catch (Exception e) {
+			System.out.println("selectMemberInfo() 오류! - "+e.getMessage());
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return orderProduct;
+	
 	}
 	
 	
