@@ -1,3 +1,4 @@
+<%@page import="vo.ProductImg"%>
 <%@page import="vo.BasketBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
+// 	ArrayList<ProductImg> thumbnail= (ArrayList<ProductImg>)request.getAttribute("thumbnail");
 	int total_amt = (int)request.getAttribute("total_amt");
 	int listCount = cartList.size();
 	
@@ -166,7 +168,7 @@
 									<td class="info">
 										<div class="img">
 											<a href="Product.do?product_num=<%=cartList.get(i).getProduct_num() %>" name="go_detail_button" data-cart-seq="4" >
-												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
+												<img src="${pageContext.request.contextPath}/upload/<%=cartList.get(i).getProduct_img()%>.png" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
 												<span class="ir"><%=cartList.get(i).getProduct_name() %></span>
 											</a>
 										</div>
