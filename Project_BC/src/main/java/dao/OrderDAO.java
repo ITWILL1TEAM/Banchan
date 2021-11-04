@@ -215,7 +215,7 @@ public class OrderDAO {
 			
 			}
 				if(insertCount>0) {
-					updateStock(order, nums, qty);
+					updateStock(order, nums);
 				}
 				
 		}
@@ -240,11 +240,14 @@ public class OrderDAO {
 	}
 	
 //주문 완료 시 재고를 변경시키는 메소드
-	public int updateStock(OrderBean order, String[] nums, int qty) {
+	public int updateStock(OrderBean order, String[] nums) {
 		int updateStockCount = 0;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
 		
 		ResultSet rs = null;
+		ResultSet rs2 = null;
 		try {
 			for(String str : nums) {
 				System.out.println(str);
@@ -252,22 +255,28 @@ public class OrderDAO {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, Integer.parseInt(str));
 				rs = pstmt.executeQuery();
-				
+				int stock=0;
 				if(rs.next()) {
 					
-					int stock =  rs.getInt("product_stock");
+					stock =  rs.getInt("product_stock");
 					
-					System.out.println("사용한 갯수" + qty);
-					System.out.println("남은재고"+stock);
-					System.out.println("OrderDAO - insertDetailOrder()-3!");
+				sql = "select product_qty from basket where product_num=?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setInt(1, Integer.parseInt(str));
+				System.out.println("stock :"+stock);
+				rs2 = pstmt2.executeQuery();
+					
+				if(rs2.next()) {
+					int qty = rs2.getInt("product_qty");
+					System.out.println("qty : "+qty);
 					sql = "update product set product_stock=? where product_num=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, stock);
-					pstmt.setInt(2, Integer.parseInt(str));
-					updateStockCount =pstmt.executeUpdate();
-					
-
+					pstmt3 = con.prepareStatement(sql);
+					pstmt3.setInt(1, stock-qty);
+					pstmt3.setInt(2, Integer.parseInt(str));
+					updateStockCount =pstmt3.executeUpdate();
 				}
+
+				}	
 				
 
 }
@@ -398,7 +407,8 @@ public class OrderDAO {
 				orderDetail.setProduct_price(rs.getInt("product_price"));
 				orderDetail.setProduct_discount(rs.getInt("product_discount"));
 //				orderDetail.setProduct_stock(rs.getInt("product_stock"));
-				orderDetail.setProduct_qty(rs.getInt("product_qty"));
+//				orderDetail.setProduct_qty(rs.getInt("product_qty"));
+				orderDetail.setProduct_qty(rs.getInt("product_stock"));
 				orderDetail.setProduct_discount(rs.getInt("product_discount"));
 				orderDetail.setProduct_original_img(rs.getString("product_original_img"));
 				
