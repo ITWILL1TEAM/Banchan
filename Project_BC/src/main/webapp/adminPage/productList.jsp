@@ -74,8 +74,8 @@ int ListCount = pageInfo.getListCount();
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                       <tr>
                                         <%for(int i=0; i<articleList.size(); i++){ %>
+                                       <tr>
                                             <td><%=articleList.get(i).getProduct_num() %></td>
                                             <td><%=articleList.get(i).getSeller_id() %></td>
                                             <td><a href="#"><%=articleList.get(i).getProduct_name() %></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
@@ -83,9 +83,9 @@ int ListCount = pageInfo.getListCount();
                                             <td><%=articleList.get(i).getProduct_date() %></td>
                                             <td>$<%=articleList.get(i).getProduct_price() %></td>
                                             <td><a href="#"><img src="assets/img/Edit.png"></a>
+                                        </tr>
                                             <%}
                                         }%>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

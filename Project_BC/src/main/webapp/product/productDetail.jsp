@@ -8,8 +8,10 @@
 	BoardBean article = (BoardBean)request.getAttribute("article");
     ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
 	String id = (String)session.getAttribute("sId");
-	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
+	int price = (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100;
 	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
+	int reviewCount = (Integer)request.getAttribute("reviewCount");
+	double avgScore = (Double)request.getAttribute("avgScore");
 	
 	
 %>
@@ -32,12 +34,12 @@
 </script>
 <script type="text/javascript" charset="UTF-8"
     src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-
+<!-- 프로덕트넘 없을경우 나오는 페이지 처리하기 -->
 
 <script type="text/javascript">
 	var qty;
 	var price = <%=price %>;
-	var max_qty = <%=article.getProduct_stock() %>
+	var max_qty = <%=article.getProduct_stock() %>;
 	var total_amt;
 	$(document).ready(function() {
 		
@@ -96,21 +98,6 @@
 	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 
-// 	function checkLogin() {
-// 		if(id == null) {
-// 			alert('로그인이 필요합니다.');
-// 			location.href = 'MemberLoginForm.me';
-// 			return false;
-// 		} 
-// 	}
-
-// 	function checkLoginCart() {
-// 		if(id == null) {
-// 			alert('로그인이 필요합니다.');
-// 			location.href = 'MemberLoginForm.me';
-// 		} else {
-// 			location.href = 'Cart.do';
-// 		}
 
 </script>
 </head>
@@ -120,7 +107,7 @@
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
-	<form method="post" name="pdDetail" onsubmit="return checkLogin()">
+	<form method="post" name="pdDetail">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 		
@@ -188,9 +175,9 @@
 						<!-- SCORE -->
 						<div class="gd_base">
 							<div class="g_scr">
-								<span class="star_rate03"><b class="ir">평점</b><em style="width:90%;">4.7</em></span>
-								<span class="scr"><b>4.7</b></span>
-								<a href="#gds_cont3" class="rv">(고객후기 n건)</a>
+								<span class="star_rate03"><b class="ir">평점</b><em style="width:<%=avgScore * 10 * 2%>%;"><%=avgScore %></em></span>
+								<span class="scr"><b><%=article.getProduct_review_score() %></b></span>
+								<a href="#gds_cont3" class="rv">(고객후기 <%=reviewCount %>건)</a>
 							</div>
 							
 							<div class="g_sns">						
@@ -238,7 +225,7 @@
 						<div class="gd_amt">
 							<dl>
 								<dt>총 제품금액</dt>
-								<dd><b id="totalAmt"><fmt:formatNumber value="<%=price %>" pattern="#,###"/></b><em>원</em></dd>
+								<dd><b id="totalAmt"><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b><em>원</em></dd>
 							</dl>
 						</div>
 						<!-- //AMOUNT -->
@@ -257,148 +244,11 @@
 				<!-- GOODS VIEW -->
 		
 
-				<!-- GOODS RELATION -->
-				<div class="gds_rel">
-					<div class="gd_rel">
-						<h3>추천제품 <em>(8)</em></h3>
-						<div class="fade_slide bn" id="gd_rel1">
-							<ul class="cont">
-		
-								<li class="active">
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">더반찬</span>
-											<span class="tit">두메산나물비빔밥재료</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>7,800</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/571/200714000025571.jpg" width="240" height="240" alt="두메산나물비빔밥재료" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
-									</div>
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">더반찬</span>
-											<span class="tit">명태회무침(200g)</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>6,900</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/135/180618000021135.jpg" width="240" height="240" alt="명태회무침(200g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=""><b class="ir">장바구니에 담기</b></button>
-									</div>
-		 
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">더반찬</span>
-											<span class="tit">낙지탕탕이 비빔젓갈(180g)</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>6,900</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/376/190920000024376.jpg" width="240" height="240" alt="낙지탕탕이 비빔젓갈(180g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
-									</div>
-		 
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">더반찬</span>
-											<span class="tit">낙지젓(180g)</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>6,900</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/592/200715000025592.jpg" width="240" height="240" alt="낙지젓(180g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
-									</div>
-								</li>
-								<li>						
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">더반찬</span>
-											<span class="tit">키즈멸치볶음(80g)</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>4,700</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/873/180807000021873.jpg" width="240" height="240" alt="키즈멸치볶음(80g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
-									</div>
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">크리스피 프레시</span>
-											<span class="tit">[크리스피프레시] 클래식콥 샐러드</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>4,500</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img"><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/292/200519000025292.jpg" width="240" height="240" alt="[크리스피프레시] 클래식콥 샐러드" onerror="this.src='/common/images/common/noimg_240.jpg'"/></span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=""><b class="ir">장바구니에 담기</b></button>
-									</div>
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">더반찬</span>
-											<span class="tit">새우젓호박볶음(250g)</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>5,500</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img">
-												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/441/180706000021441.jpg" width="240" height="240" alt="새우젓호박볶음(250g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
-											</span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
-									</div>
-									<div class="li">
-										<a href=" "  onclick=" ">
-											<span class="brd">더반찬</span>
-											<span class="tit">쇠고기장조림(290g)</span>
-											<span class="prc">
-												<span>
-													<em class="on"><b class="ir">판매가</b><b>8,900</b>원</em>
-												</span>
-											</span>
-											<span class="pnt"></span>
-											<span class="img">
-												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/240/067/210409000027067.jpg" width="240" height="240" alt="쇠고기장조림(290g)" onerror="this.src='/common/images/common/noimg_240.jpg'"/>
-											</span>
-										</a>
-										<button class="bt_crt" type="button"  onclick=" "><b class="ir">장바구니에 담기</b></button>
-									</div>
-								</li>
-							</ul>
-							<div class="ctrl">
-								<a href=" " class="prev"><em class="ir">이전배너</em></a>
-								<a href=" " class="next"><em class="ir">다음배너</em></a>
-							</div>
-						</div>
-					</div>
-					<script type="text/javascript">
-						$(document).ready(function() {
-							fade_slide('gd_rel1', 0, false, 'click', false, false, 0);
-						});
-					</script>
-				</div>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						fade_slide('gd_rel1', 0, false, 'click', false, false, 0);
+					});
+				</script>
 				<!-- //GOODS RELATION -->
 		
 
@@ -409,7 +259,7 @@
 						<ul>
 							<li class="on"><a href="#gds_cont1">제품정보<em class="ir">선택</em></a></li>
 							<li><a href="#gds_cont2">제품정보고시</a></li>
-							<li><a href="#gds_cont3">고객후기 <em>(2,145)</em></a></li>
+							<li><a href="#gds_cont3">고객후기 <em>(<%=reviewCount %>)</em></a></li>
 							<li><a href="#gds_cont4">주의사항</a></li>
 						</ul>
 					</div>
@@ -440,7 +290,7 @@
 						<ul>
 							<li><a href="#gds_cont1">제품정보</a></li>
 							<li class="on"><a href="#gds_cont2">제품정보고시<em class="ir">선택</em></a></li>
-							<li><a href="#gds_cont3">고객후기 <em>(2,145)</em></a></li>
+							<li><a href="#gds_cont3">고객후기 <em>(<%=reviewCount %>)</em></a></li>
 							<li><a href="#gds_cont4">주의사항</a></li>
 						</ul>
 					</div>
@@ -492,7 +342,7 @@
 					<ul>
 						<li><a href="#gds_cont1">제품정보</a></li>
 						<li><a href="#gds_cont2">제품정보고시</a></li>
-						<li><a href="#gds_cont3">고객후기 <em>(2,143)</em></a></li>
+						<li><a href="#gds_cont3">고객후기 <em>(<%=reviewCount %>)</em></a></li>
 						<li class="on"><a href="#gds_cont4">주의사항</a><em class="ir">선택</em></li>
 					</ul>
 				</div>

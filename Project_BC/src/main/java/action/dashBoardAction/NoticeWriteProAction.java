@@ -20,16 +20,14 @@ public class NoticeWriteProAction implements Action {
 
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        
-        
         ActionForward forward = null;
         
    
         
         // BoardBean 객체에 전달받은 파라미터 저
         NoticeBean board = new NoticeBean();
-        board.setNotice_subject("board_subject");
-        board.setNotice_content("board_content");
+        board.setNotice_subject(request.getParameter("board_subject"));
+        board.setNotice_content(request.getParameter("board_content"));
 
        
        NoticeWriteProService service = new NoticeWriteProService();

@@ -1,11 +1,11 @@
 
-<%@page import="vo.Productbean"%>
+<%@page import="vo.BoardBean"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%
-	ArrayList<Productbean> sideList = (ArrayList<Productbean>)request.getAttribute("sideList");
+	ArrayList<BoardBean> sideList = (ArrayList<BoardBean>)request.getAttribute("sideList");
 	%>
 <!DOCTYPE html>
 <html>
@@ -54,30 +54,30 @@
 				<span class="icon"><img
 					src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"
 					style="width: 50px; height: 50px;"></span>
-					<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("side")||request.getParameter("category").equals("meat")||request.getParameter("category").equals("fish")){ %>
+					<%if(request.getParameter("category").equals("all")||request.getParameter("category").equals("SideDishside")||request.getParameter("category").equals("SideDishmeat")||request.getParameter("category").equals("SideDishfish")){ %>
 					<strong>반찬</strong>
-					<%}else if(request.getParameter("category").equals("Kimchi")){ %>
+					<%}else if(request.getParameter("category").equals("Kimchikimchi")){ %>
 					<strong>김치</strong>
-					<%}else if(request.getParameter("category").equals("Soup")){ %>
+					<%}else if(request.getParameter("category").equals("Soupsoup")){ %>
 					<strong>국</strong>
 					<%} %>
 			</div>
-			<%if(request.getParameter("category").equals("전체")||request.getParameter("category").equals("side")||request.getParameter("category").equals("meat")||request.getParameter("category").equals("fish")){ %>
+			<%if(request.getParameter("category").equals("all")||request.getParameter("category").equals("SideDishside")||request.getParameter("category").equals("SideDishmeat")||request.getParameter("category").equals("SideDishfish")){ %>
 			<div class="sort-box">
 				<div class="sort-type ctg">
 					<div class="cate-wrap">
 						<div class="ctg-bind cate-inner">
-							<a  href="SideDish.side?category=전체" class="item" data-type="ctg" data-ctg-no="1707080301" data-cnt="23">
+							<a  href="SideDish.side?category=all" class="item" data-type="ctg" data-ctg-no="1707080301" data-cnt="23">
 							    <span>전체</span>
 							</a>
-							<a  href="SideDish.side?category=밑반찬" class="item" data-upper-ctg-no="1707080301" data-type="ctg" data-ctg-no="1707080310" data-cnt="57">
+							<a  href="SideDish.side?category=SideDishside" class="item" data-upper-ctg-no="1707080301" data-type="ctg" data-ctg-no="1707080310" data-cnt="57">
 								<span>밑반찬</span>
 						    </a>
-						    <a	href="SideDish.side?category=고기반찬" class="item " data-upper-ctg-no="1707080301" data-type="ctg"
+						    <a	href="SideDish.side?category=SideDishmeat" class="item " data-upper-ctg-no="1707080301" data-type="ctg"
 								data-ctg-no="1707080312" data-cnt="23">
 								<span>고기반찬</span>
 						    </a>
-						    <a	href="SideDish.side?category=생선반찬" class="item"
+						    <a	href="SideDish.side?category=SideDishfish" class="item"
 								data-upper-ctg-no="1707080301" data-type="ctg"
 								data-ctg-no="1707080311" data-cnt="19">
 								<span>생선반찬</span>
@@ -126,7 +126,7 @@
 			 
  			
  			<%
- 				  String productImgName = sideList.get(i).getProduct_name()+"0101";
+ 				  String productImgName = sideList.get(i).getProduct_name();
                   int discountPrice = (int)(sideList.get(i).getProduct_price()*(100-sideList.get(i).getProduct_discount())/100); 
                   int price =  sideList.get(i).getProduct_price();
                   int discount = sideList.get(i).getProduct_discount(); 
@@ -143,7 +143,7 @@
 							</div>
 							<a href=""
 								onclick="">
-								  <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>.png"
+								  <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png"
 								width="296" height="296"
 								alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)"
 								><span

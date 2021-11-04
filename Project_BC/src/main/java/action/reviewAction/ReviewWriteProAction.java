@@ -24,6 +24,23 @@ public class ReviewWriteProAction implements Action {
 		System.out.println("ReviewWriteProAction");
 		ActionForward forward = null;
 		
+		HttpSession session = request.getSession();
+
+		String customer_id = (String)session.getAttribute("sId");  
+		
+		
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(customer_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인이 필요합니다.')");
+			out.println("window.open('MemberLoginForm.me','_blank','height=500,width=500, status=yes,toolbar=no,menubar=no,location=no')");
+			
+			out.println("</script>");
+			
+			
+		} else {
 		
 		
 		String realFolder = "";//업로드할 파일이 저장되는 실제경로
@@ -49,14 +66,10 @@ public class ReviewWriteProAction implements Action {
 		review.setReview_id(multi.getParameter("review_id")); 
 		review.setReview_content(multi.getParameter("review_content")); 
 		review.setReview_score(Double.parseDouble(multi.getParameter("review_score"))); 
-		System.out.println();
-		
 		
 		String file = multi.getFileNames().nextElement().toString();
 		String board_file = multi.getFilesystemName(file);
 		
-//		double review_score = Double.parseDouble(multi.getParameter("review_score"));
-//		System.out.println(review_score);
 		
 		review.setReview_img(board_file); 
 		
@@ -79,11 +92,11 @@ public class ReviewWriteProAction implements Action {
 		if(!isWriteSuccess) {
 			//1) 실패시 자바스크립트를 이용하여 실패
 			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('게시물 등록 실패!')");
-			out.println("history.back()");
-			out.println("</script>");
+			PrintWriter out1 = response.getWriter();
+			out1.println("<script>");
+			out1.println("alert('게시물 등록 실패!')");
+			out1.println("history.back()");
+			out1.println("</script>");
 		}else {
 			
 			//ActionForward 객테를 생성하여 BoardList.bo서블릿 주소 요청
@@ -98,7 +111,7 @@ public class ReviewWriteProAction implements Action {
 		}
 
 		
-		
+		}
 		return forward;
 	}
 

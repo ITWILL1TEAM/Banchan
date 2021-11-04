@@ -2,15 +2,16 @@ package svc.productSvc;
 
 import static db.JdbcUtil.*;
 
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.SideDAO;
-import vo.Productbean;
+import vo.BoardBean;
 
 public class SaleService {
 	
-	public ArrayList<Productbean> isSale(){
+	public ArrayList<BoardBean> isSale(){
 		
 		Connection con = getConnection();
 		
@@ -18,7 +19,7 @@ public class SaleService {
 	
 		dao.setConnection(con);
 		
-		ArrayList<Productbean> saleList = dao.selectSale();
+		ArrayList<BoardBean> saleList = dao.selectSale();
 		
 		close(con);
 		

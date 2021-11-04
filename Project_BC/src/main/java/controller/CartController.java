@@ -14,6 +14,7 @@ import action.cartAction.CartAddAction;
 import action.cartAction.CartDeleteAction;
 import action.cartAction.CartListAction;
 import action.cartAction.CartUpdateAction;
+import action.cartAction.CheckAddressAction;
 import action.productAction.BoardListAction;
 import action.productAction.BoardWriteProAction;
 import action.productAction.ProductDetailAction;
@@ -65,6 +66,13 @@ public class CartController extends HttpServlet {
 		} else if(command.equals("/CartUpdate.ca")) {
 			// 장바구니 제품 수량 업데이트
 			action = new CartUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/CheckAddress.ca")) {
+			action = new CheckAddressAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

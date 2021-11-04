@@ -415,6 +415,43 @@ public class OrderDAO {
 		
 		return orderDetail;
 	}
+	public ArrayList<OrderBean> selectCustomerOrderList(String id) {
+		System.out.println("orderDAO - selectMemberInfo()!");
+		ArrayList<OrderBean> orderProduct =null;
+		
+		PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    
+	    try {
+			String sql ="select * from order where customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			orderProduct = new ArrayList<OrderBean>();
+			
+			while(rs.next()) {
+			      // BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
+			      // -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
+				OrderBean order = new OrderBean();         
+			      
+				order.setOrder_num(rs.getInt("order_num"));
+				order.setCustomer_id(rs.getString("customer_id"));
+				
+				orderProduct.add(order); 
+			}
+	    
+	    } catch (Exception e) {
+			System.out.println("selectMemberInfo() 오류! - "+e.getMessage());
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return orderProduct;
+	}
 	
 	
 	
