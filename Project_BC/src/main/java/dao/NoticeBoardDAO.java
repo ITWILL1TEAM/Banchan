@@ -1,6 +1,7 @@
 package dao;
 
 import static db.JdbcUtil.close;
+import static db.JdbcUtil.getConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -101,6 +102,45 @@ public class NoticeBoardDAO {
 		}
 
 		return articleList;
+	}
+
+	public NoticeBean selectNotice(int notice_num) {
+		
+		NoticeBean article = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = getConnection();
+
+			// 3단계. SQL 구문 작성 및 전달
+			// -> 글번호(num)에 해당하는 게시물 상세 정보 조회 후 BoardBean 객체에 저장
+			String sql = "SELECT * FROM notice WHERE notice_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, notice_num);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				// 조회된 상세 정보를 BoardBean 객체에 저장
+				article = new NoticeBean();
+
+				article.setNotice_num(rs.getInt("notice_num"));
+				article.setNotice_subject(rs.getString("notice_subject"));
+				article.setNotice_content(rs.getString("notice_content"));
+				article.setNotice_date(rs.getDate("notice_date"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 반환
+			close(rs);
+			close(pstmt);
+		}
+
+		return article;
 	}
 
 }

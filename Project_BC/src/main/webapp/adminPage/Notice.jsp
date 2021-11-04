@@ -59,7 +59,7 @@ ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute
 									<%for (int i = 0; i < articleList.size(); i++) { %>
 									<tr>
 										<td><%=articleList.get(i).getNotice_num()%></td>
-										<td><%=articleList.get(i).getNotice_subject()%></td>										
+										<td><a href="NoticeView.ad?notice_num=<%=articleList.get(i).getNotice_num()%>"><%=articleList.get(i).getNotice_subject()%></a></td>										
 										<td><%=articleList.get(i).getNotice_date()%></td>
 									</tr>
 									<%}%>
