@@ -31,6 +31,11 @@ public class ReviewWriteProService {
 		//=>파라미터 
 		
 		int insertCount = dao.insertReview(review);
+		
+		System.out.println(review.getProduct_num());
+		int updateCount = dao.updateScore(review);
+		
+		
 		System.out.println(insertCount);
 		
 		
@@ -40,7 +45,7 @@ public class ReviewWriteProService {
 		//2) 작업 실패 시 (=insertCount ==0 일 경우) 
 		//	=>Rollback 작업 수행, isWriteSuccess 를 false로 변경(생략가능)
 		
-		if(insertCount >0) {
+		if(insertCount >0 && updateCount>0) {
 			commit(con);
 			isWriteSuccess = true;
 		}else {

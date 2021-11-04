@@ -94,7 +94,7 @@ function setStar(point) {
 	
 	<input type="hidden" name="review_id" value="hong123"/>
 
-	<input type="hidden" name="product_num" value="6"/>
+	<input type="hidden" name="product_num" value="2"/>
 	<input type="hidden" name="review_score" value=""/>
 	
 
