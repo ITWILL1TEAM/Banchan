@@ -2,14 +2,15 @@ package svc.productSvc;
 
 import static db.JdbcUtil.*;
 
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.SideDAO;
-import vo.Productbean;
+import vo.BoardBean;
 
 public class BestService {
-	public ArrayList<Productbean> isBest(){
+	public ArrayList<BoardBean> isBest(){
 		
 		Connection con = getConnection();
 		
@@ -17,7 +18,7 @@ public class BestService {
 		
 		dao.setConnection(con);
 		
-		ArrayList<Productbean> bestList = dao.selectBest();
+		ArrayList<BoardBean> bestList = dao.selectBest();
 		
 		close(con);
 		

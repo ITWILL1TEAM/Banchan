@@ -2,16 +2,17 @@ package svc.productSvc;
 
 import static db.JdbcUtil.*;
 
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.SideDAO;
-import vo.Productbean;
+import vo.BoardBean;
 
 
 public class SideService {
 	
-public ArrayList<Productbean> isSide(String category) {
+public ArrayList<BoardBean> isSide(String category) {
 				
 		Connection con = getConnection();
 		
@@ -19,7 +20,7 @@ public ArrayList<Productbean> isSide(String category) {
 	
 		dao.setConnection(con);
 		
-		ArrayList<Productbean> sideList = dao.selectCategory(category);
+		ArrayList<BoardBean> sideList = dao.selectCategory(category);
 		
 		close(con);
 		

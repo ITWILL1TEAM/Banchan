@@ -137,7 +137,7 @@
             <div class="gnb-wrap">
                 <div class="inner-box" >
                     <ul>
-                        <li class="mnu-all"><a href="ideDish.side?category=전체"> <span class="icon">
+                        <li class="mnu-all"><a href="SideDish.side?category=all"> <span class="icon">
                                     <img src="//www.thebanchan.co.kr/fo/images/ico/ico_category.png" class="off">
                                      <img src="//www.thebanchan.co.kr/fo/images/ico/ico_category_on.png" class="on">
                             </span> 카테고리
@@ -154,33 +154,33 @@
                 <div class="inner-box">
                     <ul class="mnu-type">
 
-                        <li><a href="ideDish.side?category=전체" onclick=" "><span class="icon">
+                        <li><a href="ideDish.side?category=all" onclick=" "><span class="icon">
                         <img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"alt="반찬" class="off">
                         <img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8020/214/00/200700000012214.png" alt="반찬" class="on"></span>반찬</a>
                             <div class="mnu-sub">
                                 <ul>
-                                    <li><a href="SideDish.side?category=밑반찬" onclick="">밑반찬</a></li>
-                                    <li><a href="SideDish.side?category=고기반찬" onclick="">고기반찬</a></li>
-                                    <li><a href="SideDish.side?category=생선반찬" onclick="">생선반찬</a></li>
+                                    <li><a href="SideDish.side?category=SideDishside" onclick="">밑반찬</a></li>
+                                    <li><a href="SideDish.side?category=SideDishmeat" onclick="">고기반찬</a></li>
+                                    <li><a href="SideDish.side?category=SideDishfish" onclick="">생선반찬</a></li>
                                 </ul>
                             </div></li>
-                        <li><a href="SideDish.side?category=김치" onclick="">
+                        <li><a href="SideDish.side?category=Kimchikimchi" onclick="">
                         <span class="icon"><img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/215/00/200700000012215.png" alt="김치" class="off">
                                     <img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8020/216/00/200700000012216.png" alt="김치" class="on">
                                     </span>김치</a>
                             <div class="mnu-sub">
                                 <ul>
-                                    <li><a href="SideDish.side?category=김치" onclick="">김치</a></li>
+                                    <li><a href="SideDish.side?category=Kimchikimchi" onclick="">김치</a></li>
                                 </ul>
                             </div></li>
-                        <li><a href="SideDish.side?category=국" onclick=""><span class="icon"><img
+                        <li><a href="SideDish.side?category=Soupsoup" onclick=""><span class="icon"><img
                                     src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/217/00/200700000012217.png"
                                     alt="국" class="off"><img
                                     src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8020/218/00/200700000012218.png"
                                     alt="국" class="on"></span>국</a>
                             <div class="mnu-sub">
                                 <ul>
-                                    <li><a href="SideDish.side?category=국" onclick=" ">국</a></li>
+                                    <li><a href="SideDish.side?category=Soupsoup" onclick=" ">국</a></li>
                                 </ul>
                             </div></li>
 					</ul>
