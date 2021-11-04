@@ -12,7 +12,7 @@ public class QnaDetailService {
 
 	// 게시물 1개 상세 정보 조회를 요청하는 getArticle() 메서드 정의
 	public QnaBoardBean getArticle(int qna_idx) {
-	    QnaBoardDAO article = null;
+	    QnaBoardBean article = null;
 		
 		// 공통작업-1. Connection Pool 로부터 Connection 객체 가져오기
 		Connection con = getConnection();

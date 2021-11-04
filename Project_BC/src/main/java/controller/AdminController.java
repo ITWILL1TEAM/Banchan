@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.*;
+import action.dashBoardAction.NoticeListAction;
+import action.dashBoardAction.NoticeSelectAction;
 import action.dashBoardAction.NoticeWriteProAction;
 import action.productAction.BoardListAction;
 import action.productAction.BoardWriteProAction;
@@ -42,10 +45,6 @@ public class AdminController extends HttpServlet {
 			forward.setPath("/adminPage/sellerInfo.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 
-		}else if(command.equals("/side.ad")) {			
-			forward = new ActionForward();
-			forward.setPath("/category/sidedish.jsp");
-
 		}else if(command.equals("/ProductList.ad")) {
             // 글쓰기 작업을 위한 뷰페이지로 포워딩
         	action = new BoardListAction();
@@ -54,15 +53,31 @@ public class AdminController extends HttpServlet {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
-		}else if(command.equals("/Notice.ad")) {			
-			forward = new ActionForward();
-			forward.setPath("/adminPage/Notice.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+			}
 		}else if(command.equals("/ProductRegister.ad")) {			
-			forward = new ActionForward();
-			forward.setPath("/adminPage/productRegister.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+				forward = new ActionForward();
+				forward.setPath("/adminPage/productRegister.jsp");
+				forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if (command.equals("/ProductWritePro.ad")) {
+			action = new BoardWriteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// 위임받은 Exception 예외처리 필요..!
+		
+			
+//			-------------Notice----------------
+		}else if(command.equals("/Notice.ad")) {			
+			action = new NoticeListAction();
+	            
+	            try {
+	                forward = action.execute(request, response);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
 
 		}else if(command.equals("/NoticeWrite.ad")) {          
             forward = new ActionForward();
@@ -75,26 +90,15 @@ public class AdminController extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else if(command.equals("/NoticeBoardList.ad")) {
-
-            action = new BoardListAction();
+        }else if(command.equals("/NoticeView.ad")) {
+        	action = new NoticeSelectAction();
             
             try {
                 forward = action.execute(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-		}else if (command.equals("/ProductWritePro.ad")) {
-			action = new BoardWriteProAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			// 위임받은 Exception 예외처리 필요..!
-		}
+        }
 
 		
 		
