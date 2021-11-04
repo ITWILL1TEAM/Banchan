@@ -23,14 +23,14 @@ public class ReviewListAction implements Action {
 		//페이징 처리를 위한 변수 선언
 		int page = 1;//현재 체이지 번호를 저장할 변수(기본값1)
 		int limit = 5; //한페이지에 표시할 게시물수를 저장할 변수 (최대 10개 설정)
-		int product_num =6; //일단 2로 설정 나중에 변경해야됨	
+		int product_num = Integer.parseInt(request.getParameter("product_num")); //일단 2로 설정 나중에 변경해야됨	(내가 했어,,,)
 		//만약 page파라미터가 존재할 경우 해당
 				
 		if(request.getParameter("page")!=null) {
 			page = Integer.parseInt(request.getParameter("page"));//정수화 필요
 		}
 		ReviewListService service = new ReviewListService();
-		int listCount = service.getListCount();
+		int listCount = service.getListCount(product_num);
 		
 		
 		ArrayList<ReviewBean> reviewList = service.getReviewList(product_num, page, limit);

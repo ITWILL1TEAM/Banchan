@@ -5,6 +5,7 @@ import static db.JdbcUtil.close;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vo.ReviewBean;
@@ -75,7 +76,7 @@ public class ReviewDAO {
 		}
 		
 		// 전체 게시물 총 갯수 조회하여 리턴하는 selectListCount() 메서드 정의
-		public int selectListCount() {
+		public int selectListCount(int product_num) {
 //			System.out.println("BoardDAO - selectListCount()");
 			int listCount = 0;
 			
@@ -85,8 +86,9 @@ public class ReviewDAO {
 			try {
 				// 3단계. SQL 구문 작성 및 전달
 				// => 전체 레코드 갯수를 조회하기 위해 COUNT(*) 함수 사용(또는 COUNT(num))
-				String sql = "SELECT COUNT(*) FROM review";
+				String sql = "SELECT COUNT(*) FROM review WHERE product_num=?";
 				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, product_num);
 				
 				// 4단계. SQL 구문 실행 및 결과 처리
 				rs = pstmt.executeQuery();
@@ -205,6 +207,31 @@ public class ReviewDAO {
 			}
 			
 			return updateCount;
+		}
+
+		// 제품번호별 리뷰스코어를 모두 조회하는 메소드
+		public double selectTotalScore(int product_num) {
+			double avgScore = 0.0;
+			
+			PreparedStatement pstmt = null;
+		    ResultSet rs = null;
+		    
+		    try {
+		    	String sql = "SELECT review_score FROM review WHERE product_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, product_num);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					avgScore += rs.getDouble(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		    
+			
+			return avgScore;
 		}
 
 		
