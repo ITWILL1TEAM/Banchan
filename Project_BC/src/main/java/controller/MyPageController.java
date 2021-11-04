@@ -15,6 +15,7 @@ import action.Action;
 import action.memberAction.AddAddressAction;
 import action.memberAction.MyPageModifyAction;
 import action.memberAction.MypageModifyProAction;
+import action.memberAction.OrderCheckAction;
 import action.memberAction.ShowAddressAction;
 import vo.ActionForward;
 
@@ -62,8 +63,13 @@ public class MyPageController extends HttpServlet {
 				forward = new ActionForward();
 				forward.setPath("/myPage/resell.jsp");
 			}else if(command.equals("/OrderCheck.my")) {
-				forward = new ActionForward();
-				forward.setPath("/myPage/orderCheck.jsp");
+				action = new OrderCheckAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
 			}else if(command.equals("/Mypage.my")) {
 			    forward = new ActionForward();
                 forward.setPath("/myPage/myPage.jsp");
