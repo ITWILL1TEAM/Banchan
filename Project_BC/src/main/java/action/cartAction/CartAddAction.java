@@ -50,8 +50,6 @@ public class CartAddAction implements Action {
 			 basket.setProduct_discount(Integer.parseInt(request.getParameter("product_discount")));
 			 basket.setSname(request.getParameter("Sname"));
 			 
-			 request.setAttribute("product_num", product_num);
-			 
 			 // DupProdCheckService 인스턴스의 DupProdCheckService() 메서드를 호출하여 사용자의 장바구니에 해당 상품이 존재하는지 확인
 			 // 존재(true)할 경우 수량만 업데이트
 			 DupProdCheckService dupProd = new DupProdCheckService();

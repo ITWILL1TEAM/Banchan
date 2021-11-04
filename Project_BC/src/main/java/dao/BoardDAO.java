@@ -205,7 +205,7 @@ public class BoardDAO {
 
 				article.setProduct_num(rs.getInt("product_num"));
 				article.setProduct_name(rs.getString("product_name"));
-				article.setSeller_id(rs.getString("seller_id"));
+				article.setSeller_id(rs.getString("Sname"));
 				article.setProduct_category(rs.getString("product_category"));
 				article.setProduct_price(rs.getInt("product_price"));
 				article.setProduct_weight(rs.getInt("product_weight"));

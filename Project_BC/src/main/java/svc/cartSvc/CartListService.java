@@ -29,18 +29,5 @@ public class CartListService {
 		return cartList;
 	}
 
-	public ArrayList<ProductImg> getThumbnail(int product_num) {
-		
-		Connection con = getConnection();
-		
-		BasketDAO dao = BasketDAO.getInstance();
-		dao.setConnection(con);
-		
-		ArrayList<ProductImg> thumbnail = dao.selectThumbnail(product_num);
-		
-		close(con);
-		
-		return thumbnail;
-	}
 
 }
