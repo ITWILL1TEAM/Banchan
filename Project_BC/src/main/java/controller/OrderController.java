@@ -10,9 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.oderAction.OrderDetailAction;
 import action.oderAction.OrderFormAction;
 import action.oderAction.OrderListAction;
 import action.oderAction.OrderProAction;
+//import action.OrderDetailAction;
+import action.OrderFormAction;
+import action.OrderListAction;
+import action.OrderProAction;
+>>>>>>> branch 'master' of https://github.com/ITWILL1TEAM/Banchan.git
 import vo.ActionForward;
 
 /**
@@ -59,6 +65,17 @@ public class OrderController extends HttpServlet {
 			
 			}else if(command.equals("/OrderPro.or")) {			
 				action = new OrderProAction();
+				//업캐스팅 후에도 공통메서드(상속받음 메서드)는 호출이 가능하므로 
+				//Action 차입으로 execute() 메서드 호출 가능함
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}else if(command.equals("/OrderDetail.or")) {			
+				action = new OrderDetailAction();
 				//업캐스팅 후에도 공통메서드(상속받음 메서드)는 호출이 가능하므로 
 				//Action 차입으로 execute() 메서드 호출 가능함
 				try {
