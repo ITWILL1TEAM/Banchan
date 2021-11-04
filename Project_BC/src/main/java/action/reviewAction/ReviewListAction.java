@@ -31,7 +31,8 @@ public class ReviewListAction implements Action {
 		}
 		ReviewListService service = new ReviewListService();
 		int listCount = service.getListCount(product_num);
-		
+		double totalScore = service.getTotalReviewScore(product_num);
+		double avgScore = (double)totalScore / listCount;
 		
 		ArrayList<ReviewBean> reviewList = service.getReviewList(product_num, page, limit);
 		
@@ -68,14 +69,13 @@ public class ReviewListAction implements Action {
 			
 		}
 		
-		double avgScore = score/reviewList.size();
-		double avgPercent = Double.parseDouble(String.format("%.1f", avgScore/5*100));
+//		double avgPercent = Double.parseDouble(String.format("%.1f", avgScore/5*100));
 		
 		
 		
 		request.setAttribute("score", score);
 		request.setAttribute("avgScore", avgScore);
-		request.setAttribute("avgPercent", avgPercent);
+//		request.setAttribute("avgPercent", avgPercent);
 		
 		//ActionForward객체를 생성하여 board폴더내의 qna_board_list.jsp페이지로 포워딩
 		//=>게시물 정보를 request 객체에 담아 전달해야 하므로 request객체가 유지되어야 하며
