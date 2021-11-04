@@ -327,4 +327,45 @@ public class BoardDAO {
 
 		return articleImg;
 	}
+	
+	public ArrayList<ProductImg> selectDetailImg(int product_num) {
+		ArrayList<ProductImg> detailImg = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = getConnection();
+
+			String sql = "SELECT * FROM product_img WHERE product_num=? AND product_img_location=2";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+
+			rs = pstmt.executeQuery();
+			
+			detailImg = new ArrayList<ProductImg>();
+
+			while (rs.next()) {
+				// 조회된 상세 정보를 BoardBean 객체에 저장
+				ProductImg productImg = new ProductImg();
+				
+				 productImg.setProduct_original_img(rs.getString("product_original_img"));
+				 productImg.setProduct_img(rs.getString("product_img"));
+				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
+				 
+				 detailImg.add(productImg);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 반환
+			close(rs);
+			close(pstmt);
+		}
+
+		return detailImg;
+	}
+	
+	
 }

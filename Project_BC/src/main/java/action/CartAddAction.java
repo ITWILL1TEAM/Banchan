@@ -13,7 +13,7 @@ import svc.DupProdCheckService;
 import vo.ActionForward;
 import vo.BasketBean;
 
-public class AddCartAction implements Action {
+public class CartAddAction implements Action {
 
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -38,15 +38,18 @@ public class AddCartAction implements Action {
 		} else {
 			 BasketBean basket = new BasketBean();
 			 
+			 int product_num = Integer.parseInt(request.getParameter("product_num"));
+			 
 			 // BasketBean 객체에 파라미터 받아서 저장
 			 basket.setCutomer_id(customer_id);
-			 basket.setProduct_num(Integer.parseInt(request.getParameter("product_num")));
+			 basket.setProduct_num(product_num);
 			 basket.setProduct_name(request.getParameter("product_name"));
 			 basket.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
 			 basket.setProduct_qty(Integer.parseInt(request.getParameter("ord_qty")));
 			 basket.setProduct_discount(Integer.parseInt(request.getParameter("product_discount")));
-			 basket.setProduct_img("yang_thum.jpg"); 
 			 basket.setSname(request.getParameter("Sname"));
+			 
+			 request.setAttribute("product_num", product_num);
 			 
 			 // DupProdCheckService 인스턴스의 DupProdCheckService() 메서드를 호출하여 사용자의 장바구니에 해당 상품이 존재하는지 확인
 			 // 존재(true)할 경우 수량만 업데이트

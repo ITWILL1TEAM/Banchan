@@ -46,4 +46,20 @@ public class ProductDetailService {
 		return article;
 	}
 
+	public ArrayList<ProductImg> getDetailImg(int product_num) {
+		
+		Connection con = getConnection();
+		
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.setConnection(con);
+		
+		ArrayList<ProductImg> detailImg = dao.selectDetailImg(product_num);
+		
+		close(con);
+		
+		return detailImg;
+	}
+	
+	
+
 }

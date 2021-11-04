@@ -9,7 +9,7 @@
     ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
-	
+	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
 	
 	
 %>
@@ -88,27 +88,6 @@
 	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 
-// 	function checkLogin() {
-// 		if(id == null) {
-// 			alert('로그인이 필요합니다.');
-// 			location.href = 'MemberLoginForm.me';
-// 			return false;
-// 		} 
-// 	}
-
-// 	function checkLoginCart() {
-// 		if(id == null) {
-// 			alert('로그인이 필요합니다.');
-// 			location.href = 'MemberLoginForm.me';
-// 		} else {
-// 			location.href = 'Cart.do';
-// 		}
-// 	}
-for()
-function ChangeImg() {
-	document.getElementById("tumnail").style = "background-image:url('//localhost:8081/Project_BC/upload/<%= productImg.get(1).getProduct_img()%>.png";
-	
-}	
 </script>
 </head>
 <body>
@@ -117,7 +96,7 @@ function ChangeImg() {
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 	
-	<form method="post" name="pdDetail" onsubmit="return checkLogin()">
+	<form method="post" name="pdDetail">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 		
@@ -270,14 +249,11 @@ function ChangeImg() {
 					<div class="gd_detail">
 						<div align="center">
 						
-						<%for(int i=0;i<productImg.size();i++){
-						if(productImg.get(i).getProduct_img_location()==2){%>
+						<%for(int i = 0; i < productDtlImg.size(); i++){%>
    
-							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png"/>
+							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productDtlImg.get(i).getProduct_img()%>.png"/>
 							
-							
-							 <%}
-							 }%>
+						<%}%>
     
    
 							
@@ -392,6 +368,32 @@ function ChangeImg() {
 	<div class="main_ntc_lyr" id="main_ntc_lyr">
 	</div>
 	<!--// MAIN_NOTICE_LAYER -->
+	
+	<!-- 아래는 css와 관련되어 있으므로 삭제 금지 -->
+	<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/ui.js?v=20211010210"></script>
+	<script type="text/javascript">
+		var top_banner_cookie_id = "TopBanner_10_200800000010574";
+		var top_banner_cookie_yn = overpass.util.getCookie(top_banner_cookie_id);
+		var top_banner_login_yn = false;
+		
+		//if("Y" != top_banner_cookie_yn){
+		$(document).ready(function(){
+			//if(!top_banner_login_yn){
+			
+			$('.banner-area').html('<a href="javascript:void(0);" class="banner"  style="background-image:url(&#39;//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/90/432/200800000012432.jpg?v=20200805175837&#39;);"></a><div class="inner-box" ><div style="height: 100%; width: 97%;"  onclick="overpass.tracking.link({ openwinyn:&#39;N&#39;, tr_yn:&#39;Y&#39;, banner_kind_cd:&#39;90&#39;, conts_form_cd:&#39;130&#39;, conts_form_dtl_cd:&#39;13010&#39;, conts_divi_cd:&#39;&#39;, conts_dist_no:&#39;&#39;, sale_area_no:&#39;D1705000714&#39;, rel_divi_cd:&#39;20&#39;, rel_no:&#39;200800000010574&#39;, move_cont_no:&#39;&#39;, url:&#39;/shop/initPlanShop.action?disp_ctg_no=1907004700&#39;, param:&#39;&#39;});" ></div><a href="javascript:void(0);" class="btn-banner-close"><i class="ico-close" data-banner_no="200800000010574" onclick="hideLayerCookie(&#39;top_lineBn&#39;);return false"></i>배너닫기</a></div>');
+			//}
+		});
+		
+		hideLayerCookie = function(id){
+			overpass.util.setCookie({ name: top_banner_cookie_id, value: "Y", age : 1, domain : overpass.global.cookie_domain});
+			//hideLayer('top_lineBn');
+			$(".banner-area").hide();
+			//배너가 사라진 만큼 BODY를 올려준다. 
+			var topPx = $("#content").css('padding-top').replace(/[^0-9]/g, "");
+			$("#content").css('padding-top', Number(topPx)-80 + 'px');
+		}
+		//}
+	</script>
 
 </body>
 </html>

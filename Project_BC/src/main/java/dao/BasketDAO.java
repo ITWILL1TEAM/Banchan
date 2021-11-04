@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vo.BasketBean;
+import vo.ProductImg;
 
 import static db.JdbcUtil.*;
 
@@ -89,7 +90,9 @@ public class BasketDAO {
         
         PreparedStatement pstmt = null;
         PreparedStatement pstmt2 = null;
+        PreparedStatement pstmt3 = null;
         ResultSet rs = null;
+        ResultSet rs2 = null;
         
         int idx = 1; // 새 글 번호를 저장할 변수 선언
 		
@@ -109,30 +112,30 @@ public class BasketDAO {
         	
         	// product_img는 product_img 테이블에서 product_num으로 조회해서 제품번호에 맞는 이미지 찾아서 
         	// 변수에 저장하고 밑에 set하기
-//        	String product_img = null;
-//        	String sql = "SELECT product_original_img FROM product_img WHERE product_num=?";
-//        	pstmt = con.prepareStatement(sql);
-//        	pstmt.setInt(1, basket.getProduct_num());
-//        	rs = pstmt.executeQuery();
-//        	
-//        	if(rs.next()) {
-//        		product_img = rs.getString(1);
-//        	}
+        	String product_img = null;
+        	String sql2 = "SELECT product_img FROM product_img WHERE product_num=? AND product_img_location=1";
+        	pstmt2 = con.prepareStatement(sql);
+        	pstmt2.setInt(1, basket.getProduct_num());
+        	rs2 = pstmt2.executeQuery();
+        	
+        	if(rs2.next()) {
+        		product_img = rs2.getString("product_img");
+        	}
         	
         
             // 데이터 추가 작업을 위한 INSERT 작업 수행
-            String sql2 = "INSERT INTO basket VALUES (?,?,?,?,?,?,?,?,?)";
-            pstmt2 = con.prepareStatement(sql2);
+            String sql3 = "INSERT INTO basket VALUES (?,?,?,?,?,?,?,?,?)";
+            pstmt3 = con.prepareStatement(sql3);
             
-            pstmt2.setInt(1, idx); // 인덱스
-            pstmt2.setString(2, basket.getCutomer_id());		//		고객 아이디
-            pstmt2.setInt(3, basket.getProduct_num());   	//		재품 번호
-            pstmt2.setString(4, basket.getProduct_name());	//		제품명
-            pstmt2.setInt(5, basket.getProduct_price());  	// 		재품 가격
-            pstmt2.setInt(6, basket.getProduct_qty());		// 		주문 수량
-            pstmt2.setInt(7, basket.getProduct_discount());  //		상품 할인률
-            pstmt2.setString(8, basket.getProduct_img()); 	//		제품 이미지
-            pstmt2.setString(9, basket.getSname());			// 		회사명
+            pstmt3.setInt(1, idx); // 인덱스
+            pstmt3.setString(2, basket.getCutomer_id());		//		고객 아이디
+            pstmt3.setInt(3, basket.getProduct_num());   	//		재품 번호
+            pstmt3.setString(4, basket.getProduct_name());	//		제품명
+            pstmt3.setInt(5, basket.getProduct_price());  	// 		재품 가격
+            pstmt3.setInt(6, basket.getProduct_qty());		// 		주문 수량
+            pstmt3.setInt(7, basket.getProduct_discount());  //		상품 할인률
+            pstmt3.setString(8, product_img); 	//		제품 이미지
+            pstmt3.setString(9, basket.getSname());			// 		회사명
                
             // INSERT 구문 실행 및 결과 리턴받기
             insertCount = pstmt2.executeUpdate();
@@ -143,8 +146,10 @@ public class BasketDAO {
         } finally {
         	// 자원 반환
         	close(rs);
+        	close(rs2);
             close(pstmt);
             close(pstmt2);
+            close(pstmt3);
         }
         
         return insertCount;
@@ -282,6 +287,45 @@ public class BasketDAO {
         }
 		
 		return deleteCount;
+	}
+
+	public ArrayList<ProductImg> selectThumbnail(int product_num) {
+		ArrayList<ProductImg> thumbnail = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = getConnection();
+
+			String sql = "SELECT * FROM product_img WHERE product_num=? AND product_img_location=1";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+
+			rs = pstmt.executeQuery();
+			
+			thumbnail = new ArrayList<ProductImg>();
+
+			while (rs.next()) {
+				// 조회된 상세 정보를 BoardBean 객체에 저장
+				ProductImg productImg = new ProductImg();
+				
+				 productImg.setProduct_original_img(rs.getString("product_original_img"));
+				 productImg.setProduct_img(rs.getString("product_img"));
+				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
+				 
+				 thumbnail.add(productImg);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 반환
+			close(rs);
+			close(pstmt);
+		}
+
+		return thumbnail;
 	}
 	
 }
