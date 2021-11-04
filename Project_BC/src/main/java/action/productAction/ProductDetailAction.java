@@ -20,9 +20,6 @@ public class ProductDetailAction implements Action {
 		
 		// request 객체를 통해 전달받은 파라미터(product_num) 가져오기
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
-//		int product_num = 2;
-
-	
 		
 		System.out.println("detail"+product_num);
 		// BoardDetailService 클래스 인스턴스 생성 후 
@@ -39,6 +36,8 @@ public class ProductDetailAction implements Action {
 		request.setAttribute("article", article);
 		request.setAttribute("productImg", productImg);
 		request.setAttribute("productDtlImg", productDtlImg);
+		System.out.println(article);
+		
 		// ActionForward 객체를 생성하여 /product/productDetail.jsp 페이지로 포워딩
 		// -> request 객체를 유지해야하므로 Dispatcher 방식으로 포워딩
 		forward = new ActionForward();

@@ -32,12 +32,12 @@
 </script>
 <script type="text/javascript" charset="UTF-8"
     src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-
+<!-- 프로덕트넘 없을경우 나오는 페이지 처리하기 -->
 
 <script type="text/javascript">
 	var qty;
 	var price = <%=price %>;
-	var max_qty = <%=article.getProduct_stock() %>
+	var max_qty = <%=article.getProduct_stock() %>;
 	var total_amt;
 	$(document).ready(function() {
 		
@@ -238,7 +238,7 @@
 						<div class="gd_amt">
 							<dl>
 								<dt>총 제품금액</dt>
-								<dd><b id="totalAmt"><fmt:formatNumber value="<%=price %>" pattern="#,###"/></b><em>원</em></dd>
+								<dd><b id="totalAmt"><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b><em>원</em></dd>
 							</dl>
 						</div>
 						<!-- //AMOUNT -->

@@ -6,7 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
-// 	ArrayList<ProductImg> thumbnail= (ArrayList<ProductImg>)request.getAttribute("thumbnail");
 	int total_amt = (int)request.getAttribute("total_amt");
 	int listCount = cartList.size();
 	
@@ -108,13 +107,14 @@
 		}
 	}
 	
+	
 </script>
 </head>
 <body>
     <%@include file="../inc/top.jsp" %>
 
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/odr.css?t=20200406000000" type="text/css">
-	<form action="CartDel.ca" method="post" name="cartForm">
+	<form action="CheckAddress.ca" method="post" name="cartForm">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 	
@@ -172,9 +172,9 @@
 												<span class="ir"><%=cartList.get(i).getProduct_name() %></span>
 											</a>
 										</div>
-										<!-- 판매자명과 상품명 -->
+										<!-- 상품명 -->
 										<div class="txt">
-										<span class="name">[<%=cartList.get(i).getSname() %>] <%=cartList.get(i).getProduct_name() %></span>
+										<span class="name"><%=cartList.get(i).getProduct_name() %></span>
 											<span class="opt"></span>
 		                                    <div class="deli_type_tag"></div>
 										</div>
@@ -236,7 +236,7 @@
 								<span class="deposit" style="display:none">(예정적립금 <span class="thm" id="total_save_amt">0</span>원)</span>
 							</dd>
 						</dl>
-					<button class="sel_date" id="set_order_date_button"  formaction="OrderSheet.or"><em>선택제품 주문</em></button>	
+					<button class="sel_date" id="set_order_date_button" type="submit"><em>선택제품 주문</em></button>	
 					</div><span class="odr_total_caution point">* 쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요.</span>
 					<span class="odr_total_caution">* 결제 금액은 쿠폰 및 적립금 사용, 배송지 추가 여부에 따라 달라질 수 있어요. 결제 화면에서 최종 금액을 확인해 주세요.</span>
 					
@@ -244,9 +244,6 @@
 						<strong class="box_tit">참고해 주세요!</strong>
 						<ul class="list_01">
 							<li>장바구니에 담긴 상품은 30일 동안만 보관 가능해요.</li>
-							<li>배송방법(새벽배송, 일반택배)에 따라 선택 가능한 배송일이 달라질 수 있어요.</li>
-							<li>7데이는 매주 상품이 변경되어, 주차별로 희망 배송일을 선택하실 수 있어요.</li>
-							<li>희망 배송일은 주문일로부터 최대 2주까지 선택 가능할 수 있어요. (기간 한정 제품 제외)</li>
 						</ul>
 					</div>
 				</div>
