@@ -89,7 +89,7 @@ CREATE TABLE `review` (
   `review_score` float NOT NULL,
   `review_date` date NOT NULL,
   PRIMARY KEY (`review_idx`),
-  KEY `rv_pdnum_fk` (`product_num`),https://github.com/ITWILL1TEAM/Banchan/blob/master/bc_db.sql
+  KEY `rv_pdnum_fk` (`product_num`),
   CONSTRAINT `rv_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
