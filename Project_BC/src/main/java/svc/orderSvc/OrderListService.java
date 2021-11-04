@@ -57,7 +57,7 @@ public class OrderListService {
 		close(con);
 		
 		return orderProductList;
-
+	}
 	public ArrayList<OrderBean> getOrderProductList(String id) {
         Connection con = getConnection();
         
