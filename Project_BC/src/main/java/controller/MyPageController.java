@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import action.Action;
 import action.memberAction.AddAddressAction;
+import action.memberAction.MyPageModifyAction;
+import action.memberAction.MypageModifyProAction;
 import action.memberAction.ShowAddressAction;
 import vo.ActionForward;
 
@@ -34,7 +36,7 @@ public class MyPageController extends HttpServlet {
 		if (session.getAttribute("grade")!=null) {
 			grade = (int)session.getAttribute("grade");
 		}else {
-			grade = 5;
+			grade = 3;
 		}
 		System.out.println(grade);
 		if (grade!=3) {
@@ -63,12 +65,27 @@ public class MyPageController extends HttpServlet {
 				forward = new ActionForward();
 				forward.setPath("/myPage/orderCheck.jsp");
 			}else if(command.equals("/Mypage.my")) {
-				forward = new ActionForward();
-				forward.setPath("/myPage/myPage.jsp");
+			    forward = new ActionForward();
+                forward.setPath("/myPage/myPage.jsp");
 			}else if(command.equals("/Mypage2.my")) {
-				forward = new ActionForward();
-				forward.setPath("/myPage/myPage2.jsp");
-			}else if(command.equals("/QnA.my")) {
+			    action = new MyPageModifyAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+				
+			}else if(command.equals("/Mypage3.my")) {
+                action = new MypageModifyProAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
+            }		else if(command.equals("/QnA.my")) {
 				forward = new ActionForward();
 				forward.setPath("/myPage/qNa.jsp");
 			}else if(command.equals("/Delete.my")) {

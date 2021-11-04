@@ -4,13 +4,9 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import static db.JdbcUtil.*;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
-import vo.BasketBean;
 import vo.CustomerBean;
 import vo.MemberBean;
 import vo.SellerBean;
@@ -186,9 +182,8 @@ public class MemberDAO {
 		int grade = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		System.out.println(member.getPassword());
 		try {
-			
 			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
 			String sql = "SELECT id,grade FROM member WHERE id=? AND password=?";
 			pstmt = con.prepareStatement(sql);
@@ -244,4 +239,139 @@ public class MemberDAO {
 		
 		return name;
 	}
-}
+	
+	
+	
+	
+	
+	/////////////////////////////////////////////////////////////////////~~~~~~~~~~~~~~~~
+	
+	
+	
+	
+	
+	
+	   public int updateMember(CustomerBean customer) {
+	        
+	           int updateCount = 0;
+	           
+	           PreparedStatement pstmt = null; 
+	           System.out.println(customer);
+	           try {
+
+	               String sql="UPDATE customer set phone=?, email=? WHERE customer_id=?";
+	        
+	               
+	               pstmt = con.prepareStatement(sql);
+	               pstmt.setString(1, customer.getPhone());
+	               pstmt.setString(2, customer.getEmail());
+	               pstmt.setString(3, customer.getId());
+	               
+	               pstmt.executeUpdate();
+
+	               close(pstmt);   
+	                       
+	               sql="UPDATE member set name=?, password=? WHERE id=?" ;
+	               pstmt = con.prepareStatement(sql);
+	              
+	               pstmt.setString(1, customer.getName());
+	               pstmt.setString(2, customer.getPassword());
+	               pstmt.setString(3, customer.getId());
+
+	               pstmt.executeUpdate();
+	       
+	               
+	           } catch (Exception e) {
+	               e.printStackTrace();
+	           }finally {
+	               //자원 반환
+	               close(pstmt);   
+	           }
+	           return updateCount;
+	           
+	       }
+	   public int updateNonePasswordMember(CustomerBean customer) {
+	       
+           int updateCount = 0;
+               
+               PreparedStatement pstmt = null; 
+               
+               try {
+
+                   String sql="UPDATE customer set phone=?, email=? WHERE customer_id=?";
+                   pstmt = con.prepareStatement(sql);
+                   
+                   pstmt.setString(1, customer.getPhone());
+                   pstmt.setString(2, customer.getEmail());
+                   pstmt.setString(3, customer.getId());
+                   
+                   updateCount = pstmt.executeUpdate();
+
+                   close(pstmt);   
+                           
+                   sql="UPDATE member set name=? WHERE id=?" ;
+                   pstmt = con.prepareStatement(sql);
+                  
+                   pstmt.setString(1, customer.getName());
+                   pstmt.setString(2, customer.getId());
+
+                   updateCount += pstmt.executeUpdate();
+           
+                   
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }finally {
+                   close(pstmt);   
+               }
+               return updateCount;
+	    }
+	
+    public CustomerBean selectCustomerInfo(MemberBean member) {
+        
+        CustomerBean customer = new CustomerBean();
+        
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        
+        try {
+            
+            // 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
+            String sql = "SELECT id,name,password,email,phone FROM customer AS CUS JOIN member AS MEM ON CUS.customer_id = MEM.id WHERE MEM.id = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,member.getId());
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                    
+                customer.setCustomer_id(rs.getString("id"));
+                
+                customer.setName(rs.getString("name"));
+                customer.setPassword(rs.getString("password"));
+                customer.setEmail(rs.getString("email"));
+                customer.setPhone(rs.getString("phone"));
+            }System.out.println(customer);
+            System.out.println("3");
+    
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }finally {
+            //자원 반환
+            close(rs);
+            close(pstmt);
+            
+        }
+        
+        return customer;
+    }
+
+   
+	
+	
+	
+	    
+	    
+	}
+	
+	
+	
+
