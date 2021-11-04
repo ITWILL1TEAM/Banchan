@@ -89,7 +89,7 @@ CREATE TABLE `review` (
   `review_score` float NOT NULL,
   `review_date` date NOT NULL,
   PRIMARY KEY (`review_idx`),
-  KEY `rv_pdnum_fk` (`product_num`),
+  KEY `rv_pdnum_fk` (`product_num`),https://github.com/ITWILL1TEAM/Banchan/blob/master/bc_db.sql
   CONSTRAINT `rv_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -131,7 +131,7 @@ CREATE TABLE `order_product` (
   `order_num` int(11) NOT NULL,
   `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
   `product_num` int(11) NOT NULL,
-  `product_stock` int(11) NOT NULL,
+  `product_qty` int(11) NOT NULL,
   KEY `order_num_product_num_fk_idx` (`order_num`),
   CONSTRAINT `order_num_product_num_fk` FOREIGN KEY (`order_num`) REFERENCES `order_list` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
