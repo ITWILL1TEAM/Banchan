@@ -73,8 +73,8 @@ $(document).ready(function() {
 				<dl>
 					<dt>사용자 총 평점<em>(총 <b><%=listCount%></b>개 고객후기 기준)</em></dt>
 					<dd>
-						<span class="star_rate04"><b class="ir">평점</b><em style='width:<%=avgPercent%>%;'>review_score출력</em></span>
-						<span class="scr"><b><%=String.format("%.1f", score/listCount)%></b>/5<em>점</em></span>
+						<span class="star_rate04"><b class="ir">평점</b><em style='width:<%=avgScore * 10 * 2%>%;'>review_score출력</em></span>
+						<span class="scr"><b><%=String.format("%.1f", avgScore)%></b>/5<em>점</em></span>
 					</dd>
 				</dl>
 			</div>
