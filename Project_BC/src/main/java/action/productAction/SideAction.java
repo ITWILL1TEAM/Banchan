@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import action.Action;
 import svc.productSvc.SideService;
 import vo.ActionForward;
+import vo.BoardBean;
 import vo.Productbean;
 
 public class SideAction implements Action {
@@ -21,7 +22,7 @@ public class SideAction implements Action {
 		String category = request.getParameter("category");
 		
 		SideService service = new SideService();
-		ArrayList<Productbean> sideList = service.isSide(category);
+		ArrayList<BoardBean> sideList = service.isSide(category);
 		
 		request.setAttribute("sideList", sideList);
 		

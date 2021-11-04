@@ -15,12 +15,9 @@ public class CustomerBean extends MemberBean {
 	private String customer_id;
 	private String phone;
 	private String email;
-	private String recommend_id;
-	private int personal_data;
-	
-	
-	
-	
+    private String recommend_id;
+    private int personal_data;
+    
 	
 	public CustomerBean() {}
 	
@@ -74,6 +71,14 @@ public class CustomerBean extends MemberBean {
 	public void setPersonal_data(int personal_data) {
 		this.personal_data = personal_data;
 	}
+
+
+
+    @Override
+    public String toString() {
+        return "CustomerBean [id=" + id + ", phone=" + phone + ", email=" + email + ", password="
+                + password + ", recommend_id=" + recommend_id + ", personal_data=" + personal_data + "]";
+    }
 	
 	
 	

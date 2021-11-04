@@ -23,9 +23,7 @@ int ListCount = pageInfo.getListCount();
 
 <body>
  <%@include file="../inc/dashBoard_top.jsp" %>
-
-
-
+ 
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -92,7 +90,7 @@ int ListCount = pageInfo.getListCount();
                                 </table>
                                 <%}%>
                             </div>
-                           <a href="AddProduct.sc?seller_id=<%=request.getParameter("seller_id") %>" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a>
+                           <a href="AddProduct.sc" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">글쓰기</a>
                         </div>
                     </div>
                 </main>

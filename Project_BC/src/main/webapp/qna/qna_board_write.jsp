@@ -42,7 +42,7 @@
    <!-- 게시판 등록 -->
    <section id="writeForm">
       <h1>게시판 글 등록</h1>
-      <form action="QnaWritePro.qa" method="post" enctype="multipart/form-data" name="boardForm">
+      <form action="QnaWritePro.qa" method="post"  name="boardForm">
       <!-- 파일 업로드 기능을 사용하려면 cos.jar 라이브러리 등록 필수 -->
          <table>
          <tr>

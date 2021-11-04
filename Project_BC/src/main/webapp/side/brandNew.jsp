@@ -1,11 +1,11 @@
 
-<%@page import="vo.Productbean"%>
+<%@page import="vo.BoardBean"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    ArrayList<Productbean> brandNewList = (ArrayList<Productbean>)request.getAttribute("brandNewList");
+    ArrayList<BoardBean> brandNewList = (ArrayList<BoardBean>)request.getAttribute("brandNewList");
     %>
 <!DOCTYPE html>
 <html>
@@ -70,7 +70,7 @@
              
             
             <%
-                  String productImgName = brandNewList.get(i).getProduct_name()+"0101";
+                  String productImgName = brandNewList.get(i).getProduct_name();
                   int discountPrice = (int)(brandNewList.get(i).getProduct_price()*(100-brandNewList.get(i).getProduct_discount())/100); 
                   int price =  brandNewList.get(i).getProduct_price();
                   int discount = brandNewList.get(i).getProduct_discount(); 
@@ -87,7 +87,7 @@
                             </div>
                             <a href=""
                                 onclick="">
-                                 <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>.png"
+                                 <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png"
                                 width="296" height="296"
                                 alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)"
                                 ><span

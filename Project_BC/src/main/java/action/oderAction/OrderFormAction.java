@@ -41,7 +41,12 @@ public class OrderFormAction implements Action {
 			
 		} else {
 		
-		String[] nums = request.getParameterValues("cart_checkbox");// 체크박스 항목에서 넘값
+		System.out.println((String[])request.getAttribute("nums"));
+		String[] nums = request.getParameterValues("nums");// 체크박스 항목에서 넘값
+		System.out.println(request.getParameterValues("nums"));
+		System.out.println(request.getAttribute("nums"));
+		
+		
 		
 		for(String num : nums) {
 			System.out.println("액션에서의 : "+num);

@@ -1,6 +1,7 @@
 package action.productAction;
 
 import java.io.PrintWriter;
+
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import svc.productSvc.BrandNewService;
 import vo.ActionForward;
-import vo.Productbean;
+import vo.BoardBean;
 
 public class BrandNewAction implements Action {
 
@@ -19,7 +20,7 @@ public class BrandNewAction implements Action {
 		ActionForward forward = null;
 		
 		BrandNewService service = new BrandNewService();
-		ArrayList<Productbean> brandNewList = service.isBrandNew();
+		ArrayList<BoardBean> brandNewList = service.isBrandNew();
 		
 		request.setAttribute("brandNewList", brandNewList);
 		

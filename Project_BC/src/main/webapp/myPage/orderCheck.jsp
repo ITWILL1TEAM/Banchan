@@ -1,6 +1,14 @@
+<%@page import="vo.OrderBean"%>
+<%@page import="vo.orderProductBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+ArrayList<OrderBean> orderCusList = (ArrayList<OrderBean>)request.getAttribute("orderCusList");
+String customer_name = (String)request.getAttribute("customer_name");
+
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -66,11 +74,11 @@
 			<div class="mys_state">
 				<dl>
 					<dt>입금대기중</dt>
-					<dd><em>0</em>건</dd>
+					<dd><em><%=orderCusList.size() %></em>건</dd>
 				</dl>
 				<dl>
 					<dt class="dvr">배송중</dt>
-					<dd><em>0</em>건</dd>
+					<dd><em><%=orderCusList.size() %></em>건</dd>
 				</dl>
 			</div>
 
@@ -78,10 +86,22 @@
 	<div class="txt" id="guide_text"><ul><li>최대 6개월 이내의 주문/배송 내역이 확인됩니다.</li></ul></div>	
 	
 	<div class="show_calendar" id="show_calendar"></div>
-</div>
+</div>		
+			<%if(orderCusList==null){ %>
 			<div class="mys_none">
 				<span class="txt">주문 내역이 없습니다.</span>
 			</div>
+			<%}else{ %>
+				<div>
+					<table>
+						<tr>
+							<th>주문번호</th>
+						</tr>
+						<%for(int i = 0;i <orderCusList.size();i++){ %>
+						<%} %>
+					</table>
+				</div>
+			<%} %>
 			<div class="mys_step">
 				<h4><b>주문/배송 단계</b> 고객님의 주문이 정상적으로 진행 중인지 꼭 확인해주세요.</h4>
 				<ul class="col5">

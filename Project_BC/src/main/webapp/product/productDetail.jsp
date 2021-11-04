@@ -8,7 +8,7 @@
 	BoardBean article = (BoardBean)request.getAttribute("article");
     ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
 	String id = (String)session.getAttribute("sId");
-	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
+	int price = (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100;
 	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
 	int reviewCount = (Integer)request.getAttribute("reviewCount");
 	double avgScore = (Double)request.getAttribute("avgScore");
