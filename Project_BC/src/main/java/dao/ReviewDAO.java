@@ -165,6 +165,49 @@ public class ReviewDAO {
 			
 			return reviewList;
 		}
+
+		public int updateScore(ReviewBean review) {
+			System.out.println("updateScore");
+			int updateCount = 0;
+			PreparedStatement pstmt = null;
+			PreparedStatement pstmt2 = null;
+			ResultSet rs = null;
+			
+			try {
+				
+				// 글 등록 작업을 위한 INSERT 작업 수행
+				// => 등록일(board_date)은 now() 함수 활용
+				String sql = "select avg(review_score) from review where product_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, review.getProduct_num());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					sql = "UPDATE product set product_review_score=? where product_num=?";
+					System.out.println("update쿼리 실핵!");
+					pstmt2 = con.prepareStatement(sql);
+					pstmt2.setDouble(1, rs.getDouble(1));
+					pstmt2.setInt(2, review.getProduct_num());
+					updateCount = pstmt2.executeUpdate();
+				}
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("updateCount() 오류 - " + e.getMessage());
+			} finally {
+				
+				close(rs);
+				close(pstmt);
+				close(pstmt2);
+				
+				
+			}
+			
+			return updateCount;
+		}
+
+		
 		
 		
 		
