@@ -183,6 +183,7 @@ public class BoardDAO {
 	}
 
 	public BoardBean selectArticle(int product_num) {
+		System.out.println("BoardDAO - selectArticle()");
 		BoardBean article = null;
 
 		PreparedStatement pstmt = null;
@@ -200,6 +201,7 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				
 				// 조회된 상세 정보를 BoardBean 객체에 저장
 				article = new BoardBean();
 
@@ -215,6 +217,7 @@ public class BoardDAO {
 				article.setProduct_expiration_date(rs.getString("product_expiration_date"));
 				article.setProduct_handling(rs.getString("product_handling"));
 				article.setProduct_material(rs.getString("product_material"));
+				article.setProduct_review_score(rs.getDouble("product_review_score"));
 			}
 
 		} catch (Exception e) {

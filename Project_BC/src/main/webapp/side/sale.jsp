@@ -1,11 +1,11 @@
 
-<%@page import="vo.Productbean"%>
+<%@page import="vo.BoardBean"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    ArrayList<Productbean> saleList = (ArrayList<Productbean>)request.getAttribute("saleList");
+    ArrayList<BoardBean> saleList = (ArrayList<BoardBean>)request.getAttribute("saleList");
     %>
 <!DOCTYPE html>
 <html>

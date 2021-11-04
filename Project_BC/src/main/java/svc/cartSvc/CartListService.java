@@ -5,9 +5,11 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import dao.AddressDAO;
 import dao.BasketDAO;
 import dao.BoardDAO;
 import vo.BasketBean;
+import vo.CustomerAddress;
 import vo.ProductImg;
 
 public class CartListService {
@@ -29,18 +31,29 @@ public class CartListService {
 		return cartList;
 	}
 
-	public ArrayList<ProductImg> getThumbnail(int product_num) {
+	public boolean getAddressInfo(String customer_id) {
+		System.out.println("CartListService - getAddressInfo()");
+		boolean hasAddress = false;
 		
 		Connection con = getConnection();
+        
+        AddressDAO dao = AddressDAO.getInstance();
+        
+        dao.setConnection(con);
+        
+        ArrayList<CustomerAddress> addressList = dao.selectAddressList(customer_id);
+        
+        System.out.println(addressList.size());
+        
+        if(addressList.size() > 0) {
+        	hasAddress = true;
+        }
+        // 공통작업-4. Connection 객체 반환
+        close(con);
 		
-		BasketDAO dao = BasketDAO.getInstance();
-		dao.setConnection(con);
 		
-		ArrayList<ProductImg> thumbnail = dao.selectThumbnail(product_num);
-		
-		close(con);
-		
-		return thumbnail;
+		return hasAddress;
 	}
+
 
 }

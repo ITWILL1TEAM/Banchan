@@ -83,8 +83,8 @@ int ListCount = pageInfo.getListCount();
                                             <td><%=articleList.get(i).getProduct_date() %></td>
                                             <td>$<%=articleList.get(i).getProduct_price() %></td>
                                             <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                            <%}
                                         </tr>
+                                            <%}
                                         }%>
                                     </tbody>
                                 </table>

@@ -114,12 +114,12 @@ public class BasketDAO {
         	// 변수에 저장하고 밑에 set하기
         	String product_img = null;
         	String sql2 = "SELECT product_img FROM product_img WHERE product_num=? AND product_img_location=1";
-        	pstmt2 = con.prepareStatement(sql);
+        	pstmt2 = con.prepareStatement(sql2);
         	pstmt2.setInt(1, basket.getProduct_num());
         	rs2 = pstmt2.executeQuery();
         	
         	if(rs2.next()) {
-        		product_img = rs2.getString("product_img");
+        		product_img = rs2.getString(1);
         	}
         	
         
@@ -138,7 +138,7 @@ public class BasketDAO {
             pstmt3.setString(9, basket.getSname());			// 		회사명
                
             // INSERT 구문 실행 및 결과 리턴받기
-            insertCount = pstmt2.executeUpdate();
+            insertCount = pstmt3.executeUpdate();
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,6 +164,7 @@ public class BasketDAO {
         ResultSet rs = null;
 		
 		try {
+			
 			String sql = "SELECT * FROM basket WHERE customer_id=? ORDER BY basket_idx DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, customer_id);
@@ -289,43 +290,5 @@ public class BasketDAO {
 		return deleteCount;
 	}
 
-	public ArrayList<ProductImg> selectThumbnail(int product_num) {
-		ArrayList<ProductImg> thumbnail = null;
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			con = getConnection();
-
-			String sql = "SELECT * FROM product_img WHERE product_num=? AND product_img_location=1";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, product_num);
-
-			rs = pstmt.executeQuery();
-			
-			thumbnail = new ArrayList<ProductImg>();
-
-			while (rs.next()) {
-				// 조회된 상세 정보를 BoardBean 객체에 저장
-				ProductImg productImg = new ProductImg();
-				
-				 productImg.setProduct_original_img(rs.getString("product_original_img"));
-				 productImg.setProduct_img(rs.getString("product_img"));
-				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
-				 
-				 thumbnail.add(productImg);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// 자원 반환
-			close(rs);
-			close(pstmt);
-		}
-
-		return thumbnail;
-	}
 	
 }

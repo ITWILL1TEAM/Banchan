@@ -4,12 +4,13 @@ import static db.JdbcUtil.*;
 
 
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import vo.Productbean;
+import vo.BoardBean;
 
 
 public class SideDAO {
@@ -33,24 +34,22 @@ public class SideDAO {
 			}
 			
 			
-			public ArrayList<Productbean> selectCategory(String category) {
+			public ArrayList<BoardBean> selectCategory(String category) {
 				
-				ArrayList<Productbean> sideList = null;
+				ArrayList<BoardBean> sideList = null;
 				
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
-					PreparedStatement pstmt2 = null;
-					ResultSet rs2 = null;
 					
 					try {
 						con = getConnection();
 
 						String sql = "";
-						if(category.equals("전체")) {
-							sql = "select * from product where product_category in('side','meat', 'fish', 'Kimchi', 'Soup');";
+						if(category.equals("all")) {
+							sql = "select * from product where product_category in ('SideDishside','SideDishmeat', 'SideDishfish', 'Kimchikimchi', 'Soupsoup')";
 							pstmt = con.prepareStatement(sql);
 						}else {
-							sql = "select * from product where product_category LIKE ?";
+							sql = "select * from product where product_category=?";
 							pstmt = con.prepareStatement(sql);
 							pstmt.setString(1, category);
 						}
@@ -59,17 +58,17 @@ public class SideDAO {
 						rs = pstmt.executeQuery();
 
 						// 모든 레코드를 저장할 List객체(ArrayList) 생성
-						sideList = new ArrayList<Productbean>();
+						sideList = new ArrayList<BoardBean>();
 
 						// while문을 사용하여 rs객체의 모든 레코드 접근
 						while (rs.next()) {
 							// BoardBean 객체를 생성하여 1개 레코드 정보는 BoardBean 객체에 저장
 							// 답글에 대한 들여쓰기를 위해 re_lev 추가
 							
-							Productbean board = new Productbean();
+							BoardBean board = new BoardBean();
 							board.setProduct_num(rs.getInt("product_num"));
 							board.setProduct_name(rs.getString("product_name"));
-							board.setSname(rs.getString("Sname"));
+							board.setSeller_id(rs.getString("seller_id"));
 							board.setProduct_category(category);
 							board.setProduct_price(rs.getInt("product_price"));
 							board.setProduct_weight(rs.getInt("product_weight"));
@@ -104,9 +103,9 @@ public class SideDAO {
 			
 			
 			
-			public ArrayList<Productbean> selectSale() {
+			public ArrayList<BoardBean> selectSale() {
 				
-				ArrayList<Productbean> saleList = null;
+				ArrayList<BoardBean> saleList = null;
 				
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -124,17 +123,17 @@ public class SideDAO {
 					rs = pstmt.executeQuery();
 
 					// 모든 레코드를 저장할 List객체(ArrayList) 생성
-					saleList = new ArrayList<Productbean>();
+					saleList = new ArrayList<BoardBean>();
 
 					// while문을 사용하여 rs객체의 모든 레코드 접근
 					while (rs.next()) {
 						// BoardBean 객체를 생성하여 1개 레코드 정보는 BoardBean 객체에 저장
 						// 답글에 대한 들여쓰기를 위해 re_lev 추가
 						
-						Productbean board = new Productbean();
+						BoardBean board = new BoardBean();
 						board.setProduct_num(rs.getInt("product_num"));
 						board.setProduct_name(rs.getString("product_name"));
-						board.setSname(rs.getString("Sname"));
+						board.setSeller_id(rs.getString("seller_id"));
 						board.setProduct_category(rs.getString("product_category"));
 						board.setProduct_price(rs.getInt("product_price"));
 						board.setProduct_weight(rs.getInt("product_weight"));
@@ -166,9 +165,9 @@ public class SideDAO {
 			//==========================================================
 
 
-			public ArrayList<Productbean> selectBrandNew() {
+			public ArrayList<BoardBean> selectBrandNew() {
 				
-				ArrayList<Productbean> brandNewList =null;
+				ArrayList<BoardBean> brandNewList =null;
 				
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -185,17 +184,17 @@ public class SideDAO {
 					rs = pstmt.executeQuery();
 
 					// 모든 레코드를 저장할 List객체(ArrayList) 생성
-					brandNewList = new ArrayList<Productbean>();
+					brandNewList = new ArrayList<BoardBean>();
 
 					// while문을 사용하여 rs객체의 모든 레코드 접근
 					while (rs.next()) {
 						// BoardBean 객체를 생성하여 1개 레코드 정보는 BoardBean 객체에 저장
 						// 답글에 대한 들여쓰기를 위해 re_lev 추가
 						
-						Productbean board = new Productbean();
+						BoardBean board = new BoardBean();
 						board.setProduct_num(rs.getInt("product_num"));
 						board.setProduct_name(rs.getString("product_name"));
-						board.setSname(rs.getString("Sname"));
+						board.setSeller_id(rs.getString("seller_id"));
 						board.setProduct_category(rs.getString("product_category"));
 						board.setProduct_price(rs.getInt("product_price"));
 						board.setProduct_discount(rs.getInt("product_discount"));
@@ -225,9 +224,9 @@ public class SideDAO {
 			//=====================================================
 
 
-			public ArrayList<Productbean> selectBest() {
+			public ArrayList<BoardBean> selectBest() {
 				
-				ArrayList<Productbean> bestList = null;
+				ArrayList<BoardBean> bestList = null;
 				
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -244,17 +243,17 @@ public class SideDAO {
 					rs = pstmt.executeQuery();
 
 					// 모든 레코드를 저장할 List객체(ArrayList) 생성
-					bestList = new ArrayList<Productbean>();
+					bestList = new ArrayList<BoardBean>();
 
 					// while문을 사용하여 rs객체의 모든 레코드 접근
 					while (rs.next()) {
 						// BoardBean 객체를 생성하여 1개 레코드 정보는 BoardBean 객체에 저장
 						// 답글에 대한 들여쓰기를 위해 re_lev 추가
 						
-						Productbean board = new Productbean();
+						BoardBean board = new BoardBean();
 						board.setProduct_num(rs.getInt("product_num"));
 						board.setProduct_name(rs.getString("product_name"));
-						board.setSname(rs.getString("Sname"));
+						board.setSeller_id(rs.getString("seller_id"));
 						board.setProduct_category(rs.getString("product_category"));
 						board.setProduct_price(rs.getInt("product_price"));
 						board.setProduct_discount(rs.getInt("product_discount"));

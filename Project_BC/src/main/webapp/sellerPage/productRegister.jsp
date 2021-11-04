@@ -43,8 +43,8 @@ $(document).ready(function () {
 function category(e){
 	
 	var sideDish = ["side","meat","fish"];
-	var soup=["Soup"];
-	var kimchi=["Kimchi"];
+	var soup=["soup"];
+	var kimchi=["kimchi"];
 	
 	var target = document.getElementById("select");
 

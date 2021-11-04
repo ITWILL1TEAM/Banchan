@@ -17,8 +17,15 @@ public class BoardBean {
     private String product_expiration_date;// 제품 유통기한
     private String product_handling; // 제품 보관방법
     private String product_material;//  제품 원재료명 및 함량.
+    private double product_review_score; // 리뷰 평점
     
-    public int getProduct_num() {
+    public double getProduct_review_score() {
+		return product_review_score;
+	}
+	public void setProduct_review_score(double product_review_score) {
+		this.product_review_score = product_review_score;
+	}
+	public int getProduct_num() {
         return product_num;
     }
     public void setProduct_num(int product_num) {
