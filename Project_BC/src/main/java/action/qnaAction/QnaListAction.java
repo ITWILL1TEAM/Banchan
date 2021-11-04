@@ -54,7 +54,7 @@ public class QnaListAction implements Action {
 		}
 		
 		// 계산된 페이지 정보를 PageInfo 객체에 저장
-		PageInfo pageInfo = new PageInfo(page, maxPage, startPage, endPage, listCount);
+		PageInfo pageInfo = new PageInfo(0,0,0,0,listCount);
 		
 		// request 객체에 PageInfo 객체와 ArrayList<BoardBean> 객체 저장
 		// => setAttribute() 메서드 사용
