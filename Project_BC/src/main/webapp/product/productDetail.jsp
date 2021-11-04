@@ -9,7 +9,7 @@
     ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() - (article.getProduct_price() * article.getProduct_discount());
-	
+	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
 	
 	
 %>
@@ -419,14 +419,11 @@
 					<div class="gd_detail">
 						<div align="center">
 						
-						<%for(int i=0;i<productImg.size();i++){
-						if(productImg.get(i).getProduct_img_location()==2){%>
+						<%for(int i = 0; i < productDtlImg.size(); i++){%>
    
-							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png"/>
+							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productDtlImg.get(i).getProduct_img()%>.png"/>
 							
-							
-							 <%}
-							 }%>
+						<%}%>
     
    
 							

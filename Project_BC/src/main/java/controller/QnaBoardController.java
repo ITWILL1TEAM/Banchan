@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.QnaDeleteProAction;
-import action.QnaDetailAction;
-import action.QnaListAction;
-import action.QnaModifyFormAction;
-import action.QnaModifyProAction;
-import action.QnaReplyFormAction;
-import action.QnaReplyProAction;
-import action.QnaWriteProAction;
+import action.qnaAction.QnaDeleteProAction;
+import action.qnaAction.QnaDetailAction;
+import action.qnaAction.QnaListAction;
+import action.qnaAction.QnaModifyFormAction;
+import action.qnaAction.QnaModifyProAction;
+import action.qnaAction.QnaReplyFormAction;
+import action.qnaAction.QnaReplyProAction;
+import action.qnaAction.QnaWriteProAction;
 import vo.ActionForward;
 
 @WebServlet("*.qa")
