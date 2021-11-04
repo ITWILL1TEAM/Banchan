@@ -108,23 +108,24 @@ CREATE TABLE basket(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-CREATE TABLE `order` (
+CREATE TABLE `order_list` (
   `order_num` int(11) NOT NULL,
   `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
-  `order_roadAddress` varchar(50) COLLATE utf8_bin NOT NULL,
-  `order_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
-  `order_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL,
-  `phone` varchar(45) COLLATE utf8_bin NOT NULL,
+  `shipping_name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `shipping_phone` varchar(45) COLLATE utf8_bin NOT NULL,
+  `shipping_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
+  `shipping_address` varchar(50) COLLATE utf8_bin NOT NULL,
+  `shipping_memo` varchar(1000) COLLATE utf8_bin,  
   `order_price` int(11) NOT NULL,
-  `bank_name` varchar(10) COLLATE utf8_bin NOT NULL,
-  `card_num` varchar(20) COLLATE utf8_bin NOT NULL,
-  `card_validity` varchar(5) COLLATE utf8_bin NOT NULL,
-  `card_cvc` int(11) NOT NULL,
-  `order_check` int(11) NOT NULL,
+  `pay_method` varchar(50) COLLATE utf8_bin NOT NULL,
+  `order_date` date NOT NULL,
+  `order_status` varchar(45) COLLATE utf8_bin NOT NULL,
+  `trans_num` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`order_num`),
   KEY `customer_id_order_fk` (`customer_id`),
   CONSTRAINT `customer_id_order_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 CREATE TABLE `order_product` (
   `order_num` int(11) NOT NULL,
