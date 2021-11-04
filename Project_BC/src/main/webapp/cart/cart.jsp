@@ -233,6 +233,7 @@
 							<dt><span class="icon equal">계산결과</span>주문 합계금액</dt>
 							<dd>
 								<span class="thm" id="total_price"><fmt:formatNumber value="<%=total_amt%>" pattern="#,###"/></span><em>원</em>
+								<input type="hidden" name="total_amt" value="<%=total_amt%>"/>
 								<span class="deposit" style="display:none">(예정적립금 <span class="thm" id="total_save_amt">0</span>원)</span>
 							</dd>
 						</dl>
