@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.cartAction.AddCartAction;
+import action.cartAction.CartAddAction;
 import action.cartAction.CartListAction;
 import action.productAction.BoardListAction;
 import action.productAction.BoardWriteProAction;

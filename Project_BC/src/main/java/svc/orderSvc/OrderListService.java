@@ -1,4 +1,4 @@
-package svc.oderSvc;
+package svc.orderSvc;
 import static db.JdbcUtil.*;
 
 import java.sql.Connection;

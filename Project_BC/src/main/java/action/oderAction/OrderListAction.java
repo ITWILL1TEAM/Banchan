@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import action.Action;
-import svc.oderSvc.OrderFormService;
-import svc.oderSvc.OrderListService;
+import svc.orderSvc.OrderFormService;
+import svc.orderSvc.OrderListService;
 import vo.ActionForward;
 import vo.BasketBean;
 import vo.CustomerInfo;

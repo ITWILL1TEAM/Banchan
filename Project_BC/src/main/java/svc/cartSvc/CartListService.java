@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.BasketDAO;
+import dao.BoardDAO;
 import vo.BasketBean;
+import vo.ProductImg;
 
 public class CartListService {
 
@@ -25,6 +27,20 @@ public class CartListService {
 		close(con);
 		
 		return cartList;
+	}
+
+	public ArrayList<ProductImg> getThumbnail(int product_num) {
+		
+		Connection con = getConnection();
+		
+		BasketDAO dao = BasketDAO.getInstance();
+		dao.setConnection(con);
+		
+		ArrayList<ProductImg> thumbnail = dao.selectThumbnail(product_num);
+		
+		close(con);
+		
+		return thumbnail;
 	}
 
 }

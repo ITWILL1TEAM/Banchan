@@ -150,12 +150,12 @@
 							</tr>
 						</thead>
 						<tbody>
-						<%for (int i = 0; i < cartList.size(); i++) { %>
-<!-- 								<tr> -->
-<!-- 									<td colspan="6" class="no_prd">장바구니에 담긴 제품이 없습니다.</td> -->
-<!-- 								</tr>	 -->
-								
-						
+						<%if(listCount == 0) { %>
+								<tr>
+									<td colspan="6" class="no_prd">장바구니에 담긴 제품이 없습니다.</td>
+								</tr>	
+						<% } else {
+							for (int i = 0; i < listCount; i++) {  %>
 								<tr>
 									<!-- 체크박스 -->
 									<td class="chck">
@@ -165,7 +165,8 @@
 									<!-- 사진 -->
 									<td class="info">
 										<div class="img">
-											<a href="Product.do?product_num=<%=cartList.get(i).getProduct_num() %>" name="go_detail_button" data-cart-seq="4" ><img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
+											<a href="Product.do?product_num=<%=cartList.get(i).getProduct_num() %>" name="go_detail_button" data-cart-seq="4" >
+												<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/764/200721000025764.jpg" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
 												<span class="ir"><%=cartList.get(i).getProduct_name() %></span>
 											</a>
 										</div>
@@ -201,7 +202,7 @@
 									</td>
 								</tr>
 											
-						<%
+						<%	}
 						}
 						%>
 						</tbody>

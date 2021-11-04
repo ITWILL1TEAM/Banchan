@@ -33,12 +33,12 @@ public class ProductDetailAction implements Action {
 		// -> 파라미터 : 글번호(board_num)  리턴타입 : Boardbean(article)
 		BoardBean article = service.getArticle(product_num);
 		ArrayList<ProductImg> productImg= service.getArticleImg(product_num);
-
+		ArrayList<ProductImg> productDtlImg = service.getDetailImg(product_num);
 		
 		// 다음 페이지로 전달하기 위한 객체를(article, page) request 객체에 저장
 		request.setAttribute("article", article);
 		request.setAttribute("productImg", productImg);
-		
+		request.setAttribute("productDtlImg", productDtlImg);
 		// ActionForward 객체를 생성하여 /product/productDetail.jsp 페이지로 포워딩
 		// -> request 객체를 유지해야하므로 Dispatcher 방식으로 포워딩
 		forward = new ActionForward();

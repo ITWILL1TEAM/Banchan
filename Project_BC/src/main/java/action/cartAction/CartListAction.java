@@ -10,6 +10,7 @@ import action.Action;
 import svc.cartSvc.CartListService;
 import vo.ActionForward;
 import vo.BasketBean;
+import vo.ProductImg;
 
 public class CartListAction implements Action {
 
@@ -22,10 +23,12 @@ public class CartListAction implements Action {
         
         // 세션으로 커스터머 아이디 받아오기
         HttpSession session = request.getSession();
-        String customer_id = (String)session.getAttribute("sId");        
+        String customer_id = (String)session.getAttribute("sId");  
+        int product_num = Integer.parseInt((String) request.getAttribute("product_num"));
         
         CartListService cart = new CartListService();
         ArrayList<BasketBean> cartList = cart.getCartList(customer_id);
+        ArrayList<ProductImg> thumbnail= cart.getThumbnail(product_num);
         
         // 장바구니에 있는 제품의 총 가격을 합산할 변수
         int total_amt = 0;
@@ -35,6 +38,7 @@ public class CartListAction implements Action {
         
         request.setAttribute("cartList", cartList);
         request.setAttribute("total_amt", total_amt);
+        request.setAttribute("thumbnail", thumbnail);
 
         forward = new ActionForward();
         forward.setPath("/cart/cart.jsp");

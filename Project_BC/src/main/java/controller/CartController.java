@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.cartAction.AddCartAction;
+import action.cartAction.CartAddAction;
 import action.cartAction.CartDeleteAction;
 import action.cartAction.CartListAction;
 import action.cartAction.CartUpdateAction;
@@ -39,7 +39,7 @@ public class CartController extends HttpServlet {
 			
 		if (command.equals("/AddCart.ca")) {
 			// 장바구니 추가 
-			action = new AddCartAction();
+			action = new CartAddAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -99,5 +99,4 @@ public class CartController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-
 }

@@ -1,4 +1,4 @@
-package svc;
+package svc.orderSvc;
 
 import static db.JdbcUtil.close;
 import static db.JdbcUtil.getConnection;
