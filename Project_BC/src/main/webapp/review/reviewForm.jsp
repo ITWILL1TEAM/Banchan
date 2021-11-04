@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+	int product_num = Integer.parseInt(request.getParameter("product_num"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,9 +94,9 @@ function setStar(point) {
 
 	<form action="<%=request.getContextPath() %>/ReviewWritePro.re" method="post" enctype="multipart/form-data" name="submitForm">
 	
-	<input type="hidden" name="review_id" value="kang1234"/>
+	<input type="hidden" name="review_id" value="<%=customer_id%>"/>
 
-	<input type="hidden" name="product_num" value="2"/>
+	<input type="hidden" name="product_num" value="<%=product_num%>"/>
 	<input type="hidden" name="review_score" value=""/>
 	
 
