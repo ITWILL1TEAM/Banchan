@@ -133,7 +133,7 @@ CREATE TABLE `order_product` (
   `product_num` int(11) NOT NULL,
   `product_stock` int(11) NOT NULL,
   KEY `order_num_product_num_fk_idx` (`order_num`),
-  CONSTRAINT `order_num_product_num_fk` FOREIGN KEY (`order_num`) REFERENCES `order` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `order_num_product_num_fk` FOREIGN KEY (`order_num`) REFERENCES `order_list` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `qna` (
