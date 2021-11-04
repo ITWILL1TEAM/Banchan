@@ -437,7 +437,7 @@ public class OrderDAO {
 				OrderBean order = new OrderBean();         
 			      
 				order.setOrder_num(rs.getInt("order_num"));
-				order.setCustomer_id(rs.getString("customer_id"));
+				order.setOrder_price(rs.getInt("order_price"));
 				order.setOrder_date(rs.getTimestamp("order_date"));
 				order.setOrder_status(rs.getString("order_status"));
 				orderProduct.add(order); 
