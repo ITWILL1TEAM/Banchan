@@ -1,3 +1,4 @@
+<%@page import="vo.NoticeBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.BoardBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,6 +18,12 @@
 <body class="sb-nav-fixed">
  <%
  String sId = (String)session.getAttribute("sId");
+ ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
+ ArrayList<NoticeBean> noticeList = (ArrayList<NoticeBean>)request.getAttribute("noticeList");
+ PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+ int ListCount = pageInfo.getListCount();
+ 
+ 
  %>
   <jsp:include page="../inc/dashBoard_top.jsp"/>
      
@@ -94,41 +101,27 @@
                                     </div>
                                     <div class="card-body">
                                    <table class="table table-striped text-wrap">
-                                        <tr>
+                                        <%  if(noticeList != null){  %>
+                                        <tr>                                        
                                             <th>글번호</th>
                                             <th>제목</th>
                                             <th>내용</th>    
-                                        </tr>                                    
-                                        <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
+                                        <%for(int i = 0; i < noticeList.size(); i++) { %>                                    
+                                        <tr onclick="location.href='NoticeView.ad?notice_num=<%=noticeList.get(i).getNotice_num()%>'">
+                                            <td><%=noticeList.get(i).getNotice_num()%></td>
+                                            <td><%=noticeList.get(i).getNotice_subject()%></td>
+                                            <td><a href="#"><%=noticeList.get(i).getNotice_content()%></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
-                                        </tr>
+                                        <%} %>
                                         </table>
+                                        <%} %>
                                     </div>
                                 </div>
                                 </div> 
                                 
-                                
-                                
                                 <!-- 상품관리. --> 
-                                <%
- ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
-PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-int ListCount = pageInfo.getListCount();
-
-
-%>
+                          
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
