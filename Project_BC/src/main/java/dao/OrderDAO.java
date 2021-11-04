@@ -416,14 +416,14 @@ public class OrderDAO {
 		return orderDetail;
 	}
 	public ArrayList<OrderBean> selectCustomerOrderList(String id) {
-		System.out.println("orderDAO - selectMemberInfo()!");
+		System.out.println("OrderDAO - selectCustomerOrderList()!");
 		ArrayList<OrderBean> orderProduct =null;
 		
 		PreparedStatement pstmt = null;
 	    ResultSet rs = null;
 	    
 	    try {
-			String sql ="select * from order where customer_id=?";
+			String sql ="select * from order_list where customer_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			
@@ -437,13 +437,14 @@ public class OrderDAO {
 				OrderBean order = new OrderBean();         
 			      
 				order.setOrder_num(rs.getInt("order_num"));
-				order.setCustomer_id(rs.getString("customer_id"));
-				
+				order.setOrder_price(rs.getInt("order_price"));
+				order.setOrder_date(rs.getTimestamp("order_date"));
+				order.setOrder_status(rs.getString("order_status"));
 				orderProduct.add(order); 
 			}
 	    
 	    } catch (Exception e) {
-			System.out.println("selectMemberInfo() 오류! - "+e.getMessage());
+			System.out.println("selectCustomerOrderList() 오류! - "+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			close(rs);
