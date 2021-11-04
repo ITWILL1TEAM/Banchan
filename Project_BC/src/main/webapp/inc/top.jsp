@@ -72,7 +72,7 @@
         <!-- 세션에 "id" 속성값이 없을 경우 login, join 버튼 표시 -->
         <li><a id="head_login_a" href="MemberLoginForm.me" onclick='window.open("MemberLoginForm.me","_blank","height=500,width=500, status=yes,toolbar=no,menubar=no,location=no");return false'>로그인</a></li>
         <li><a id="head_login_b" href="MemberJoinForm.me">회원가입</a></li>
-        <li><a href="">고객센터</a></li>   
+        <li><a href="CustCenterMain.co">고객센터</a></li>   
         
         <%}else{
        		 int grade = (Integer)session.getAttribute("grade");
@@ -91,7 +91,7 @@
             %>
                   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li>
             <%  }else if(grade==3){%>
-               <li><a href="Besong.my"> 마이페이지로</a></li>    
+               <li><a href="Mypage.my"> 마이페이지로</a></li>    
             <%  }else{//grade==4
                 //휴면계정 
                 } %>
@@ -103,7 +103,7 @@
                     <ul>
                         <li><a href="" style="padding-right: 30px;"><i
                                 class="ico-my"></i>마이더반찬</a></li>
-                        <li><a href=" " onclick=" " class="link-cart"> <i
+                        <li><a href="Cart.ca" onclick=" " class="link-cart"> <i
                                 class="ico-cart"></i>장바구니 <strong class="cart-count"> 0
                             </strong>
                         </a>
