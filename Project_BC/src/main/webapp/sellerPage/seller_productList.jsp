@@ -23,9 +23,7 @@ int ListCount = pageInfo.getListCount();
 
 <body>
  <%@include file="../inc/dashBoard_top.jsp" %>
-
-
-
+ 
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">

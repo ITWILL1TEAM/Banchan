@@ -35,15 +35,6 @@ public class QnaListAction implements Action {
 		int listCount = service.getListCount();
 		HttpSession session = request.getSession();
 		String seller_id = (String)session.getAttribute("sId");
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		ArrayList<QnaBoardBean> articleList = service.getArticleList(seller_id);		
 	
 		int maxPage = (int)((double)listCount / limit + 0.95);				
