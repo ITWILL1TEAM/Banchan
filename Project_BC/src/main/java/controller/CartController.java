@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.AddCartAction;
-import action.CartListAction;
-import action.CartUpdateAction;
-import action.BoardListAction;
-import action.BoardWriteProAction;
-import action.CartDeleteAction;
-import action.ProductDetailAction;
+import action.cartAction.AddCartAction;
+import action.cartAction.CartDeleteAction;
+import action.cartAction.CartListAction;
+import action.cartAction.CartUpdateAction;
+import action.productAction.BoardListAction;
+import action.productAction.BoardWriteProAction;
+import action.productAction.ProductDetailAction;
 import vo.ActionForward;
 
 

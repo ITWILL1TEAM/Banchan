@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import action.Action;
-import action.AddAddressAction;
-import action.ShowAddressAction;
+import action.memberAction.AddAddressAction;
+import action.memberAction.ShowAddressAction;
 import vo.ActionForward;
 
 

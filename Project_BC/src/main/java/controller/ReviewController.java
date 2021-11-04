@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.BoardListAction;
-import action.BoardWriteProAction;
-import action.ReviewListAction;
-import action.ReviewWriteProAction;
+import action.productAction.BoardListAction;
+import action.productAction.BoardWriteProAction;
+import action.reviewAction.ReviewListAction;
+import action.reviewAction.ReviewWriteProAction;
 import vo.ActionForward;
 
 /**

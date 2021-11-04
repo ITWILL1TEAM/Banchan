@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.MemberLoginProAction;
-import action.MemberLogoutAction;
-import action.SellerJoinProAction;
-import action.customerJoinProAction;
+import action.memberAction.MemberLoginProAction;
+import action.memberAction.MemberLogoutAction;
+import action.memberAction.SellerJoinProAction;
+import action.memberAction.customerJoinProAction;
 import vo.ActionForward;
 
 @WebServlet("*.me")

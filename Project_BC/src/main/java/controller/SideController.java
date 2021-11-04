@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.BestAction;
-import action.BrandNewAction;
-import action.SaleAction;
-import action.SideAction;
+import action.productAction.BestAction;
+import action.productAction.BrandNewAction;
+import action.productAction.SaleAction;
+import action.productAction.SideAction;
 import vo.ActionForward;
 
 @WebServlet("*.side")
