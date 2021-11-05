@@ -8,6 +8,7 @@
 ArrayList<OrderBean> orderCusList = (ArrayList<OrderBean>)request.getAttribute("orderCusList");
 String customer_name = (String)request.getAttribute("customer_name");
 
+
 %>
 <html>
 <head>
@@ -17,8 +18,13 @@ String customer_name = (String)request.getAttribute("customer_name");
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
-<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
+<script type="text/javascript">
+
+function showDetail(order_num) {
+	location.href="./OrderDetail.or?order_num="+order_num;
+}
+
+</script>
 </head>
 <body>
 <%@include file="../inc/top.jsp" %>
@@ -48,7 +54,6 @@ String customer_name = (String)request.getAttribute("customer_name");
 				<dl>
 					<dt style="text-align:left;margin-bottom: 12px">회원정보</dt>
 					<dd><a id="left_11" href="DeliveryLocation.my" onclick="">배송지 관리</a></dd>
-					<!-- <dd><a id="left_12" href="#">주문정보 수신 설정</a></dd> -->
 					
 						<dd><a id="left_13" href="Mypage.my" onclick="">개인정보 수정</a></dd>
 						<dd><a id="left_14" href="Delete.my" onclick="">회원탈퇴</a></dd>
@@ -56,7 +61,6 @@ String customer_name = (String)request.getAttribute("customer_name");
 				</dl>
 			</li>
 		</ul>
-	
 		<dl class="cst">
 			<dt><a href="" onclick="">고객센터</a></dt>
 			<dd><b>1644-0000</b></dd>
@@ -64,8 +68,6 @@ String customer_name = (String)request.getAttribute("customer_name");
 			<dd>평일 08:00~20:00<br>(토/일/공휴일은 휴무)</dd>
 		</dl>
 	</div>
-
-
 		<div id="mys_content" class="sub_cont">
 			<h3 class="tit2">주문배송 조회
 
@@ -96,8 +98,17 @@ String customer_name = (String)request.getAttribute("customer_name");
 					<table>
 						<tr>
 							<th>주문번호</th>
+							<th>결제비용</th>
+							<th>주문일자</th>
+							<th>배송정보</th>
 						</tr>
 						<%for(int i = 0;i <orderCusList.size();i++){ %>
+							<tr onclick="showDetail(<%=orderCusList.get(i).getOrder_num()%>)">
+								<td><%=orderCusList.get(i).getOrder_num() %></td>
+								<td><%=orderCusList.get(i).getOrder_price()%></td>
+								<td><%=orderCusList.get(i).getOrder_date()%></td>
+								<td><%=orderCusList.get(i).getOrder_status()%></td>							
+							</tr>
 						<%} %>
 					</table>
 				</div>
