@@ -7,11 +7,23 @@
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
     ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
+	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100;
-	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
 	int reviewCount = (Integer)request.getAttribute("reviewCount");
+	int starRate = 0;
 	double avgScore = (Double)request.getAttribute("avgScore");
+	boolean isDiscounted = false;
+	
+	if(article.getProduct_discount() > 0) {
+		isDiscounted = true;
+	}
+	
+	if(reviewCount > 0) {
+		starRate = (int)avgScore * 10 * 2;
+	} else {
+		starRate = 0;
+	}
 	
 	
 %>
@@ -174,12 +186,14 @@
 		
 						<!-- SCORE -->
 						<div class="gd_base">
-							<div class="g_scr">
-								<span class="star_rate03"><b class="ir">평점</b><em style="width:<%=avgScore * 10 * 2%>%;"><%=avgScore %></em></span>
-								<span class="scr"><b><%=article.getProduct_review_score() %></b></span>
-								<a href="#gds_cont3" class="rv">(고객후기 <%=reviewCount %>건)</a>
-							</div>
-							
+							<%if(reviewCount > 0) { %>
+								<div class="g_scr">
+									<span class="star_rate03"><b class="ir">평점</b>
+									<em style="width:<%=starRate %>%;"><%=avgScore %></em></span>
+									<span class="scr"><b><%=article.getProduct_review_score() %></b></span>
+									<a href="#gds_cont3" class="rv">(고객후기 <%=reviewCount %>건)</a>
+								</div>
+							<%}%>
 							<div class="g_sns">						
 							</div>
 						</div>
@@ -187,12 +201,23 @@
 									
 						<!-- INFO. -->
 						<div class="gd_info">
-							<dl>
-								<dt>판매가</dt>
-								<dd class="prc">
-									<span class="sale"><b class="price"><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
-								</dd>
-							</dl>
+							<%if(!isDiscounted) { %>
+								<dl>
+									<dt>판매가</dt>
+									<dd class="prc">
+										<span class="sale"><b class="price"><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
+									</dd>
+								</dl>
+							<%} else { %>
+								<div class="g_rate"><b><%=article.getProduct_discount() %></b>%</div>
+								<dl>
+									<dt>판매가</dt>
+									<dd class="prc">
+										<span class="sale"><b><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
+										<span class="nor"><fmt:formatNumber value="<%=article.getProduct_price() %>" pattern="#,###"/>원</span>
+									</dd>
+								</dl>
+							<%} %>
 							<dl>
 								<dt>중량</dt>
 								<dd><%=article.getProduct_weight() %>g</dd>

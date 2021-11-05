@@ -20,6 +20,13 @@
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
 	int listCount = pageInfo.getListCount();
+	int starRate = 0;
+	
+	if(listCount > 0) {
+		starRate = (int)avgScore * 10 * 2;
+	} else {
+		starRate = 0;
+	}
 	
 	
 %>   
@@ -73,8 +80,12 @@ $(document).ready(function() {
 				<dl>
 					<dt>사용자 총 평점<em>(총 <b><%=listCount%></b>개 고객후기 기준)</em></dt>
 					<dd>
-						<span class="star_rate04"><b class="ir">평점</b><em style='width:<%=avgScore * 10 * 2%>%;'>review_score출력</em></span>
-						<span class="scr"><b><%=String.format("%.1f", avgScore)%></b>/5<em>점</em></span>
+						<span class="star_rate04"><b class="ir">평점</b><em style='width:<%=starRate%>%'>review_score출력</em></span>
+							<%if(listCount > 0) { %>
+								<span class="scr"><b><%=avgScore%></b>/5<em>점</em></span>
+							<%} else { %>
+								<span class="scr"><b>0</b>/5<em>점</em></span>
+							<%} %>
 					</dd>
 				</dl>
 			</div>
@@ -202,9 +213,13 @@ $(document).ready(function() {
 				      	}else{
 				      		 %>Next&nbsp;<%
 				      	}
-				}
-				      	%>
-				      
+				} else {%>
+					<div id="evalListBodydiv">   
+			            <!-- REVIEW NONE -->
+			            <div class="g_rv_none">등록된 고객후기가 없습니다.</div>
+			            <!-- //REVIEW NONE -->
+		            </div>
+		      <%} %>
 					</section>
 				</div>
 				<!-- //PAGING -->
