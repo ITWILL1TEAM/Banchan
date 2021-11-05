@@ -11,12 +11,22 @@
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100;
 	int reviewCount = (Integer)request.getAttribute("reviewCount");
+	int starRate = 0;
 	double avgScore = (Double)request.getAttribute("avgScore");
 	boolean isDiscounted = false;
 	
 	if(article.getProduct_discount() > 0) {
 		isDiscounted = true;
 	}
+<<<<<<< HEAD
+	
+	if(reviewCount > 0) {
+		starRate = (int)avgScore * 10 * 2;
+	} else {
+		starRate = 0;
+	}
+=======
+>>>>>>> branch 'Jaehee_Bae' of https://github.com/ITWILL1TEAM/Banchan.git
 	
 	
 %>
@@ -179,12 +189,14 @@
 		
 						<!-- SCORE -->
 						<div class="gd_base">
-							<div class="g_scr">
-								<span class="star_rate03"><b class="ir">평점</b><em style="width:<%=avgScore * 10 * 2%>%;"><%=avgScore %></em></span>
-								<span class="scr"><b><%=article.getProduct_review_score() %></b></span>
-								<a href="#gds_cont3" class="rv">(고객후기 <%=reviewCount %>건)</a>
-							</div>
-							
+							<%if(reviewCount > 0) { %>
+								<div class="g_scr">
+									<span class="star_rate03"><b class="ir">평점</b>
+									<em style="width:<%=starRate %>%;"><%=avgScore %></em></span>
+									<span class="scr"><b><%=article.getProduct_review_score() %></b></span>
+									<a href="#gds_cont3" class="rv">(고객후기 <%=reviewCount %>건)</a>
+								</div>
+							<%}%>
 							<div class="g_sns">						
 							</div>
 						</div>
@@ -200,11 +212,20 @@
 									</dd>
 								</dl>
 							<%} else { %>
+<<<<<<< HEAD
+								<div class="g_rate"><b><%=article.getProduct_discount() %></b>%</div>
+								<dl>
+									<dt>판매가</dt>
+									<dd class="prc">
+										<span class="sale"><b><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
+										<span class="nor"><fmt:formatNumber value="<%=article.getProduct_price() %>" pattern="#,###"/>원</span>
+=======
 								<dl>
 									<dt>판매가</dt>
 									<dd class="prc">
 										<span class="sale"><b><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
 										<span class="nor"><fmt:formatNumber value="<%=article.getProduct_price() %>" pattern="#,###"/></span>
+>>>>>>> branch 'Jaehee_Bae' of https://github.com/ITWILL1TEAM/Banchan.git
 									</dd>
 								</dl>
 							<%} %>
