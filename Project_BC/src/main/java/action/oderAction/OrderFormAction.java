@@ -41,12 +41,13 @@ public class OrderFormAction implements Action {
 			
 		} else {
 		
-//		String product_num = (String) request.getAttribute("product_num");
-//		System.out.println("프로덕트 넘 결과"+product_num);
-//		System.out.println(split(product_num, "/"));
-		String[] nums = {"1","2"};
-//				product_num.split("/");
-//		System.out.println(nums);
+		String product_num = request.getParameter("product_num");
+		System.out.println("넘겨받은 product_num : "+product_num);
+		product_num= product_num.substring(0, product_num.length()-1);
+		System.out.println("프로덕트 넘 결과"+product_num);
+		System.out.println(split(product_num, "/"));
+		String[] nums = product_num.split("/");
+		System.out.println(nums);
 		
 		for(String num : nums) {
 			System.out.println("액션에서의 : "+num);
