@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.cartAction.CartAddAction;
+import action.cartAction.CartCountAction;
 import action.cartAction.CartDeleteAction;
 import action.cartAction.CartListAction;
 import action.cartAction.CartUpdateAction;
@@ -73,6 +74,13 @@ public class CartController extends HttpServlet {
 			}
 		} else if(command.equals("/CheckAddress.ca")) {
 			action = new CheckAddressAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/Cartcount.ca")) {
+			action = new CartCountAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

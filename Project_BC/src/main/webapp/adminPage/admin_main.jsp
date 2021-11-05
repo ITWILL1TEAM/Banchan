@@ -15,6 +15,9 @@
         <link href="CSS/styles.css" rel="stylesheet" />
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+      <!-- Bootstrap CSS -->
+
+      
       
 </head>
 <body class="sb-nav-fixed">

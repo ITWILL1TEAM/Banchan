@@ -290,5 +290,33 @@ public class BasketDAO {
 		return deleteCount;
 	}
 
+	public int CartCount(String customer_id) {
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT COUNT(*) FROM basket WHERE customer_id =?";
+			pstmt= con.prepareStatement(sql);
+			pstmt.setString(1,customer_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        	// 자원 반환
+			close(rs);
+            close(pstmt);
+        }
+		
+		
+		
+		return count;
+	}
+
 	
 }

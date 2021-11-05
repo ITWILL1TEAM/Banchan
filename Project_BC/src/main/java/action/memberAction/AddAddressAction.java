@@ -46,6 +46,14 @@ public class AddAddressAction implements Action {
 			
 		}
 		
+		
+		
+		
+		
+		 forward = new ActionForward();
+	        forward.setPath("/myPage/locationList.jsp");
+	        forward.setRedirect(false);
+		
 		return forward;
 	}
 
