@@ -7,11 +7,16 @@
 <%
 	BoardBean article = (BoardBean)request.getAttribute("article");
     ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
+	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
 	String id = (String)session.getAttribute("sId");
 	int price = (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100;
-	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
 	int reviewCount = (Integer)request.getAttribute("reviewCount");
 	double avgScore = (Double)request.getAttribute("avgScore");
+	boolean isDiscounted = false;
+	
+	if(article.getProduct_discount() > 0) {
+		isDiscounted = true;
+	}
 	
 	
 %>
@@ -187,12 +192,22 @@
 									
 						<!-- INFO. -->
 						<div class="gd_info">
-							<dl>
-								<dt>판매가</dt>
-								<dd class="prc">
-									<span class="sale"><b class="price"><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
-								</dd>
-							</dl>
+							<%if(!isDiscounted) { %>
+								<dl>
+									<dt>판매가</dt>
+									<dd class="prc">
+										<span class="sale"><b class="price"><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
+									</dd>
+								</dl>
+							<%} else { %>
+								<dl>
+									<dt>판매가</dt>
+									<dd class="prc">
+										<span class="sale"><b><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
+										<span class="nor"><fmt:formatNumber value="<%=article.getProduct_price() %>" pattern="#,###"/></span>
+									</dd>
+								</dl>
+							<%} %>
 							<dl>
 								<dt>중량</dt>
 								<dd><%=article.getProduct_weight() %>g</dd>
