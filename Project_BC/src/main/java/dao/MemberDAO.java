@@ -170,7 +170,6 @@ public class MemberDAO {
 			//자원 반환
 			close(rs);
 			close(pstmt);
-			close(con);
 			
 		}
 		
