@@ -128,7 +128,7 @@ ArrayList<orderProductBean> orderProductList = (ArrayList<orderProductBean>)requ
 								
 									<span class="btn">
 										
-										<button type="button" class="qd" id="cnclBtn" onclick="fnOrdAllCncl({ord_no: '202110265263427'});" title="주문 즉시 취소 알림">즉시취소</button>
+										<button type="button" class="qd" id="cnclBtn" onclick="" title="주문 즉시 취소 알림">즉시취소</button>
 										
 									</span>
 								
