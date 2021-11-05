@@ -14,19 +14,19 @@
 	int starRate = 0;
 	double avgScore = (Double)request.getAttribute("avgScore");
 	boolean isDiscounted = false;
+	int product_qty = 1;
 	
 	if(article.getProduct_discount() > 0) {
 		isDiscounted = true;
 	}
-<<<<<<< HEAD
+
 	
 	if(reviewCount > 0) {
 		starRate = (int)avgScore * 10 * 2;
 	} else {
 		starRate = 0;
 	}
-=======
->>>>>>> branch 'Jaehee_Bae' of https://github.com/ITWILL1TEAM/Banchan.git
+
 	
 	
 %>
@@ -53,6 +53,7 @@
 
 <script type="text/javascript">
 	var qty;
+	var product_num = <%=article.getProduct_num() %>;
 	var price = <%=price %>;
 	var max_qty = <%=article.getProduct_stock() %>;
 	var total_amt;
@@ -81,9 +82,9 @@
 			} else {
 				$('input[name=ord_qty]').val(qty);
 			}
+			
 			// 제품 수량에 따른 총 제품 금액 계산
 			total_amt = price * qty;
-// 			alert(total_amt);
 			$('#totalAmt').text(priceToString(total_amt));
 		});
 		
@@ -103,7 +104,12 @@
 			$('#total_amt').val(total_amt);
 		});
 		
+		
 	});
+	
+	function forwardOrderSheet() {
+		location.href = 'OrderSheet.or?product_num=' + product_num + '/&product_qty=' + qty;
+	} 
 	
 	function setQty() {
 		document.pdDetail.ord_qty.value = qty;
@@ -112,6 +118,7 @@
 	function priceToString(price) {
 	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
+	
 
 
 </script>
@@ -212,21 +219,12 @@
 									</dd>
 								</dl>
 							<%} else { %>
-<<<<<<< HEAD
 								<div class="g_rate"><b><%=article.getProduct_discount() %></b>%</div>
 								<dl>
 									<dt>판매가</dt>
 									<dd class="prc">
 										<span class="sale"><b><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
 										<span class="nor"><fmt:formatNumber value="<%=article.getProduct_price() %>" pattern="#,###"/>원</span>
-=======
-								<dl>
-									<dt>판매가</dt>
-									<dd class="prc">
-										<span class="sale"><b><fmt:formatNumber value="<%=price%>" pattern="#,###"/></b>원</span>
-										<span class="nor"><fmt:formatNumber value="<%=article.getProduct_price() %>" pattern="#,###"/></span>
->>>>>>> branch 'Jaehee_Bae' of https://github.com/ITWILL1TEAM/Banchan.git
-									</dd>
 								</dl>
 							<%} %>
 							<dl>
@@ -270,7 +268,7 @@
 						<div class="gd_btns">
 							<!-- TOOLTIP -->
 							<button type="submit" class="cart" id="msg_open_cart" formaction="AddCart.ca" title="장바구니 상품 알림 레이어 열기"><em>장바구니</em></button>
-							<button type="submit" class="buy" formaction="OrderSheet.or" title="주문하기 페이지 이동"><em>바로구매</em></button>
+							<button type="button" class="buy" onclick="forwardOrderSheet()" title="주문하기 페이지 이동"><em>바로구매</em></button>
 						</div>
 						<!-- //BTN. -->
 		
