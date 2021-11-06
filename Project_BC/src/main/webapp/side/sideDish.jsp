@@ -164,7 +164,6 @@
 								<div class="star-wrap">
 									<i class="ico-star"></i><span class="num"><strong>4.8<!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
 								</div>
-								<p class="deliverybox">10/25(월) 새벽 도착 가능</p>
 								<div class="tag-box"></div></a>
 						</div>
 					</div>

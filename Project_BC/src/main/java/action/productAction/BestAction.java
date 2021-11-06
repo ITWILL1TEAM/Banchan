@@ -18,8 +18,10 @@ public class BestAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		
+		String category = request.getParameter("category");
+		
 		BestService service = new BestService();
-		ArrayList<BoardBean> bestList = service.isBest();
+		ArrayList<BoardBean> bestList = service.isBest(category);
 		
 		request.setAttribute("bestList", bestList);
 		

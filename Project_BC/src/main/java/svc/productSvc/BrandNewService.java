@@ -10,7 +10,7 @@ import dao.SideDAO;
 import vo.BoardBean;
 
 public class BrandNewService {
-	public ArrayList<BoardBean> isBrandNew(){
+	public ArrayList<BoardBean> isBrandNew(String category){
 		
 		Connection con = getConnection();
 		
@@ -18,7 +18,7 @@ public class BrandNewService {
 	
 		dao.setConnection(con);
 		
-		ArrayList<BoardBean> brandNewList = dao.selectBrandNew();
+		ArrayList<BoardBean> brandNewList = dao.selectBrandNew(category);
 		
 		close(con);
 		
