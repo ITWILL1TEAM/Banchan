@@ -76,6 +76,7 @@
                   int discount = bestList.get(i).getProduct_discount();
                   int productNum = bestList.get(i).getProduct_num();
                   String product_name = bestList.get(i).getProduct_name();
+                  double product_review_score = bestList.get(i).getProduct_review_score();
             %>   
                 <li >
                     <div class="prd-box">
@@ -106,9 +107,8 @@
                                     </p>
                                 </div>
                                 <div class="star-wrap">
-                                    <i class="ico-star"></i><span class="num"><strong>4.8<!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
+                                    <i class="ico-star"></i><span class="num"><strong><%=product_review_score%><!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
                                 </div>
-                                <p class="deliverybox">10/25(월) 새벽 도착 가능</p>
                                 <div class="tag-box"></div></a>
                         </div>
                     </div>

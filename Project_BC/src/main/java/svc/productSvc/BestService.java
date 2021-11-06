@@ -10,7 +10,7 @@ import dao.SideDAO;
 import vo.BoardBean;
 
 public class BestService {
-	public ArrayList<BoardBean> isBest(){
+	public ArrayList<BoardBean> isBest(String category){
 		
 		Connection con = getConnection();
 		
@@ -18,7 +18,7 @@ public class BestService {
 		
 		dao.setConnection(con);
 		
-		ArrayList<BoardBean> bestList = dao.selectBest();
+		ArrayList<BoardBean> bestList = dao.selectBest(category);
 		
 		close(con);
 		
