@@ -32,13 +32,18 @@ function openWindow() {
 	}
 	
 }	
+	
 
 function getAddress() {
 	var dtl_addr = document.getElementById("dtl_addr").value;
 	location.href = "AddAddress.my?roadAddress="+ roadAddress+"&zonecode="+ zonecode+"&dtl_addr="+ dtl_addr;
+	
 	window.opener.location.reload(true);
+	
 	window.close();
 }
+
+
 </script>
 </head>
 <body>

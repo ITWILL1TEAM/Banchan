@@ -14,8 +14,21 @@
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
 <script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(function() {	
+			$.ajax({
+				type: "GET",
+				url: "Cartcount.ca",				
+				dataType: 'text',
+				success: function(data) {					
+					$('.cart-count').html(data);
+				} 
+			});
+		});
+	
+</script>
 
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
+<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
 
 
 <noscript>
@@ -99,31 +112,19 @@
             
         <%}%>                   
          </ul>
+
+         
+         
+         
                 </div>
                 <div id="myWrap" class="my-wrap">
                     <ul>
                         <li><a href="" style="padding-right: 30px;"><i
                                 class="ico-my"></i>마이더반찬</a></li>
-                        <li><a href="Cart.ca" onclick=" " class="link-cart"> <i
-                                class="ico-cart"></i>장바구니 <strong class="cart-count"> 0
+                        <li><a href="Cart.ca" onclick=" " class="link-cart"> 
+                        <i class="ico-cart"></i>장바구니 <strong class="cart-count"> 0
                             </strong>
-                        </a>
-                            <div class="cart-box">
-                                <p class="title">장바구니에 담겼습니다.</p>
-                                <div class="cart-item">
-                                    <div class="item">
-                                        <dl>
-                                            <dt>
-                                                <a href=" "> <img id="cartBoxGoodsImg" src="">
-                                                </a>
-                                            </dt>
-                                            <dd>
-                                                <p id="cartBoxGoodsNm"></p>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div></li>
+                        </a>                           
                     </ul>
                 </div>
 

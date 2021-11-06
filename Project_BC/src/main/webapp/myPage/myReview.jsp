@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
-
+<script type="text/javascript">
+window.opener.location.reload(true);
+</script>
 </head>
 <body>
 <%@include file="../inc/top.jsp" %>

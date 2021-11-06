@@ -1,5 +1,11 @@
+<%@page import="vo.NoticeBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    ArrayList<NoticeBean> noticeList = (ArrayList<NoticeBean>)request.getAttribute("noticeList");
+    
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +15,9 @@
         <link href="CSS/styles.css" rel="stylesheet" />
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+      <!-- Bootstrap CSS -->
+
+      
       
 </head>
 <body class="sb-nav-fixed">
@@ -88,27 +97,21 @@
                                     </div>
                                     <div class="card-body">
                                    <table class="table table-striped text-wrap">
-                                        <tr>
+                                        <%  if(noticeList != null){  %>
+                                        <tr>                                        
                                             <th>글번호</th>
                                             <th>제목</th>
                                             <th>내용</th>    
-                                        </tr>                                    
-                                        <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
+                                        <%for(int i = 0; i < noticeList.size(); i++) { %>                                    
+                                        <tr onclick="location.href='NoticeView.ad?notice_num=<%=noticeList.get(i).getNotice_num()%>'">
+                                            <td><%=noticeList.get(i).getNotice_num()%></td>
+                                            <td><%=noticeList.get(i).getNotice_subject()%></td>
+                                            <td><a href="#"><%=noticeList.get(i).getNotice_content()%></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
-                                        </tr>
+                                        <%} %>
                                         </table>
+                                        <%} %>
                                     </div>
                                 </div>
                                 </div>                          
@@ -140,7 +143,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                상품관리
+                                판매자관리
                             </div>
                             <div class="card-body">
                                <table id="datatablesSimple">

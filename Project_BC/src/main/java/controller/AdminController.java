@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.*;
+import action.dashBoardAction.DashBoardMainAction;
+import action.dashBoardAction.MemberListAction;
 import action.dashBoardAction.NoticeListAction;
 import action.dashBoardAction.NoticeSelectAction;
 import action.dashBoardAction.NoticeWriteProAction;
@@ -29,17 +31,25 @@ public class AdminController extends HttpServlet {
 		ActionForward forward = null;
 		
 		if(command.equals("/main.ad")) {			
-			forward = new ActionForward();
-			forward.setPath("/adminPage/admin_main.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+			action = new DashBoardMainAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(command.equals("/Chart.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/charts.jsp");
 			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
 		}else if(command.equals("/CustomerInfo.ad")) {			
-			forward = new ActionForward();
-			forward.setPath("/adminPage/customerInfo.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+			action = new MemberListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(command.equals("/SellerInfo.ad")) {			
 			forward = new ActionForward();
 			forward.setPath("/adminPage/sellerInfo.jsp");
