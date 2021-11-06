@@ -40,21 +40,13 @@ public class AddressService {
 	}
 	
 	public ArrayList<CustomerAddress> getAddressList(String id) {
-        // 공통작업-1. Connection Pool 로부터 Connection 객체 가져오기
-//      Connection con = JdbcUtil.getConnection();
         Connection con = getConnection();
         
-        // 공통작업-2. BoardDAO 클래스로부터 BoardDAO 객체 가져오기
         AddressDAO dao = AddressDAO.getInstance();
         
-        // 공통작업-3. BoardDAO 객체에 Connection 객체 전달하기
         dao.setConnection(con);
         
-        // 게시물 목록 조회를 수행하는 selectArticleList() 메서드 호출
-        // => 파라미터 : 페이지번호(page), 게시물 갯수(limit)
-        //    리턴타입 : ArrayList<BoardBean> 객체(articleList)
         ArrayList<CustomerAddress> addressList = dao.selectAddressList(id);
-        // 공통작업-4. Connection 객체 반환
         close(con);
         
         return addressList;

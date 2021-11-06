@@ -75,7 +75,7 @@
 .lnb ul li dd a:focus{color:#f7702e;font-weight:bold;text-decoration:underline;}
 .lnb .cst{overflow:hidden;padding:17px 0 17px 20px;border:1px solid #ddd}
 .lnb .cst dt{margin-bottom:16px;font-size:15px;line-height:20px;color:#333;font-weight:bold;}
-.lnb .cst dt a{display:inline-block;padding-right:15px;background:url("../images/common/arrow_more.gif") no-repeat right 7px;}
+/* .lnb .cst dt a{display:inline-block;padding-right:15px;background:url("../images/common/arrow_more.gif") no-repeat right 7px;} */
 .lnb .cst dd{font-size:13px;line-height:18px;color:#666;}
 .lnb .cst dd b{display:inline-block;margin-bottom:10px;font-family:"Tahoma";font-size:18px;color:#000;}
 .lnb .bn{overflow:hidden;margin-bottom:20px;}

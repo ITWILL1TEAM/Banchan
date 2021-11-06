@@ -7,32 +7,33 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import action.Action;
+import dao.MemberDAO;
 import svc.memberSvc.AddressService;
+import svc.orderSvc.OrderListService;
 import vo.ActionForward;
 import vo.CustomerAddress;
+import vo.OrderBean;
+import vo.orderProductBean;
 
-public class ShowAddressAction implements Action {
+public class OrderCheckAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ShowAddressAction");
+			System.out.println("OrderCheckAction");
         
         ActionForward forward = null;
         
         HttpSession session = request.getSession();
         String customer_id = (String)session.getAttribute("sId");       
-        AddressService service = new AddressService();
-        ArrayList<CustomerAddress> addressList = service.getAddressList(customer_id);
+        OrderListService service = new OrderListService();
+        ArrayList<OrderBean> orderList = service.getOrderProductList(customer_id);
         String customer_name = service.getCustomerName(customer_id);
-        
-        session.setAttribute("addressList", addressList);
-        request.setAttribute("addressList", addressList);
+        request.setAttribute("orderCusList", orderList);
         request.setAttribute("customer_name", customer_name);
         
-       
-
+        
         forward = new ActionForward();
-        forward.setPath("myPage/deliveryLocation.jsp");
+		forward.setPath("/myPage/orderCheck.jsp");
         forward.setRedirect(false);
         
         return forward;

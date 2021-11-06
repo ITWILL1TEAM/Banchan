@@ -5,8 +5,8 @@ public class orderProductBean {
 	 private int order_num;
 	 private String customer_id;
 	 private int product_num;
-	 private int product_stock;
-
+	 private int product_qty;
+	 
 	  
 	  
 	public int getOrder_num() {
@@ -27,11 +27,11 @@ public class orderProductBean {
 	public void setProduct_num(int product_num) {
 		this.product_num = product_num;
 	}
-	public int getProduct_stock() {
-		return product_stock;
+	public int getProduct_qty() {
+		return product_qty;
 	}
-	public void setProduct_stock(int product_stock) {
-		this.product_stock = product_stock;
+	public void setProduct_qty(int product_qty) {
+		this.product_qty = product_qty;
 	}
 	
 

@@ -63,15 +63,16 @@
                     <a href="main.jsp"
                         style="width: 184px; height: 150px; background-image: url('img/TestLogo.png')">집밥선생</a>
                 </h1>
-                <!-- 검색 영역 [S] -->
-                <form action="">
+                <!-- 검색 영역 [S] -->   
+                <form action="Search.side">
                 <div class="search-wrap">
                     <div class="search-form">
-                            <input class="form-control me-2" type="search" placeholder="검색">
+                            <input class="form-control me-2" type="search" value="" name="search" placeholder="검색">
+                            
                             <button class="btn btn-outline-success" type="submit">search</button>
-                        </form>
-                    </div>
-                </div>
+                       </div>
+                 </div>
+                 </form>
            
                 <div class="util-wrap">
                     <ul>
@@ -155,7 +156,7 @@
                 <div class="inner-box">
                     <ul class="mnu-type">
 
-                        <li><a href="ideDish.side?category=all" onclick=" "><span class="icon">
+                        <li><a href="SideDish.side?category=all" onclick=" "><span class="icon">
                         <img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"alt="반찬" class="off">
                         <img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8020/214/00/200700000012214.png" alt="반찬" class="on"></span>반찬</a>
                             <div class="mnu-sub">

@@ -1,6 +1,15 @@
+<%@page import="vo.OrderBean"%>
+<%@page import="vo.orderProductBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+ArrayList<OrderBean> orderCusList = (ArrayList<OrderBean>)request.getAttribute("orderCusList");
+String customer_name = (String)request.getAttribute("customer_name");
+
+
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,8 +18,13 @@
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
-<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
+<script type="text/javascript">
+
+function showDetail(order_num) {
+	location.href="./OrderDetail.or?order_num="+order_num;
+}
+
+</script>
 </head>
 <body>
 <%@include file="../inc/top.jsp" %>
@@ -40,7 +54,6 @@
 				<dl>
 					<dt style="text-align:left;margin-bottom: 12px">회원정보</dt>
 					<dd><a id="left_11" href="DeliveryLocation.my" onclick="">배송지 관리</a></dd>
-					<!-- <dd><a id="left_12" href="#">주문정보 수신 설정</a></dd> -->
 					
 						<dd><a id="left_13" href="Mypage.my" onclick="">개인정보 수정</a></dd>
 						<dd><a id="left_14" href="Delete.my" onclick="">회원탈퇴</a></dd>
@@ -48,7 +61,6 @@
 				</dl>
 			</li>
 		</ul>
-	
 		<dl class="cst">
 			<dt><a href="" onclick="">고객센터</a></dt>
 			<dd><b>1644-0000</b></dd>
@@ -56,8 +68,6 @@
 			<dd>평일 08:00~20:00<br>(토/일/공휴일은 휴무)</dd>
 		</dl>
 	</div>
-
-
 		<div id="mys_content" class="sub_cont">
 			<h3 class="tit2">주문배송 조회
 
@@ -66,11 +76,11 @@
 			<div class="mys_state">
 				<dl>
 					<dt>입금대기중</dt>
-					<dd><em>0</em>건</dd>
+					<dd><em><%=orderCusList.size() %></em>건</dd>
 				</dl>
 				<dl>
 					<dt class="dvr">배송중</dt>
-					<dd><em>0</em>건</dd>
+					<dd><em><%=orderCusList.size() %></em>건</dd>
 				</dl>
 			</div>
 
@@ -78,10 +88,31 @@
 	<div class="txt" id="guide_text"><ul><li>최대 6개월 이내의 주문/배송 내역이 확인됩니다.</li></ul></div>	
 	
 	<div class="show_calendar" id="show_calendar"></div>
-</div>
+</div>		
+			<%if(orderCusList==null){ %>
 			<div class="mys_none">
 				<span class="txt">주문 내역이 없습니다.</span>
 			</div>
+			<%}else{ %>
+				<div>
+					<table>
+						<tr>
+							<th>주문번호</th>
+							<th>결제비용</th>
+							<th>주문일자</th>
+							<th>배송정보</th>
+						</tr>
+						<%for(int i = 0;i <orderCusList.size();i++){ %>
+							<tr onclick="showDetail(<%=orderCusList.get(i).getOrder_num()%>)">
+								<td><%=orderCusList.get(i).getOrder_num() %></td>
+								<td><%=orderCusList.get(i).getOrder_price()%></td>
+								<td><%=orderCusList.get(i).getOrder_date()%></td>
+								<td><%=orderCusList.get(i).getOrder_status()%></td>							
+							</tr>
+						<%} %>
+					</table>
+				</div>
+			<%} %>
 			<div class="mys_step">
 				<h4><b>주문/배송 단계</b> 고객님의 주문이 정상적으로 진행 중인지 꼭 확인해주세요.</h4>
 				<ul class="col5">

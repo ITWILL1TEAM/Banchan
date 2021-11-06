@@ -219,7 +219,7 @@ public class BasketDAO {
 				
 				if(rs.next()) {
 
-					sql = "delete from cart where product_num = ?";
+					sql = "delete from basket where product_num = ?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, Integer.parseInt(str));
 					

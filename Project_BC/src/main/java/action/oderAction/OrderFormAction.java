@@ -41,7 +41,12 @@ public class OrderFormAction implements Action {
 			
 		} else {
 		
-		String[] nums = request.getParameterValues("cart_checkbox");// 체크박스 항목에서 넘값
+//		String product_num = (String) request.getAttribute("product_num");
+//		System.out.println("프로덕트 넘 결과"+product_num);
+//		System.out.println(split(product_num, "/"));
+		String[] nums = {"1","2"};
+//				product_num.split("/");
+//		System.out.println(nums);
 		
 		for(String num : nums) {
 			System.out.println("액션에서의 : "+num);
@@ -78,6 +83,11 @@ public class OrderFormAction implements Action {
 		}
 		
 		return forward;
+	}
+
+	private String[] split(String product_num, String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

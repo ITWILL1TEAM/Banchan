@@ -54,7 +54,7 @@
                 <span class="icon"><img
                     src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"
                     style="width: 50px; height: 50px;"></span>
-                    <strong>할인특가</strong>
+                    <strong>신상품</strong>
             </div>
 
         </div>
@@ -108,7 +108,6 @@
                                 <div class="star-wrap">
                                     <i class="ico-star"></i><span class="num"><strong>4.8<!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
                                 </div>
-                                <p class="deliverybox">10/25(월) 새벽 도착 가능</p>
                                 <div class="tag-box"></div></a>
                         </div>
                     </div>

@@ -131,10 +131,12 @@ IMP.request_pay({
 <input type="hidden" value="<%=shipping_fee %>" id="shipping_fee" name="shipping_fee">
 
 
+
 <%
 for(int i = 0 ; i < nums.length ; i ++){
 %>
 <input type="hidden" value="<%=nums[i]%>" name="num" id="num">
+<input type="hidden" value="<%=qty[i]%>" name="qty" id="qty">
 <%}	%>
 </form>
 </body>

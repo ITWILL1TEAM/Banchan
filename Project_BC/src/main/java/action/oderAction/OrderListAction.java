@@ -79,17 +79,17 @@ public class OrderListAction implements Action {
 		
 		
 		//----------------------------------------------프로덕트 정보를 가져오는 객체
-		ArrayList<orderProductBean> orderProduct = new ArrayList<orderProductBean>();
-		orderProduct = orderListService.getOrderProduct(orderProduct);
-		System.out.println(orderProduct);
-		System.out.println(total_price);
-		System.out.println(total_discount);
-		System.out.println(shipping_fee);
-
-		request.setAttribute("orderProduct", orderProduct);
-		request.setAttribute("total_price", total_price);
-		request.setAttribute("total_discount", total_discount);
-		request.setAttribute("shipping_fee", shipping_fee);
+//		ArrayList<orderProductBean> orderProduct = new ArrayList<orderProductBean>();
+//		orderProduct = orderListService.getOrderProduct(orderProduct);
+//		System.out.println(orderProduct);
+//		System.out.println(total_price);
+//		System.out.println(total_discount);
+//		System.out.println(shipping_fee);
+//
+//		request.setAttribute("orderProduct", orderProduct);
+//		request.setAttribute("total_price", total_price);
+//		request.setAttribute("total_discount", total_discount);
+//		request.setAttribute("shipping_fee", shipping_fee);
 		}
 		
 		return forward;

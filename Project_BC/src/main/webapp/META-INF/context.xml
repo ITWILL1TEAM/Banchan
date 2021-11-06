@@ -29,7 +29,7 @@ Project_BC
       auth="Container"
       type="javax.sql.DataSource"
       driverClassName="com.mysql.jdbc.Driver"
-      url="jdbc:mysql://localhost:3306/bc_db?useSSL=false"
+      url="jdbc:mysql://localhost:8080/bc_db?useSSL=false"
       username="root"
       password="1234"
       maxActive="100"

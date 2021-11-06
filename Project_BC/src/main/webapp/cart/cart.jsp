@@ -7,6 +7,7 @@
 <%
 	ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("cartList");
 	int total_amt = (int)request.getAttribute("total_amt");
+	int discounted_amt = (int)request.getAttribute("discounted_amt");
 	int listCount = cartList.size();
 	
 %>
@@ -181,7 +182,8 @@
 									</td>
 									<!-- 제품가격 -->
 									<td class="prc_ori">
-										<span class="om"><em class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() %>" pattern="#,###"/></em>원</span>
+									<!-- (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100; -->
+										<span class="om"><em class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() * (100 - cartList.get(i).getProduct_discount())/100%>" pattern="#,###"/></em>원</span>
 									</td>
 									<!-- 수량 조절 -->
 									<td class="qty_set">
@@ -194,7 +196,7 @@
 									</td>
 									<!-- 총 구매 금액 -->
 									<td class="prc_dl">
-										<span class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() * cartList.get(i).getProduct_qty()%>" pattern="#,###"/></span><em>원</em>
+										<span class="thm"><fmt:formatNumber value="<%=(cartList.get(i).getProduct_price() * (100 - cartList.get(i).getProduct_discount())/100) * cartList.get(i).getProduct_qty()%>" pattern="#,###"/></span><em>원</em>
 									</td>
 									<!-- 삭제버튼 -->
 									<td class="func_btn">
@@ -215,24 +217,20 @@
 						<button type="button" class="w_del" title="품절/매진제품 전체 삭제" name="delete_button" data-role="sellout" style="display: none;"><em>품절 삭제</em></button>
 						<button type="button" class="del" title="선택한 항목 삭제하기" name="delete_button" data-role="checked" onclick="deleteAction()"><em>선택 삭제</em></button>
 					</div>
-					<div class="cart_info">
-	<!-- 					주문 마감은 <em>오후9시</em>입니다.
-						<br />
-						<span>주문취소는 주문마감 이전만 가능하며 부분취소는 불가능하며 주문마감시간 이후 추가주문은 불가능 합니다.</span> -->
-						<span>희망 배송일 전일 제품 준비 중 단계로 변경 시 취소가 어려운 점 양해 부탁드려요.</span>
-					</div><div class="odr_total type1">
+					<div class="odr_total type1">
 						<dl class="prd_sum">
 							<dt>제품금액</dt>
 							<dd><span class="thm" id="total_sale_price"><fmt:formatNumber value="<%=total_amt%>" pattern="#,###"/></span><em>원</em></dd>
 						</dl>
 						<dl class="dis_sum">
 							<dt><span class="icon minus">빼기</span>예정 할인금액</dt>
-							<dd><span class="thm" id="total_dc_amt">0</span><em>원</em></dd>
+							<dd><span class="thm" id="total_dc_amt"><fmt:formatNumber value="<%=total_amt - discounted_amt%>" pattern="#,###"/></span><em>원</em></dd>
 						</dl>
 						<dl class="cart_sum">
 							<dt><span class="icon equal">계산결과</span>주문 합계금액</dt>
 							<dd>
-								<span class="thm" id="total_price"><fmt:formatNumber value="<%=total_amt%>" pattern="#,###"/></span><em>원</em>
+								<span class="thm" id="total_price"><fmt:formatNumber value="<%=discounted_amt%>" pattern="#,###"/></span><em>원</em>
+								<input type="hidden" name="total_amt" value="<%=total_amt%>"/>
 								<span class="deposit" style="display:none">(예정적립금 <span class="thm" id="total_save_amt">0</span>원)</span>
 							</dd>
 						</dl>
@@ -243,7 +241,8 @@
 					<div class="info_box01">
 						<strong class="box_tit">참고해 주세요!</strong>
 						<ul class="list_01">
-							<li>장바구니에 담긴 상품은 30일 동안만 보관 가능해요.</li>
+							<li>장바구니 상품은 최대 1년 보관되며 담은 시점과 현재의 판매 가격이 달라질 수 있어요.</li>
+							<li>결제 시 각종 할인 적용이 달라질 수 있어요.</li>
 						</ul>
 					</div>
 				</div>
