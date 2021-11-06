@@ -36,7 +36,7 @@ public class BoardDAO {
 	}
 
 	public int insertArticle(BoardBean board) {
-		System.out.println("insertArticle - DAO");
+//		System.out.println("insertArticle - DAO");
 		int insertCount = 0;
 
 		PreparedStatement pstmt = null;
@@ -183,7 +183,7 @@ public class BoardDAO {
 	}
 
 	public BoardBean selectArticle(int product_num) {
-		System.out.println("BoardDAO - selectArticle()");
+//		System.out.println("BoardDAO - selectArticle()");
 		BoardBean article = null;
 
 		PreparedStatement pstmt = null;
@@ -261,7 +261,7 @@ public class BoardDAO {
 
 	public int getProductNum(BoardBean boardBean) {
 		int productNum = 0;
-		System.out.println("BoardDAO- getProductNum");
+//		System.out.println("BoardDAO- getProductNum");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 

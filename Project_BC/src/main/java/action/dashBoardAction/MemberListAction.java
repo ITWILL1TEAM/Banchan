@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import svc.dashBoardSvc.MemberListService;
-import vo.ActionForward;
-import vo.MemberBean;
+import vo.*;
 
 public class MemberListAction implements Action {
 
@@ -17,8 +16,14 @@ public class MemberListAction implements Action {
 		ActionForward forward=null;
 		
 		MemberListService service = new MemberListService();
-		ArrayList<MemberBean> memberList = service.getMemberList();
+		ArrayList<CustomerBean> memberList = service.getMemberList();
 		
+		
+		request.setAttribute("memberList", memberList);
+		
+		forward = new ActionForward();
+		forward.setPath("/adminPage/memberList.jsp");
+		forward.setRedirect(false);
 		
 		return forward;
 	}

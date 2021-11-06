@@ -99,5 +99,10 @@ function addAddress() {
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+window.opener.location.reload(true);
+</script>
+
 </body>
 </html>

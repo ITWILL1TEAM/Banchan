@@ -13,7 +13,7 @@ public class ProductDetailService {
 
 	// 게시물 1개 상세 정보를 조회를 요청하는 getArticle() 메소드 정의
 	public BoardBean getArticle(int product_num) {
-		System.out.println("ProductDetailService - getArticle()");
+//		System.out.println("ProductDetailService - getArticle()");
 
 		BoardBean article = new BoardBean();
 
@@ -32,7 +32,7 @@ public class ProductDetailService {
 	}
 
 	public ArrayList<ProductImg> getArticleImg(int product_num) {
-		System.out.println("ProductDetailService - getArticleImg()");
+//		System.out.println("ProductDetailService - getArticleImg()");
 
 		Connection con = getConnection();
 

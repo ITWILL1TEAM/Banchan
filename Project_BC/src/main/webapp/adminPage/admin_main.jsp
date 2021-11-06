@@ -101,17 +101,21 @@
                                         <tr>                                        
                                             <th>글번호</th>
                                             <th>제목</th>
-                                            <th>내용</th>    
+                                            <th>등록일</th>    
                                         </tr>
                                         <%for(int i = 0; i < noticeList.size(); i++) { %>                                    
                                         <tr onclick="location.href='NoticeView.ad?notice_num=<%=noticeList.get(i).getNotice_num()%>'">
                                             <td><%=noticeList.get(i).getNotice_num()%></td>
-                                            <td><%=noticeList.get(i).getNotice_subject()%></td>
-                                            <td><a href="#"><%=noticeList.get(i).getNotice_content()%></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
+                                            <td><a href="#"><%=noticeList.get(i).getNotice_subject()%></a></td>
+                                            <td><%=noticeList.get(i).getNotice_date()%></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
+                                        </tr>
+                                          <%} %>
+                                        <%}else{ %>
+                                        <tr>
+                                            <td>공지가 없습니다.</td>                                            
                                         </tr>
                                         <%} %>
                                         </table>
-                                        <%} %>
                                     </div>
                                 </div>
                                 </div>                          
