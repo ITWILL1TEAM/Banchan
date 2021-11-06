@@ -26,7 +26,6 @@ public class ShowAddressAction implements Action {
         String customer_name = service.getCustomerName(customer_id);
         
         session.setAttribute("addressList", addressList);
-        
         request.setAttribute("addressList", addressList);
         request.setAttribute("customer_name", customer_name);
         

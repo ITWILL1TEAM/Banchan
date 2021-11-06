@@ -35,18 +35,19 @@ private static AddressDAO instance = new AddressDAO();
 			
 			try {
 				System.out.println(ca.toString());
-				String sql="INSERT INTO customer_address VALUES (?,?,?,?,0)";
+				String sql="INSERT INTO customer_address VALUES (?,?,?,?,?)";
 				pstmt = con.prepareStatement(sql);
 				
 				pstmt.setString(1, ca.getCustomerId());
 				pstmt.setString(2, ca.getRoadAddress());
 				pstmt.setString(3, ca.getZonecode());
 				pstmt.setString(4, ca.getDtl_addr());
+				pstmt.setInt(5, ca.getAddress_priority());
 				
 				insertCount = pstmt.executeUpdate();
 				
 			} catch (Exception e) {
-				System.out.println("insertArticle() 오류 - " + e.getMessage());
+				System.out.println("CustomerAddress() 오류 - " + e.getMessage());
 			}finally {
 				//자원 반환
 				close(pstmt);	
@@ -64,7 +65,7 @@ private static AddressDAO instance = new AddressDAO();
 		try {
 			con = getConnection();
 
-			String sql = "SELECT * FROM customer_address WHERE customer_id=?";
+			String sql = "SELECT * FROM customer_address WHERE customer_id=? ORDER BY address_priority DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 
