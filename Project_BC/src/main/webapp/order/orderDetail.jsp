@@ -40,9 +40,6 @@ ArrayList<orderProductBean> orderProductList = (ArrayList<orderProductBean>)requ
 		});
 	
 	
-	
-	
-	
 </script>
 <!--// HEADER -->
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/mys.css?t=20200406000000" type="text/css">

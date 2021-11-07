@@ -9,6 +9,7 @@ public class orderDetailBean {
 	private int product_discount;
 	private int product_qty;
 	private String product_original_img;
+	
 	public int getProduct_num() {
 		return product_num;
 	}
