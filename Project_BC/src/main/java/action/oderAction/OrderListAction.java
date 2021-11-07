@@ -29,11 +29,11 @@ public class OrderListAction implements Action {
 		int order_num = (int) request.getAttribute("order_num");//넘겨받은 오더넘의 정보를 출력
 		String customer_id = (String)session.getAttribute("sId");  
 		
-		//주문 금액 할인정보 배송비
-		int total_price = Integer.parseInt(request.getParameter("total_price"));
-		int total_discount = Integer.parseInt(request.getParameter("total_discount"));
-		int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
-				
+//		//주문 금액 할인정보 배송비
+//		int total_price = Integer.parseInt(request.getParameter("total_price"));
+//		int total_discount = Integer.parseInt(request.getParameter("total_discount"));
+//		int shipping_fee = Integer.parseInt(request.getParameter("shipping_fee"));
+//				
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();

@@ -49,7 +49,7 @@ public class OrderFormService {
 		
 	}
 
-	public ArrayList<BasketBean> getSelectCart(String[] nums, String product_qty) {
+	public ArrayList<BasketBean> getSelectCart(String[] nums, String product_qty, String customer_id) {
 		System.out.println("orderService - getSelectCart()");
 		// 공통작업-1. Connection Pool 로부터 Connection 객체 가져오기
 		Connection con = getConnection();
@@ -67,7 +67,7 @@ public class OrderFormService {
 		while(cartList.size()!=nums.length) {
 			for(String num : nums) {
 				
-				basket = dao.selectBasket(Integer.parseInt(num),Integer.parseInt(product_qty));
+				basket = dao.selectBasket(Integer.parseInt(num),Integer.parseInt(product_qty), customer_id);
 				
 				cartList.add(basket);
 				}

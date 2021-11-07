@@ -84,7 +84,7 @@ public class OrderDAO {
 		return basket;
 	}
 	//바로구매 시 폼을 출력하기 위한 메소드
-	public BasketBean selectBasket(int num, int product_qty) {
+	public BasketBean selectBasket(int num, int product_qty, String customer_id) {
 		System.out.println("orderDAO - selectCart()!");
 		BasketBean basket = null;
 		
@@ -92,7 +92,7 @@ public class OrderDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from product where product_num = ?";
+			String sql = "select * from product p left join product_img i on p.product_num = i.product_num where p.product_num = ? and i.product_img_location=1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			
@@ -101,8 +101,7 @@ public class OrderDAO {
 			basket = new BasketBean();
 			
 			while(rs.next()) {
-				basket.setBasket_idx(rs.getInt("basket_idx"));
-				basket.setCutomer_id(rs.getString("customer_id"));
+				basket.setCutomer_id(customer_id);
 				basket.setProduct_num(rs.getInt("product_num"));
 				basket.setProduct_name(rs.getString("product_name"));
 				basket.setProduct_price(rs.getInt("product_price"));

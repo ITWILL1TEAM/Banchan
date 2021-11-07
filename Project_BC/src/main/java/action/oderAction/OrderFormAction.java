@@ -64,7 +64,7 @@ public class OrderFormAction implements Action {
 		}else{
 			
 			cartList = new ArrayList<BasketBean>();
-			cartList = orderService.getSelectCart(nums, product_qty);
+			cartList = orderService.getSelectCart(nums, product_qty, customer_id);
 			
 		}
 		

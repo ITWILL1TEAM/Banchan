@@ -12,7 +12,7 @@ import vo.ReviewBean;
 
 public class ReviewWriteProService {
 
-	public boolean registReview(ReviewBean review) {
+	public boolean registReview(ReviewBean review, int order_num) {
 		System.out.println("ReviewWriteProService");
 		boolean isWriteSuccess = false; // 글쓰기 작업 결과를 저장할 변수
 		
@@ -35,6 +35,7 @@ public class ReviewWriteProService {
 		System.out.println(review.getProduct_num());
 		int updateCount = dao.updateScore(review);// 리뷰 작성 시 프로덕트 리뷰스코어를 업데이트 하는 메소드
 		
+		int updateReviewStatus = dao.reviewStatus(review, order_num);
 		
 		System.out.println(insertCount);
 		
@@ -45,7 +46,7 @@ public class ReviewWriteProService {
 		//2) 작업 실패 시 (=insertCount ==0 일 경우) 
 		//	=>Rollback 작업 수행, isWriteSuccess 를 false로 변경(생략가능)
 		
-		if(insertCount >0 && updateCount>0) {
+		if(insertCount >0 && updateCount>0 &&updateReviewStatus>0) {
 			commit(con);
 			isWriteSuccess = true;
 		}else {
