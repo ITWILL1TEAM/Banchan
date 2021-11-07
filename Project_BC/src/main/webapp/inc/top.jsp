@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211014190" type="text/css">
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211014190" type="text/css">
    
-    
 
-    
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
 <script src="js/jquery-3.6.0.js"></script>
@@ -67,7 +65,7 @@
                 <form action="Search.side">
                 <div class="search-wrap">
                     <div class="search-form">
-                            <input class="form-control me-2" type="search" value="" name="search" placeholder="검색">
+                            <input class="form-control me-2" type="search" name="search" placeholder="검색">
                             
                             <button class="btn btn-outline-success" type="submit">search</button>
                        </div>

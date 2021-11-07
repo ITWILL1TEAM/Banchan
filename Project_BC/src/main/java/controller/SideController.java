@@ -14,6 +14,7 @@ import action.Action;
 import action.productAction.BestAction;
 import action.productAction.BrandNewAction;
 import action.productAction.SaleAction;
+import action.productAction.SearchAction;
 //import action.productAction.SearchAction;
 import action.productAction.SideAction;
 import vo.ActionForward;
@@ -64,7 +65,7 @@ public class SideController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Search.side")) {
-//			action = new SearchAction();
+			action = new SearchAction();
 			
 			try {
 				forward = action.execute(request, response);
