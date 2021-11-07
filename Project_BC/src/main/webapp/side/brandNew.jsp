@@ -54,7 +54,7 @@
                 <span class="icon"><img
                     src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"
                     style="width: 50px; height: 50px;"></span>
-                    <strong>할인특가</strong>
+                    <strong>신상품</strong>
             </div>
 
         </div>
@@ -90,8 +90,10 @@
                                  <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png"
                                 width="296" height="296"
                                 alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)"
-                                ><span
-                                class="tag sale"><span></span><strong><%=discount %></strong>%</span></a>
+                                >
+                                <%if(discount!=0){ %>
+                                <span class="tag sale"><span></span><strong><%=discount %></strong>%</span></a>
+                                <%} %> 
                         </div>
                         <div class="info">
                             <a href="Product.do?product_num=<%=productNum %>"
@@ -101,14 +103,15 @@
                                     <p>
                                         <strong><%= discountPrice %></strong><span class="is-noto">원</span>
                                     </p>
+                                    <%if(discount!=0){ %>
                                     <p class="original">
                                     <%=price %> <span class="is-noto">원</span>
                                     </p>
+                                    <%} %>
                                 </div>
                                 <div class="star-wrap">
                                     <i class="ico-star"></i><span class="num"><strong>4.8<!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
                                 </div>
-                                <p class="deliverybox">10/25(월) 새벽 도착 가능</p>
                                 <div class="tag-box"></div></a>
                         </div>
                     </div>

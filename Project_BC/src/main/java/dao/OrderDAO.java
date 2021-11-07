@@ -305,6 +305,7 @@ public class OrderDAO {
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setInt(1, Integer.parseInt(str));
 				System.out.println("stock :"+stock);
+				
 				rs2 = pstmt2.executeQuery();
 					
 				if(rs2.next()) {

@@ -19,7 +19,7 @@
 
 
 <!--     <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/jquery-1.12.4.min.js"></script> -->
-<script src="js/jquery-3.6.0.js"></script>
+<script src="/js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
    
 </script>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./img/carousel_sample1.jpg" class="d-block w-100"
+                        <img src="img/carousel_sample1.jpg" class="d-block w-100"
                             height="500" alt="sampletest1">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>산딸기</h5>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="./img/carousel_sample2.jpg" class="d-block w-100 "
+                        <img src="img/carousel_sample2.jpg" class="d-block w-100 "
                             height="500" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>스테이크</h5>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="./img/carousel_sample3.jpg" class="d-block w-100 "
+                        <img src="img/carousel_sample3.jpg" class="d-block w-100 "
                             height="500" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>직화 숯불 꼬지</h5>

@@ -34,12 +34,15 @@ public class CartListAction implements Action {
         
         // 장바구니에 있는 제품의 총 가격을 합산할 변수
         int total_amt = 0;
+        int discounted_amt = 0;
         for(int i = 0; i < cartList.size(); i++) {
+        	discounted_amt += (cartList.get(i).getProduct_price() * (100 - cartList.get(i).getProduct_discount())/100) * cartList.get(i).getProduct_qty();
         	total_amt += cartList.get(i).getProduct_price() * cartList.get(i).getProduct_qty();
         }
         
         request.setAttribute("cartList", cartList);
         request.setAttribute("total_amt", total_amt);
+        request.setAttribute("discounted_amt", discounted_amt);
 
         forward = new ActionForward();
         forward.setPath("/cart/cart.jsp");
