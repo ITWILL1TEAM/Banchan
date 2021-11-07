@@ -51,8 +51,14 @@
 								<tr>
 									<th></th>
 									<td>
+									<%if(grade == 1) {%>
+              
 									<a class="btn btn-primary text-right" href="NoticeModifyForm.qa?board_num=<%=article.getNotice_num()%>">수정</a> &nbsp;&nbsp;
 									<a class="btn btn-primary text-right" href="NoticeDeleteForm.qa?qna_idx=<%=article.getNotice_num()%>">삭제</a> &nbsp;&nbsp;
+                                     <%} %>
+									
+									
+									
 									<a class="btn btn-primary text-right" href="Notice.ad">목록</a> &nbsp;&nbsp;
 									</td>
 								</tr>

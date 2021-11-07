@@ -10,11 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.*;
-import action.dashBoardAction.DashBoardMainAction;
-import action.dashBoardAction.MemberListAction;
-import action.dashBoardAction.NoticeListAction;
-import action.dashBoardAction.NoticeSelectAction;
-import action.dashBoardAction.NoticeWriteProAction;
+import action.dashBoardAction.*;
 import action.productAction.BoardListAction;
 import action.productAction.BoardWriteProAction;
 import vo.*;
@@ -109,6 +105,31 @@ public class AdminController extends HttpServlet {
                 e.printStackTrace();
             }
         }
+		//------------Member권한/탈퇴 -------------------------
+		
+        else if(command.equals("/MemberStatus.ad")) {
+        	action = new MemberStatusAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if(command.equals("/MemberLeave.ad")) {
+        	action = new MemberLeaveAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+		
+		
+		
+		
+		
+		
 
 		
 		

@@ -57,18 +57,17 @@
         style="transform: translateY(0px);">
 
         <!-- header top -->
-        <div class="header-top" style="background-color:#02CB5D;">
+        <div class="header-top" style="background-color:#ffeb99;">
             <div class="inner-box">
                 <h1 class="logo">
-                    <a href="main.jsp"
-                        style="width: 184px; height: 150px; background-image: url('img/TestLogo.png')">집밥선생</a>
+                    <a href="${pageContext.request.contextPath}/main"
+                        style="width: 200px; height: 150px; background-image: url('img/Logo.png')">집밥선생</a>
                 </h1>
                 <!-- 검색 영역 [S] -->   
                 <form action="Search.side">
                 <div class="search-wrap">
                     <div class="search-form">
                             <input class="form-control me-2" type="search" value="" name="search" placeholder="검색">
-                            
                             <button class="btn btn-outline-success" type="submit">search</button>
                        </div>
                  </div>
@@ -104,8 +103,7 @@
 //                     pageContext.forward("/Seller.sc");//잠시보류
             %>
                   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li>
-            <%  }else if(grade==3){%>
-               <li><a href="Mypage.my"> 마이페이지로</a></li>    
+
             <%  }else{//grade==4
                 //휴면계정 
                 } %>
@@ -119,7 +117,7 @@
                 </div>
                 <div id="myWrap" class="my-wrap">
                     <ul>
-                        <li><a href="" style="padding-right: 30px;"><i
+                        <li><a href="Mypage.my" style="padding-right: 30px;"><i
                                 class="ico-my"></i>마이더반찬</a></li>
                         <li><a href="Cart.ca" onclick=" " class="link-cart"> 
                         <i class="ico-cart"></i>장바구니 <strong class="cart-count"> 0

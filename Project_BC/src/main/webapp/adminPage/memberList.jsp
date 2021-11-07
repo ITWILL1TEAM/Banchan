@@ -49,7 +49,8 @@ ArrayList<CustomerBean> memberList = (ArrayList<CustomerBean>)request.getAttribu
                                             <th>이름</th>
                                             <th>전화번호</th>
                                             <th>이메일</th>
-                                            <th>등급</th>                                           
+                                            <th>등급</th> 
+                                            <th>status</th>                                          
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -57,12 +58,17 @@ ArrayList<CustomerBean> memberList = (ArrayList<CustomerBean>)request.getAttribu
                                             <th>이름</th>
                                             <th>전화번호</th>
                                             <th>이메일</th>
-                                            <th>등급</th>                                           
+                                            <th>등급</th>  
+                                            <th>status</th>                                           
                                         </tr>
                                     </tfoot>
                                       <tbody>
                                         <%for(int i=0; i<memberList.size(); i++){ %>
-                                        <tr>
+                                            <%if(memberList.get(i).getMember_status()==1){ %>
+                                        <tr style="text-decoration:none; color:#009000">
+                                        <%}else{ %>
+                                        <tr  style="text-decoration:none; color:#FF0000">
+                                        <%} %>
                                             <td><%=memberList.get(i).getId()%></td>
                                             <td><%=memberList.get(i).getPhone() %></td>
                                             <td><%=memberList.get(i).getEmail() %></td>
@@ -71,15 +77,15 @@ ArrayList<CustomerBean> memberList = (ArrayList<CustomerBean>)request.getAttribu
                                             판매자<%}else{ %>
                                             소비자<%} %>
                                             </td>
-                                            <td>
+                                            <td><%=memberList.get(i).getMember_status() %> </td>
                                             <td>
 	                                             <div class="dropdown">
 	                                               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
 	                                                 info
 	                                               </button>
 	                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-	                                                 <li><button class="dropdown-item" type="button">권한변경</button></li>
-	                                                 <li><button class="dropdown-item" type="button">회원탈퇴</button></li>
+	                                                 <li><button class="dropdown-item" type="button" onclick="location.href='${pageContext.request.contextPath}/MemberStatus.ad?id=<%=memberList.get(i).getId() %>&grade=<%=memberList.get(i).getGrade()%>'">권한변경</button></li>
+	                                                 <li><button class="dropdown-item" type="button" onclick="location.href='${pageContext.request.contextPath}'/MemberLeave.ad?id=<%=memberList.get(i).getId() %>'">회원탈퇴</button></li>
 	                                               </ul>
 	                                             </div>
                                             </td> 

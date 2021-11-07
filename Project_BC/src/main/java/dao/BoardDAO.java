@@ -127,37 +127,28 @@ public class BoardDAO {
 		return listCount;
 	}
 
-	public ArrayList<BoardBean> selectArticleList(int page, int limit) {
+	public ArrayList<BoardBean> selectArticleList(String sId) {
 		ArrayList<BoardBean> articleList = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// 조회 시작 게시물(레코드) 번호 계산(= 행 번호 계산)
-		int startRow = (page - 1) * limit;
-
+		
+	
 		try {
-			// 3단계. SQL 구문 작성 및 전달
-			// => mvc_board 테이블의 모든 레코드 조회
-			// (참조글번호를 기준으로 내림차순, 순서번호를 기준으로 오름차순 정렬)
-			// => 단, 시작행번호부터 페이지당 게시물수 만큼만 조회
-			// LIMIT 시작행번호,페이지당게시물수
-			String sql = "SELECT * FROM product ORDER BY product_num DESC";
+			
+			String sql = "SELECT * FROM product WHERE seller_id=? ORDER BY product_num DESC";
 			pstmt = con.prepareStatement(sql);
-//            pstmt.setInt(1, startRow); // 시작행번호
-//            pstmt.setInt(2, limit); // 페이지당 게시물 수
+			pstmt.setString(1, sId);
 
-			// 4단계. SQL 구문 실행 및 결과 처리
 			rs = pstmt.executeQuery();
 
-			// 모든 레코드를 저장할 List 객체(ArrayList) 생성
+			
 			articleList = new ArrayList<BoardBean>();
 
-			// while 문을 사용하여 ResultSet 객체의 모든 레코드 접근
+			
 			while (rs.next()) {
-				// BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
-				// => 글번호, 작성자, 제목, 날짜, 조회수만 필요
-				// (답글에 대한 들여쓰기를 위해 board_re_lev 값도 추가)
+				
 				BoardBean board = new BoardBean();
 				board.setProduct_num(rs.getInt("product_num"));
 				board.setProduct_name(rs.getString("product_name"));
