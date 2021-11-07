@@ -18,6 +18,7 @@ public class OrderProAction implements Action {
 		
 		ActionForward forward = null;
 		Timestamp date = new Timestamp(System.currentTimeMillis());
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
 		//주문 금액 할인정보 배송비
@@ -61,9 +62,11 @@ public class OrderProAction implements Action {
 		
 		if(!isInsertSuccecc) {
 			out.println("<script>");
-			out.println("alert('주문 등록 실패");
-			out.println("history.back()");
+			out.println("alert('주문 등록 실패-재고부족')");
+			out.println("location.href='Cart.ca'");
 			out.println("</script>");
+
+
 
 		} else {
 			System.out.println("넘어갈 오더넘:"+order.getOrder_num());

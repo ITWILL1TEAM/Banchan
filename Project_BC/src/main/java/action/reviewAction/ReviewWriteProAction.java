@@ -28,7 +28,10 @@ public class ReviewWriteProAction implements Action {
 
 		String customer_id = (String)session.getAttribute("sId");  
 		
-		
+		int order_num = 7;
+
+				
+//				Integer.parseInt(request.getParameter("order_num"));
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -83,7 +86,7 @@ public class ReviewWriteProAction implements Action {
 		
 		ReviewWriteProService scv = new ReviewWriteProService();
 		
-		boolean isWriteSuccess =  scv.registReview(review);
+		boolean isWriteSuccess =  scv.registReview(review,order_num);
 		
 		
 		//글쓰기 결과 (isWriteSuccess)를 판별하여

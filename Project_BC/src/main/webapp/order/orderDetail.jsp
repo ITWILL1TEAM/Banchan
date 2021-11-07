@@ -40,9 +40,6 @@ ArrayList<orderProductBean> orderProductList = (ArrayList<orderProductBean>)requ
 		});
 	
 	
-	
-	
-	
 </script>
 <!--// HEADER -->
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/mys.css?t=20200406000000" type="text/css">
@@ -92,7 +89,7 @@ ArrayList<orderProductBean> orderProductList = (ArrayList<orderProductBean>)requ
 									
 									<a href="">
 										<span class="img">
-										<img src="${pageContext.request.contextPath}/upload/<%=orderDetailList.get(i).getProduct_original_img()%>.png" width="80" height="80" alt="" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
+										<img src="${pageContext.request.contextPath}/upload/<%=orderDetailList.get(i).getProduct_img()%>.png" width="80" height="80" alt="" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
 										</span>
 									</a>
 									
