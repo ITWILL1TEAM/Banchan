@@ -30,10 +30,10 @@ public class ReviewWriteProService {
 		//글쓰기 작업을 수행하기 위해 insertArticle  메서드 호출
 		//=>파라미터 
 		
-		int insertCount = dao.insertReview(review);
+		int insertCount = dao.insertReview(review);// 리뷰 테이블에 넣는 메소드
 		
 		System.out.println(review.getProduct_num());
-		int updateCount = dao.updateScore(review);
+		int updateCount = dao.updateScore(review);// 리뷰 작성 시 프로덕트 리뷰스코어를 업데이트 하는 메소드
 		
 		
 		System.out.println(insertCount);

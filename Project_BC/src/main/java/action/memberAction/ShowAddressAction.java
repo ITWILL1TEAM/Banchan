@@ -24,12 +24,15 @@ public class ShowAddressAction implements Action {
         AddressService service = new AddressService();
         ArrayList<CustomerAddress> addressList = service.getAddressList(customer_id);
         String customer_name = service.getCustomerName(customer_id);
+        
+        session.setAttribute("addressList", addressList);
         request.setAttribute("addressList", addressList);
         request.setAttribute("customer_name", customer_name);
         
+       
 
         forward = new ActionForward();
-        forward.setPath("/myPage/deliveryLocation.jsp");
+        forward.setPath("myPage/deliveryLocation.jsp");
         forward.setRedirect(false);
         
         return forward;

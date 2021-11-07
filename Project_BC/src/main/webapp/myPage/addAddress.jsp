@@ -12,7 +12,7 @@
 <script src="../js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	var roadAddress;
-	var zonecode
+	var zonecode;
 function openWindow() {
 	new daum.Postcode({
 	    oncomplete: function(data) {
@@ -32,13 +32,19 @@ function openWindow() {
 	}
 	
 }	
+	
 
 function getAddress() {
 	var dtl_addr = document.getElementById("dtl_addr").value;
-	location.href = "AddAddress.my?roadAddress="+ roadAddress+"&zonecode="+ zonecode+"&dtl_addr="+ dtl_addr;
+	var set_default = document.getElementById("set_default").checked;
+	location.href = "AddAddress.my?roadAddress="+ roadAddress+"&zonecode="+ zonecode+"&dtl_addr="+ dtl_addr+"&set_default="+ set_default;
+	
 	window.opener.location.reload(true);
+	
 	window.close();
 }
+
+
 </script>
 </head>
 <body>

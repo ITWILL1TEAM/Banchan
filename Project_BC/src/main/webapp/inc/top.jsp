@@ -8,14 +8,25 @@
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211014190" type="text/css">
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211014190" type="text/css">
    
-    
 
-    
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
 <script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(function() {	
+			$.ajax({
+				type: "GET",
+				url: "Cartcount.ca",				
+				dataType: 'text',
+				success: function(data) {					
+					$('.cart-count').html(data);
+				} 
+			});
+		});
+	
+</script>
 
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
+<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
 
 
 <noscript>
@@ -50,15 +61,16 @@
                     <a href="main.jsp"
                         style="width: 184px; height: 150px; background-image: url('img/TestLogo.png')">집밥선생</a>
                 </h1>
-                <!-- 검색 영역 [S] -->
-                <form action="">
+                <!-- 검색 영역 [S] -->   
+                <form action="Search.side">
                 <div class="search-wrap">
                     <div class="search-form">
-                            <input class="form-control me-2" type="search" placeholder="검색">
+                            <input class="form-control me-2" type="search" name="search" placeholder="검색">
+                            
                             <button class="btn btn-outline-success" type="submit">search</button>
-                        </form>
-                    </div>
-                </div>
+                       </div>
+                 </div>
+                 </form>
            
                 <div class="util-wrap">
                     <ul>
@@ -98,31 +110,19 @@
             
         <%}%>                   
          </ul>
+
+         
+         
+         
                 </div>
                 <div id="myWrap" class="my-wrap">
                     <ul>
                         <li><a href="" style="padding-right: 30px;"><i
                                 class="ico-my"></i>마이더반찬</a></li>
-                        <li><a href="Cart.ca" onclick=" " class="link-cart"> <i
-                                class="ico-cart"></i>장바구니 <strong class="cart-count"> 0
+                        <li><a href="Cart.ca" onclick=" " class="link-cart"> 
+                        <i class="ico-cart"></i>장바구니 <strong class="cart-count"> 0
                             </strong>
-                        </a>
-                            <div class="cart-box">
-                                <p class="title">장바구니에 담겼습니다.</p>
-                                <div class="cart-item">
-                                    <div class="item">
-                                        <dl>
-                                            <dt>
-                                                <a href=" "> <img id="cartBoxGoodsImg" src="">
-                                                </a>
-                                            </dt>
-                                            <dd>
-                                                <p id="cartBoxGoodsNm"></p>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div></li>
+                        </a>                           
                     </ul>
                 </div>
 
@@ -154,7 +154,7 @@
                 <div class="inner-box">
                     <ul class="mnu-type">
 
-                        <li><a href="ideDish.side?category=all" onclick=" "><span class="icon">
+                        <li><a href="SideDish.side?category=all" onclick=" "><span class="icon">
                         <img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"alt="반찬" class="off">
                         <img src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8020/214/00/200700000012214.png" alt="반찬" class="on"></span>반찬</a>
                             <div class="mnu-sub">

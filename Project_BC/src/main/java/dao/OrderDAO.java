@@ -2,6 +2,7 @@ package dao;
 
 import static db.JdbcUtil.close;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,6 +83,46 @@ public class OrderDAO {
 		
 		return basket;
 	}
+	//바로구매 시 폼을 출력하기 위한 메소드
+	public BasketBean selectBasket(int num, int product_qty) {
+		System.out.println("orderDAO - selectCart()!");
+		BasketBean basket = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from product where product_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			basket = new BasketBean();
+			
+			while(rs.next()) {
+				basket.setBasket_idx(rs.getInt("basket_idx"));
+				basket.setCutomer_id(rs.getString("customer_id"));
+				basket.setProduct_num(rs.getInt("product_num"));
+				basket.setProduct_name(rs.getString("product_name"));
+				basket.setProduct_price(rs.getInt("product_price"));
+				basket.setProduct_qty(product_qty);
+				basket.setProduct_discount(rs.getInt("product_discount"));
+				basket.setProduct_img(rs.getString("product_img"));
+				
+			}
+		} catch (Exception e) {
+			System.out.println("selectCart() 오류! - "+e.getMessage());
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		
+		return basket;
+	}
 	
 	
 	public ArrayList<CustomerInfo> selectCustomerInfo(String customer_id) {
@@ -92,7 +133,7 @@ public class OrderDAO {
 	    ResultSet rs = null;
 	    
 	    try {
-			String sql ="select m.id, m.name, c.phone, c.email, ca.customer_roadAddress, ca.customer_zonecode, ca.customer_dtl_addr from member m left join customer c on m.id= c.customer_id join customer_address ca on m.id=ca.customer_id where id=?";
+			String sql ="select m.id, m.name, c.phone, c.email, ca.customer_roadAddress, ca.customer_zonecode, ca.customer_dtl_addr, ca.address_priority from member m left join customer c on m.id= c.customer_id join customer_address ca on m.id=ca.customer_id where id=? and ca.address_priority=1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, customer_id);
 			
@@ -199,15 +240,15 @@ public class OrderDAO {
 
 						qty =  rs2.getInt("product_qty");
 						
-							sql = "insert into order_product values(?,?,?,?)";
+							sql = "insert into order_product values(?,?,?,?,?)";
 							pstmt4 = con.prepareStatement(sql);
 							pstmt4.setInt(1, num);
 							pstmt4.setString(2, order.getCustomer_id());
 							
 							pstmt4.setInt(3, Integer.parseInt(str));
 							pstmt4.setInt(4, qty);
-							
-							insertCount = pstmt4.executeUpdate();
+							pstmt4.setString(5, "결제완료");
+							pstmt4.executeUpdate();
 							
 							//메소드 불러오기
 					
@@ -215,7 +256,7 @@ public class OrderDAO {
 			
 			}
 				if(insertCount>0) {
-					updateStock(order, nums);
+					insertCount = updateStock(order, nums);
 				}
 				
 		}
@@ -268,13 +309,19 @@ public class OrderDAO {
 				rs2 = pstmt2.executeQuery();
 					
 				if(rs2.next()) {
+					
 					int qty = rs2.getInt("product_qty");
+					if(stock-qty<=0) {
+						updateStockCount =0;
+						System.out.println("주문등록 실패- 재고부족");
+					}else {
 					System.out.println("qty : "+qty);
 					sql = "update product set product_stock=? where product_num=?";
 					pstmt3 = con.prepareStatement(sql);
 					pstmt3.setInt(1, stock-qty);
 					pstmt3.setInt(2, Integer.parseInt(str));
 					updateStockCount =pstmt3.executeUpdate();
+					}
 				}
 
 				}	

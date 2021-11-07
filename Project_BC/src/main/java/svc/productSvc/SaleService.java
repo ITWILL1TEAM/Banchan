@@ -11,7 +11,7 @@ import vo.BoardBean;
 
 public class SaleService {
 	
-	public ArrayList<BoardBean> isSale(){
+	public ArrayList<BoardBean> isSale(String category){
 		
 		Connection con = getConnection();
 		
@@ -19,7 +19,7 @@ public class SaleService {
 	
 		dao.setConnection(con);
 		
-		ArrayList<BoardBean> saleList = dao.selectSale();
+		ArrayList<BoardBean> saleList = dao.selectSale(category);
 		
 		close(con);
 		
