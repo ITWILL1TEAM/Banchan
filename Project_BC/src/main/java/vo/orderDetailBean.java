@@ -9,6 +9,9 @@ public class orderDetailBean {
 	private int product_discount;
 	private int product_qty;
 	private String product_original_img;
+	private String product_img;
+	
+
 	
 	public int getProduct_num() {
 		return product_num;
@@ -52,6 +55,12 @@ public class orderDetailBean {
 	}
 	public void setProduct_original_img(String product_original_img) {
 		this.product_original_img = product_original_img;
+	}
+	public String getProduct_img() {
+		return product_img;
+	}
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
 	}
 	
 	

@@ -242,7 +242,6 @@ public class OrderDAO {
 							pstmt4 = con.prepareStatement(sql);
 							pstmt4.setInt(1, num);
 							pstmt4.setString(2, order.getCustomer_id());
-							
 							pstmt4.setInt(3, Integer.parseInt(str));
 							pstmt4.setInt(4, qty);
 							pstmt4.setString(5, "결제완료");
@@ -438,7 +437,7 @@ public class OrderDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from product p left join product_img i on p.product_num = i.product_num where p.product_num = ? and i.product_img_location=1;";
+			String sql = "select * from product p left join product_img i on p.product_num = i.product_num where p.product_num = ? and i.product_img_location=1";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, product_num);
 			
@@ -449,7 +448,7 @@ public class OrderDAO {
 			while(rs.next()) {
 				orderDetail.setProduct_num(rs.getInt("product_num"));
 				orderDetail.setProduct_name(rs.getString("product_name"));
-				orderDetail.setSname(rs.getString("Sname"));
+				orderDetail.setSname(rs.getString("seller_id"));
 				orderDetail.setProduct_price(rs.getInt("product_price"));
 				orderDetail.setProduct_discount(rs.getInt("product_discount"));
 //				orderDetail.setProduct_stock(rs.getInt("product_stock"));
@@ -457,6 +456,7 @@ public class OrderDAO {
 				orderDetail.setProduct_qty(rs.getInt("product_stock"));
 				orderDetail.setProduct_discount(rs.getInt("product_discount"));
 				orderDetail.setProduct_original_img(rs.getString("product_original_img"));
+				orderDetail.setProduct_img(rs.getString("product_img"));
 				
 			}
 		} catch (Exception e) {
