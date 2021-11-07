@@ -9,6 +9,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    rel="stylesheet">
 <meta charset="utf-8">
 
 <!-- Bootstrap CSS -->
@@ -85,8 +88,7 @@
                                     onclick=""><i
                                     class="ico-cart2"></i>장바구니</a>
                             </div>
-                            <a href=""
-                                onclick="">
+                            <a href="Product.do?product_num=<%=productNum %>">
                                   <img src="${pageContext.request.contextPath}/upload/<%=productImgName%>01_01.png"
                                 width="296" height="296"
                                 alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)">

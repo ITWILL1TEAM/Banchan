@@ -10,6 +10,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    rel="stylesheet">
 <meta charset="utf-8">
 
 <!-- Bootstrap CSS -->
@@ -27,6 +30,7 @@
 
 
 <title>집밥선생!Project_BC</title>
+
 </head>
 <body>
 
@@ -83,11 +87,10 @@
                         <div class="thumb">
                             <div class="btn-box">
                                 <a href=" " class="btn-shop-cart"
-                                    onclick=""><i
+                                     onclick="location.href='Product.do?product_num=<%=productNum %>'"><i
                                     class="ico-cart2"></i>장바구니</a>
                             </div>
-                            <a href=""
-                                onclick="">
+                            <a href="Product.do?product_num=<%=productNum %>">
                                 <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png"
                                 width="296" height="296"
                                 alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)"
@@ -97,8 +100,7 @@
                                 <%} %>
                         </div>
                         <div class="info">
-                            <a href="Product.do?product_num=<%=productNum %>"
-                                onclick="">
+                              <img src="">
                                     <p class="subject"><%=product_name %></p>
                                 <div class="price">
                                     <p>
@@ -106,7 +108,7 @@
                                     </p>
                                     <%if(discount!=0){ %>
                                     <p class="original">
-                                    <%=price %> <span class="is-noto">원</span>
+                                    <%=price %> <span cla   ss="is-noto">원</span>
                                     </p>
                                     <%} %>
                                 </div>

@@ -133,22 +133,18 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		
-	
 		try {
-			
+
 			String sql = "SELECT * FROM product WHERE seller_id=? ORDER BY product_num DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sId);
 
 			rs = pstmt.executeQuery();
 
-			
 			articleList = new ArrayList<BoardBean>();
 
-			
 			while (rs.next()) {
-				
+
 				BoardBean board = new BoardBean();
 				board.setProduct_num(rs.getInt("product_num"));
 				board.setProduct_name(rs.getString("product_name"));
@@ -192,7 +188,7 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				
+
 				// 조회된 상세 정보를 BoardBean 객체에 저장
 				article = new BoardBean();
 
@@ -278,7 +274,6 @@ public class BoardDAO {
 		}
 		return productNum;
 	}
-	
 
 	public ArrayList<ProductImg> selectArticleImg(int product_num) {
 		ArrayList<ProductImg> articleImg = null;
@@ -296,17 +291,17 @@ public class BoardDAO {
 			pstmt.setInt(1, product_num);
 
 			rs = pstmt.executeQuery();
-			
+
 			articleImg = new ArrayList<ProductImg>();
 
 			while (rs.next()) {
-				
-				 ProductImg productImg = new ProductImg();			
-				 productImg.setProduct_original_img(rs.getString("product_original_img"));
-				 productImg.setProduct_img(rs.getString("product_img"));
-				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
-				 
-				 articleImg.add(productImg);
+
+				ProductImg productImg = new ProductImg();
+				productImg.setProduct_original_img(rs.getString("product_original_img"));
+				productImg.setProduct_img(rs.getString("product_img"));
+				productImg.setProduct_img_location(rs.getInt("product_img_location"));
+
+				articleImg.add(productImg);
 			}
 
 		} catch (Exception e) {
@@ -319,6 +314,7 @@ public class BoardDAO {
 
 		return articleImg;
 	}
+
 	public ArrayList<ProductImg> selectDetailImg(int product_num) {
 		ArrayList<ProductImg> detailImg = null;
 
@@ -333,18 +329,18 @@ public class BoardDAO {
 			pstmt.setInt(1, product_num);
 
 			rs = pstmt.executeQuery();
-			
+
 			detailImg = new ArrayList<ProductImg>();
 
 			while (rs.next()) {
 				// 조회된 상세 정보를 BoardBean 객체에 저장
 				ProductImg productImg = new ProductImg();
-				
-				 productImg.setProduct_original_img(rs.getString("product_original_img"));
-				 productImg.setProduct_img(rs.getString("product_img"));
-				 productImg.setProduct_img_location(rs.getInt("product_img_location"));
-				 
-				 detailImg.add(productImg);
+
+				productImg.setProduct_original_img(rs.getString("product_original_img"));
+				productImg.setProduct_img(rs.getString("product_img"));
+				productImg.setProduct_img_location(rs.getInt("product_img_location"));
+
+				detailImg.add(productImg);
 			}
 
 		} catch (Exception e) {
@@ -357,5 +353,46 @@ public class BoardDAO {
 
 		return detailImg;
 	}
-	
+
+	public ArrayList<BoardBean> selectProducList() {
+		ArrayList<BoardBean> productList = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = "SELECT * FROM product ORDER BY product_num DESC";
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			productList = new ArrayList<BoardBean>();
+
+			while (rs.next()) {
+
+				BoardBean board = new BoardBean();
+				board.setProduct_num(rs.getInt("product_num"));
+				board.setProduct_name(rs.getString("product_name"));
+				board.setSeller_id(rs.getString("seller_id"));
+				board.setProduct_date(rs.getDate("product_date"));
+				board.setProduct_category(rs.getString("product_category"));
+				board.setProduct_price(rs.getInt("product_price"));
+				board.setProduct_stock(rs.getInt("product_stock"));
+
+				// 1개 레코드가 저장된 BoardBean 객체를 List 객체에 추가
+				productList.add(board);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 자원 반환
+			close(rs);
+			close(pstmt);
+		}
+
+		return productList;
+	}
+
 }

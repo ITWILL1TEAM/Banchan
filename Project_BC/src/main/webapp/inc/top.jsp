@@ -59,15 +59,15 @@
             <div class="inner-box">
                 <h1 class="logo">
                     <a href="${pageContext.request.contextPath}/main"
-                        style="width: 200px; height: 150px; background-image: url('img/Logo.png')">집밥선생</a>
+                        style="width: 184px; height: 150px; background-image: url('img/logo.png')">집밥선생</a>
                 </h1>
                 <!-- 검색 영역 [S] -->   
                 <form action="Search.side">
                 <div class="search-wrap">
-                    <div class="search-form">
-                            <input class="form-control me-2" type="search" value="" name="search" placeholder="검색">
-                            <button class="btn btn-outline-success" type="submit">search</button>
-                       </div>
+                    <div class="input-group">
+                       <input class="form-control me-2" type="search" value="" name="search" placeholder="검색">
+					  <button type="submit" class="btn btn-outline-success">search</button>
+					</div>
                  </div>
                  </form>
            
@@ -91,7 +91,7 @@
         
         <li><%=sId %> 님 반갑습니다.</li>
         <!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->   
-        <li><a id="head_login_a" href="MemberLogout.me">로그아웃</a></li>
+        <li><a id="head_login_a" href="MemberLogout.me">&nbsp;&nbsp;&nbsp;로그아웃</a></li>
         <li><a href="">고객센터</a></li> 
             <%  if(grade==1){
                 pageContext.forward("/main.ad");

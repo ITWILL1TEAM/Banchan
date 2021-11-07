@@ -1,8 +1,23 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#292b2c';
+//CHART.DEFAULTS.GLOBAL.DEFAULTFONTFAMILY = '-APPLE-SYSTEM,SYSTEM-UI,BLINKMACSYSTEMFONT,"SEGOE UI",ROBOTO,"HELVETICA NEUE",ARIAL,SANS-SERIF';
+//CHART.DEFAULTS.GLOBAL.DEFAULTFONTCOLOR = '#292B2C';
 
 // Area Chart Example
+
+//$(documemt).ready(function(){
+//    
+//    ajax({
+//        url : 'chart.ad',
+//        type : 'Post',
+//        dataType : 'json',
+//        su
+//        
+//        
+//    });
+//    
+//});
+
+
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',

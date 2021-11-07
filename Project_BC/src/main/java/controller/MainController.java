@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.dashBoardAction.*;
+import action.mainAction.*;
 import vo.ActionForward;
 
 /**
@@ -29,11 +31,14 @@ public class MainController extends HttpServlet {
 		// 각 Action 클래스의 인스턴스를 공통으로 관리하는 Action 타입 변수 선언
 		Action action = null;
 		
-		if(command.equals("/main")) {
-            // 글쓰기 작업을 위한 뷰페이지로 포워딩
-            forward = new ActionForward();
-            forward.setPath("/main.jsp");
-            forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		if(command.equals("/main")) {			
+			action = new MainAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		if(forward != null) {

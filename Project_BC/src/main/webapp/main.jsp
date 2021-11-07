@@ -1,6 +1,15 @@
+<%@page import="vo.BoardBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+  <%
+    ArrayList<BoardBean> productList = (ArrayList<BoardBean>)request.getAttribute("productList");
+   
+  
+  
+  %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -348,18 +357,12 @@
                                     </div>
                                 </div>
                                 <div class="tab-content" id="md-03">
-                                    <div
-                                        class="prd-slider md-slider slick-initialized slick-slider"
-                                        id="MD_D2007001032">
+                                    <div class="prd-slider md-slider slick-initialized slick-slider" id="MD_D2007001032">
                                         <p class="title-type2" id="SUB_D2007001032"></p>
                                         <div aria-live="polite" class="slick-list draggable">
-                                            <div class="slick-track"
-                                                style="opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);"
-                                                role="listbox">
-                                                <div class="list slick-slide slick-current slick-active"
-                                                    data-slick-index="0" aria-hidden="false"
-                                                    style="width: 1280px;" tabindex="-1" role="option"
-                                                    aria-describedby="slick-slide90">
+                                            <div class="slick-track" style="opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);" role="listbox">
+                                                <div class="list slick-slide slick-current slick-active"  data-slick-index="0" aria-hidden="false" 
+                                                style="width: 1280px;" tabindex="-1" role="option" aria-describedby="slick-slide90">
                                                     <div class="item">
                                                         <div class="thumb">
                                                             <div class="btn-cart">
@@ -483,10 +486,19 @@
                                             <div class="slick-track"
                                                 style="opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);"
                                                 role="listbox">
-                                                <div class="list slick-slide slick-current slick-active"
-                                                    data-slick-index="0" aria-hidden="false"
-                                                    style="width: 1280px;" tabindex="-1" role="option"
-                                                    aria-describedby="slick-slide100">
+                                                <div class="list slick-slide slick-current slick-active"  data-slick-index="0" aria-hidden="false"
+                                                    style="width: 1280px;" tabindex="-1" role="option" aria-describedby="slick-slide100">
+                                                      
+                                                        <%for(int i=0; i<4; i++){ %>
+                                                        <% 
+                                                        String productImgName = productList.get(i).getProduct_name();
+                                                        int discountPrice = (int)(productList.get(i).getProduct_price()*(100-productList.get(i).getProduct_discount())/100); 
+                                                        int price =  productList.get(i).getProduct_price();
+                                                        int discount = productList.get(i).getProduct_discount();
+                                                        int productNum = productList.get(i).getProduct_num();
+                                                        String product_name = productList.get(i).getProduct_name();
+                                                        double product_review_score = productList.get(i).getProduct_review_score(); 
+                                                        %>
                                                     <div class="item">
                                                         <div class="thumb">
                                                             <div class="btn-cart">
@@ -495,109 +507,31 @@
                                                                     tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
                                                                 </a>
                                                             </div>
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0"> <img
-                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/112/210429000027112.jpg">
+                                                            <a href="Product.do?product_num=<%=productNum %>" tabindex="0"> 
+                                                                 <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png"  width="296" height="296">
                                                             </a>
                                                         </div>
                                                         <div class="info">
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0">
-                                                                <p class="subject">[미트Q] 돼지 항정살(구이용/200g/냉동)</p>
+<%--                                                             <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png" tabindex="0"> --%>
+                                                                <p class="subject"><%=product_name %></p>
                                                                 <div class="price">
                                                                     <p>
-                                                                        <strong>4,900</strong>원
+                                                                       <strong><%= discountPrice %></strong><span class="is-noto">원</span>
                                                                     </p>
-                                                                </div>
-                                                            </a>
+                                                                    <%if(discount!=0){ %>
+								                                    <p class="original">
+								                                    <%=price %> <span class="is-noto">원</span>
+								                                    </p>
+								                                    <%} %>
+                                                                </div>                                                           
                                                         </div>
                                                     </div>
-                                                    <div class="item">
-                                                        <div class="thumb">
-                                                            <div class="btn-cart">
-                                                                <a href=" "
-                                                                onclick=""
-                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
-                                                                </a>
-                                                            </div>
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0"> <img
-                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/120/210429000027120.jpg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="info">
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0">
-                                                                <p class="subject">[미트Q] 돼지 갈매기살(구이용/200g/냉동)</p>
-                                                                <div class="price">
-                                                                    <p>
-                                                                        <strong>4,700</strong>원
-                                                                    </p>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="thumb">
-                                                            <div class="btn-cart">
-                                                                <a href=" "
-                                                                onclick=""
-                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
-                                                                </a>
-                                                            </div>
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0"> <img
-                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/953/210319000026953.jpg">
-                                                                <span class="tag sale v3"><strong>10</strong>%</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="info">
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0">
-                                                                <p class="subject">[미트Q] 돌돌말이 대패삼겹살 (500g/냉동)</p>
-                                                                <div class="price">
-                                                                    <p>
-                                                                        <strong>7,920</strong>원
-                                                                    </p>
-                                                                    <p class="original">8,800원</p>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="thumb">
-                                                            <div class="btn-cart">
-                                                                <a href=" "
-                                                                onclick=""
-                                                                    tabindex="0"> <i class="ico-cart2"></i>장바구니 담기
-                                                                </a>
-                                                            </div>
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0"> <img
-                                                                src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/284/818/200722000025818.jpg">
-                                                                <span class="tag sale v3"><strong>20</strong>%</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="info">
-                                                            <a href=" "
-                                                            onclick=""
-                                                                tabindex="0">
-                                                                <p class="subject">[미트Q] 금천육우 등심(구이용/200g)</p>
-                                                                <div class="price">
-                                                                    <p>
-                                                                        <strong>12,160</strong>원
-                                                                    </p>
-                                                                    <p class="original">15,200원</p>
-                                                                </div>
-                                                            </a>
-                                                        </div>
+                                                    <%} %>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
@@ -895,7 +829,7 @@
                                                     <div class="btn-cart">
                                                         <a href=" "
                                                         onclick="">
-                                                            class="ico-cart2"></i></a>
+                                                           </i></a>
                                                     </div>
                                                 </div>
                                             </div>
