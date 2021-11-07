@@ -6,7 +6,7 @@ public class orderProductBean {
 	 private String customer_id;
 	 private int product_num;
 	 private int product_qty;
-	 
+	 private String product_check;
 	  
 	  
 	public int getOrder_num() {
@@ -32,6 +32,12 @@ public class orderProductBean {
 	}
 	public void setProduct_qty(int product_qty) {
 		this.product_qty = product_qty;
+	}
+	public String getProduct_check() {
+		return product_check;
+	}
+	public void setProduct_check(String product_check) {
+		this.product_check = product_check;
 	}
 	
 
