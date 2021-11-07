@@ -64,7 +64,7 @@ public class CheckAddressAction implements Action {
 			} else {
 				// 배송지가 입력된 회원일 경우 결제 폼으로 포워딩
 				forward = new ActionForward();
-				forward.setPath("OrderSheet.or");
+				forward.setPath("OrderSheet.or?product_num=" + product_num);
 				forward.setRedirect(true);
 				
 			}

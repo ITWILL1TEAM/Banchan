@@ -34,6 +34,7 @@ public class OrderFormService {
 		
 		while(cartList.size()!=nums.length) {
 			for(String num : nums) {
+				
 				basket = dao.selectBasket(Integer.parseInt(num));
 				
 				cartList.add(basket);
@@ -48,6 +49,35 @@ public class OrderFormService {
 		
 	}
 
+	public ArrayList<BasketBean> getSelectCart(String[] nums, String product_qty) {
+		System.out.println("orderService - getSelectCart()");
+		// 공통작업-1. Connection Pool 로부터 Connection 객체 가져오기
+		Connection con = getConnection();
+		// 공통작업-2. BoardDAO 클래스로부터 BoardDAO 객체 가져오기
+		OrderDAO dao = OrderDAO.getInstance();
+		// 공통작업-3. BoardDAO 객체에 Connection 객체 전달하기
+		dao.setConnection(con);
+		
+		
+		ArrayList<BasketBean> cartList = new ArrayList<BasketBean>();
+		BasketBean basket = null;
+		
+		basket = new BasketBean();
+		
+		while(cartList.size()!=nums.length) {
+			for(String num : nums) {
+				
+				basket = dao.selectBasket(Integer.parseInt(num),Integer.parseInt(product_qty));
+				
+				cartList.add(basket);
+				}
+			}
+			
+			close(con);
+		
+		
+		return cartList;
+	}
 
 	public ArrayList<CustomerInfo> getCustomerInfo(String customer_id) {
 		System.out.println("orderService - getCustomerAddress()");
@@ -64,6 +94,8 @@ public class OrderFormService {
 		close(con);
 		return customerInfo;
 	}
+
+
 
 	
 
