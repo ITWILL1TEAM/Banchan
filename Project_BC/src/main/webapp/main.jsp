@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
   <%
     ArrayList<BoardBean> productList = (ArrayList<BoardBean>)request.getAttribute("productList");
@@ -488,8 +489,13 @@
                                                 role="listbox">
                                                 <div class="list slick-slide slick-current slick-active"  data-slick-index="0" aria-hidden="false"
                                                     style="width: 1280px;" tabindex="-1" role="option" aria-describedby="slick-slide100">
+<<<<<<< HEAD
                                                       
                                                         <%for(int i=0; i<3; i++){ %>
+=======
+                                                      <%if(productList.size()>0){ %>
+                                                        <%for(int i=0; i<4; i++){ %>
+>>>>>>> refs/heads/JEONGSEONGWON
                                                         <% 
                                                         String productImgName = productList.get(i).getProduct_name();
                                                         int discountPrice = (int)(productList.get(i).getProduct_price()*(100-productList.get(i).getProduct_discount())/100); 
@@ -514,19 +520,20 @@
                                                         <div class="info">
 <%--                                                             <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png" tabindex="0"> --%>
                                                                 <p class="subject"><%=product_name %></p>
-                                                                <div class="price">
-                                                                    <p>
-                                                                       <strong><%= discountPrice %></strong><span class="is-noto">원</span>
-                                                                    </p>
-                                                                    <%if(discount!=0){ %>
-								                                    <p class="original">
-								                                    <%=price %> <span class="is-noto">원</span>
-								                                    </p>
-								                                    <%} %>
-                                                                </div>                                                           
+                                                               <div class="price">
+							                                    <p>
+							                                        <strong><fmt:formatNumber value="<%=discountPrice %>" pattern="#,###.##"/></strong><span class="is-noto">원</span>
+							                                    </p>
+							                                    <%if(discount!=0){ %>
+							                                    <p class="original">
+							                                    <fmt:formatNumber value="<%=price %>" pattern="#,###.##"/><span cla   ss="is-noto">원</span>
+							                                    </p>
+							                                    <%} %>
+							                                </div>                                                      
                                                         </div>
                                                     </div>
-                                                    <%} %>
+                                                    <%}
+                                                        } %>
                                                     
                                                     
                                                     

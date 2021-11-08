@@ -116,15 +116,18 @@ public class MemberDAO {
 
 			close(pstmt);
 
-			sql = "INSERT INTO seller VALUES(?,?,?,?,?,?,0)";
+			sql = "INSERT INTO seller VALUES(?,?,?,?,?,?,?,?,0)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sBean.getSeller_id());
 			pstmt.setInt(2, sBean.getsNO());
 			pstmt.setString(3, sBean.getsName());
-			pstmt.setString(4, sBean.getAdress());
-			pstmt.setString(5, sBean.getPhone());
-			pstmt.setString(6, sBean.getEmail());
+			pstmt.setString(4, sBean.getRoadAddress());
+			pstmt.setString(5, sBean.getZoneCode());
+			pstmt.setString(6, sBean.getDtl_addr());
+			pstmt.setString(7, sBean.getPhone());
+			pstmt.setString(8, sBean.getEmail());
 
+			System.out.println(sBean.getDtl_addr() +" DAO");
 			insertCount = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -450,6 +453,248 @@ public class MemberDAO {
 		}
 		return idDrop;		
 	}	
+	public int findGrade(String name) {
+		int findGrade = 0;
 		
+		System.out.println("findGrade 작동중");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
+			String sql = "SELECT grade FROM member WHERE name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,name);
+			
+			
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("findGrade- 정상작동");
+				findGrade = rs.getInt("grade");
+			
+					
+			}
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원 반환
+			close(rs);
+			close(pstmt);
+			
+		}
+		return findGrade;
+	}
+
+	public String findCustomerId(String name, String email) {
+		String id = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+
+		try {
+			
+			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
+			String sql = "SELECT customer_id"
+					+ " FROM member , customer"
+					+ " WHERE member.name=? AND customer.email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,name);
+			pstmt.setString(2,email);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("findCustomerID - 정상작동");
+				id = rs.getString("customer_id");
+				
+			}
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원 반환
+			close(rs);
+			close(pstmt);
+			
+		}
+
+		return id;
+	}
+
+	public String findSellerId(String name, String email) {
+		String id = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+
+		try {
+			
+			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
+			String sql = "SELECT seller_id"
+					+ " FROM member , seller"
+					+ " WHERE member.name=? AND seller.email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,name);
+			pstmt.setString(2,email);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("findSellerId - 정상작동");
+				id = rs.getString("seller_id");
+
+			}
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원 반환
+			close(rs);
+			close(pstmt);
+			
+		}
+
+		return id;
+	}
+
+	public String findCustomerEmail(String id) {
+		String email = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+
+		try {
+			
+			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
+			String sql = "SELECT email FROM customer WHERE customer_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("findSellerId - 정상작동");
+				email = rs.getString("email");
+
+			}
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원 반환
+			close(rs);
+			close(pstmt);
+			
+		}
+
+		return email;
+	}
+
+	public int findCustomerPwd(String id) {
+
+		int pwd = 0; 
+		
+		PreparedStatement pstmt = null;
+		try {
+			
+
+			String sql="UPDATE member SET password='123456789A' WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			
+			pwd = pstmt.executeUpdate();
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("에러뜸");
+		}finally {
+			//자원 반환
+			close(pstmt);
+			
+		}
+		
+		return pwd;
+
+	}
+
+	public int changePwd(String id,String newPwd) {
+		int chageSuccess = 0;
+		PreparedStatement pstmt = null;
+
+		try {
+			
+
+			String  sql= "UPDATE member SET password=? WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, newPwd);
+			pstmt.setString(2, id);
+			
+			chageSuccess = pstmt.executeUpdate();
+			
+	
+			System.out.println(chageSuccess);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("에러뜸");
+		}finally {
+			//자원 반환
+			close(pstmt);
+			
+		}
+
+		
+		return chageSuccess;
+	}
+
+	public String findSellerEmail(String id) {
+		String email = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+
+		try {
+			
+			// 아이디, 패스워드 모두 전달하여 결과가 조회되면 성공 , 아니면 실패 
+			String sql = "SELECT email FROM seller WHERE seller_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("findSellerId - 정상작동");
+				email = rs.getString("email");
+
+			}
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원 반환
+			close(rs);
+			close(pstmt);
+			
+		}
+
+		return email;
+	}
+
+
 	
 }

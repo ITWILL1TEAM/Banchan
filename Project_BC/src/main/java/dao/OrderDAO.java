@@ -244,7 +244,7 @@ public class OrderDAO {
 							pstmt4.setString(2, order.getCustomer_id());
 							pstmt4.setInt(3, Integer.parseInt(str));
 							pstmt4.setInt(4, qty);
-							pstmt4.setString(5, "결제완료");
+							pstmt4.setInt(5, 0);
 							pstmt4.executeUpdate();
 							
 							//메소드 불러오기
