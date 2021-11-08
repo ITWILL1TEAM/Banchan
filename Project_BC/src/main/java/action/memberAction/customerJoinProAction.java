@@ -1,6 +1,6 @@
 package action.memberAction;
-
 import java.io.PrintWriter;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,12 +25,12 @@ public class customerJoinProAction implements Action {
 		
 		
 		String customer_id = request.getParameter("member_id");
-		String phone = request.getParameter("member_phone1")+"-"+request.getParameter("member_phone2")+"-"+
-					   request.getParameter("member_phone3");
-		String email = request.getParameter("member_email");
+		String phone = request.getParameter("member_phone");
+		String email = request.getParameter("email");
 		String recommendId = request.getParameter("member_recommendID");
-		int personal_data = Integer.parseInt(request.getParameter("member_personalData")); // customerBean
+		int personal_data = Integer.parseInt(request.getParameter("add_info2")); // customerBean
 
+		System.out.println(name + "action");
 	
 		CustomerBean cBean = new CustomerBean();
 		cBean.setId(id);
@@ -43,6 +43,15 @@ public class customerJoinProAction implements Action {
 		cBean.setEmail(email);
 		cBean.setRecommend_id(recommendId);
 		cBean.setPersonal_data(personal_data);
+		
+		
+		System.out.println(customer_id);
+		System.out.println(phone);
+		System.out.println(email);
+		System.out.println(recommendId);
+		System.out.println(personal_data);
+			
+		
 		
 		
 		
@@ -58,7 +67,7 @@ public class customerJoinProAction implements Action {
 			out.println("</script>");
 		} else { 
 			forward = new ActionForward();
-			forward.setPath("MemberLoginForm.me");
+			forward.setPath("main_fail.jsp");
 			forward.setRedirect(true);
 		}
 	

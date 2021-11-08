@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/customerJoin.js"></script> 
-<script src="js/submit.js"></script> 
+<script src="js/jquery-3.6.0.js"></script>
+<script src="js/sellerJoin.js"></script> 
+<script src="js/sendEmail.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <link href="CSS/mem.css" rel="stylesheet" type="text/css">
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
@@ -15,6 +17,7 @@
 <link href="CSS/font.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="#">
 <body>
+  <jsp:include page="/inc/top.jsp" />
 <div class="content" style="padding-top: 269px;">
 		<!-- WRAP -->
 		<div class="wrap mem">
@@ -46,7 +49,7 @@
 	                  <label for="join_id" class="ir">아이디</label>
 	                  <div class="input_w auth_div">
 	                  <input type="text" id="join_id" name="member_id" maxlength="20" class="login_input"
-	                   placeholder="아이디" onkeyup="checkId(this)" readonly="readonly">
+	                   placeholder="아이디" onkeyup="checkId(this)">
 	                  </div>
 	                  <span class="limit" id="_certTime"></span>
 	                  <button class="submit" type="button"  class="dup" id="btn" onclick="openWindow('dupIdCheck')">중복확인</button>
@@ -58,7 +61,7 @@
 					<label for="join_pw" class="ir">비밀번호</label>
 					<input type="password" id="join_pw" name="member_pass" class="login_input" maxlength="20" placeholder="비밀번호" onkeyup="checkPassword(this.value)" onclick="checkIdValue()">
 					<label for="join_pw_re" class="ir">비밀번호 재입력</label>
-					<input type="password" id="join_pw_re" class="login_input" placeholder="비밀번호 재입력" onkeyup="checkRetypePasswd(this.value)">
+					<input type="password" id="join_pw_re" class="login_inpss" name="member_repass" placeholder="비밀번호 재입력" onkeyup="checkRetypePasswd(this.value)">
 					
 					<!-- 비번 오류시 노출 -->
 					<span class="caution" id="checkPasswdResult" style="display: none;"><!-- - --></span>
@@ -70,59 +73,34 @@
 					<!-- 이름/성별 오류시 노출 -->
 					<span class="caution" id="checkNameResult" style="display: none;"></span>
 					
+					<br><br>
 					<!-- 인증 이전 -->
-					<div class="phone_num">
-						<input type="hidden" id="cmcm_divi_cd" name="cmcm_divi_cd" value="00">
-						<input type="hidden" id="cell_no" name="cell_no">
-						<input type="hidden" id="mbr_cert_divi_cd" name="mbr_cert_divi_cd" value="50">
-						<input type="hidden" id="mbr_cert_info" name="mbr_cert_info" value="">	
+					<input type="text" id="recomm_remark" name="member_phone" maxlength="40" placeholder="휴대폰 번호">
+					<div class="info_txt">※전화번호는 - 을 빼고 입력해주세요</div>
 					
-						<!-- 2017.06.23 변경 : 휴대폰 번호 입력 3cut으로 통일 -->
-						<label class="ir" for="cell_no1" >휴대폰번호</label>
-						<select id="cell_no1" class="auth_div" name="member_phone1" title="휴대폰번호 앞자리선택">
-							<option value="">선택</option>
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
-							<option value="02">02</option>						
-							<option value="051">051</option>
-							<option value="055">055</option>
-						</select>
-						<span class="hp">-</span>
-						<input type="text" class="auth_div" id="cell_no2" name="member_phone2" maxlength="4" title="휴대폰번호 중간자리입력"  onkeyup="checkMiddlePhone(this.value)"
-						onclick="checkNameValue()">
-						<span class="hp">-</span>
-						<input type="text" class="auth_div" id="cell_no3" name="member_phone3" maxlength="4" title="휴대폰번호 뒷자리입력" onkeyup="checkLastPhone(this.value)">
-						<!-- 본인인증 버튼 -->
-						<button class="auth" type="button" id="btn_auth" onclick="fnSendCertSms();"><em>본인인증 전송</em></button>
-						<!--  재발송 버튼 -->
-						<button class="auth_re ir" type="button" id="btn_auth_re" onclick="fnSendCertSms();"><em>재발송</em></button>
-						
-					</div>
-
+					
+					
+				<div class="addr_form">
+						<span class="dw_txt">
 					<div class="auth_set">
-						<label for="auth_num" class="ir">인증번호</label>
-						<div class="input_w auth_div">
-							<input type="text" id="auth_num" name="auth_num" maxlength="10" placeholder="인증번호">
-						</div>
-						<span class="limit" id="_certTime"></span>
-						<button class="submit" type="button" id="btn_submit" onclick="fnCheckCertSMS();">확인</button>
+	                  <label for="join_id" class="ir">이메일</label>
+	                  <div class="input_w auth_div">
+	                     <input type="text" id="email_Text" name="email" class="login_input" placeholder="이메일" required="required">
+	                  	 <input type="hidden" value="9"  id="randCode" name="randCode">
+	             	 	<input type="hidden" value="0"  id="codeChecked" name="codeChecked">
+	             
+	                  </div>
+	                </div>
+							<span class="inp"><input type="text" id="dtl_addr" name="dtl_addr" class="input" style="margin-top:9px;" data-class="addr_chk" placeholder="인증번호" onkeyup="checkCode()" required="required"></span>
+							<span class="caution" id="caution12" style="">※ 주문관련 정보에 대한 이메일과 SMS는 자동으로 전송됩니다.</span>
+						</span>
+				
+			
+						<button type="button" class="co_auth" id="fnSearchPostNo" onclick="sendEmail()" >
+							<em>본인인증 발송</em>
+						</button>						
+				
 					</div>
-					
-					<div class="auth_fin ir" id="auth_fin">
-						<span>본인 인증이 정상처리 되었습니다.</span>
-					</div>
-					<!-- //인증 이전 -->
-
-					<!--  입력시간 초과 -->
-					<span class="caution ir" id="caution4"></span>
-					<span class="caution ir" id="auth_msg">인증번호  입력시간이 초과되었습니다</span>
-					
-					<label for="email"></label>
-					<input type="text" id="email" name="member_email" maxlength="50" placeholder="이메일" required="required">
 					
 					<div class="info_txt">※ 주문관련 정보에 대한 이메일과 <em class="thm">SMS</em>는 자동으로 전송됩니다.</div>
 					<span class="caution ir" id="caution5"></span>
@@ -148,7 +126,7 @@
 							<input type="hidden" id="base_addr" name="base_addr"> 
 							<input type="hidden" id="road_base_addr" name="road_base_addr"> 
 							<input type="hidden" id="road_dtl_addr" name="road_dtl_addr">	
-							<input type="text" id="addr_view" name="address"  placeholder="사업장 소재지" >
+							<input type="text" id="addr_view" name="address"  placeholder="사업장 소재지" readonly="readonly">
 							<label for="addr_view" class="ir">주소</label>
 							<!-- <input type="text" id="road_base_addr_view" disabled="disabled" />
 							<label for="road_base_addr_view" class="ir">주소</label> -->
@@ -158,7 +136,7 @@
 							<!-- <span class="inp"><input type="text" id="dtl_addr" name="dtl_addr" class="input" data-class="addr_chk"  /></span>
 							<span class="sm" name="addr" style="display:none;">이름은 한글, 영문만 가능합니다.</span> -->
 							<!-- <span id="addr_view" class="addr"><em></em></span> -->
-							<span class="inp"><input type="text" id="dtl_addr" name="dtl_addr" class="input" style="margin-top:9px;" data-class="addr_chk" placeholder="사업장 상세 주소"></span>
+							<span class="inp"><input type="text" id="dtl_addr" name="dtl_address" class="input" style="margin-top:9px;" data-class="addr_chk" placeholder="사업장 상세 주소"></span>
 							<span class="caution" id="caution12" style="">사업장 상세 주소를 입력해 주세요.</span>
 						</span>
 						<button type="button" class="co_auth" id="fnSearchPostNo" title="우편번호 찾기 페이지 이동" onclick="openWindow('addrSearch')">
@@ -180,19 +158,19 @@
 							<ul class="agree_list">
 								<li class="agree_point_txt">필수 항목</li>
 										<li>
-											<input type="checkbox" id="2109000103" name="add_info" class="agreeChk validChk" value="2109000103" >
+											<input type="checkbox" id="2109000103" name="addinfo1" class="agreeChk validChk" value="2109000103" >
 											<label for="2109000103">서비스 이용약관</label><a href="javascript:overpass.popup.agreeLayer({gbn:'2109000103'})" class="detail arrow_btn01">내용 보기</a>
 										</li>
 										<li>
-											<input type="checkbox" id="2104000099" name="add_info" class="agreeChk validChk" value="2104000099">
+											<input type="checkbox" id="2104000099"  name="addinfo2"  class="agreeChk validChk" value="01">
 											<label for="2104000099">개인정보 이용 및 수집 (필수)</label><a href="javascript:overpass.popup.agreeLayer({gbn:'2104000099'})" class="detail arrow_btn01">내용 보기</a>
 										</li>
 										<li>
-											<input type="checkbox" id="age_agree" class="agreeChk" name="add_info" value="N">
+											<input type="checkbox" id="age_agree" class="agreeChk" name="addinfo3" value="N">
 											<label for="age_agree">본인은 <strong>만 14세</strong> 이상입니다.</label>
 										</li>
 								<li class="agree_point_txt">선택 항목</li>
-									<li><input type="checkbox" id="2101000093" name="member_personalData" class="agreeChk recomm" value="2101000093"><label for="2101000093">개인정보 이용 및 수집 (선택)</label><a href="javascript:overpass.popup.agreeLayer({gbn:2101000093})" class="detail arrow_btn01">내용 보기</a></li>
+									<li><input type="checkbox" id="2101000093"  class="agreeChk recomm" value="2101000093"><label for="2101000093">개인정보 이용 및 수집 (선택)</label><a href="javascript:overpass.popup.agreeLayer({gbn:2101000093})" class="detail arrow_btn01">내용 보기</a></li>
 										<li style="height: 30px;">
 											<input type="checkbox" id="forever_agree"  class="agreeChk" name="personalData1">
 											<input type="hidden" id="forever_member_yn" name="forever_member_yn">
@@ -218,7 +196,7 @@
 </form>
 
 		</div>
-		<!--// WRAP -->
+   <jsp:include page="/inc/bottom.jsp" />
 	</div>
 </body>
 </html>

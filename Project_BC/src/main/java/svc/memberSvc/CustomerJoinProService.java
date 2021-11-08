@@ -23,6 +23,7 @@ public class CustomerJoinProService {
 		int updateCount = 0;
 		
 	
+		System.out.println(cBean.getName() + "service");
 		dao.setConnection(con);
 		System.out.println(cBean.getRecommend_id());
 		updateCount = dao.foundRecommandID(cBean.getRecommend_id());

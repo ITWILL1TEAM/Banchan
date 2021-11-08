@@ -3,11 +3,12 @@ package action.memberAction;
 import java.io.PrintWriter;
 
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import svc.dashBoardSvc.SellerJoinProService;
+import svc.memberSvc.SellerJoinProService;
 import vo.ActionForward;
 import vo.SellerBean;
 
@@ -28,14 +29,22 @@ public class SellerJoinProAction implements Action {
 		String seller_id = request.getParameter("member_id");
 		int sNo = Integer.parseInt(request.getParameter("member_BRN"));
 		String sName = request.getParameter("member_Cname"); 
-		String adress = request.getParameter("address");
-		String phone = request.getParameter("member_phone1")+"-"+request.getParameter("member_phone2")+"-"+
-					   request.getParameter("member_phone3");
-		String email = request.getParameter("member_email");
+		String address = request.getParameter("address");
+		
+		String dtl_addr = request.getParameter("dtl_address");
+		
+		String phone = request.getParameter("member_phone");
+		String email = request.getParameter("email");
 	
-		System.out.println(sName);
-		System.out.println(name);
-		System.out.println(adress);
+		System.out.println(dtl_addr);
+
+		String[] adary = address.split(",");
+		
+		System.out.println(adary[0]);
+		System.out.println(adary[1]);
+		
+		String zoneCode = adary[0];
+		String roadAddress = adary[1];
 	
 		SellerBean sBean = new SellerBean();
 		sBean.setId(id);
@@ -46,7 +55,9 @@ public class SellerJoinProAction implements Action {
 		sBean.setSeller_id(seller_id);
 		sBean.setsNO(sNo);
 		sBean.setsName(sName);
-		sBean.setAdress(adress);
+		sBean.setZoneCode(zoneCode);
+		sBean.setRoadAddress(roadAddress);
+		sBean.setDtl_addr(dtl_addr);
 		sBean.setPhone(phone);
 		sBean.setEmail(email);
 		
@@ -63,7 +74,7 @@ public class SellerJoinProAction implements Action {
 			out.println("</script>");
 		} else { 
 			forward = new ActionForward();
-			forward.setPath("MemberLoginForm.me");
+			forward.setPath("main_fail.jsp");
 			forward.setRedirect(true);
 		}
 	
