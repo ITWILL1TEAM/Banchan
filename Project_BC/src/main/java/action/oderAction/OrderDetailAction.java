@@ -26,8 +26,8 @@ public class OrderDetailAction implements Action {
 		System.out.println("OrderDetailAction!");
 		ActionForward forward = null;
 		HttpSession session = request.getSession();
-
 		String customer_id = (String)session.getAttribute("sId");  
+		
 		int order_num = Integer.parseInt(request.getParameter("order_num"));
 		System.out.println("앞에서 파라미터로 받아온 오더 넘 "+order_num);
 		
@@ -40,7 +40,6 @@ public class OrderDetailAction implements Action {
 			
 			out.println("</script>");
 			
-			
 		} else {
 		
 		
@@ -51,9 +50,6 @@ public class OrderDetailAction implements Action {
 		
 		
 		request.setAttribute("orderList", orderList);
-		
-
-		
 		
 		
 		//----------------------------------------------프로덕트 정보를 가져오는 객체

@@ -1,9 +1,11 @@
+<%@page import="vo.CustomerBean"%>
 <%@page import="vo.NoticeBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
     ArrayList<NoticeBean> noticeList = (ArrayList<NoticeBean>)request.getAttribute("noticeList");
+    ArrayList<CustomerBean> memberList = (ArrayList<CustomerBean>)request.getAttribute("memberList");
     
     %>
 <!DOCTYPE html>
@@ -101,17 +103,21 @@
                                         <tr>                                        
                                             <th>글번호</th>
                                             <th>제목</th>
-                                            <th>내용</th>    
+                                            <th>등록일</th>    
                                         </tr>
                                         <%for(int i = 0; i < noticeList.size(); i++) { %>                                    
                                         <tr onclick="location.href='NoticeView.ad?notice_num=<%=noticeList.get(i).getNotice_num()%>'">
                                             <td><%=noticeList.get(i).getNotice_num()%></td>
-                                            <td><%=noticeList.get(i).getNotice_subject()%></td>
-                                            <td><a href="#"><%=noticeList.get(i).getNotice_content()%></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
+                                            <td><a href="#"><%=noticeList.get(i).getNotice_subject()%></a></td>
+                                            <td><%=noticeList.get(i).getNotice_date()%></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
+                                        </tr>
+                                          <%} %>
+                                        <%}else{ %>
+                                        <tr>
+                                            <td>공지가 없습니다.</td>                                            
                                         </tr>
                                         <%} %>
                                         </table>
-                                        <%} %>
                                     </div>
                                 </div>
                                 </div>                          
@@ -143,78 +149,61 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                판매자관리
+                                회원관리
                             </div>
                             <div class="card-body">
-                               <table id="datatablesSimple">
+                              <table id="datatablesSimple">
                                     <thead>
-                                        <tr>
-                                            <th>상품번호</th>
-                                            <th>판매자</th>
-                                            <th>상품이름</th>
-                                            <th>판매수량</th>
-                                            <th>판매시작일</th>
-                                            <th>총 판매금액</th>
-                                            <th>관리</th>
+                                       <% if(memberList != null){ %>
+                                       <tr>
+                                            <th>이름</th>
+                                            <th>전화번호</th>
+                                            <th>이메일</th>
+                                            <th>등급</th> 
+                                            <th>status</th>                                          
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>상품번호</th>
-                                            <th>판매자</th>
-                                            <th>상품이름</th>
-                                            <th>판매수량</th>
-                                            <th>판매시작일</th>
-                                            <th>총 판매금액</th>
-                                            <th>관리</th>
+                                            <th>이름</th>
+                                            <th>전화번호</th>
+                                            <th>이메일</th>
+                                            <th>등급</th>  
+                                            <th>status</th>                                           
                                         </tr>
                                     </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
+                                      <tbody>
+                                        <%for(int i=0; i<memberList.size(); i++){ %>
+                                            <%if(memberList.get(i).getMember_status()==1){ %>
+                                        <tr style="text-decoration:none; color:#009000">
+                                        <%}else{ %>
+                                        <tr  style="text-decoration:none; color:#FF0000">
+                                        <%} %>
+                                            <td><%=memberList.get(i).getId()%></td>
+                                            <td><%=memberList.get(i).getPhone() %></td>
+                                            <td><%=memberList.get(i).getEmail() %></td>
+                                            <td>
+                                            <% if(memberList.get(i).getGrade()==2){ %>
+                                            판매자<%}else{ %>
+                                            소비자<%} %>
+                                            </td>
+                                            <td><%=memberList.get(i).getMember_status() %> </td>
+                                            <td>
+                                                 <div class="dropdown">
+                                                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                     info
+                                                   </button>
+                                                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                     <li><button class="dropdown-item" type="button" onclick="location.href='${pageContext.request.contextPath}/MemberStatus.ad?id=<%=memberList.get(i).getId() %>'">권한변경</button></li>
+                                                     <li><button class="dropdown-item" type="button" onclick="location.href='${pageContext.request.contextPath}'/MemberLeave.ad?id=<%=memberList.get(i).getId() %>'">회원탈퇴</button></li>
+                                                   </ul>
+                                                 </div>
+                                            </td> 
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>  
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>  
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>   <tr>
-                                            <td>000001</td>
-                                            <td>성원축산</td>
-                                            <td><a href="#">미트신선한미트</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->
-                                            <td>53</td>
-                                            <td>2021-10-19</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
-                                        </tr>                                                            
+                                   <%} 
+                                   }%>
                                     </tbody>
+                                    
                                 </table>
                             </div>
                         </div>

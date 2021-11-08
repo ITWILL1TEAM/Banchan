@@ -80,8 +80,8 @@ public class MemberLoginProAction implements Action {
 			}
 			System.out.println("로그인 성공");
 			forward = new ActionForward();
-			//forward.setPath("./main.jsp");
-			//forward.setRedirect(true);
+			forward.setPath("/main.jsp");
+			forward.setRedirect(true);
 			// Redirect 방식으로 포워딩 할 경우 request 객체는 유지되지 않지만 
 			// session 객체는 웹브라우저 종료 시까지 유지되므로 포워딩 방식과 무관함
 			

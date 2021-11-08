@@ -6,9 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import svc.dashBoardSvc.NoticeListService;
-import vo.ActionForward;
-import vo.NoticeBean;
+import svc.dashBoardSvc.*;
+import vo.*;
 
 public class DashBoardMainAction implements Action {
 
@@ -17,13 +16,15 @@ public class DashBoardMainAction implements Action {
 		ActionForward forward=null;
 		
 		
-		NoticeListService service = new NoticeListService();
+		NoticeListService notice = new NoticeListService();
+		MemberListService member = new MemberListService();
 		
-		ArrayList<NoticeBean> noticeList =  service.getArticleList();
-		
+		ArrayList<NoticeBean> noticeList =  notice.getArticleList();
+		ArrayList<CustomerBean> memberList = member.getMemberList();
 		
 		
 		request.setAttribute("noticeList", noticeList);
+		request.setAttribute("memberList", memberList);
 		
 		forward = new ActionForward();
 		forward.setPath("adminPage/admin_main.jsp");

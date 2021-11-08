@@ -17,21 +17,22 @@ public class sellerDashBoardAction implements Action {
 		// TODO Auto-generated method stub
 		ActionForward forward = null;
 
-		int page = 1; // 현재 페이지 번호를 저장할 변수(기본값 1)
-		int limit = 10; // 한 페이지에 표시할 게시물 수를 저장할 변수(최대 10개 설정)
+	
+		HttpSession session = request.getSession();
+		String sId = (String)session.getAttribute("sId");
 
 		BoardListService service = new BoardListService();
 		NoticeListService noticeListService = new NoticeListService();
 		int listCount = service.getListCount();// 글갯수 불러옴.
-		ArrayList<BoardBean> articleList = service.getArticleList(page, limit);
+		ArrayList<BoardBean> articleList = service.getArticleList(sId);
 		ArrayList<NoticeBean> noticeList = noticeListService.getArticleList();
 		// 계산된 페이지 정보를 PageInfo 객체에 저장
-		PageInfo pageInfo = new PageInfo(page, 0, 0, 0, listCount);
 		
 		
 		
 		
-		request.setAttribute("pageInfo", pageInfo);//셀러메인으로 넘어갈값
+		
+	
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("noticeList", noticeList);
 		

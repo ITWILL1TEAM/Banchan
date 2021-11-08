@@ -342,29 +342,33 @@ public class MemberDAO {
 		return customer;
 	}
 
-	public ArrayList<MemberBean> selectMemberList() {
-		ArrayList<MemberBean> memberList = null;
+	public ArrayList<CustomerBean> selectMemberList() {
+		ArrayList<CustomerBean> memberList = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
 			
-			String sql = "SELECT * FROM member ORDER BY grade DESC";
+			String sql = "SELECT id,phone,email,grade,member_status FROM member AS mem Join customer AS cus ON mem.id = cus.customer_id "
+					+ "union "
+					+ "SELECT id,phone,email,grade,member_status FROM member AS mem Join seller AS sel ON mem.id = sel.seller_id";
+//			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
      
 			rs = pstmt.executeQuery();		
-			memberList = new ArrayList<MemberBean>();
+			memberList = new ArrayList<CustomerBean>();
 
 		
 			while (rs.next()) {
 			
-				MemberBean member = new MemberBean();
+				CustomerBean member = new CustomerBean();
 				
 				member.setId(rs.getString("id"));	
-				member.setId(rs.getString("id"));
-				member.setId(rs.getString("id"));
-				member.setId(rs.getString("id"));
+				member.setPhone(rs.getString("phone"));
+				member.setEmail(rs.getString("email"));
+				member.setGrade(rs.getInt("grade"));
+				member.setMember_status(rs.getInt("member_status"));
 				
 
 				// 1개 레코드가 저장된 BoardBean 객체를 List 객체에 추가
@@ -385,4 +389,67 @@ public class MemberDAO {
 		return memberList;
 	}
 
+	public int isUpdateSellerStatus(String id) {
+		int isUpdate=0;
+		PreparedStatement pstmt = null;
+		try {
+			
+			String sql = "update member MEM INNER JOIN seller SEL ON  MEM.id = SEL.seller_id"
+			+" SET member_status=? WHERE MEM.id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setString(2, id);
+			
+			isUpdate = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return isUpdate;
+	}
+	
+	public int isUpdateCustomerStatus(String id) {
+		int isUpdate=0;
+		PreparedStatement pstmt = null;
+		try {
+			
+			String sql = "update member MEM INNER JOIN customer CUS ON  MEM.id = CUS.customer_id"
+			+" SET member_status=? WHERE MEM.id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setString(2, id);
+			
+			isUpdate = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return isUpdate;
+	}
+
+	public int isDropMember(String id) {
+		
+		int idDrop=0;
+		PreparedStatement pstmt = null;		
+		try {
+			
+			String sql = "DELETE FROM member WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			idDrop = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return idDrop;		
+	}	
+		
+	
 }

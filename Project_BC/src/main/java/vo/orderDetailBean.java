@@ -11,6 +11,7 @@ public class orderDetailBean {
 	private String product_original_img;
 	private String product_img;
 	
+
 	
 	public int getProduct_num() {
 		return product_num;

@@ -20,8 +20,7 @@
  String sId = (String)session.getAttribute("sId");
  ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
  ArrayList<NoticeBean> noticeList = (ArrayList<NoticeBean>)request.getAttribute("noticeList");
- PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
- int ListCount = pageInfo.getListCount();
+
  
  
  %>
@@ -131,7 +130,7 @@
                                <table id="datatablesSimple">
                                     <thead>
                                     <%
-                                       if(articleList != null && ListCount >0){
+                                       if(articleList != null){
                                     %>
                                         <tr>
                                             <th>상품번호</th>
