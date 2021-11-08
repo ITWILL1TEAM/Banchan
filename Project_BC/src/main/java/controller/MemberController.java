@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.memberAction.ChangePwdProAction;
+import action.memberAction.FindIdAction;
+import action.memberAction.FindIdProAction;
+import action.memberAction.FindPwdProAction;
 import action.memberAction.MemberLoginProAction;
 import action.memberAction.MemberLogoutAction;
 import action.memberAction.SellerJoinProAction;
+import action.memberAction.SendEmailAction;
 import action.memberAction.customerJoinProAction;
 import vo.ActionForward;
 
@@ -83,8 +89,57 @@ public class MemberController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(command.equals("/SendEmail.me")) {
+			action = new SendEmailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/FindIdForm.me")) {
+			System.out.println("FineId.me 넘어옴");
+			action = new FindIdAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/FindIdAndPw.me")) {
+			forward = new ActionForward();
+			forward.setPath("/member/findId.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/FindIdPro.me")) {
+			action = new FindIdProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/FindPwdPro.me")) {
+			action = new FindPwdProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/changePwd.me")) {
+			forward = new ActionForward();
+			forward.setPath("/member/ChangePwd.jsp");
+			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		}else if(command.equals("/ChangePwdPro.me")) {
+			action = new ChangePwdProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-
+		
 		
 		
 //	}
