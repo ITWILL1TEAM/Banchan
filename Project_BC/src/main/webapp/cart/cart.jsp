@@ -26,14 +26,12 @@
 	
 	$(document).ready(function() {
 		
-		// 장바구니에 담긴 제품이 하나도 없을 경우 전체선택, 선택삭제 버튼을 숨긴다.
 		if(<%=listCount %> == 0) {
 			$('#crt_all').hide();
 			$('#crt_all_text').hide();
 			$('.del').hide();
 		}
 		
-		// 전체 선택 버튼을 체크할 시 모든 체크박스가 선택된다.
 		$("#crt_all").click(function() {
 			if($("#crt_all").is(":checked")) {
 				$("input[name=cart_checkbox]").prop("checked", true);
@@ -42,8 +40,7 @@
 				$("input[name=cart_checkbox]").prop("checked", false);
 			}
 		});
-		
-		// 전체 선택 버튼을 체크 해제할 시 모든 체크박스가 선택 해제된다.
+			
 		$("input[name=cart_checkbox]").click(function(){
 			$("#crt_all").prop("checked", false);
 		});
@@ -52,13 +49,10 @@
 	
 	// 상품 수량 증가
 	function qtyUp(id) {
-		// ex) 수량 증가 버튼의 id인 btn-up1의 up을 num으로 치환해 수량이 표시되는 텍스트박스의 id(btn-num1)로 바꿔 수량 텍스트박스의 값을 
-		// 바뀐 수량이 표시되게 한다.
+		// 수량 증가 버튼의 id인 btn-upi의 up을 num으로 치환해 수량이 표시되는 텍스트박스의 id(btn-numi)로 바뀜
 		var numid = id.replace("up", "num");
-		var result = parseInt(numid) + 1;
+		var result = parseInt(numid)+1
 		var qty = Number($('#'+numid).val());
-		
-		// if문 넣기
 		qty++;
 		
 		$('#'+numid).val(qty);
@@ -75,7 +69,7 @@
 		}
 	};
 	
-	// 수정 버튼을 누르면 수량 조절 버튼으로 변경한 수량이 적용된다.
+	// 수량 변경
 	function qtyUpdate(product_num, id){
 		
 		var numid = id.replace("Save", "num");
@@ -147,7 +141,10 @@
 						<col style="width:189px" />
 						<thead>
 							<tr>
-								<th scope="col"></th>
+								<th scope="col">
+									<!-- <input type="checkbox" class="" id="crt_all"name="cart_all_checkbox" checked="checked" />
+									<label class="" for="crt_all">제품전체선택</label> -->
+								</th>
 								<th scope="col">제품정보</th>
 								<th scope="col">판매금액</th>
 								<th scope="col">수량</th>
@@ -215,10 +212,8 @@
 						</tbody>
 					</table>
 					<div class="odr_slt_btn">
-						<span>
-							<input type="checkbox" id="crt_all" style="margin-right:10px;" name="cart_all_checkbox" checked="checked" />
-							<label for="crt_all" id="crt_all_text">전체 선택</label>
-						</span>
+						<span><input type="checkbox" id="crt_all" style="margin-right:10px;" name="cart_all_checkbox" checked="checked" />
+									<label for="crt_all" id="crt_all_text">전체 선택</label></span>
 						<button type="button" class="w_del" title="품절/매진제품 전체 삭제" name="delete_button" data-role="sellout" style="display: none;"><em>품절 삭제</em></button>
 						<button type="button" class="del" title="선택한 항목 삭제하기" name="delete_button" data-role="checked" onclick="deleteAction()"><em>선택 삭제</em></button>
 					</div>
@@ -239,10 +234,8 @@
 								<span class="deposit" style="display:none">(예정적립금 <span class="thm" id="total_save_amt">0</span>원)</span>
 							</dd>
 						</dl>
-						<button class="sel_date" id="set_order_date_button" type="submit"><em>선택제품 주문</em></button>	
-					</div>
-					
-					<span class="odr_total_caution point">* 쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요.</span>
+					<button class="sel_date" id="set_order_date_button" type="submit"><em>선택제품 주문</em></button>	
+					</div><span class="odr_total_caution point">* 쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요.</span>
 					<span class="odr_total_caution">* 결제 금액은 쿠폰 및 적립금 사용, 배송지 추가 여부에 따라 달라질 수 있어요. 결제 화면에서 최종 금액을 확인해 주세요.</span>
 					
 					<div class="info_box01">
@@ -254,10 +247,10 @@
 					</div>
 				</div>
 				<!-- //.odr_cart -->
-				</div>
-				<!--// WRAP -->
-		
 			</div>
+			<!--// WRAP -->
+	
+		</div>
 		<!-- //CONTENT -->
 		</form>
 		

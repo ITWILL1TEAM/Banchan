@@ -63,7 +63,7 @@ public class CartAddAction implements Action {
 			 }
 			 
 			 forward = new ActionForward();
-			 forward.setPath("Cart.ca?product_num=" + product_num);
+			 forward.setPath("Cart.ca");
 			 forward.setRedirect(true);
 			
 		}
