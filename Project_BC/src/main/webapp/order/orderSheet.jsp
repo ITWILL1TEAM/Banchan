@@ -13,13 +13,18 @@ ArrayList<BasketBean> cartList = (ArrayList<BasketBean>)request.getAttribute("ca
 ArrayList<CustomerInfo> customerInfo = (ArrayList<CustomerInfo>)request.getAttribute("customerInfo");
 // ArrayList<MemberBean> memberInfo = (ArrayList<MemberBean>)request.getAttribute("memberInfo");
 int total_price = 0;
+
+int total_discount=0;
+
+for(int i=0; i<cartList.size(); i++){
+	total_discount += (cartList.get(i).getProduct_price()*(cartList.get(i).getProduct_discount()*0.01))*cartList.get(i).getProduct_qty();
+};
+
 for(int i=0; i<cartList.size(); i++){
 	total_price += (cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty());
 };
-int total_discount=0;
-for(int i=0; i<cartList.size(); i++){
-	total_discount += (cartList.get(i).getProduct_discount()*cartList.get(i).getProduct_qty());
-};
+
+
 int shipping_fee=2500;
 if(total_price -total_discount >=30000){
 	shipping_fee=0;
@@ -222,31 +227,31 @@ function payMethod(method) {
 						<td>
 							<span class="tx"> 
 								<strong><%=cartList.get(i).getProduct_name()%></strong>
-									 <em name="save_amt_area"
-								data-cart-seq="0" style="display: none;">예정적립금
-									: <b name="save_amt_display"
-									data-cart-seq="0"><%=cartList.get(i).getProduct_discount()%></b>원
-							</em> <em class="frz" name="svd_frs_dc_display"
-								data-cart-seq="0" style="display: none;"></em>
-						</span> <span class="img"><a href="javascript:void(0);">
-									<img src="//cdn.thebanchan.co.kr/upload/C00001/goods/prd/100/707/211019000027707.jpg" width="80" height="80" alt="더반찬& 양념소불고기 2개 (고추장불고기, 쌈채소증정)" onerror="this.src='/common/images/common/noimg_100.jpg'"/> 
-							</a></span></td>
+							</span> 
+							<span class="img"><a href="${pageContext.request.contextPath}/upload/<%=cartList.get(i).getProduct_img()%>">
+									<img src="${pageContext.request.contextPath}/upload/<%=cartList.get(i).getProduct_img()%>.png" width="80" height="80" alt="더반찬& 양념소불고기 2개 (고추장불고기, 쌈채소증정)" onerror="this.src='/common/images/common/noimg_100.jpg'"/> 
+							</a>
+							</span>
+						</td>
 						
-						<td><span class="prc"><b
-								name="goods_apply_dc_price_display"
-								data-cart-seq="0"><fmt:formatNumber value="<%=cartList.get(i).getProduct_discount()%>" pattern="#,###"/></b>원</span></td>
-						<td><span class="ori"><b><fmt:formatNumber value="<%=cartList.get(i).getProduct_price()%>" pattern="#,###"/></b>원</span>
+						<td>
+						<span class="prc"><b name="goods_apply_dc_price_display" data-cart-seq="0">
+							<fmt:formatNumber value="<%=cartList.get(i).getProduct_price()*(cartList.get(i).getProduct_discount()*0.01)*cartList.get(i).getProduct_qty()%>" pattern="#,###"/></b>원
+						</span>
+						</td>
+						
+						<td><span class="ori"><b><fmt:formatNumber value="<%=cartList.get(i).getProduct_price()-cartList.get(i).getProduct_price()*(cartList.get(i).getProduct_discount()*0.01)%>" pattern="#,###"/></b>원</span>
 						</td>
 						<td><span class="nm"><%=cartList.get(i).getProduct_qty()%></span></td>
 						<input type="hidden" id="qty" name="qty" value="<%=cartList.get(i).getProduct_qty()%>">
 						<td colspan="2"><span class="ori"><b name="goods_pay_amt_display"
-								data-cart-seq="0"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price()*cartList.get(i).getProduct_qty()%>" pattern="#,###"/></b>원</span></td>
+								data-cart-seq="0"><fmt:formatNumber value="<%=(cartList.get(i).getProduct_price()-cartList.get(i).getProduct_price()*(cartList.get(i).getProduct_discount()*0.01))*cartList.get(i).getProduct_qty()%>" pattern="#,###"/></b>원</span></td>
 					</tr>
 					<%} %>
 				</tbody>
 			</table>
 			<div class="odr_insCrt">
-				<a href="Order.do" id="go_cart_button"><em>장바구니
+				<a href="Cart.ca" id="go_cart_button"><em>장바구니
 						돌아가기</em></a>
 			</div>
 		</div>
