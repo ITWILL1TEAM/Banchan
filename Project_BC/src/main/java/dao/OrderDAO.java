@@ -308,7 +308,7 @@ public class OrderDAO {
 				if(rs2.next()) {
 					
 					int qty = rs2.getInt("product_qty");
-					if(stock-qty<=0) {
+					if(stock-qty<0) {
 						updateStockCount =0;
 						System.out.println("주문등록 실패- 재고부족");
 					}else {
