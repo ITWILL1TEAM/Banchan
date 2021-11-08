@@ -99,9 +99,8 @@ public class BasketDAO {
         try {
         	// 현재 basket 테이블의 인덱스 최대 번호를 조회하여 조회된 결과 값에 + 1 값을 새 인덱스 번호로 지정
         	// => 만약, 조회된 제품이 하나도 없을 경우 새 인덱스 번호는 1번 그대로 사용
-        	String sql = "SELECT MAX(basket_idx) FROM basket WHERE customer_id=?";
+        	String sql = "SELECT MAX(basket_idx) FROM basket";
         	pstmt = con.prepareStatement(sql);
-        	pstmt.setString(1, basket.getCutomer_id());
         	rs = pstmt.executeQuery();
         	
         	// 조회된 인덱스 번호가 하나라도 존재할 경우
