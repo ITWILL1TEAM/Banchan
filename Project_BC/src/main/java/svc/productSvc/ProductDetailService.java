@@ -83,30 +83,4 @@ public class ProductDetailService {
 		return reviewCount;
 	}
 
-	public int getProductStock(int product_num) {
-		int product_stock = 0;
-		
-		Connection con = getConnection();
-		
-		BoardDAO dao = BoardDAO.getInstance();
-		dao.setConnection(con);
-		
-//		public int selectProductStock(int product_num) {
-//			int product_stock = 0;
-//			
-//			
-//			
-//			return product_stock;
-//		}
-		
-		// BoardDAO 객체의 selectListCount() 메서드를 호출하여 게시물 총 갯수 구하기
-		// => 파라미터 : 없음, 리턴타입 : int(listCount)
-//		product_stock = dao.selectProductStock(product_num);
-		
-		// 공통작업-4. Connection 객체 반환
-		close(con);
-		
-		return product_stock;
-	}
-
 }
