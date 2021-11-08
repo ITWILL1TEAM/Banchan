@@ -53,7 +53,7 @@ public class MemberDAO {
 
 			close(pstmt);
 
-			sql = "INSERT INTO customer VALUES(?,?,?,0,?)";
+			sql = "INSERT INTO customer VALUES(?,?,?,0,?,0)";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, cBean.getCustomer_id());

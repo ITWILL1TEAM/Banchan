@@ -128,14 +128,14 @@ public class BasketDAO {
             pstmt3 = con.prepareStatement(sql3);
             
             pstmt3.setInt(1, idx); // 인덱스
-            pstmt3.setString(2, basket.getCutomer_id());		//		고객 아이디
-            pstmt3.setInt(3, basket.getProduct_num());   	//		재품 번호
-            pstmt3.setString(4, basket.getProduct_name());	//		제품명
-            pstmt3.setInt(5, basket.getProduct_price());  	// 		재품 가격
-            pstmt3.setInt(6, basket.getProduct_qty());		// 		주문 수량
+            pstmt3.setString(2, basket.getCutomer_id());	 //		고객 아이디
+            pstmt3.setInt(3, basket.getProduct_num());   	 //		재품 번호
+            pstmt3.setString(4, basket.getProduct_name());	 //		제품명
+            pstmt3.setInt(5, basket.getProduct_price());     // 		재품 가격
+            pstmt3.setInt(6, basket.getProduct_qty());		 // 		주문 수량
             pstmt3.setInt(7, basket.getProduct_discount());  //		상품 할인률
-            pstmt3.setString(8, product_img); 	//		제품 이미지
-            pstmt3.setString(9, basket.getSname());			// 		회사명
+            pstmt3.setString(8, product_img); 				 //		제품 이미지
+            pstmt3.setString(9, basket.getSname());			 // 		회사명
                
             // INSERT 구문 실행 및 결과 리턴받기
             insertCount = pstmt3.executeUpdate();

@@ -3,6 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <%
     ArrayList<BoardBean> searchList = (ArrayList<BoardBean>)request.getAttribute("searchList");
     %>
@@ -104,11 +105,11 @@
                                     <p class="subject"><%=product_name %></p>
                                 <div class="price">
                                     <p>
-                                        <strong><%= discountPrice %></strong><span class="is-noto">원</span>
+                                        <strong><fmt:formatNumber value="<%=discountPrice %>" pattern="#,###.##"/></strong><span class="is-noto">원</span>
                                     </p>
                                     <%if(discount!=0){ %>
                                     <p class="original">
-                                    <%=price %> <span class="is-noto">원</span>
+                                    <fmt:formatNumber value="<%=price %>" pattern="#,###.##"/><span cla   ss="is-noto">원</span>
                                     </p>
                                     <%} %>
                                 </div>

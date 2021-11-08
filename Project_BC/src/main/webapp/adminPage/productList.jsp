@@ -82,7 +82,17 @@ int ListCount = pageInfo.getListCount();
                                             <td><%=articleList.get(i).getProduct_stock() %></td>
                                             <td><%=articleList.get(i).getProduct_date() %></td>
                                             <td>$<%=articleList.get(i).getProduct_price() %></td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
+                                            <td>
+                                            <div class="dropdown">
+	                                               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+	                                                 info
+	                                               </button>
+	                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+	                                                 <li><button class="dropdown-item" type="button" onclick=" ">상품삭제</button></li>
+	                                                 <li><button class="dropdown-item" type="button" onclick=" ">상품수정</button></li>
+	                                               </ul>
+	                                             </div>
+	                                         </td>
                                         </tr>
                                             <%}
                                         }%>
@@ -96,9 +106,9 @@ int ListCount = pageInfo.getListCount();
                  <%@include file="../inc/dashBoard_bottom.jsp" %>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/scripts2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/assets/demo/datatables-simple-demo.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </body>
 </html>
