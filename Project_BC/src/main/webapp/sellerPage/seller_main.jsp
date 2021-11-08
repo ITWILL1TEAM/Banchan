@@ -1,3 +1,4 @@
+<%@page import="vo.NoticeBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.BoardBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,6 +18,11 @@
 <body class="sb-nav-fixed">
  <%
  String sId = (String)session.getAttribute("sId");
+ ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
+ ArrayList<NoticeBean> noticeList = (ArrayList<NoticeBean>)request.getAttribute("noticeList");
+
+ 
+ 
  %>
   <jsp:include page="../inc/dashBoard_top.jsp"/>
      
@@ -94,41 +100,27 @@
                                     </div>
                                     <div class="card-body">
                                    <table class="table table-striped text-wrap">
-                                        <tr>
+                                        <%  if(noticeList != null){  %>
+                                        <tr>                                        
                                             <th>글번호</th>
                                             <th>제목</th>
                                             <th>내용</th>    
-                                        </tr>                                    
-                                        <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
+                                        <%for(int i = 0; i < noticeList.size(); i++) { %>                                    
+                                        <tr onclick="location.href='NoticeView.ad?notice_num=<%=noticeList.get(i).getNotice_num()%>'">
+                                            <td><%=noticeList.get(i).getNotice_num()%></td>
+                                            <td><%=noticeList.get(i).getNotice_subject()%></td>
+                                            <td><a href="#"><%=noticeList.get(i).getNotice_content()%></a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
                                         </tr>
-                                         <tr>
-                                            <td>000001</td>
-                                            <td>공지입니다</td>
-                                            <td><a href="#">공지공지</a></td><!-- 클릭시 상품 디테일 페이지로 이동. -->                                            
-                                        </tr>
+                                        <%} %>
                                         </table>
+                                        <%} %>
                                     </div>
                                 </div>
                                 </div> 
                                 
-                                
-                                
                                 <!-- 상품관리. --> 
-                                <%
- ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
-PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-int ListCount = pageInfo.getListCount();
-
-
-%>
+                          
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -138,7 +130,7 @@ int ListCount = pageInfo.getListCount();
                                <table id="datatablesSimple">
                                     <thead>
                                     <%
-                                       if(articleList != null && ListCount >0){
+                                       if(articleList != null){
                                     %>
                                         <tr>
                                             <th>상품번호</th>
@@ -170,7 +162,17 @@ int ListCount = pageInfo.getListCount();
                                             <td><%=articleList.get(i).getProduct_stock() %></td>
                                             <td><%=articleList.get(i).getProduct_date() %></td>
                                             <td>$<%=articleList.get(i).getProduct_price() %></td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
+                                            <td>
+                                            	<div class="dropdown">
+												  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+												    info
+												  </button>
+												  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+												    <li><button class="dropdown-item" type="button">수정</button></li>
+												    <li><button class="dropdown-item" type="button">삭제</button></li>
+												  </ul>
+												</div>
+											</td>
                                         </tr>
                                             <%} %>
                                     </tbody>
@@ -187,13 +189,13 @@ int ListCount = pageInfo.getListCount();
             
             </div>
     
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/scripts2.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="js/assets/demo/chart-area-demo.js"></script>
         <script src="js/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/assets/demo/datatables-simple-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </body>
 
 </html>

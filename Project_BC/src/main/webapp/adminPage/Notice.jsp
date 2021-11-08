@@ -4,6 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <%
 ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,7 @@ ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute
 
 </head>
 <body>
+
 	<%@include file="../inc/dashBoard_top.jsp"%>
 	<div id="layoutSidenav_content">
 		<main>
@@ -67,7 +69,9 @@ ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute
 							</table>
 							<%}%>						
 					</div>
+					<%if(grade == 1) {%>
 				<a href="NoticeWrite.ad" class="btn btn-primary btn-lg" role="button" aria-disabled="true">글쓰기</a>
+				<%} %>
 				</div>
 			</div>
 		</main>

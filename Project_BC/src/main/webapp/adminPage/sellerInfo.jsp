@@ -32,7 +32,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                판매자 회원 정보
+                                회원 정보
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">

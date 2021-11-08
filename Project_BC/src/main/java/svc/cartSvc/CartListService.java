@@ -55,5 +55,20 @@ public class CartListService {
 		return hasAddress;
 	}
 
+	public int getCartCount(String customer_id) {
+		int count =0;
+		Connection con = getConnection();
+		BasketDAO dao = BasketDAO.getInstance();
+		dao.setConnection(con);		
+		
+		
+		count = dao.CartCount(customer_id);
+		
+		close(con);
+		
+		
+		return count;
+	}
+
 
 }

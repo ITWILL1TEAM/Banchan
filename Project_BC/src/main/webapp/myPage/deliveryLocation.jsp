@@ -18,6 +18,7 @@
 <script src="js/jquery-3.6.0.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+
 function addAddress() {
 	var win = window.open("myPage/addAddress.jsp", "_blank", "titlebar=no,toolbar=no,scrollbars=no,resizable=no,top=500,left=500,width=400,height=400");
 	
@@ -85,7 +86,7 @@ function addAddress() {
 			</div>
 			<%}else{ %>
 			<div class="mys_none">
-				<table>
+				<table id="locationList">
 					<%for(int i=0;i<addressList.size();i++){ %>
 					<tr>
 						<th>주소</th>
@@ -98,5 +99,10 @@ function addAddress() {
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+window.opener.location.reload(true);
+</script>
+
 </body>
 </html>

@@ -40,23 +40,33 @@ public class OrderFormAction implements Action {
 			
 			
 		} else {
+			
+		String product_qty = null;
+		product_qty = request.getParameter("product_qty");
+		String product_num = request.getParameter("product_num");
+		product_num= product_num.substring(0, product_num.lastIndexOf("/"));
+		String[] nums = product_num.split("/");
 		
-//		String product_num = (String) request.getAttribute("product_num");
-//		System.out.println("프로덕트 넘 결과"+product_num);
-//		System.out.println(split(product_num, "/"));
-		String[] nums = {"1","2"};
-//				product_num.split("/");
-//		System.out.println(nums);
 		
 		for(String num : nums) {
 			System.out.println("액션에서의 : "+num);
 			System.out.println(num);
 		}
+		
+		
 		OrderFormService orderService = new OrderFormService();
+		ArrayList<BasketBean> cartList;
+		if(product_qty==null) {
+			
+			cartList = new ArrayList<BasketBean>();
+			cartList = orderService.getSelectCart(nums);
 		
-		ArrayList<BasketBean> cartList = new ArrayList<BasketBean>();
-		cartList = orderService.getSelectCart(nums);
-		
+		}else{
+			
+			cartList = new ArrayList<BasketBean>();
+			cartList = orderService.getSelectCart(nums, product_qty, customer_id);
+			
+		}
 		
 		request.setAttribute("cartList", cartList);
 		
@@ -85,9 +95,5 @@ public class OrderFormAction implements Action {
 		return forward;
 	}
 
-	private String[] split(String product_num, String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

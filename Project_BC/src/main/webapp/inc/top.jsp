@@ -8,14 +8,25 @@
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/pc-main-common.css?v=20211014190" type="text/css">
     <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/sub.css?v=20211014190" type="text/css">
    
-    
 
-    
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
 <script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(function() {	
+			$.ajax({
+				type: "GET",
+				url: "Cartcount.ca",				
+				dataType: 'text',
+				success: function(data) {					
+					$('.cart-count').html(data);
+				} 
+			});
+		});
+	
+</script>
 
-    <script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
+<script type="text/javascript" src="//www.thebanchan.co.kr/common/js/ui.js"></script>
 
 
 <noscript>
@@ -44,20 +55,19 @@
         style="transform: translateY(0px);">
 
         <!-- header top -->
-        <div class="header-top" style="background-color:#02CB5D;">
+        <div class="header-top" style="background-color:#ffeb99;">
             <div class="inner-box">
                 <h1 class="logo">
-                    <a href="main.jsp"
-                        style="width: 184px; height: 150px; background-image: url('img/TestLogo.png')">집밥선생</a>
+                    <a href="${pageContext.request.contextPath}/main"
+                        style="width: 184px; height: 150px; background-image: url('img/logo.png')">집밥선생</a>
                 </h1>
                 <!-- 검색 영역 [S] -->   
                 <form action="Search.side">
                 <div class="search-wrap">
-                    <div class="search-form">
-                            <input class="form-control me-2" type="search" value="" name="search" placeholder="검색">
-                            
-                            <button class="btn btn-outline-success" type="submit">search</button>
-                       </div>
+                    <div class="input-group">
+                       <input class="form-control me-2" type="search" value="" name="search" placeholder="검색">
+					  <button type="submit" class="btn btn-outline-success">search</button>
+					</div>
                  </div>
                  </form>
            
@@ -81,7 +91,7 @@
         
         <li><%=sId %> 님 반갑습니다.</li>
         <!-- 아니면(세션에 "sId" 속성값이 있을 경우) logout 버튼과 아이콘 -->   
-        <li><a id="head_login_a" href="MemberLogout.me">로그아웃</a></li>
+        <li><a id="head_login_a" href="MemberLogout.me">&nbsp;&nbsp;&nbsp;로그아웃</a></li>
         <li><a href="">고객센터</a></li> 
             <%  if(grade==1){
                 pageContext.forward("/main.ad");
@@ -91,39 +101,26 @@
 //                     pageContext.forward("/Seller.sc");//잠시보류
             %>
                   <li><a href="Seller.sc?id=<%=sId%>"> 판매자페이지로</a></li>
-            <%  }else if(grade==3){%>
-               <li><a href="Mypage.my"> 마이페이지로</a></li>    
+
             <%  }else{//grade==4
                 //휴면계정 
                 } %>
             
         <%}%>                   
          </ul>
+
+         
+         
+         
                 </div>
                 <div id="myWrap" class="my-wrap">
                     <ul>
-                        <li><a href="" style="padding-right: 30px;"><i
+                        <li><a href="Mypage.my" style="padding-right: 30px;"><i
                                 class="ico-my"></i>마이더반찬</a></li>
-                        <li><a href="Cart.ca" onclick=" " class="link-cart"> <i
-                                class="ico-cart"></i>장바구니 <strong class="cart-count"> 0
+                        <li><a href="Cart.ca" onclick=" " class="link-cart"> 
+                        <i class="ico-cart"></i>장바구니 <strong class="cart-count"> 0
                             </strong>
-                        </a>
-                            <div class="cart-box">
-                                <p class="title">장바구니에 담겼습니다.</p>
-                                <div class="cart-item">
-                                    <div class="item">
-                                        <dl>
-                                            <dt>
-                                                <a href=" "> <img id="cartBoxGoodsImg" src="">
-                                                </a>
-                                            </dt>
-                                            <dd>
-                                                <p id="cartBoxGoodsNm"></p>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div></li>
+                        </a>                           
                     </ul>
                 </div>
 

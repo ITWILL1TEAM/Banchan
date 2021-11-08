@@ -17,8 +17,12 @@ public class CustomerBean extends MemberBean {
 	private String email;
     private String recommend_id;
     private int personal_data;
+    private int member_status;
     
 	
+
+
+
 	public CustomerBean() {}
 	
 	
@@ -71,6 +75,17 @@ public class CustomerBean extends MemberBean {
 	public void setPersonal_data(int personal_data) {
 		this.personal_data = personal_data;
 	}
+	
+	public int getMember_status() {
+		return member_status;
+	}
+
+
+
+	public void setMember_status(int member_status) {
+		this.member_status = member_status;
+	}
+
 
 
 

@@ -119,7 +119,7 @@
                     </a>
 
                     <div class="sb-sidenav-menu-heading">공지사항</div>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="Notice.ad">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-tachometer-alt"></i>
                         </div> 공지사항

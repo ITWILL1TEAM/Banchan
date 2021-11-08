@@ -38,11 +38,6 @@
 <meta charset="utf-8">
 <title>집밥장인이 만든 온라인 식품몰 집밥선생</title>
 
-<link href="CSS/common.css" rel="stylesheet" type="text/css">
-<link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
-<link href="CSS/sub.css" rel="stylesheet" type="text/css">
-<link href="CSS/gds.css" rel="stylesheet" type="text/css">
-
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
    
@@ -122,12 +117,20 @@
 
 
 </script>
+<link href="CSS/common.css" rel="stylesheet" type="text/css">
+    <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
+    <link href="CSS/sub.css" rel="stylesheet" type="text/css">
+    <link href="CSS/gds.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
+<!-- <link -->
+<!--     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" -->
+<!--     rel="stylesheet"> -->
 </head>
-<body>
 
+<body>
 	<%@ include file="/inc/top.jsp" %>
-	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->
-	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
+	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->	
+<!-- 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css"> -->
 	
 	<form method="post" name="pdDetail">
 		<!-- CONTENT -->
@@ -450,5 +453,6 @@
 		//}
 	</script>
 	<jsp:include page="../inc/bottom.jsp"/>
+	
 </body>
 </html>

@@ -1,11 +1,10 @@
-
 <%@page import="vo.BoardBean"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    ArrayList<BoardBean> brandNewList = (ArrayList<BoardBean>)request.getAttribute("brandNewList");
+    ArrayList<BoardBean> searchList = (ArrayList<BoardBean>)request.getAttribute("searchList");
     %>
 <!DOCTYPE html>
 <html>
@@ -57,7 +56,7 @@
                 <span class="icon"><img
                     src="//cdn.thebanchan.co.kr/upload/C00001/dspl/banner/8010/210/00/200700000012210.png"
                     style="width: 50px; height: 50px;"></span>
-                    <strong>신상품</strong>
+                    <strong>검색결과</strong>
             </div>
 
         </div>
@@ -69,16 +68,17 @@
 <!--                  int discountPrice = (int)(bo.getProduct_price()*(100-bo.getProduct_discount())/100);  -->
 <!--                  int price =  bo.getProduct_price(); -->
 <!--                  int discount = bo.getProduct_discount();  -->
-            <%for(int i=0; i<brandNewList.size(); i++){ %>
+            <%for(int i=0; i<searchList.size(); i++){ %>
              
             
             <%
-                  String productImgName = brandNewList.get(i).getProduct_name();
-                  int discountPrice = (int)(brandNewList.get(i).getProduct_price()*(100-brandNewList.get(i).getProduct_discount())/100); 
-                  int price =  brandNewList.get(i).getProduct_price();
-                  int discount = brandNewList.get(i).getProduct_discount(); 
-                  int productNum = brandNewList.get(i).getProduct_num();
-                  String product_name = brandNewList.get(i).getProduct_name();
+                  String productImgName = searchList.get(i).getProduct_name();
+                  int discountPrice = (int)(searchList.get(i).getProduct_price()*(100-searchList.get(i).getProduct_discount())/100); 
+                  int price =  searchList.get(i).getProduct_price();
+                  int discount = searchList.get(i).getProduct_discount(); 
+                  int productNum = searchList.get(i).getProduct_num();
+                  String product_name = searchList.get(i).getProduct_name();
+                  double product_review_score = searchList.get(i).getProduct_review_score();
             %>   
                 <li >
                     <div class="prd-box">
@@ -89,14 +89,15 @@
                                     class="ico-cart2"></i>장바구니</a>
                             </div>
                             <a href="Product.do?product_num=<%=productNum %>">
-                                 <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png"
+                                  <img src="${pageContext.request.contextPath}/upload/<%=productImgName%>01_01.png"
                                 width="296" height="296"
-                                alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)"
-                                >
+                                alt="더반찬&amp; 집밥만찬 2종 골라담기 (5,000원 부터~)">
                                 <%if(discount!=0){ %>
-                                <span class="tag sale"><span></span><strong><%=discount %></strong>%</span></a>
-                                <%} %> 
+                                <span class="tag sale"><span></span><strong><%=discount %></strong>%</span>
+                                <%} %>
+                                </a>
                         </div>
+                        
                         <div class="info">
                             <a href="Product.do?product_num=<%=productNum %>"
                                 onclick="">
@@ -112,8 +113,9 @@
                                     <%} %>
                                 </div>
                                 <div class="star-wrap">
-                                    <i class="ico-star"></i><span class="num"><strong>4.8<!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
+                                    <i class="ico-star"></i><span class="num"><strong><%=product_review_score%><!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
                                 </div>
+                               
                                 <div class="tag-box"></div></a>
                         </div>
                     </div>

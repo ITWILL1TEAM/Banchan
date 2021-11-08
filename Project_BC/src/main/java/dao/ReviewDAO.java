@@ -235,6 +235,53 @@ public class ReviewDAO {
 		}
 
 		
+		//리뷰 작성 시 order_product의 check상태를 변동시키는 메소드
+		public int reviewStatus(ReviewBean review, int order_num) {
+			int updateReviewStatus=0;
+			PreparedStatement pstmt = null;
+			PreparedStatement pstmt2 = null;
+			ResultSet rs = null;
+			
+			try {
+				
+				// 글 등록 작업을 위한 INSERT 작업 수행
+				// => 등록일(board_date)은 now() 함수 활용
+				String sql = "select product_check from order_product where order_num =? and product_num=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, order_num);
+				pstmt.setInt(2, review.getProduct_num());
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					sql = "UPDATE order_product set product_check=? where order_num =? and product_num=?";
+					System.out.println("update쿼리 실핵!");
+					pstmt2 = con.prepareStatement(sql);
+					pstmt2.setString(1, "리뷰작성완료");
+					pstmt2.setInt(2, order_num);
+					pstmt2.setInt(3, review.getProduct_num());
+					updateReviewStatus = pstmt2.executeUpdate();
+				}
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("updateCount() 오류 - " + e.getMessage());
+			} finally {
+				
+				close(rs);
+				close(pstmt);
+				close(pstmt2);
+				
+				
+			}
+			
+			
+			
+			return updateReviewStatus;
+		}
+
+		
 		
 		
 		
