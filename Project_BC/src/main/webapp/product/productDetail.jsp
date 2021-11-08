@@ -5,10 +5,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	BoardBean article = (BoardBean)request.getAttribute("article");
     ArrayList<ProductImg> productImg = (ArrayList<ProductImg>)request.getAttribute("productImg");
 	ArrayList<ProductImg> productDtlImg = (ArrayList<ProductImg>)request.getAttribute("productDtlImg");
+	
+	BoardBean article = (BoardBean)request.getAttribute("article");
 	String id = (String)session.getAttribute("sId");
+	
 	int price = (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100;
 	int reviewCount = (Integer)request.getAttribute("reviewCount");
 	int starRate = 0;
@@ -26,8 +28,6 @@
 	} else {
 		starRate = 0;
 	}
-
-	
 	
 %>
 
@@ -96,9 +96,7 @@
 			// 제품 수량에 따른 총 제품 금액 계산
 			total_amt = price * qty;
 			$('#totalAmt').text(priceToString(total_amt));
-			$('#total_amt').val(total_amt);
 		});
-		
 		
 	});
 	
@@ -110,12 +108,6 @@
 		document.pdDetail.ord_qty.value = qty;
 	}
 	
-	function priceToString(price) {
-	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	}
-	
-
-
 </script>
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
     <link href="CSS/pc-main-common.css" rel="stylesheet" type="text/css">
@@ -132,7 +124,7 @@
 	<!-- 똑같은 gds.css인데 왜 이걸 지우면 수량 조절 버튼에 -, +가 사라지냐고~~!! -->	
 <!-- 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css"> -->
 	
-	<form method="post" name="pdDetail">
+	<form action="AddCart.ca" method="post" name="pdDetail">
 		<!-- CONTENT -->
 		<div id="content" class="content">
 		
@@ -146,7 +138,6 @@
 					<input type="hidden" id="product_stock" name="product_stock" value="<%=article.getProduct_stock()%>"/>
 					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSeller_id() %>"/>
 					<input type="hidden" id="product_price" name="product_price" value="<%=article.getProduct_price()%>"/>
-					<input type="hidden" id="total_amt" name="total_amt" value=""/>
 				</div>
 		
 				<!-- GOODS VIEW -->
@@ -159,24 +150,18 @@
 								<ul class="cont">							
 									<li class="active" id="tumnail" style="background-image:url('${pageContext.request.contextPath}/upload/<%= productImg.get(0).getProduct_img()%>.png">	
 									<span class="ir"><%=article.getProduct_name()%> </span></li>
-									
-									
 								</ul>		
 							</div>
 							
 							<div class="indi">
 								<ul class="page">
-								<%for(int i=0;i<productImg.size();i++){
-                                       if(productImg.get(i).getProduct_img_location()==1){
-                                   
-                                    %>
-									<li class="on"><a href="#gd_img_bx">
-									<img src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
-									
-									
-									<em class="ir"><%=article.getProduct_name()+i %></em></a></li>
+								<%for(int i = 0; i < productImg.size(); i++){
+                                     if(productImg.get(i).getProduct_img_location() == 1){ %>
+										<li class="on"><a href="#gd_img_bx">
+										<img src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
+										<em class="ir"><%=article.getProduct_name() + i %></em></a></li>
 									<%} 
-                                    }%>
+                                 }%>
 								</ul>
 							</div>
 						</div>
@@ -207,8 +192,6 @@
 									<a href="#gds_cont3" class="rv">(고객후기 <%=reviewCount %>건)</a>
 								</div>
 							<%}%>
-							<div class="g_sns">						
-							</div>
 						</div>
 						<!-- //SCORE -->
 									
@@ -242,7 +225,7 @@
 								<dt>배송안내</dt>
 								<dd class="drv">
 									<div></div>
-									<span><em><b style="color:#fe7600;">일반택배</b></em> 전국 (제주/도서산간 제외)<br>10월 12일(화)부터 도착 가능</span>
+									<span><em><b style="color:#fe7600;">일반택배</b></em> 전국 (제주/도서산간 제외)<br>주문일로부터 2일 ~ 5일정도 걸릴 수 있습니다.</span>
 								</dd>
 							</dl>
 							<dl>
@@ -270,8 +253,8 @@
 						<!-- BTN. -->
 						<div class="gd_btns">
 							<!-- TOOLTIP -->
-							<button type="submit" class="cart" id="msg_open_cart" formaction="AddCart.ca" title="장바구니 상품 알림 레이어 열기"><em>장바구니</em></button>
-							<button type="button" class="buy" onclick="forwardOrderSheet()" title="주문하기 페이지 이동"><em>바로구매</em></button>
+							<button type="submit" class="cart" id="msg_open_cart"><em>장바구니</em></button>
+							<button type="button" class="buy" onclick="forwardOrderSheet()"><em>바로구매</em></button>
 						</div>
 						<!-- //BTN. -->
 		
@@ -279,15 +262,6 @@
 					<!-- //GOODS INFO -->
 				</div>
 				<!-- GOODS VIEW -->
-		
-
-				<script type="text/javascript">
-					$(document).ready(function() {
-						fade_slide('gd_rel1', 0, false, 'click', false, false, 0);
-					});
-				</script>
-				<!-- //GOODS RELATION -->
-		
 
 				<!-- GOODS CONTENT -->
 				<!-- TAB1 -->
@@ -305,15 +279,9 @@
 					<h3 class="ir">제품 상세정보</h3>
 					<div class="gd_detail">
 						<div align="center">
-						
-						<%for(int i = 0; i < productDtlImg.size(); i++){%>
-   
-							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productDtlImg.get(i).getProduct_img()%>.png"/>
-							
-						<%}%>
-    
-   
-							
+							<%for(int i = 0; i < productDtlImg.size(); i++){%>
+								<img alt="" src="${pageContext.request.contextPath}/upload/<%=productDtlImg.get(i).getProduct_img()%>.png"/>
+							<%}%>
 						</div>
 					</div>
 					<!-- DETAIL -->
@@ -369,56 +337,55 @@
 				<!-- //TAB2 -->
 				
 		
-			<!-- 리뷰가 에이젝스로 연동될 공간 -->
-			<div id="reviewArea">
-			</div>
-		
-			<!-- TAB4 -->
-			<div class="gds_cont" id="gds_cont4">
-				<div class="gd_tabs">
-					<ul>
-						<li><a href="#gds_cont1">제품정보</a></li>
-						<li><a href="#gds_cont2">제품정보고시</a></li>
-						<li><a href="#gds_cont3">고객후기 <em>(<%=reviewCount %>)</em></a></li>
-						<li class="on"><a href="#gds_cont4">주의사항</a><em class="ir">선택</em></li>
-					</ul>
+				<!-- 리뷰가 에이젝스로 연동될 공간 -->
+				<div id="reviewArea">
 				</div>
-				<div class="gd_noti">
-					<h3>주문 전 확인해 주세요!</h3>
-					<div class="g_noti bg_car">
+			
+				<!-- TAB4 -->
+				<div class="gds_cont" id="gds_cont4">
+					<div class="gd_tabs">
 						<ul>
-							<li>10,000원 이상부터 주문 가능해요!
-								<span class="no_bg">집밥선생은 신선하고 안전한 배송을 위해 박스, 보냉제, 완충제 등 기본 포장비가 발생되어 10,000원 이상부터 주문하실 수 있어요</span>
-							</li>
-							<li>쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요
-								<span class="no_bg">30,000원 미만인 경우 새벽배송은 2,900원, 일반택배(업체배송 포함) 2,500원의 배송비가 추가됩니다.</span>
-							</li>
-							<li>원하는 배송일은 최대 2주 이내까지 선택할 수 있어요
-								<span class="no_bg">새벽배송은 선택하신 희망 배송일 전일 밤부터 당일 새벽까지 도착해요.</span>
-								<span class="no_bg">일반택배는 선택하신 희망 배송일 내 도착해요.</span>
-								<span class="no_bg bold">※ 업체배송은 배송조회 기능을 제공하지 않고 있어요. 업체에서 배송 관련 문자를 발송하고 있어요.</span>
-							</li>
+							<li><a href="#gds_cont1">제품정보</a></li>
+							<li><a href="#gds_cont2">제품정보고시</a></li>
+							<li><a href="#gds_cont3">고객후기 <em>(<%=reviewCount %>)</em></a></li>
+							<li class="on"><a href="#gds_cont4">주의사항</a><em class="ir">선택</em></li>
 						</ul>
 					</div>
-					<h3>취소, 반품 시 참고해 주세요!</h3>
-					<div class="g_noti">
-						<ul>
-							<li>결제 후 주문 상태가 제품 준비 중으로 변경되면 수정, 취소가 불가능 해요
-								<span class="no_bg">제품 준비 중으로 상태 변경 시, 주문정보를 수정하거나 취소하실 수 없으니 양해 부탁드려요.</span>
-								<span class="no_bg bold">※ 입금대기중, 결제완료 단계는 MY더반찬 > 주문/배송 조회에서 직접 취소하실 수 있어요.</span>
-								<span class="no_bg bold">※ 집밥선생은 부분 취소가 어려우며, 번거로우시겠지만 전체 주문 취소 후 재주문해 주세요.</span>
-							</li>
-							<li>제품의 특성상 고객님의 단순 변심에 의해 교환 및 반품이 불가능합니다.
-								<span class="no_bg">제품에 이상이 있는 경우 <a href="#">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
-								<span class="no_bg">입고 지연, 생산 이슈에 따라 일부 제품이 발송이 어려운 경우 부분취소될 수 있습니다.</span>
-							</li>
-						</ul>
+					<div class="gd_noti">
+						<h3>주문 전 확인해 주세요!</h3>
+						<div class="g_noti bg_car">
+							<ul>
+								<li>10,000원 이상부터 주문 가능해요!
+									<span class="no_bg">집밥선생은 신선하고 안전한 배송을 위해 박스, 보냉제, 완충제 등 기본 포장비가 발생되어 10,000원 이상부터 주문하실 수 있어요</span>
+								</li>
+								<li>쿠폰 적용 후 최종 결제 금액에 30,000원인 경우 무료로 배송해드려요
+									<span class="no_bg">30,000원 미만인 경우 일반택배(업체배송 포함) 2,500원의 배송비가 추가됩니다.</span>
+								</li>
+								<li>원하는 배송일은 최대 2주 이내까지 선택할 수 있어요
+									<span class="no_bg bold">※ 업체배송은 배송조회 기능을 제공하지 않고 있어요. 업체에서 배송 관련 문자를 발송하고 있어요.</span>
+								</li>
+							</ul>
+						</div>
+						<h3>취소, 반품 시 참고해 주세요!</h3>
+						<div class="g_noti">
+							<ul>
+								<li>결제 후 주문 상태가 제품 준비 중으로 변경되면 수정, 취소가 불가능 해요
+									<span class="no_bg">제품 준비 중으로 상태 변경 시, 주문정보를 수정하거나 취소하실 수 없으니 양해 부탁드려요.</span>
+									<span class="no_bg bold">※ 입금대기중, 결제완료 단계는 MY집밥선생 > 주문/배송 조회에서 직접 취소하실 수 있어요.</span>
+									<span class="no_bg bold">※ 집밥선생은 부분 취소가 어려우며, 번거로우시겠지만 전체 주문 취소 후 재주문해 주세요.</span>
+								</li>
+								<li>제품의 특성상 고객님의 단순 변심에 의해 교환 및 반품이 불가능합니다.
+									<span class="no_bg">제품에 이상이 있는 경우 <a href="#">1:1 친절상담</a> 또는 고객센터 (평일 오전 8시 ~ 밤 8시)로 연락주세요.</span>
+									<span class="no_bg">입고 지연, 생산 이슈에 따라 일부 제품이 발송이 어려운 경우 부분취소될 수 있습니다.</span>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
+				<!-- //TAB4 -->
 			</div>
-			<!-- //TAB4 -->
+			<!-- //CONTENT -->
 		</div>
-		<!-- //CONTENT -->
 	</form>
 
 	<!-- MAIN_NOTICE_LAYER -->

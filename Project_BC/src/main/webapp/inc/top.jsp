@@ -59,7 +59,7 @@
             <div class="inner-box">
                 <h1 class="logo">
                     <a href="${pageContext.request.contextPath}/main"
-                        style="width: 184px; height: 150px; background-image: url('img/logo.png')">집밥선생</a>
+                        style="width: 184px; height: 150px; background-image: url('img/TestLogo.png')">집밥선생</a>
                 </h1>
                 <!-- 검색 영역 [S] -->   
                 <form action="Search.side">
