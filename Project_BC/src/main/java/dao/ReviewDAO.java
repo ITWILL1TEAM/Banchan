@@ -257,7 +257,7 @@ public class ReviewDAO {
 					sql = "UPDATE order_product set product_check=? where order_num =? and product_num=?";
 					System.out.println("update쿼리 실핵!");
 					pstmt2 = con.prepareStatement(sql);
-					pstmt2.setString(1, "리뷰작성완료");
+					pstmt2.setInt(1, 1);
 					pstmt2.setInt(2, order_num);
 					pstmt2.setInt(3, review.getProduct_num());
 					updateReviewStatus = pstmt2.executeUpdate();
