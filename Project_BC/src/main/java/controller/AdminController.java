@@ -84,7 +84,19 @@ public class AdminController extends HttpServlet {
 	            } catch (Exception e) {
 	                e.printStackTrace();
 	            }
+	            
+	            
+//	     -----------------Chart--------------
+		}else if(command.equals("/ChartData.ad")) {			
+			action = new ChartDataAction();            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
+		
+            
 		}else if(command.equals("/NoticeWrite.ad")) {          
             forward = new ActionForward();
             forward.setPath("/adminPage/NoticeWrite.jsp");

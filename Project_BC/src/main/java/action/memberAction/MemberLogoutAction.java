@@ -34,7 +34,7 @@ public class MemberLogoutAction implements Action {
 
 		
 		forward = new ActionForward();
-		forward.setPath("./main.jsp");
+		forward.setPath("./main");
 		forward.setRedirect(true);
 		
 		
