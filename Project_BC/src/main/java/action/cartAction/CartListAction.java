@@ -34,7 +34,9 @@ public class CartListAction implements Action {
         
         // 장바구니에 있는 제품의 총 가격을 합산할 변수
         int total_amt = 0;
+        // 할인된 최종 구매 금액을 합산할 변수
         int discounted_amt = 0;
+        
         for(int i = 0; i < cartList.size(); i++) {
         	discounted_amt += (cartList.get(i).getProduct_price() * (100 - cartList.get(i).getProduct_discount())/100) * cartList.get(i).getProduct_qty();
         	total_amt += cartList.get(i).getProduct_price() * cartList.get(i).getProduct_qty();

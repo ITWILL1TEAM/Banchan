@@ -9,11 +9,6 @@
 	int total_amt = (int)request.getAttribute("total_amt");
 	int discounted_amt = (int)request.getAttribute("discounted_amt");
 	int listCount = cartList.size();
-	ArrayList stocks = new ArrayList();
-	
-	for(int i = 0; i < cartList.size(); i++) {
-		stocks.add(i, cartList.get(i).getProduct_stock());
-	}
 	
 %>
 <!DOCTYPE html>
@@ -31,12 +26,14 @@
 	
 	$(document).ready(function() {
 		
+		// 장바구니에 담긴 제품이 없을 경우 전체선택, 선택해제 버튼 숨기기
 		if(<%=listCount %> == 0) {
 			$('#crt_all').hide();
 			$('#crt_all_text').hide();
 			$('.del').hide();
 		}
 		
+		// 전체선택 체크박스 체크 시 체크박스 모두 선택됨
 		$("#crt_all").click(function() {
 			if($("#crt_all").is(":checked")) {
 				$("input[name=cart_checkbox]").prop("checked", true);
@@ -46,20 +43,20 @@
 			}
 		});
 			
-		$("input[name=cart_checkbox]").click(function(){
-			$("#crt_all").prop("checked", false);
-		});
-		
 	});
 	
 	// 상품 수량 증가
 	function qtyUp(id) {
-		// 수량 증가 버튼의 id인 btn-upi의 up을 num으로 치환해 수량이 표시되는 텍스트박스의 id(btn-numi)로 바뀜
+		// 수량 증가 버튼의 id인 btn-up1의 up을 num으로 치환해 수량이 표시되는 텍스트박스의 id(btn-num1)로 바뀜
 		var numid = id.replace("up", "num");
-		var result = parseInt(numid)+1
+		var result = parseInt(numid) + 1
 		var qty = Number($('#'+numid).val());
+		
+		// 제품 재고
 		var max_qty = $('#stock').val();
+		// 수량 증가
 		qty++;
+		// 증가된 수량이 재고보다 많을 경우 경고창 띄우고 취소
 		if(qty > max_qty) {
 			alert('재고가 부족합니다.');
 			return;
@@ -79,7 +76,7 @@
 		}
 	};
 	
-	// 수량 변경
+	// 수량 변경 적용시키는 함수
 	function qtyUpdate(product_num, id){
 		
 		var numid = id.replace("Save", "num");
@@ -89,35 +86,24 @@
 	
 	};
 	
+	// 체크박스가 선택된 제품 삭제하는 함수
 	function deleteAction() {
 		var checkRow = "";
+		// 선택된 체크박스의 value값을 checkRow 변수에 구분자 "/"와 함께 누적저장한다.
 		$('.checkRow:checked').each(function() {
 			checkRow += $(this).val() + "/";
 		});
 		
-// 		var chbox = new Array();
-		
-// 		chbox = checkRow.split("/"); // 맨끝 콤마 지우기
-		checkRow = checkRow.substring(0,checkRow.lastIndexOf( "/"));
-		
-		alert(checkRow);
-
+		// 선택된 체크박스가 없을 경우(checkRow의 길이가 0일 경우) 경고창을 띄우고 작업 취소된다.
 		if(checkRow == '') {
 			alert('삭제할 제품을 선택해주세요.');
 			return false;
-		}
-		
-// 		if(chbox.length == 0) {
-// 			alert('삭제할 제품을 선택해주세요.');
-// 			return false;
-// 		}
-		
-		if(confirm("선택한 제품을 삭제하시겠습니까?")) {
+		} else if(confirm("선택한 제품을 삭제하시겠습니까?")) {
+			// 선택된 제품이 있을 경우 확인창이 뜨고 확인을 누를 시 선택 삭제 작업이 진행된다.
 			location.href = "CartDel.ca?chk=" + checkRow;
 			
 		}
 	}
-	
 	
 </script>
 </head>
@@ -151,10 +137,7 @@
 						<col style="width:189px" />
 						<thead>
 							<tr>
-								<th scope="col">
-									<!-- <input type="checkbox" class="" id="crt_all"name="cart_all_checkbox" checked="checked" />
-									<label class="" for="crt_all">제품전체선택</label> -->
-								</th>
+								<th scope="col"></th>
 								<th scope="col">제품정보</th>
 								<th scope="col">판매금액</th>
 								<th scope="col">수량</th>
@@ -163,11 +146,13 @@
 							</tr>
 						</thead>
 						<tbody>
+						<!-- 장바구니에 담긴 제품이 없을 경우 표시될 화면 -->
 						<%if(listCount == 0) { %>
 								<tr>
 									<td colspan="6" class="no_prd">장바구니에 담긴 제품이 없습니다.</td>
 								</tr>	
 						<% } else {
+							// 장바구니에 담긴 제품이 있을 경우 표시될 화면
 							for (int i = 0; i < listCount; i++) {  %>
 								<tr>
 									<!-- 체크박스 -->
@@ -178,7 +163,7 @@
 									<!-- 사진 -->
 									<td class="info">
 										<div class="img">
-											<a href="Product.do?product_num=<%=cartList.get(i).getProduct_num() %>" name="go_detail_button" data-cart-seq="4" >
+											<a href="Product.do?product_num=<%=cartList.get(i).getProduct_num() %>" name="go_detail_button" >
 												<img src="${pageContext.request.contextPath}/upload/<%=cartList.get(i).getProduct_img()%>.png" width="100" height="100" alt="양장피" onerror="this.src='/common/images/common/noimg_100.jpg'"/>
 												<span class="ir"><%=cartList.get(i).getProduct_name() %></span>
 											</a>
@@ -192,12 +177,12 @@
 									</td>
 									<!-- 제품가격 -->
 									<td class="prc_ori">
-									<!-- (Integer)article.getProduct_price() * (100 - article.getProduct_discount())/100; -->
 										<span class="om"><em class="thm"><fmt:formatNumber value="<%=cartList.get(i).getProduct_price() * (100 - cartList.get(i).getProduct_discount())/100%>" pattern="#,###"/></em>원</span>
 									</td>
 									<!-- 수량 조절 -->
 									<td class="qty_set">
 										<div class="qty">
+											<!-- 자바스크립트에서 해당 제품의 재고를 넘겨받기 위해 만든 인풋태그. 표시되지 않는다. -->
 											<input type="text" id="stock" value="<%=cartList.get(i).getProduct_stock() %>" style="display:none">
 											<input name="cart_qty" class="input" id="btn-num<%=i%>" value="<%=cartList.get(i).getProduct_qty() %>" title="옵션수량입력" readonly="readonly">
 											<button class="minus" name="change_qty_button" id="btn-down<%=i %>" data-role="-" type="button" title="수량감소" onclick="qtyDown(this.id)">수량감소</button>
@@ -212,7 +197,7 @@
 									<!-- 삭제버튼 -->
 									<td class="func_btn">
 										<div class="del_bx">
-											<button class="del" type="button" title="제품삭제하기" name="delete_button" data-role="cart" onclick="location.href='CartDel.ca?chk=<%=cartList.get(i).getProduct_num() %>'">삭제</button>
+											<button class="del" type="button" title="제품삭제하기" name="delete_button" data-role="cart" onclick="location.href='CartDel.ca?chk=<%=cartList.get(i).getProduct_num() %>/'">삭제</button>
 										</div>
 									</td>
 								</tr>

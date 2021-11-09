@@ -94,7 +94,7 @@ public class BasketDAO {
         ResultSet rs = null;
         ResultSet rs2 = null;
         
-        int idx = 1; // 새 글 번호를 저장할 변수 선언
+        int idx = 1; 
 		
         try {
         	// 현재 basket 테이블의 인덱스 최대 번호를 조회하여 조회된 결과 값에 + 1 값을 새 인덱스 번호로 지정
@@ -110,8 +110,8 @@ public class BasketDAO {
         	
         	
         	// product_img는 product_img 테이블에서 product_num으로 조회해서 제품번호에 맞는 이미지 찾아서 
-        	// 변수에 저장하고 밑에 set하기
-        	String product_img = null;
+        	// 변수에 저장하고 밑에서 set
+        	String product_img = "";
         	String sql2 = "SELECT product_img FROM product_img WHERE product_num=? AND product_img_location=1";
         	pstmt2 = con.prepareStatement(sql2);
         	pstmt2.setInt(1, basket.getProduct_num());
@@ -136,7 +136,6 @@ public class BasketDAO {
             pstmt3.setString(8, product_img); 				 //		제품 이미지
             pstmt3.setString(9, basket.getSname());			 // 		회사명
                
-            // INSERT 구문 실행 및 결과 리턴받기
             insertCount = pstmt3.executeUpdate();
             
         } catch (Exception e) {
