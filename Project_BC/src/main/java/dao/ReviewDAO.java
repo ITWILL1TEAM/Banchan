@@ -281,13 +281,11 @@ public class ReviewDAO {
 		ResultSet rs = null;
 
 		try {
-			// 3단계. SQL 구문 작성 및 전달
 			// => 전체 레코드 갯수를 조회하기 위해 COUNT(*) 함수 사용(또는 COUNT(num))
 			String sql = "SELECT COUNT(*) FROM review WHERE review_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 
-			// 4단계. SQL 구문 실행 및 결과 처리
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -297,7 +295,6 @@ public class ReviewDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// 자원 반환
 			close(rs);
 			close(pstmt);
 		}
@@ -306,38 +303,24 @@ public class ReviewDAO {
 
 	}
 
-	public ArrayList<ReviewBean> selectMyReviewArticleList(String id, int page, int limit) {
+	public ArrayList<ReviewBean> selectMyReviewArticleList(String id) {
 		ArrayList<ReviewBean> reviewList = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// 조회시작 게시물 (레코드) 번호 계산 (= 행번호 계산)
-		int startRow = (page - 1) * limit;
-
 		try {
 
-			// 3단계. SQL 구문 작성 및 전달
-			// -> funweb_board 테이블의 모든 레코드 조회(번호(num) 컬럼 기준 내림차순 정렬)
-			// -> 단, 시작행번호부터 페이지당 게시물 수만큼만 조회
-			// LIMIT 시작행번호, 페이지당게시물수
-			String sql = "SELECT * FROM review WHERE review_id=? " + "ORDER BY review_idx DESC LIMIT ?,?";
+			String sql = "SELECT * FROM review WHERE review_id=? " + "ORDER BY review_idx ";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, id);// 페이지당 게시물 수
-			pstmt.setInt(2, startRow); // 시작행번호
-			pstmt.setInt(3, limit);
 
-			// 4단계. SQL 구문 실행 및 결과 처리
 			rs = pstmt.executeQuery();
 
-			// 모든 레코드를 저장할 List 객체(ArrayList) 생성
 			reviewList = new ArrayList<ReviewBean>();
 
-			// while문을 사용하여 ResultSet 객체의 모든 레코드 접근
 			while (rs.next()) {
-				// BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
-				// -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
 				ReviewBean review = new ReviewBean();
 
 				review.setProduct_num(rs.getInt("product_num"));
@@ -345,7 +328,6 @@ public class ReviewDAO {
 				review.setReview_content(rs.getString("review_content"));
 				review.setReview_score(rs.getDouble("review_score"));
 
-				// 1개 레코드가 저장된 BoardBean 객체를 List 객체에 추가
 				reviewList.add(review);
 
 			}
@@ -353,7 +335,6 @@ public class ReviewDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// 자원 반환
 			close(rs);
 			close(pstmt);
 		}
@@ -370,7 +351,6 @@ public class ReviewDAO {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
 
-		// 조회시작 게시물 (레코드) 번호 계산 (= 행번호 계산)
 
 		try {
 
@@ -381,16 +361,11 @@ public class ReviewDAO {
 			pstmt.setString(1, id);// 페이지당 게시물 수
 			pstmt.setInt(2, 0);
 
-			// 4단계. SQL 구문 실행 및 결과 처리
 			rs = pstmt.executeQuery();
 			
-			// 모든 레코드를 저장할 List 객체(ArrayList) 생성
 			orderList = new ArrayList<Productbean>();
 
-			// while문을 사용하여 ResultSet 객체의 모든 레코드 접근
 			while (rs.next()) {
-				// BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
-				// -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
 				Productbean product = new Productbean();
 
 				product.setProduct_num(rs.getInt("product_num"));
@@ -414,7 +389,6 @@ public class ReviewDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// 자원 반환
 			close(rs);
 			close(pstmt);
 		}

@@ -5,7 +5,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     ArrayList<Productbean> orderList = (ArrayList<Productbean>)request.getAttribute("orderList");
-	
 %>
 
 <div id="evalListBodydiv">

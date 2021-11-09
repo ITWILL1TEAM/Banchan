@@ -3,24 +3,14 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
-	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	
-	double score = (Double)request.getAttribute("score");
-	double avgScore = (Double)request.getAttribute("avgScore");
-	double avgPercent = (Double)request.getAttribute("avgPercent");
-	
-	int nowPage = pageInfo.getPage();
-	int maxPage = pageInfo.getMaxPage();
-	int startPage = pageInfo.getStartPage();
-	int endPage = pageInfo.getEndPage();
-	int listCount = pageInfo.getListCount();
 %>
 
 <div id="evalListBodydiv">
 <h1>review2</h1>
 		<!-- REVIEW LIST -->
 	<%
-	if(reviewList != null && listCount > 0) {
+	if(reviewList != null) {
 	%>
 		
 		<div class="g_rv_lst">
@@ -48,34 +38,6 @@
 			
 		</div>	
 
-		<!-- PAGING -->
-		<div class="paging" id="page_nav">
-			<section id="pageList">
-			<% if(nowPage > 1) {%>
-	      		<a href="ReviewList.re?page=<%=nowPage -1 %>">Prev</a>&nbsp;
-		      		
-			<% }else{ %>
-		      	Prev&nbsp;
-		      
-		   	<% }
-			
-				for(int i = startPage; i<=endPage; i++){
-		      		if(nowPage == i){
-		      			%><%=i %>&nbsp;<%
-		      		} else{
-		      			%>
-		      			<a href="ReviewList.re?page=<%=i %>"><%=i %></a>&nbsp;
-		      			<%
-					}
-				} 
-					
-				if(nowPage < maxPage){ %>
-		      		<a href="ReviewList.re?page=<%=nowPage +1 %>">Next</a>&nbsp;
-			<% }else{ %>
-		     		Next&nbsp;
-			<% } %>
-			</section>
-		</div>
 	<%}else{%>
 		<span class="txt">
 			작성 한 후기가 없습니다.
