@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.ReviewDAO;
+import vo.Productbean;
 import vo.ReviewBean;
 import vo.orderProductBean;
 
@@ -54,7 +55,7 @@ public class MyReviewService {
         return articleList;
     }
 
-    public ArrayList<orderProductBean> getOrderProductList(String id, int page, int limit) {
+    public ArrayList<Productbean> getOrderProductList(String id) {
         Connection con = getConnection();
         
         // 공통작업-2. BoardDAO 클래스로부터 BoardDAO 객체 가져오기
@@ -64,7 +65,7 @@ public class MyReviewService {
         dao.setConnection(con);
         
         
-        ArrayList<orderProductBean> articleList = dao.selectMyOrderProductList(id,page, limit);
+        ArrayList<Productbean> articleList = dao.selectMyOrderProductList(id);
         
         
         // 공통작업-4. Connection 객체 반환

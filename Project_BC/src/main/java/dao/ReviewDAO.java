@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import vo.Productbean;
 import vo.ReviewBean;
 import vo.orderProductBean;
 
@@ -361,45 +362,52 @@ public class ReviewDAO {
 
 	}
 
-	public ArrayList<orderProductBean> selectMyOrderProductList(String id, int page, int limit) {
-		ArrayList<orderProductBean> reviewList = null;
+	public ArrayList<Productbean> selectMyOrderProductList(String id) {
+		ArrayList<Productbean> orderList = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
 
 		// 조회시작 게시물 (레코드) 번호 계산 (= 행번호 계산)
-		int startRow = (page - 1) * limit;
 
 		try {
 
 			String sql = "SELECT * FROM order_product WHERE customer_id=?AND product_check=? "
-					+ "ORDER BY review_idx DESC LIMIT ?,?";
+					+ "ORDER BY review_idx";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, id);// 페이지당 게시물 수
 			pstmt.setInt(2, 0);
-			pstmt.setInt(3, startRow); // 시작행번호
-			pstmt.setInt(4, limit);
 
 			// 4단계. SQL 구문 실행 및 결과 처리
 			rs = pstmt.executeQuery();
-
+			
 			// 모든 레코드를 저장할 List 객체(ArrayList) 생성
-			reviewList = new ArrayList<orderProductBean>();
+			orderList = new ArrayList<Productbean>();
 
 			// while문을 사용하여 ResultSet 객체의 모든 레코드 접근
 			while (rs.next()) {
 				// BoardBean 객체를 생성하여 1개 레코드 정보를 BoardBean 객체에 저장
 				// -> 글번호, 작성자, 제목, 날짜, 조회수만 필요
-				orderProductBean order = new orderProductBean();
+				Productbean product = new Productbean();
 
-				order.setOrder_num(rs.getInt("order_num"));
-				order.setCustomer_id(rs.getString("customer_id"));
-				order.setProduct_num(rs.getInt("product_num"));
-				order.setProduct_qty(rs.getInt("product_qty"));
-
-				// 1개 레코드가 저장된 BoardBean 객체를 List 객체에 추가
-				reviewList.add(order);
+				product.setProduct_num(rs.getInt("product_num"));
+				
+				sql = "SELECT * FROM product WHERE product_num=?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setInt(1, product.getProduct_num());
+				
+				rs2 = pstmt2.executeQuery();
+				
+				if(rs2.next()) {
+					
+					product.setProduct_name(rs.getString("product_name"));
+					product.setProduct_review_score(rs.getInt("product_review_score"));
+					
+				}
+				orderList.add(product);
 
 			}
 
@@ -411,7 +419,7 @@ public class ReviewDAO {
 			close(pstmt);
 		}
 
-		return reviewList;
+		return orderList;
 	}
 
 }
