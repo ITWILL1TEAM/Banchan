@@ -41,7 +41,7 @@ public class MyPageController extends HttpServlet {
 			grade = 3;
 		}
 		System.out.println(grade);
-		if (grade!=3) {
+		if (grade!=3) {	
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();

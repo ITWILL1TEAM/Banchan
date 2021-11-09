@@ -8,8 +8,6 @@
 %>
 
 <div id="evalListBodydiv">
-<h1>review1</h1>
-<!-- REVIEW LIST -->
 	<%
 	if(orderList != null) {
 	%>

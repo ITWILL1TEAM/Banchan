@@ -7,8 +7,6 @@
 %>
 
 <div id="evalListBodydiv">
-<h1>review2</h1>
-		<!-- REVIEW LIST -->
 	<%
 	if(reviewList != null) {
 	%>
