@@ -31,6 +31,7 @@ public class CartListService {
 		return cartList;
 	}
 
+	// 주문하려는 회원이 입력된 배송지를 가지고 있는지 판별하는 메소드
 	public boolean getAddressInfo(String customer_id) {
 		System.out.println("CartListService - getAddressInfo()");
 		boolean hasAddress = false;
@@ -45,10 +46,11 @@ public class CartListService {
         
         System.out.println(addressList.size());
         
+        // 주소지를 조회하여 데이터를 담은 어레이리스트의 사이즈가 0보다 클 경우 배송지가 있는 회원이므로 hasAddress를 true로 변경
         if(addressList.size() > 0) {
         	hasAddress = true;
         }
-        // 공통작업-4. Connection 객체 반환
+        
         close(con);
 		
 		
