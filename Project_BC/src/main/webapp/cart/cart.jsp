@@ -9,6 +9,11 @@
 	int total_amt = (int)request.getAttribute("total_amt");
 	int discounted_amt = (int)request.getAttribute("discounted_amt");
 	int listCount = cartList.size();
+	ArrayList stocks = new ArrayList();
+	
+	for(int i = 0; i < cartList.size(); i++) {
+		stocks.add(i, cartList.get(i).getProduct_stock());
+	}
 	
 %>
 <!DOCTYPE html>
@@ -53,7 +58,12 @@
 		var numid = id.replace("up", "num");
 		var result = parseInt(numid)+1
 		var qty = Number($('#'+numid).val());
+		var max_qty = $('#stock').val();
 		qty++;
+		if(qty > max_qty) {
+			alert('재고가 부족합니다.');
+			return;
+		}
 		
 		$('#'+numid).val(qty);
 	};
@@ -188,7 +198,8 @@
 									<!-- 수량 조절 -->
 									<td class="qty_set">
 										<div class="qty">
-											<input name="cart_qty" class="input txt-spin" id="btn-num<%=i%>" value="<%=cartList.get(i).getProduct_qty() %>" title="옵션수량입력" readonly="readonly">
+											<input type="text" id="stock" value="<%=cartList.get(i).getProduct_stock() %>" style="display:none">
+											<input name="cart_qty" class="input" id="btn-num<%=i%>" value="<%=cartList.get(i).getProduct_qty() %>" title="옵션수량입력" readonly="readonly">
 											<button class="minus" name="change_qty_button" id="btn-down<%=i %>" data-role="-" type="button" title="수량감소" onclick="qtyDown(this.id)">수량감소</button>
 											<button class="plus" name="change_qty_button" id="btn-up<%=i %>" data-role="+" type="button" title="수량증가" onclick="qtyUp(this.id)">수량증가</button>
 										</div>
