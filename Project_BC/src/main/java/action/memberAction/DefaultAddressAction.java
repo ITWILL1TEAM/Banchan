@@ -27,8 +27,8 @@ public class DefaultAddressAction implements Action {
 		String dtl_addr = address.getDtl_addr();
 		int set_default = address.getAddress_priority();
 		
+		address.setCustomerId(customerId);
 		System.out.println(roadAddress+" | "+zonecode+" | "+dtl_addr+" | "+set_default);
-		
 		
 		AddressService service = new AddressService();
 		boolean isChangeSet = service.changeDefault(address);

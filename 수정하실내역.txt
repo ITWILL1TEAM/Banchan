@@ -2,13 +2,13 @@
 쿠키값저장시 session에 grade값도 같이 추가
 
 마이페이지
-개인정보수정 전화번호 '-'split 제거
-배송지 insertDAO 안됨
-고객후기 페이지출력
+개인정보수정 전화번호 '-'split 제거 O
+배송지 insertDAO 안됨  O
+고객후기 페이지출력 X
 
 리뷰작성
-작성시 order_num , product_num 넘기기
-productBean객체가져오기
+작성시 order_num , product_num 넘기기 O
+productBean객체가져오기 O
 
 판매자페이지
 판매자명 Sname가져오기
