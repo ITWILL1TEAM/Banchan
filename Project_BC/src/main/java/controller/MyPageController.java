@@ -101,7 +101,6 @@ public class MyPageController extends HttpServlet {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                
 				
 			}else if(command.equals("/Review.my")) {
 				forward = new ActionForward();
