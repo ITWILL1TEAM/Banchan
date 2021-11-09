@@ -19,6 +19,7 @@ CREATE TABLE `customer` (
   `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `recommend_id` int(11) NOT NULL DEFAULT '0',
   `personal_data` int(11) NOT NULL,
+  `member_status` int(11) DEFAULT '0',
   PRIMARY KEY (`customer_id`),
   UNIQUE KEY `eamil_UNIQUE` (`email`),
   KEY `costomer_id` (`customer_id`),
@@ -46,6 +47,7 @@ CREATE TABLE `seller` (
   `phone` varchar(45) COLLATE utf8_bin NOT NULL,
   `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `status` int(11) DEFAULT '0',
+  `member_status` int(11) DEFAULT '0',
   PRIMARY KEY (`seller_id`),
   KEY `seller_id` (`seller_id`),
   CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
