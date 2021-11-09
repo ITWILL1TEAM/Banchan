@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,43 @@
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
 <script type="text/javascript">
-window.opener.location.reload(true);
+	$(function() {
+		$('#yet').on('click', function() {
+			// form 태그에 있는 모든 파라미터를 하나로 묶어서 전송하기 위한 변수 선언
+			var sendFormData = $('form').serialize();
+	//			alert(sendFormData);
+			
+			$.ajax({
+				type: "GET",
+				url: "myReviewpage1.jsp",
+				data: sendFormData,
+				dataType: 'text',
+				success: function(msg) {
+					$('#yetReviewBodyDiv').html(msg);
+					$('#doneReviewBodyDiv').html('');
+					$('#yet').class(on);
+				} 
+			});
+		});
+		
+		$('#done').on('click', function() {
+			// form 태그에 있는 모든 파라미터를 하나로 묶어서 전송하기 위한 변수 선언
+			var sendFormData = $('form').serialize();
+	//			alert(sendFormData);
+			
+			$.ajax({
+				type: "GET",
+				url: "myReviewpage2.jsp",
+				data: sendFormData,
+				dataType: 'text',
+				success: function(msg) {
+					$('#yetReviewBodyDiv').html('');
+					$('#doneReviewBodyDiv').html(msg);
+					$('#done').class(on);
+				} 
+			});
+		});
+	});
 </script>
 </head>
 <body>
@@ -79,23 +116,13 @@ window.opener.location.reload(true);
 </div>
 <!-- //DATE SEARCH -->
 
-
 			<!-- MY TAB -->
 			<div class="tab_menu">
 				<ul id="tabUl">
-					<li class="on" data-review-yn="Y">
+					<li class="on" data-review-yn="Y" id="yet">
 						<a href="" id="#tab_con1" class="tab t1">작성 가능한 고객후기</a>
-						<!-- MY LIST -->							
-						<div id="reviewNoBodyDiv">
-							
-
-	<!-- LIST NONE -->
-	<div class="mys_none">
-		<span class="txt">
-			수취 완료 후 30일 이내  작성 가능한 후기가 없습니다.
-		</span>
-	</div>
-	<!-- //LIST NONE -->
+						<!-- MY LIST a #tab_con1클릭시 tabUl의 첫번째 class를 "" data-review-yn="N"으로 변경-->							
+						<div id="yetReviewBodyDiv">
 
 
 
@@ -103,10 +130,10 @@ window.opener.location.reload(true);
 						</div>
 						<!-- //MY LIST -->	
 					</li>
-					<li data-review-yn="N">
+					<li data-review-yn="N" id="done">
 						<a href="" id="#tab_con2" class="tab t2">작성한 고객후기</a>
 						<!-- MY LIST -->	
-						<div id="reviewBodyDiv">
+						<div id="doneReviewBodyDiv">
 							
 						</div>	
 						<!-- //MY LIST -->	
@@ -118,10 +145,8 @@ window.opener.location.reload(true);
 
 			<!-- MY NOTICE -->
 			<div class="mys_notice">
-				<h4>고객후기쓰기 혜택 <b>TIP</b></h4>
+				<h4>고객후기쓰기 <b>TIP</b></h4>
 				<ul>
-					<li>포토고객후기 100원/일반 고객후기 50원/세븐데이세트 제품1개당 10원의 적립금을 드립니다.</li>
-					<li>작성하신 고객후기가 BEST로 선정 시  5,000원 자동지급 해드립니다.<br><em>(TIP. Life Style을 담은 퀄리티 있는 사진을 어둡지 않게 흔들리지 않게 올리시면 당첨확률 UP UP!)</em></li>
 					<li>고객후기는 구매 후 30일 이내 작성 가능하며, 제품과 무관한 사진이나 사이트 제품사진을 캡쳐한 사진, 고객후기의 성격에 맞지 않는 내용은 관리자에 의해 노출제한, 비공개, 삭제 될 수 있으며 지급된 적립금이 회수 될 수 있습니다.</li>
 				</ul>
 			</div>
