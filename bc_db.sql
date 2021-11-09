@@ -80,13 +80,15 @@ CREATE TABLE `product_img` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `basket` (
-  `basket_idx` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` varchar(45) COLLATE utf8_bin NOT NULL,
-  `product_num` int(11) NOT NULL,
-  `item_qty` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`basket_idx`),
-  KEY `bask_id_fk` (`customer_id`),
-  KEY `bask_pdnum_fk` (`product_num`),
+   basket_idx int(11) PRIMARY KEY,
+   customer_id varchar(15) COLLATE utf8_bin NOT NULL,
+   product_num int(11) NOT NULL,
+   product_name varchar(45) COLLATE utf8_bin NOT NULL,
+   product_price int(11) NOT NULL,
+   product_qty INT NOT NULL DEFAULT 1,
+   product_discount int(11) NOT NULL DEFAULT '0',
+   product_img varchar(45) COLLATE utf8_bin NOT NULL,
+   Sname VARCHAR(45) COLLATE utf8_bin NOT NULL,
   CONSTRAINT `bask_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `bask_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
