@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">

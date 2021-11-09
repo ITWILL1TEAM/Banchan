@@ -80,18 +80,18 @@
 					<li id="yet">
 						<a id="#tab_con1" class="tab t1">작성 가능한 고객후기</a>
 						<!-- MY LIST a #tab_con1클릭시 tabUl의 첫번째 class를 "" data-review-yn="N"으로 변경-->							
-						<div id="yetReviewBodyDiv">
+						<p id="yetReviewBodyDiv">
 
 
-						</div>
+						</p>
 						<!-- //MY LIST -->	
 					</li>
 					<li id="done">
 						<a id="#tab_con2" class="tab t2">작성한 고객후기</a>
 						<!-- MY LIST -->	
-						<div id="doneReviewBodyDiv">
+						<p id="doneReviewBodyDiv">
 							
-						</div>	
+						</p>	
 						<!-- //MY LIST -->	
 					</li>
 				</ul>			
@@ -144,8 +144,8 @@
 			url: "${pageContext.request.contextPath}/Review2.my",
 			dataType: 'text'
 		}).done(function(data) {
-				$('#yetReviewBodyDiv').html('');
-				$('#doneReviewBodyDiv').html('ㅁㅁㅁ');
+				$('#yetReviewBodyDiv').html(data);
+				$('#doneReviewBodyDiv').html('');
 		}).fail(function(data) {
 			alert('실패');
 		})

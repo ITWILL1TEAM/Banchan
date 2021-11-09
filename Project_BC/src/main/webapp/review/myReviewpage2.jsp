@@ -35,10 +35,10 @@
 			</ul>
 			
 		</div>	
+</div>
 
 	<%}else{%>
-		<span class="txt">
+	
 			작성 한 후기가 없습니다.
-		</span>
+	
 	<% } %>
-</div>
