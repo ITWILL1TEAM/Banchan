@@ -46,7 +46,7 @@ public class MyReviewService {
         dao.setConnection(con);
         
         
-        ArrayList<ReviewBean> articleList = dao.selectMyReviewArticleList(id,page, limit);
+        ArrayList<ReviewBean> articleList = dao.selectMyReviewArticleList(id);
         
         
         // 공통작업-4. Connection 객체 반환
