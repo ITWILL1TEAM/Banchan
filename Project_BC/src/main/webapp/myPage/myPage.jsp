@@ -17,14 +17,13 @@
 		<div class="mys_top_pc">
 			<div class="mytbc">MY더반찬	</div>
 		</div>
-
 	<div id="mys_lnb" class="lnb">
 		<ul>
 			<li>
 				<dl>
 					<dt style="text-align:left;margin-bottom: 12px">주문정보</dt>
 					<dd><a id="left_01" href="OrderCheck.my" onclick="" >주문/배송 조회</a></dd>
-					<dd><a id="left_02" href="Resell.my" onclick="" >취소/반품 내역</a></dd>
+					<dd><a id="left_02" href="Resell.my" onclick="" >취소/반품  내역</a></dd>
 				</dl>
 			</li>
 			<li>
@@ -57,18 +56,17 @@
 
 
 <div id="mys_content" class="sub_cont">
-			<h3 class="tit">개인정보 수정</h3>
+			<h3 class="tit">개인정보수정></h3>
 			
 			  <form id="confirmForm" action="<%=request.getContextPath() %>//Mypage2.my" method="get">
 				<div class="mys_cfm">
 					<h3>본인 확인</h3>
-					<div class="txt">개인정보 수정을 위해서는 본인 확인이 필요합니다.<br>비밀번호를 다시 한번 입력해 주세요.</div>
+					<div class="txt">개인정보 수정을 위해서는 본인 확인이 필요합니다<br>비밀번호를 다시 한번 입력해 주세요.</div>
 					<dl>
 						<dt class="ir"><label for="m_pw">비밀번호</label></dt>
 						<dd>
 							<span class="inp"><input type="password" id="m_pw" class="input" name="password" placeholder="비밀번호"></span>
 							<div id="faildiv">
-							
 							</div>
 						</dd>
 					</dl>

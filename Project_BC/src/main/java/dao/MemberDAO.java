@@ -695,6 +695,41 @@ public class MemberDAO {
 		return email;
 	}
 
+	public boolean deleteMember(String id, String pwd) {
+		boolean isMemberDelete = false;
+		
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			con = getConnection();
+			
+			String sql="DELETE FROM member WHERE id = ? AND password = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			
+			isMemberDelete = pstmt.execute(sql);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원 반환
+			
+			close(pstmt);
+			close(con);
+			
+		}
+		
+		
+		return isMemberDelete;
+
+	}
+
 
 	
 }

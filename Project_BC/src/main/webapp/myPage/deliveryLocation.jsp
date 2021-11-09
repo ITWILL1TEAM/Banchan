@@ -15,14 +15,17 @@
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
-<script src="js/jquery-3.6.0.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 
-function addAddress() {
-	var win = window.open("myPage/addAddress.jsp", "_blank", "titlebar=no,toolbar=no,scrollbars=no,resizable=no,top=500,left=500,width=400,height=400");
-	
+function setdefault(address) {
+	alert(address);
+	document.setAttribute("address", "address");
+	localStorage.setItem("address", address);
+	location.href = "Default.my";
 }
+
+
 
 </script>
 </head>
@@ -77,7 +80,7 @@ function addAddress() {
 			
 			<div class="mys_summ">
 				<div class="txt"><b><%=customer_name%></b> 님의 배송지 목록에 총 <b><%=addressList.size() %></b> 곳이 저장되어 있습니다.</div>
-				<button type="button" class="bx" title="배송지 추가 새창" name="modifyBtn" onclick="addAddress()">배송지 추가</button>
+				<button type="button" class="bx" title="배송지 추가 새창" name="modifyBtn" onclick="window.open('myPage/addAddress.jsp', '_blank', 'titlebar=no,toolbar=no,scrollbars=no,resizable=no,top=500,left=500,width=400,height=400')">배송지 추가</button>
 			</div>
 			
 			<%if(addressList.size()==0){ %>
@@ -90,7 +93,16 @@ function addAddress() {
 					<%for(int i=0;i<addressList.size();i++){ %>
 					<tr>
 						<th>주소</th>
-						<td><%=addressList.get(i).getRoadAddress()%> <%=addressList.get(i).getDtl_addr()%></td>
+						<td><%=addressList.get(i).getRoadAddress() %> <%=addressList.get(i).getDtl_addr() %></td>
+						<%if(addressList.get(i).getAddress_priority()==0){ %>
+						<td>
+							<button onclick="setdefault(<%=addressList.get(i)%>)">기본배송지로 지정 </button>
+						</td>
+						<%}else{ %>
+						<td>
+							기본배송지
+						</td>
+						<%} %>
 					</tr>
 					<%} %>
 				</table>
@@ -99,10 +111,6 @@ function addAddress() {
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-window.opener.location.reload(true);
-</script>
 
 </body>
 </html>
