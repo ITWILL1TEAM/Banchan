@@ -164,7 +164,7 @@ public class BasketDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM basket WHERE customer_id=? ORDER BY basket_idx DESC";
+			String sql = "SELECT b.basket_idx, b.product_num, b.product_name, b.product_price, b.product_qty, b.product_discount, b.product_img, b.Sname, p.product_stock FROM basket b LEFT JOIN product p ON p.product_num = b.product_num WHERE customer_id=? ORDER BY b.basket_idx DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, customer_id);
 			rs = pstmt.executeQuery();
@@ -174,7 +174,6 @@ public class BasketDAO {
 			while(rs.next()) {
 				BasketBean basket = new BasketBean();
 				
-				basket.setBasket_idx(rs.getInt("basket_idx"));
 				basket.setProduct_num(rs.getInt("product_num"));
 				basket.setProduct_name(rs.getString("product_name"));
 				basket.setProduct_price(rs.getInt("product_price"));
@@ -182,6 +181,7 @@ public class BasketDAO {
 				basket.setProduct_discount(rs.getInt("product_discount"));
 				basket.setProduct_img(rs.getString("product_img"));
 				basket.setSname(rs.getString("Sname"));
+				basket.setProduct_stock(rs.getInt("product_stock"));
 				
 				cartList.add(basket);
 			}

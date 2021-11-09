@@ -11,8 +11,15 @@ public class BasketBean {
 	private int product_discount;
 	private String product_img;
 	private String Sname;
+	private int product_stock;
 	
 	
+	public int getProduct_stock() {
+		return product_stock;
+	}
+	public void setProduct_stock(int product_stock) {
+		this.product_stock = product_stock;
+	}
 	public int getBasket_idx() {
 		return basket_idx;
 	}
