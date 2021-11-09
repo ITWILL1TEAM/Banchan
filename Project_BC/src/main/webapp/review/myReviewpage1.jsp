@@ -7,7 +7,7 @@
     ArrayList<Productbean> orderList = (ArrayList<Productbean>)request.getAttribute("orderList");
 %>
 
-<div id="evalListBodydiv">
+<div id="evalListBodydiv" style="width: 100px; height: 100px;">
 	<%
 	if(orderList != null) {
 	%>

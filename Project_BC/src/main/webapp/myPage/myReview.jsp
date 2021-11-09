@@ -78,7 +78,7 @@
 			<div class="tab_menu">
 				<ul id="tabUl">
 					<li id="yet">
-						<a href="" id="#tab_con1" class="tab t1">작성 가능한 고객후기</a>
+						<a id="#tab_con1" class="tab t1">작성 가능한 고객후기</a>
 						<!-- MY LIST a #tab_con1클릭시 tabUl의 첫번째 class를 "" data-review-yn="N"으로 변경-->							
 						<div id="yetReviewBodyDiv">
 
@@ -87,7 +87,7 @@
 						<!-- //MY LIST -->	
 					</li>
 					<li id="done">
-						<a href="" id="#tab_con2" class="tab t2">작성한 고객후기</a>
+						<a id="#tab_con2" class="tab t2">작성한 고객후기</a>
 						<!-- MY LIST -->	
 						<div id="doneReviewBodyDiv">
 							
@@ -113,6 +113,17 @@
 	
 	$(function() {
 	
+		$.ajax({
+			type: "GET",
+			url: "${pageContext.request.contextPath}/Review1.my",
+			dataType: 'text',
+			success: function(msg) {
+				$('#yetReviewBodyDiv').html(msg);
+				$('#doneReviewBodyDiv').html('');
+			} 
+		});
+		
+		
 	$('#yet').on('click', function() {
 		
 		$.ajax({
@@ -123,7 +134,7 @@
 				$('#yetReviewBodyDiv').html(msg);
 				$('#doneReviewBodyDiv').html('');
 			} 
-		});
+		}).fail;
 	});
 	
 	$('#done').on('click', function() {
@@ -131,12 +142,13 @@
 		$.ajax({
 			type: "GET",
 			url: "${pageContext.request.contextPath}/Review2.my",
-			dataType: 'text',
-			success: function(msg) {
+			dataType: 'text'
+		}).done(function(data) {
 				$('#yetReviewBodyDiv').html('');
-				$('#doneReviewBodyDiv').html(msg);
-			} 
-		});
+				$('#doneReviewBodyDiv').html('ㅁㅁㅁ');
+		}).fail(function(data) {
+			alert('실패');
+		})
 	});
 	
 });
