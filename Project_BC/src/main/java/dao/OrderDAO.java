@@ -244,7 +244,7 @@ public class OrderDAO {
 							pstmt4.setString(2, order.getCustomer_id());
 							pstmt4.setInt(3, Integer.parseInt(str));
 							pstmt4.setInt(4, qty);
-							pstmt4.setString(5, "결제완료");
+							pstmt4.setInt(5, 0);
 							pstmt4.executeUpdate();
 							
 							//메소드 불러오기
@@ -308,7 +308,7 @@ public class OrderDAO {
 				if(rs2.next()) {
 					
 					int qty = rs2.getInt("product_qty");
-					if(stock-qty<=0) {
+					if(stock-qty<0) {
 						updateStockCount =0;
 						System.out.println("주문등록 실패- 재고부족");
 					}else {

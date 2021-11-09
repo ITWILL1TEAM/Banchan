@@ -94,14 +94,13 @@ public class BasketDAO {
         ResultSet rs = null;
         ResultSet rs2 = null;
         
-        int idx = 1; // 새 글 번호를 저장할 변수 선언
+        int idx = 1; 
 		
         try {
         	// 현재 basket 테이블의 인덱스 최대 번호를 조회하여 조회된 결과 값에 + 1 값을 새 인덱스 번호로 지정
         	// => 만약, 조회된 제품이 하나도 없을 경우 새 인덱스 번호는 1번 그대로 사용
-        	String sql = "SELECT MAX(basket_idx) FROM basket WHERE customer_id=?";
+        	String sql = "SELECT MAX(basket_idx) FROM basket";
         	pstmt = con.prepareStatement(sql);
-        	pstmt.setString(1, basket.getCutomer_id());
         	rs = pstmt.executeQuery();
         	
         	// 조회된 인덱스 번호가 하나라도 존재할 경우
@@ -111,8 +110,8 @@ public class BasketDAO {
         	
         	
         	// product_img는 product_img 테이블에서 product_num으로 조회해서 제품번호에 맞는 이미지 찾아서 
-        	// 변수에 저장하고 밑에 set하기
-        	String product_img = null;
+        	// 변수에 저장하고 밑에서 set
+        	String product_img = "";
         	String sql2 = "SELECT product_img FROM product_img WHERE product_num=? AND product_img_location=1";
         	pstmt2 = con.prepareStatement(sql2);
         	pstmt2.setInt(1, basket.getProduct_num());
@@ -137,7 +136,6 @@ public class BasketDAO {
             pstmt3.setString(8, product_img); 				 //		제품 이미지
             pstmt3.setString(9, basket.getSname());			 // 		회사명
                
-            // INSERT 구문 실행 및 결과 리턴받기
             insertCount = pstmt3.executeUpdate();
             
         } catch (Exception e) {
@@ -165,7 +163,7 @@ public class BasketDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM basket WHERE customer_id=? ORDER BY basket_idx DESC";
+			String sql = "SELECT b.basket_idx, b.product_num, b.product_name, b.product_price, b.product_qty, b.product_discount, b.product_img, b.Sname, p.product_stock FROM basket b LEFT JOIN product p ON p.product_num = b.product_num WHERE customer_id=? ORDER BY b.basket_idx DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, customer_id);
 			rs = pstmt.executeQuery();
@@ -175,7 +173,6 @@ public class BasketDAO {
 			while(rs.next()) {
 				BasketBean basket = new BasketBean();
 				
-				basket.setBasket_idx(rs.getInt("basket_idx"));
 				basket.setProduct_num(rs.getInt("product_num"));
 				basket.setProduct_name(rs.getString("product_name"));
 				basket.setProduct_price(rs.getInt("product_price"));
@@ -183,6 +180,7 @@ public class BasketDAO {
 				basket.setProduct_discount(rs.getInt("product_discount"));
 				basket.setProduct_img(rs.getString("product_img"));
 				basket.setSname(rs.getString("Sname"));
+				basket.setProduct_stock(rs.getInt("product_stock"));
 				
 				cartList.add(basket);
 			}

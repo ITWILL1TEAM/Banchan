@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import action.Action;
 import action.memberAction.AddAddressAction;
+import action.memberAction.DefaultAddressAction;
 import action.memberAction.MyPageModifyAction;
 import action.memberAction.MypageModifyProAction;
 import action.memberAction.OrderCheckAction;
@@ -40,7 +41,7 @@ public class MyPageController extends HttpServlet {
 			grade = 3;
 		}
 		System.out.println(grade);
-		if (grade!=3) {
+		if (grade!=3) {	
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -81,7 +82,6 @@ public class MyPageController extends HttpServlet {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-				
 			}else if(command.equals("/Mypage3.my")) {
                 action = new MypageModifyProAction();
                 try {
@@ -90,18 +90,37 @@ public class MyPageController extends HttpServlet {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                
-            }		else if(command.equals("/QnA.my")) {
+            }else if(command.equals("/QnA.my")) {
 				forward = new ActionForward();
 				forward.setPath("/myPage/qNa.jsp");
 			}else if(command.equals("/Delete.my")) {
-				forward = new ActionForward();
-				forward.setPath("/myPage/deleteMydata.jsp");
+				action = new DeleteMemberAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+				
 			}else if(command.equals("/Review.my")) {
 				forward = new ActionForward();
 				forward.setPath("/myPage/myReview.jsp");
+			}else if(command.equals("/Review1.my")) {
+				forward = new ActionForward();
+				forward.setPath("/review/myReviewpage1.jsp");
+			}else if(command.equals("/Review2.my")) {
+				forward = new ActionForward();
+				forward.setPath("/review/myReviewpage2.jsp");
 			}else if(command.equals("/myPage/AddAddress.my")) {
 				action = new AddAddressAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(command.equals("/Default.my")) {
+				action = new DefaultAddressAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {

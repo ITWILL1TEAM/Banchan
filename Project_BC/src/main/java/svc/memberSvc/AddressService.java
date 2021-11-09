@@ -69,5 +69,29 @@ public class AddressService {
 	     
 		return customer_name;
 	}
+
+	public boolean changeDefault(CustomerAddress address) {
+		boolean isChangeSet = false;
+		
+		Connection con = getConnection();
+		
+		AddressDAO dao = AddressDAO.getInstance();
+		int updateCount = 0;
+	
+		dao.setConnection(con);
+		updateCount = dao.updateAddress(address);
+		
+		
+		if(updateCount > 0) {
+			commit(con);
+			isChangeSet = true;
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return isChangeSet;
+	}
 	
 }

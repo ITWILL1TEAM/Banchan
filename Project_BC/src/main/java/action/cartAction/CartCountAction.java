@@ -12,7 +12,7 @@ public class CartCountAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("CartCountAction");
+//		System.out.println("CartCountAction");
 		ActionForward forward = null;
 		HttpSession session = request.getSession();
         String customer_id = (String)session.getAttribute("sId");

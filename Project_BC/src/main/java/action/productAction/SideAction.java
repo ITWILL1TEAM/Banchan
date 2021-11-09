@@ -19,10 +19,11 @@ public class SideAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		
-		String category = request.getParameter("category");
-		
+		String category = request.getParameter("category");		
 		SideService service = new SideService();
 		ArrayList<BoardBean> sideList = service.isSide(category);
+		
+		
 		
 		request.setAttribute("sideList", sideList);
 		

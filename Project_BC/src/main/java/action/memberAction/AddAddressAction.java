@@ -25,22 +25,22 @@ public class AddAddressAction implements Action {
 		String dtl_addr = request.getParameter("dtl_addr");
 		String set_default_str = request.getParameter("set_default");
 		System.out.println(set_default_str);
-		int set_defult = 0;
+		int set_default = 0;
 		if (set_default_str.equals("true")) {
-			set_defult = 1;
+			set_default = 1;
 		}else {
-			set_defult = 0;
+			set_default = 0;
 		}
 		
 		
-		System.out.println(roadAddress+" | "+zonecode+" | "+dtl_addr+" | "+set_default_str+" | "+set_defult);
+		System.out.println(roadAddress+" | "+zonecode+" | "+dtl_addr+" | "+set_default_str+" | "+set_default);
 		
 		CustomerAddress ca = new CustomerAddress();
 		ca.setCustomerId(customerId);
 		ca.setRoadAddress(roadAddress);
 		ca.setZonecode(zonecode);
 		ca.setDtl_addr(dtl_addr);
-		ca.setAddress_priority(set_defult);
+		ca.setAddress_priority(set_default);
 		
 		
 		AddressService service = new AddressService();

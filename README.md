@@ -10,3 +10,13 @@ ProjectBC
 
 1020
 메인 전체적인 레이아웃 완/ 대쉬보드 메인레이아웃외4개완/ 상품등록 제작중...
+
+
+
+CREATE TABLE `notice` (
+  `notice_num` int(11) NOT NULL AUTO_INCREMENT,
+  `notice_subject` varchar(45) DEFAULT NULL,
+  `notice_content` varchar(45) DEFAULT NULL,
+  `notice_date` date DEFAULT NULL,
+  PRIMARY KEY (`notice_num`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8

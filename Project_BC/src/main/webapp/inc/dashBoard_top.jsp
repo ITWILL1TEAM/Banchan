@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
     
     
-    
+    <script src="js/jquery-3.6.0.js"></script>
     
         <%
             String sId = (String)session.getAttribute("sId");
