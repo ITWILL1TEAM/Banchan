@@ -7,6 +7,7 @@
 	   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	<%
 	ArrayList<BoardBean> sideList = (ArrayList<BoardBean>)request.getAttribute("sideList");
+	int reviewCount = (Integer)request.getAttribute("reviewCount");
 	%>
 <!DOCTYPE html>
 <html>
@@ -34,7 +35,7 @@
 </head>
 <body>
 
-    
+    <%=reviewCount %>
 
     <!-- HEADER -->
     <jsp:include page="../inc/top.jsp" />

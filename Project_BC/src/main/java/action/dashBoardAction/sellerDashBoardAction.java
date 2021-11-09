@@ -24,6 +24,9 @@ public class sellerDashBoardAction implements Action {
 		BoardListService service = new BoardListService();
 		NoticeListService noticeListService = new NoticeListService();
 		int listCount = service.getListCount();// 글갯수 불러옴.
+		
+		
+		
 		ArrayList<BoardBean> articleList = service.getArticleList(sId);
 		ArrayList<NoticeBean> noticeList = noticeListService.getArticleList();
 		// 계산된 페이지 정보를 PageInfo 객체에 저장

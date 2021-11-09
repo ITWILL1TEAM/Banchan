@@ -7,7 +7,7 @@
 
   <%
     ArrayList<BoardBean> productList = (ArrayList<BoardBean>)request.getAttribute("productList");
-   
+  
   
   
   %>
