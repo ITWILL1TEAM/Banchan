@@ -172,7 +172,7 @@ function setStar(point) {
 			</div>
 
 		<div class="pop_btn_area v2">
-					<button type="button" class="color3" id="cancelBtn" onclick="javascript:closePopup();"><em class="txt_btn">취소</em></button>
+					<button type="button" class="color3" id="cancelBtn" onclick=""><em class="txt_btn">취소</em></button> <!-- 취소시 창닫기 -->
 					<button type="submit" class="color2" id="submitBtn"><em class="txt_btn">등록</em></button></div>
 			
 	</div>

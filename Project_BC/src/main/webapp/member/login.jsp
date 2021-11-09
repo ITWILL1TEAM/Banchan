@@ -68,10 +68,12 @@ if(cookie != null){
       </form>               
                
    </div>
+
    <div class="bt_set">
-      <a href="" class="find_mem">아이디/비밀번호 찾기</a>
-      <a href="" class="no_mem">신규 회원가입</a>
+	<a href="FindIdForm.me" class="find_mem">아이디/비밀번호 찾기</a>
+     <a href="#" class="no_mem">신규 회원가입</a>
    </div>
+  
 
 </div></div>
 

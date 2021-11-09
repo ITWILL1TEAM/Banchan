@@ -1,6 +1,4 @@
-use bc_db;
-
-CREATE TABLE `member` (
+  CREATE TABLE `member` (
   `id` varchar(15) COLLATE utf8_bin NOT NULL,
   `password` varchar(20) COLLATE utf8_bin NOT NULL,
   `name` varchar(8) COLLATE utf8_bin NOT NULL,
@@ -9,10 +7,10 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `admin` (
-  `admin_id` varchar(15) COLLATE utf8_bin DEFAULT NULL,
-  `grade` int(11) DEFAULT NULL,
+  `admin_id` varchar(15) COLLATE utf8_bin NOT NULL,
+  `grade` int(11) NOT NULL,
   KEY `admin_id` (`admin_id`),
-  CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `member` (`id`)
+  CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `customer` (
@@ -21,9 +19,10 @@ CREATE TABLE `customer` (
   `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `recommend_id` int(11) NOT NULL DEFAULT '0',
   `personal_data` int(11) NOT NULL,
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  PRIMARY KEY `costomer_id` (`customer_id`),
-  CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `member` (`id`)
+  PRIMARY KEY (`customer_id`),
+  UNIQUE KEY `eamil_UNIQUE` (`email`),
+  KEY `costomer_id` (`customer_id`),
+  CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `customer_address` (
@@ -33,22 +32,23 @@ CREATE TABLE `customer_address` (
   `customer_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
   `address_priority` int(11) NOT NULL DEFAULT '0',
   KEY `customer_address_ibfk_1` (`customer_id`),
-  CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
+  CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 CREATE TABLE `seller` (
   `seller_id` varchar(15) COLLATE utf8_bin NOT NULL,
   `SNO` int(10) unsigned NOT NULL,
   `Sname` varchar(20) COLLATE utf8_bin NOT NULL,
-  `customer_roadAddress` varchar(50) COLLATE utf8_bin NOT NULL,
-  `customer_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
-  `customer_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `seller_roadAddress` varchar(50) COLLATE utf8_bin NOT NULL,
+  `seller_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
+  `seller_dtl_addr` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '',
   `phone` varchar(45) COLLATE utf8_bin NOT NULL,
   `email` varchar(45) COLLATE utf8_bin NOT NULL,
   `status` int(11) DEFAULT '0',
   PRIMARY KEY (`seller_id`),
   KEY `seller_id` (`seller_id`),
-  CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `member` (`id`)
+  CONSTRAINT `seller_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `product` (
@@ -67,9 +67,8 @@ CREATE TABLE `product` (
   `product_review_score` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_num`),
   KEY `pr_se_fk` (`seller_id`),
-  CONSTRAINT `pr_se_fk` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
+  CONSTRAINT `pr_se_fk` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `product_img` (
   `product_num` int(11) DEFAULT NULL,
@@ -77,23 +76,10 @@ CREATE TABLE `product_img` (
   `product_img` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_img_location` int(11) DEFAULT NULL,
   KEY `pdi_pnum_fk` (`product_num`),
-  CONSTRAINT `pdi_pnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
+  CONSTRAINT `pdi_pnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `review` (
-  `review_idx` int(11) NOT NULL AUTO_INCREMENT,
-  `product_num` int(11) NOT NULL,
-  `review_id` varchar(45) COLLATE utf8_bin NOT NULL,
-  `review_content` varchar(2000) COLLATE utf8_bin NOT NULL,
-  `review_img` varchar(45) COLLATE utf8_bin,
-  `review_score` float NOT NULL,
-  `review_date` date NOT NULL,
-  PRIMARY KEY (`review_idx`),
-  KEY `rv_pdnum_fk` (`product_num`),
-  CONSTRAINT `rv_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-CREATE TABLE basket(
+CREATE TABLE `basket` (
    basket_idx int(11) PRIMARY KEY,
    customer_id varchar(15) COLLATE utf8_bin NOT NULL,
    product_num int(11) NOT NULL,
@@ -103,10 +89,9 @@ CREATE TABLE basket(
    product_discount int(11) NOT NULL DEFAULT '0',
    product_img varchar(45) COLLATE utf8_bin NOT NULL,
    Sname VARCHAR(45) COLLATE utf8_bin NOT NULL,
-   CONSTRAINT bask_id_fk FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
-   CONSTRAINT bask_pdnum_fk FOREIGN KEY (product_num) REFERENCES product(product_num)
+  CONSTRAINT `bask_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `bask_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
 
 CREATE TABLE `order_list` (
   `order_num` int(11) NOT NULL,
@@ -123,18 +108,39 @@ CREATE TABLE `order_list` (
   `trans_num` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`order_num`),
   KEY `customer_id_order_fk` (`customer_id`),
-  CONSTRAINT `customer_id_order_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `customer_id_order_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
 
 CREATE TABLE `order_product` (
   `order_num` int(11) NOT NULL,
   `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
   `product_num` int(11) NOT NULL,
   `product_qty` int(11) NOT NULL,
+  `product_check` int(11) NOT NULL DEFAULT '0',
   KEY `order_num_product_num_fk_idx` (`order_num`),
   CONSTRAINT `order_num_product_num_fk` FOREIGN KEY (`order_num`) REFERENCES `order_list` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `review` (
+  `review_idx` int(11) NOT NULL AUTO_INCREMENT,
+  `product_num` int(11) NOT NULL,
+  `review_id` varchar(45) COLLATE utf8_bin NOT NULL,
+  `review_content` varchar(255) COLLATE utf8_bin NOT NULL,
+  `review_img` varchar(45) COLLATE utf8_bin NOT NULL,
+  `review_score` float NOT NULL,
+  `review_date` date NOT NULL,
+  PRIMARY KEY (`review_idx`),
+  KEY `rv_pdnum_fk` (`product_num`),
+  CONSTRAINT `rv_pdnum_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `notice` (
+  `notice_num` int(11) NOT NULL AUTO_INCREMENT,
+  `notice_subject` varchar(50) NOT NULL,
+  `notice_content` varchar(1000) NOT NULL DEFAULT ' ',
+  `notice_date` date NOT NULL,
+  PRIMARY KEY (`notice_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `qna` (
   `qna_idx` int(11) NOT NULL AUTO_INCREMENT,
@@ -143,19 +149,12 @@ CREATE TABLE `qna` (
   `qna_subject` varchar(50) COLLATE utf8_bin NOT NULL,
   `qna_password` varchar(20) COLLATE utf8_bin NOT NULL,
   `qna_content` varchar(500) COLLATE utf8_bin NOT NULL,
+  `qna_reply_content` varchar(5000) COLLATE utf8_bin NOT NULL DEFAULT '',
   PRIMARY KEY (`qna_idx`),
   KEY `qna_cus_cus_id_fk` (`customer_id`),
   KEY `qna_pro_pro_num_fk` (`product_num`),
-  CONSTRAINT `qna_cus_cus_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
-  CONSTRAINT `qna_pro_pro_num_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`)
+  CONSTRAINT `qna_cus_cus_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `qna_pro_pro_num_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `qna_reply` (
-  `qna_idx` int(11) NOT NULL,
-  `seller_id` varchar(15) COLLATE utf8_bin NOT NULL,
-  `qna_reply_content_varchar` varchar(500) COLLATE utf8_bin NOT NULL DEFAULT '',
-  KEY `qna_re_sel_id_fk` (`seller_id`),
-  KEY `qna_re_qna_idx_fk` (`qna_idx`),
-  CONSTRAINT `qna_re_qna_idx_fk` FOREIGN KEY (`qna_idx`) REFERENCES `qna` (`qna_idx`),
-  CONSTRAINT `qna_re_sel_id_fk` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

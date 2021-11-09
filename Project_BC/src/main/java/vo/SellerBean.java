@@ -5,22 +5,50 @@ public class SellerBean extends MemberBean{
 	String seller_id;
 	int sNO;
 	String sName;
-	String adress;
+	String zoneCode;
+	String dtl_addr;
+	String roadAddress;
 	String phone;
 	String email;
 	int status;
 
 	public SellerBean() {}
 	
-	public SellerBean(String seller_id, int sNO, String sName, String adress, String phone, String email, int status) {
+	public SellerBean(String seller_id, int sNO, String sName,	String zoneCode ,String dtl_addr,String roadAddress ,String phone, String email, int status) {
 		super();
 		this.seller_id = seller_id;
 		this.sNO = sNO;
 		this.sName = sName;
-		this.adress = adress;
+		this.zoneCode = zoneCode;
+		this.dtl_addr = dtl_addr;
+		this.roadAddress = roadAddress;
 		this.phone = phone;
 		this.email = email;
 		this.status = status;
+	}
+
+	public String getZoneCode() {
+		return zoneCode;
+	}
+
+	public void setZoneCode(String zoneCode) {
+		this.zoneCode = zoneCode;
+	}
+
+	public String getDtl_addr() {
+		return dtl_addr;
+	}
+
+	public void setDtl_addr(String dtl_addr) {
+		this.dtl_addr = dtl_addr;
+	}
+
+	public String getRoadAddress() {
+		return roadAddress;
+	}
+
+	public void setRoadAddress(String roadAddress) {
+		this.roadAddress = roadAddress;
 	}
 
 	public String getSeller_id() {
@@ -45,14 +73,6 @@ public class SellerBean extends MemberBean{
 
 	public void setsName(String sName) {
 		this.sName = sName;
-	}
-
-	public String getAdress() {
-		return adress;
-	}
-
-	public void setAdress(String adress) {
-		this.adress = adress;
 	}
 
 	public String getPhone() {

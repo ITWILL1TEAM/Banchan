@@ -32,8 +32,6 @@ public class CheckAddressAction implements Action {
         	product_num += num + "/";
         }
         
-        System.out.println(customer_id);
-        
         CartListService cart = new CartListService();
         
         // 배송지가 입력됐는지 여부를 판단하기 위해 getAddressList() 메소드 호출

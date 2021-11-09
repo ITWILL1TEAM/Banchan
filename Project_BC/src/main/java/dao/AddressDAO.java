@@ -29,13 +29,18 @@ private static AddressDAO instance = new AddressDAO();
 	
 	public int insertAddress(CustomerAddress ca) {
 		
-		int insertCount = 0;
+			int insertCount = 0;
 			
 			PreparedStatement pstmt = null;
 			
 			try {
-				System.out.println(ca.toString());
-				String sql="INSERT INTO customer_address VALUES (?,?,?,?,?)";
+//				System.out.println(ca.toString());
+				String sql = "UPDATE customer_address SET address_priority = 0";
+				pstmt = con.prepareStatement(sql);
+				pstmt.executeUpdate();
+				pstmt.close();
+				
+				sql="INSERT INTO customer_address VALUES (?,?,?,?,?)";
 				pstmt = con.prepareStatement(sql);
 				
 				pstmt.setString(1, ca.getCustomerId());
@@ -47,7 +52,7 @@ private static AddressDAO instance = new AddressDAO();
 				insertCount = pstmt.executeUpdate();
 				
 			} catch (Exception e) {
-				System.out.println("CustomerAddress() 오류 - " + e.getMessage());
+				System.out.println("insertAddress() 오류 - " + e.getMessage());
 			}finally {
 				//자원 반환
 				close(pstmt);	
@@ -63,7 +68,7 @@ private static AddressDAO instance = new AddressDAO();
 		ResultSet rs = null;
 
 		try {
-			con = getConnection();
+//			con = getConnection();
 
 			String sql = "SELECT * FROM customer_address WHERE customer_id=? ORDER BY address_priority DESC";
 			pstmt = con.prepareStatement(sql);
@@ -94,6 +99,36 @@ private static AddressDAO instance = new AddressDAO();
 		}
 
 		return addressList;
+	}
+
+	public int updateAddress(CustomerAddress address) {
+		int updateCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE customer_address SET address_priority = 0";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			sql="UPDATE customer_address SET address_priority = 1 WHERE customer_id = ? AND customer_roadAddress = ? AND customer_zonecode = ? AND customer_dtl_addr = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, address.getCustomerId());
+			pstmt.setString(2, address.getRoadAddress());
+			pstmt.setString(3, address.getZonecode());
+			pstmt.setString(4, address.getDtl_addr());
+			
+			updateCount = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("updateAddress() 오류 - " + e.getMessage());
+		}finally {
+			//자원 반환
+			close(pstmt);	
+		}
+		return updateCount;
 	}
 	
 }
