@@ -63,7 +63,6 @@ function setStar(point) {
         <link rel="stylesheet" type="text/css" href="//ui.ssgcdn.com/ui/m_ssg/css/ssg_component.css?v=20211019" />
         <link rel="stylesheet" type="text/css" href="//ui.ssgcdn.com/ui/ssg/css/ssgday_2021.css?v=20211019" />
     <script type="text/javascript" src="//ui.ssgcdn.com/ui/ssg/js/lib/jquery-1.9.1.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
 </head>
