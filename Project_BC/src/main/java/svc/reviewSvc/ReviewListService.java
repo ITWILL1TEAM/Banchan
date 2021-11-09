@@ -74,4 +74,20 @@ public class ReviewListService {
 		return avgScore;
 		
 	}
+	
+	public ArrayList<ReviewBean> getArticleList(String id,int page, int limit) {
+       
+		Connection con = getConnection();
+        
+        ReviewDAO dao = ReviewDAO.getInstance();
+        
+        dao.setConnection(con);
+        
+        
+        ArrayList<ReviewBean> articleList = dao.selectMyReviewArticleList(id,page, limit);
+        
+        close(con);
+        
+        return articleList;
+    }
 }
