@@ -489,13 +489,20 @@
                                                 role="listbox">
                                                 <div class="list slick-slide slick-current slick-active"  data-slick-index="0" aria-hidden="false"
                                                     style="width: 1280px;" tabindex="-1" role="option" aria-describedby="slick-slide100">
-<<<<<<< HEAD
+													                             
+													                             
+													                                        
+                                                      <%                                        
+                                                      if(productList!=null){ 
+                                                      	int productCount = 0;
+                                                      	if(productList.size() <4){
+                                                      		productCount = productList.size();
+                                                      	}else{
+                                                      		productCount = 4;
+                                                      	}
                                                       
-                                                        <%for(int i=0; i<3; i++){ %>
-=======
-                                                      <%if(productList.size()>0){ %>
-                                                        <%for(int i=0; i<4; i++){ %>
->>>>>>> refs/heads/JEONGSEONGWON
+                                                      %>
+                                                        <%for(int i=0; i<productCount; i++){ %>
                                                         <% 
                                                         String productImgName = productList.get(i).getProduct_name();
                                                         int discountPrice = (int)(productList.get(i).getProduct_price()*(100-productList.get(i).getProduct_discount())/100); 
