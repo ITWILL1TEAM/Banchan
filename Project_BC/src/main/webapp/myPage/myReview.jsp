@@ -13,9 +13,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#yet').on('click', function() {
-			// form 태그에 있는 모든 파라미터를 하나로 묶어서 전송하기 위한 변수 선언
 			var sendFormData = $('form').serialize();
-	//			alert(sendFormData);
 			
 			$.ajax({
 				type: "GET",
@@ -125,8 +123,6 @@
 						<div id="yetReviewBodyDiv">
 
 
-
-
 						</div>
 						<!-- //MY LIST -->	
 					</li>
@@ -139,7 +135,6 @@
 						<!-- //MY LIST -->	
 					</li>
 				</ul>			
-					
 			</div>				
 			<!-- //MY TAB -->	
 
