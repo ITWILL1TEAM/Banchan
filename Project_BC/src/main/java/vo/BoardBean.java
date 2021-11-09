@@ -18,8 +18,15 @@ public class BoardBean {
     private String product_handling; // 제품 보관방법
     private String product_material;//  제품 원재료명 및 함량.
     private double product_review_score; // 리뷰 평점
+    private int review_count;
     
-    public double getProduct_review_score() {
+    public int getReview_count() {
+		return review_count;
+	}
+	public void setReview_count(int review_count) {
+		this.review_count = review_count;
+	}
+	public double getProduct_review_score() {
 		return product_review_score;
 	}
 	public void setProduct_review_score(double product_review_score) {

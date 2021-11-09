@@ -1,4 +1,4 @@
-  CREATE TABLE `member` (
+CREATE TABLE `member` (
   `id` varchar(15) COLLATE utf8_bin NOT NULL,
   `password` varchar(20) COLLATE utf8_bin NOT NULL,
   `name` varchar(8) COLLATE utf8_bin NOT NULL,
@@ -158,5 +158,3 @@ CREATE TABLE `qna` (
   CONSTRAINT `qna_cus_cus_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `qna_pro_pro_num_fk` FOREIGN KEY (`product_num`) REFERENCES `product` (`product_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
