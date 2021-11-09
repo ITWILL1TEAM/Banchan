@@ -16,7 +16,7 @@
 	<!-- WRAP -->
 	<div class="wrap mys">
 		<div class="mys_top_pc">
-			<div class="mytbc">MY더반찬	</div>
+			<div class="mytbc">MY더반찬</div>
 		</div>
 
 	<div id="mys_lnb" class="lnb">
@@ -60,7 +60,7 @@
 			<h3 class="tit">회원탈퇴</h3><!-- 회원탈퇴  -->
 			
 			<!-- MY CONFIRM -->
-			  <form id="confirmForm" onsubmit="return true">
+			  <form id="confirmForm" action="<%=request.getContextPath() %>/Delete.my" method="get">
 				<input type="hidden" name="target" value="withdraw">
 				<div class="mys_cfm">
 					<h3>본인 확인</h3>
@@ -79,7 +79,7 @@
 				</div>
 			</form>
 			<!-- MY CONFIRM -->
-
+													
 		</div>
 	</div>
 </div>

@@ -95,8 +95,15 @@ public class MyPageController extends HttpServlet {
 				forward = new ActionForward();
 				forward.setPath("/myPage/qNa.jsp");
 			}else if(command.equals("/Delete.my")) {
-				forward = new ActionForward();
-				forward.setPath("/myPage/deleteMydata.jsp");
+				action = new DeleteMemberAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
+				
 			}else if(command.equals("/Review.my")) {
 				forward = new ActionForward();
 				forward.setPath("/myPage/myReview.jsp");
