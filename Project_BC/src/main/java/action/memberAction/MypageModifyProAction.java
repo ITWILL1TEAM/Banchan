@@ -12,13 +12,12 @@ import vo.ActionForward;
 import vo.CustomerBean;
 
 public class MypageModifyProAction implements Action {
-    
 
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
       System.out.println("BoardModifyProAction");
         ActionForward forward = null;
         
-        // 파라미터로 전달받은 데이터 가져오기
+        // 파라미터로 전달받은 데이터 가져오기//
         
         HttpSession session = request.getSession();
         
@@ -29,18 +28,14 @@ public class MypageModifyProAction implements Action {
         String id =   (String) session.getAttribute("sId");
         String name = request.getParameter("mbr_nm");
         String passwd = request.getParameter("pwd");System.out.println(passwd);
-        String phone1 = request.getParameter("cell_no1");
-        String phone2 = request.getParameter("cell_no2");
-        String phone3 = request.getParameter("cell_no3");
+        String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         
         customer.setId(id);
         customer.setName(name);
         customer.setPassword(passwd);
-        customer.setPhone(phone1+"-"+phone2+"-"+phone3);
+        customer.setPhone(phone);
         customer.setEmail(email);
-        
-        System.out.println(customer + "액션션션");
         
       
         // BoardModifyProService 클래스 인스턴스 생성 후
@@ -48,9 +43,6 @@ public class MypageModifyProAction implements Action {
         // => 파라미터 : 글번호, 패스워드   리턴타입 : boolean(isRightUser)
         MypageModifyProService service = new MypageModifyProService();
         boolean isModifySuccess = service.updateMember(customer);
-        
-        
-
             // 수정 작업 요청 후 결과를 리턴받아 판별 작업 수행
             // => 삭제 실패 시 자바스크립트를 사용하여 "수정 실패" 출력하고 이전페이지로 돌아가기
             // 아니면, ActionForward 객체를 생성하여 "BoardDetail.bo" 서블릿 주소 요청
@@ -72,7 +64,6 @@ public class MypageModifyProAction implements Action {
                 forward.setPath("./");
                 forward.setRedirect(true);
             }
-        
 
         
         return forward;
