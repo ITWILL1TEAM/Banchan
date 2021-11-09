@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import action.Action;
 import action.memberAction.AddAddressAction;
+import action.memberAction.DefaultAddressAction;
 import action.memberAction.MyPageModifyAction;
 import action.memberAction.MypageModifyProAction;
 import action.memberAction.OrderCheckAction;
@@ -81,7 +82,6 @@ public class MyPageController extends HttpServlet {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-				
 			}else if(command.equals("/Mypage3.my")) {
                 action = new MypageModifyProAction();
                 try {
@@ -90,8 +90,7 @@ public class MyPageController extends HttpServlet {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                
-            }		else if(command.equals("/QnA.my")) {
+            }else if(command.equals("/QnA.my")) {
 				forward = new ActionForward();
 				forward.setPath("/myPage/qNa.jsp");
 			}else if(command.equals("/Delete.my")) {
@@ -102,6 +101,14 @@ public class MyPageController extends HttpServlet {
 				forward.setPath("/myPage/myReview.jsp");
 			}else if(command.equals("/myPage/AddAddress.my")) {
 				action = new AddAddressAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(command.equals("/Default.my")) {
+				action = new DefaultAddressAction();
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
