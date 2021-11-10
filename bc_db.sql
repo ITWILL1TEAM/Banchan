@@ -66,11 +66,11 @@ CREATE TABLE `product` (
   `product_expiration_date` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_handling` varchar(45) COLLATE utf8_bin NOT NULL,
   `product_material` varchar(1000) COLLATE utf8_bin NOT NULL,
-  `product_review_score` int(11) NOT NULL DEFAULT '0',
+  `product_review_score` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_num`),
   KEY `pr_se_fk` (`seller_id`),
   CONSTRAINT `pr_se_fk` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 
 CREATE TABLE `product_img` (
   `product_num` int(11) DEFAULT NULL,
