@@ -98,34 +98,34 @@ public class BoardWriteProAction implements Action {
 				boolean isImgSuccess = false;
 
 				ProductImg productimg = new ProductImg();
-				
 
 				Enumeration files = multi.getFileNames();// Enumeration형식으로 업로드되 파일 이름 리턴
-
-				int i = 1, j = 1, z = 1;
-
+				
+				int i = 1, j = 1, z=1;	
+				
+								
 				while (files.hasMoreElements()) {
-					String filestr = files.nextElement().toString();
-					String board_original_file = multi.getOriginalFileName(filestr);
-					int imgVal = Integer.parseInt(multi.getParameter("imgValue" + z));
-					String board_file = null;
-
-					if (imgVal == 1) {						
-							board_file = name + "0" + imgVal + "_0" + i;	
-							i++;
-					} else {
+					String filestr = files.nextElement().toString(); //파일명 들고오기
+					String board_original_file = multi.getOriginalFileName(filestr); //파일명 저장.
+					int imgVal = Integer.parseInt(multi.getParameter("imgValue"+z));//?
+					System.out.println("imgVal = "+imgVal);
+					String board_file = "";
 					
-							board_file = name + "0" + imgVal + "_0" + j;
+					if (imgVal == 1) {						
+							board_file = name + "0" + (imgVal) + "_0" + i;	
+							i++;
+					} else if(imgVal == 2) {
+					
+							board_file = name + "0" + (imgVal) + "_0" + j;
 							j++;
 					}
-					
 					
 					if (!filestr.equals("")) {
 
 						String fullFileName = realFolder + "\\" + board_original_file;
 						System.out.println(fullFileName);
 						File f1 = new File(fullFileName);
-
+						
 						if (f1.exists()) {
 							File newfile = new File(realFolder + "\\" + board_file+".png");
 							System.out.println(newfile.toString());
@@ -140,7 +140,6 @@ public class BoardWriteProAction implements Action {
 					productimg.setProduct_img_location(imgVal);
 
 					isImgSuccess = service.registImgArticle(productimg);
-
 					z++;
 				}
 
