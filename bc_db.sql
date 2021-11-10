@@ -128,7 +128,7 @@ CREATE TABLE `review` (
   `product_num` int(11) NOT NULL,
   `review_id` varchar(45) COLLATE utf8_bin NOT NULL,
   `review_content` varchar(255) COLLATE utf8_bin NOT NULL,
-  `review_img` varchar(45) COLLATE utf8_bin NOT NULL,
+  `review_img` varchar(45) COLLATE utf8_bin,
   `review_score` float NOT NULL,
   `review_date` date NOT NULL,
   PRIMARY KEY (`review_idx`),

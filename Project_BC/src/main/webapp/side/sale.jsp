@@ -4,7 +4,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    
+    <!-- 숫자 자릿수 콤마 -->
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    
     <%
     ArrayList<BoardBean> saleList = (ArrayList<BoardBean>)request.getAttribute("saleList");
     %>
@@ -80,6 +83,8 @@
                   int discount = saleList.get(i).getProduct_discount(); 
                   int productNum = saleList.get(i).getProduct_num();
                   String product_name = saleList.get(i).getProduct_name();
+                  double product_review_score = saleList.get(i).getProduct_review_score();
+                  int reviewCount = saleList.get(i).getReviewCount();
             %>   
                 <li >
                     <div class="prd-box">
@@ -104,16 +109,17 @@
                                     <p class="subject"><%=product_name %></p>
                                 <div class="price">
                                     <p>
-                                        <strong><fmt:formatNumber value="<%=discountPrice %>" pattern="#,###.##"/></strong><span class="is-noto">원</span>
+                                        <strong><fmt:formatNumber value="<%=discountPrice %>" pattern="#,###.##"/>
+                                            </strong><span class="is-noto">원</span>
                                     </p>
                                     <%if(discount!=0){ %>
                                     <p class="original">
-                                    <fmt:formatNumber value="<%=price %>" pattern="#,###.##"/><span cla   ss="is-noto">원</span>
+                                    <fmt:formatNumber value="<%=price %>" pattern="#,###.##"/> <span class="is-noto">원</span>
                                     </p>
                                     <%} %>
                                 </div>
                                 <div class="star-wrap">
-                                    <i class="ico-star"></i><span class="num"><strong>4.8<!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
+                                    <i class="ico-star"></i><span class="num"><strong><%=product_review_score%><!-- 리뷰 스코어 들어갈자리 --></strong>(<%=reviewCount %>)</span>
                                 </div>
                                 <div class="tag-box"></div></a>
                         </div>

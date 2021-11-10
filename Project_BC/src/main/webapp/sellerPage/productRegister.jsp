@@ -21,7 +21,7 @@ $(document).ready(function () {
 			count=10;
 			return;
 		}
-		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img"+imgcount+"' size=10></td><td><select name='imgValue"+imgcount+"'><option value='1'>주 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   
+		var plus = "<tr><td>이미지추가</td><td><input type='file' name='product_original_img"+imgcount+"' size=10></td><td><select name='imgValue"+imgcount+"'><option value='1'>썸네일 이미지</option><option value='2'>상세 이미지</option></select></td></tr>"   
 			   $('tbody').append(plus);
 		
 	});
@@ -124,7 +124,7 @@ function sendForm() {
 									    	<td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>									    
 										    <td>				    
 										   		<select name="imgValue1">
-										   			<option  value="1">주 이미지</option>
+										   			<option value="1">썸네일 이미지</option>
 										   			<option value="2">상세 이미지</option>
 										   		</select>
 										   	</td>

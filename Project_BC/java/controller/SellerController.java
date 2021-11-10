@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.*;
+import action.dashBoardAction.SellerDeleteAction;
 import action.dashBoardAction.sellerDashBoardAction;
 import action.productAction.BoardListAction;
 import vo.ActionForward;
@@ -57,6 +58,14 @@ public class SellerController extends HttpServlet {
 			}
 			// 위임받은 Exception 예외처리 필요..!
 
+		}else if(command.equals("/Del.sc")) {
+			action = new SellerDeleteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
         
         
