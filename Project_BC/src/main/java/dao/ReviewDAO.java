@@ -335,6 +335,7 @@ public class ReviewDAO {
 				ReviewBean review = new ReviewBean();
 
 				review.setProduct_num(rs.getInt("product_num"));
+				review.setReview_date(rs.getDate("review_date"));
 				review.setReview_idx(rs.getInt("review_idx"));
 				review.setReview_content(rs.getString("review_content"));
 				review.setReview_score(rs.getDouble("review_score"));
@@ -379,6 +380,7 @@ public class ReviewDAO {
 				Productbean product = new Productbean();
 
 				product.setProduct_num(rs.getInt("product_num"));
+				product.setProduct_price(rs.getInt("order_num"));//ordernum저장
 				
 				sql = "SELECT * FROM product WHERE product_num=?";
 				pstmt2 = con.prepareStatement(sql);

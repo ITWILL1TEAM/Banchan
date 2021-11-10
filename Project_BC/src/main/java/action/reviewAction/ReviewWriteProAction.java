@@ -96,7 +96,7 @@ public class ReviewWriteProAction implements Action {
 			PrintWriter out1 = response.getWriter();
 			out1.println("<script>");
 			out1.println("alert('이미 리뷰를 작성한 제품입니다!')");
-			out1.println("location.href='Review2.my'");
+			out1.println("location.href='Review.my'");
 			out1.println("</script>");
 		}else {
 			
@@ -105,7 +105,7 @@ public class ReviewWriteProAction implements Action {
 			//새로운 요청이 발생하므로 redirect방식 포워딩
 			
 			forward = new ActionForward();
-			forward.setPath("Review2.my");
+			forward.setPath("Review.my");
 			forward.setRedirect(true);
 			
 			

@@ -30,7 +30,7 @@
 				<%
 				for(int i = 0; i < orderList.size(); i++) {
 				%>
-				<tr onclick="location.href = ReviewForm.re?product_num=<%=orderList.get(i).getProduct_num()%>">
+				<tr onclick="location.href = 'ReviewForm.re?product_num=<%=orderList.get(i).getProduct_num()%>&order_num=<%=orderList.get(i).getProduct_price()%>'">
 					<td>
 						<img alt="" src="">
 					</td>
