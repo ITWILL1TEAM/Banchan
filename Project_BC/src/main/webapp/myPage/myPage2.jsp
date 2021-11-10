@@ -7,8 +7,6 @@ CustomerBean customerInfo = (CustomerBean)request.getAttribute("customerInfo");
 
 String phone = customerInfo.getPhone();
 
-String[] phoneNums = phone.split("-");
-
 %>
 <html>
 <head>
@@ -18,6 +16,8 @@ String[] phoneNums = phone.split("-");
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <script type="text/javascript">
 
 
@@ -28,7 +28,7 @@ String[] phoneNums = phone.split("-");
 <div id="content" class="content" style="padding-top: 269px;">
 	<div class="wrap mys">
 		<div class="mys_top_pc">
-			<div class="mytbc">MY더반찬	</div>
+			<div class="mytbc">MY더반찬</div>
 		</div>
 
 	<div id="mys_lnb" class="lnb">
@@ -119,29 +119,20 @@ String[] phoneNums = phone.split("-");
 								</tr>
 								<tr>
 									<th scope="row"><label for="cell_no1" >휴대전화</label><em class="es">필수입력</em></th>
+									
+									
 									<td>
 										<input type="hidden" id="phone_chk" name="phone_chk" value="N">
 										<span class="ph">
 																			
-											<select id="cell_no1" name="cell_no1" class="select" data-class="phone_chk" title="휴대폰 앞자리 선택"><option value="">선택</option><option value="000" selected="selected">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option><option value="0502">0502</option><option value="0503">0503</option><option value="0504">0504</option><option value="0505">0505</option><option value="0506">0506</option><option value="0507">0507</option><option value="0508">0508</option><option value="02">02</option><option value="031">031</option><option value="032">032</option><option value="033">033</option><option value="041">041</option><option value="042">042</option><option value="043">043</option><option value="051">051</option><option value="052">052</option><option value="053">053</option><option value="054">054</option><option value="055">055</option><option value="061">061</option><option value="062">062</option><option value="063">063</option><option value="064">064</option><option value="070">070</option><option value="080">080</option></select>
-											<em>-</em>
-											<input type="text" class="input" id="cell_no2" name="cell_no2" data-class="phone_chk" validate="empty" title="휴대폰 중간자리 입력" value="<%=phoneNums[1]%>" maxlength="4">
-											<em>-</em>
-											<input type="text" class="input" id="cell_no3" name="cell_no3" data-class="phone_chk" validate="empty" title="휴대폰 마지막 4자리 입력" value="<%=phoneNums[2] %>" maxlength="4">
-											<button type="button" class="sq" name="sq" onclick="">본인인증</button>
-										</span>
-										<span class="sm" name="cell_no" style="display:none;">본인인증을 해주세요.</span>
-										<span class="auth">
-										<label for="auth_num" class="ir">인증번호</label>
-										<span class="inp_w" name="inp_w" style="display:none;">
-											<input type="text" id="auth_num" placeholder="인증번호 입력" maxlength="6" onkeydown="" onkeyup="" msg1="인증번호를 입력해주세요." msg2="인증번호가 맞지 않습니다." msg3="입력 시간이 초과하였습니다. 인증번호를 재 발송 해 주세요." msg4="인증정보가 올바르지 않습니다.">
-											<em class="lmt" id="_certTime">05:00</em>
-										</span>
-										<button type="button" onclick="" class="sq" name="confirm" style="display:none;">확인</button>
-										<button type="button" onclick="" class="bx" name="resend" style="display:none;">재발송</button>
+									
+											<input type="text" class="input" id="cell_no1" name="cell_no1" data-class="phone_chk" validate="empty" title="휴대폰  입력" value="<%=phone%>" maxlength="11" style="width:216px">
+						
 									</span>
-									<span class="sm" name="auth_num" style="display:none;">인증번호 입력시간이 초과되었습니다.</span>
 									</td>
+									
+										<td><span class="sms">"-"은 빼고 입력해 주세요.</span></td>
+								
 								</tr>
 								<tr>
 									<th scope="row"><label for="email">이메일</label><em class="es">필수입력</em></th>

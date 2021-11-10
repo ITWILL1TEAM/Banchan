@@ -40,6 +40,7 @@ $(document).ready(function () {
        
 });
 
+
 function category(e){
 	
 	var sideDish = ["side","meat","fish"];
@@ -65,6 +66,14 @@ function category(e){
 	
 
 }
+function sendForm() {
+	var item = document.getElementById("product_category2");
+	if(!document.product.product_category2.value){		
+		alert('카테고리를 선택해주세요');
+		return false;
+	}	
+}
+
 
 </script>
  
@@ -92,24 +101,24 @@ function category(e){
                           상품등록
                             </div>
                             <div class="card-body">
-                            <form name="product" action="ProductWritePro.ad" method="POST" enctype="multipart/form-data">
+                            <form name="product" action="ProductWritePro.ad" method="POST" enctype="multipart/form-data" onsubmit="return sendForm()">
                                 <table class="table table-bordered talbe-light" >
-                                 		<tr><td>상품명</td><td colspan="2"><input type="text" name = "product_name" size=10></td></tr>
-										<tr><td>판매자 명</td><td colspan="2"><input type="text" name = "seller_id" value="<%=sId %>" size=10></td></tr>
+                                 		<tr><td>상품명</td><td colspan="2"><input type="text" name = "product_name" size=10 required="required"></td></tr>
+										<tr><td>판매자 명</td><td colspan="2"><input type="text" name = "seller_id" value="<%=sId %>" size=10 readonly="readonly"></td></tr>
                                         <tr><td>카테고리</td><td colspan="2"><select onchange="category(this) " name = "product_category">                                                                                
                                                                                 <option value="SideDish" selected="selected">반찬</option>
                                                                                 <option value="Soup">국</option>
                                                                                 <option value="Kimchi">김치</option>
                                                                             </select> 
-                                                                            <select id="select" name = "product_category2" ><option>소분류</option>
+                                                                            <select id="select" name = "product_category2"  id="product_category2"><option value="">소분류</option>
                                                                             </select></td></tr>
-										<tr><td>상품가격</td><td colspan="2"><input type="number" name = "product_price" size=10></td></tr>
-										<tr><td>제품무게</td><td colspan="2"><input type="number" name = "product_weight" size=10></td></tr>
-										<tr><td>제품총재고</td><td colspan="2"><input type="number" name = "product_stock" size=10></td></tr>
-										<tr><td>제품할인률</td><td colspan="2"><input type="number" name = "product_discount" size=10></td></tr>
-										<tr><td>제품 유통기한</td><td colspan="2"><input type="text" name = "product_expiration_date" size=10></td></tr>
-										<tr><td>제품보관방법</td><td colspan="2"><textarea rows="5" cols="30" name="product_handling"></textarea></td></tr>
-										<tr><td>제품원재료명 및 함량</td><td colspan="2"><textarea rows="5" cols="30" name="product_material"></textarea></td></tr>
+										<tr><td>상품가격</td><td colspan="2"><input type="number" name = "product_price" size=10 required="required"></td></tr>
+										<tr><td>제품무게</td><td colspan="2"><input type="number" name = "product_weight" size=10 required="required"></td></tr>
+										<tr><td>제품총재고</td><td colspan="2"><input type="number" name = "product_stock" size=10 required="required"></td></tr>
+										<tr><td>제품할인률</td><td colspan="2"><input type="number" name = "product_discount" size=10 required="required"></td></tr>
+										<tr><td>제품 유통기한</td><td colspan="2"><input type="text" name = "product_expiration_date" size=10 required="required"></td></tr>
+										<tr><td>제품보관방법</td><td colspan="2"><textarea rows="5" cols="30" name="product_handling" required="required"></textarea></td></tr>
+										<tr><td>제품원재료명 및 함량</td><td colspan="2"><textarea rows="5" cols="30" name="product_material" required="required"></textarea></td></tr>
 <!-- 										<tr><td>제품품목</td><td colspan="2"><input type="text" name = product_category size=10></td></tr> -->
 									    <tr>
 									    	<td>이미지추가</td><td><input type="file" name="product_original_img1" size=10></td>									    

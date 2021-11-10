@@ -32,18 +32,6 @@ if(regex.exec(id)){
 	}
 }
 
-function checkSubmit(){
-	// idCheckResult 값이 true이면, true리턴 , 아니면 false 리턴
-	if(idCheckResult){
-		return true;
-	}else{
-	alert('4 ~ 20자리 영문자, 숫자 혼합 필수');
-	document.checkForm.id.focus();
-	return false;
-	}
-}
-
-
 function useId(id) {
 	//현재 창이 아닌 현재 창을 연 부모 창의 fr폼의 id 요소 위치에
 	// 사용하려는 아이디 값을 표시하기
@@ -51,6 +39,8 @@ function useId(id) {
 	opener.document.fr.member_id.value = id;
 	//현재 창 닫기
 	window.close();
- }
+}
+
+
 
 

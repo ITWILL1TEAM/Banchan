@@ -39,32 +39,40 @@ public class CartAddAction implements Action {
 		} else {
 			 BasketBean basket = new BasketBean();
 			 
-			 int product_num = Integer.parseInt(request.getParameter("product_num"));
-			 
 			 // BasketBean 객체에 파라미터 받아서 저장
 			 basket.setCutomer_id(customer_id);
-			 basket.setProduct_num(product_num);
+			 basket.setProduct_num(Integer.parseInt(request.getParameter("product_num")));
 			 basket.setProduct_name(request.getParameter("product_name"));
 			 basket.setProduct_price(Integer.parseInt(request.getParameter("product_price")));
 			 basket.setProduct_qty(Integer.parseInt(request.getParameter("ord_qty")));
 			 basket.setProduct_discount(Integer.parseInt(request.getParameter("product_discount")));
 			 basket.setSname(request.getParameter("Sname"));
 			 
-			 // DupProdCheckService 인스턴스의 DupProdCheckService() 메서드를 호출하여 사용자의 장바구니에 해당 상품이 존재하는지 확인
+			 // DupProdCheckService 인스턴스의 DupProdCheck() 메서드를 호출하여 사용자의 장바구니에 해당 상품이 존재하는지 확인
 			 // 존재(true)할 경우 수량만 업데이트
 			 DupProdCheckService dupProd = new DupProdCheckService();
 			 boolean isDupProduct = dupProd.dupProductCheck(basket);
 			 
 			 // 존재하지 않을 경우 새로 장바구니에 담기
 			 boolean isInsertSuccess = false;
+			 
 			 if(!isDupProduct) {
 				 AddCartService addCart = new AddCartService();
 				 isInsertSuccess = addCart.AddCart(basket);
+				 
+				 if(!isInsertSuccess) {
+					 out.println("<script>");
+			         out.println("alert('장바구니 담기 실패')");
+			         out.println("history.back()");
+			         out.println("</script>");
+				 } else {
+					 forward = new ActionForward();
+					 forward.setPath("Cart.ca");
+					 forward.setRedirect(true);
+					 
+				 }
 			 }
 			 
-			 forward = new ActionForward();
-			 forward.setPath("Cart.ca");
-			 forward.setRedirect(true);
 			
 		}
         

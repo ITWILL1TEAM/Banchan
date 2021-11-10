@@ -82,7 +82,17 @@
                                             <td><%=articleList.get(i).getProduct_stock() %></td>
                                             <td><%=articleList.get(i).getProduct_date() %></td>
                                             <td>$<%=articleList.get(i).getProduct_price() %></td>
-                                            <td><a href="#"><img src="assets/img/Edit.png"></a>
+                                            <td>
+                                            <div class="dropdown">
+	                                               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+	                                                 info
+	                                               </button>
+	                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+	                                                 <li><button class="dropdown-item" type="button" onclick=" ">상품삭제</button></li>
+	                                                 <li><button class="dropdown-item" type="button" onclick=" ">상품수정</button></li>
+	                                               </ul>
+	                                             </div>
+	                                         </td>
                                         </tr>
                                             <%} %>
                                     </tbody>

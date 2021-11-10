@@ -4,8 +4,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	<%
 	ArrayList<BoardBean> sideList = (ArrayList<BoardBean>)request.getAttribute("sideList");
+	int reviewCount = (Integer)request.getAttribute("reviewCount");
 	%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +35,7 @@
 </head>
 <body>
 
-    
+    <%=reviewCount %>
 
     <!-- HEADER -->
     <jsp:include page="../inc/top.jsp" />
@@ -158,15 +160,15 @@
 								onclick="">
 								    <p class="subject"><%=product_name %></p>
 								<div class="price">
-									<p>
-										<strong><%= discountPrice %></strong><span class="is-noto">원</span>
-									</p>
-									<%if(discount!=0){ %>
-									<p class="original">
-									<%=price %>	<span class="is-noto">원</span>
-									</p>
-									<%} %>
-								</div>
+                                    <p>
+                                        <strong><fmt:formatNumber value="<%=discountPrice %>" pattern="#,###.##"/></strong><span class="is-noto">원</span>
+                                    </p>
+                                    <%if(discount!=0){ %>
+                                    <p class="original">
+                                    <fmt:formatNumber value="<%=price %>" pattern="#,###.##"/><span cla   ss="is-noto">원</span>
+                                    </p>
+                                    <%} %>
+                                </div>
 								<div class="star-wrap">
 									<i class="ico-star"></i><span class="num"><strong>4.8<!-- 리뷰 스코어 들어갈자리 --></strong>(2,718)</span>
 								</div>

@@ -3,10 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
   <%
     ArrayList<BoardBean> productList = (ArrayList<BoardBean>)request.getAttribute("productList");
-   
+  
   
   
   %>
@@ -71,27 +72,27 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="img/carousel_sample1.jpg" class="d-block w-100"
-                            height="500" alt="sampletest1">
+                        <img src="img/causel2.png" class="d-block w-100"
+                            height="400" alt="sampletest1">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>산딸기</h5>
-                            <p>It's a fresh raspberry, actually, it's a snake berry lol</p>
+                            <h5></h5>
+                            <p></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img/carousel_sample2.jpg" class="d-block w-100 "
-                            height="500" alt="...">
+                        <img src="img/causel3.png" class="d-block w-100 "
+                            height="400" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>스테이크</h5>
-                            <p>The steak looks very tasty. How much is it?</p>
+                            <h5></h5>
+                            <p></p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img/carousel_sample3.jpg" class="d-block w-100 "
-                            height="500" alt="...">
+                        <img src="img/causel1.png" class="d-block w-100 "
+                            height="400" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>직화 숯불 꼬지</h5>
-                            <p>Look so damn delicious I want to go camping</p>
+                            <h5></h5>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -488,8 +489,20 @@
                                                 role="listbox">
                                                 <div class="list slick-slide slick-current slick-active"  data-slick-index="0" aria-hidden="false"
                                                     style="width: 1280px;" tabindex="-1" role="option" aria-describedby="slick-slide100">
+													                             
+													                             
+													                                        
+                                                      <%                                        
+                                                      if(productList!=null){ 
+                                                      	int productCount = 0;
+                                                      	if(productList.size() <4){
+                                                      		productCount = productList.size();
+                                                      	}else{
+                                                      		productCount = 4;
+                                                      	}
                                                       
-                                                        <%for(int i=0; i<3; i++){ %>
+                                                      %>
+                                                        <%for(int i=0; i<productCount; i++){ %>
                                                         <% 
                                                         String productImgName = productList.get(i).getProduct_name();
                                                         int discountPrice = (int)(productList.get(i).getProduct_price()*(100-productList.get(i).getProduct_discount())/100); 
@@ -514,19 +527,20 @@
                                                         <div class="info">
 <%--                                                             <img src="${pageContext.request.contextPath}/upload/<%=productImgName %>01_01.png" tabindex="0"> --%>
                                                                 <p class="subject"><%=product_name %></p>
-                                                                <div class="price">
-                                                                    <p>
-                                                                       <strong><%= discountPrice %></strong><span class="is-noto">원</span>
-                                                                    </p>
-                                                                    <%if(discount!=0){ %>
-								                                    <p class="original">
-								                                    <%=price %> <span class="is-noto">원</span>
-								                                    </p>
-								                                    <%} %>
-                                                                </div>                                                           
+                                                               <div class="price">
+							                                    <p>
+							                                        <strong><fmt:formatNumber value="<%=discountPrice %>" pattern="#,###.##"/></strong><span class="is-noto">원</span>
+							                                    </p>
+							                                    <%if(discount!=0){ %>
+							                                    <p class="original">
+							                                    <fmt:formatNumber value="<%=price %>" pattern="#,###.##"/><span cla   ss="is-noto">원</span>
+							                                    </p>
+							                                    <%} %>
+							                                </div>                                                      
                                                         </div>
                                                     </div>
-                                                    <%} %>
+                                                    <%}
+                                                        } %>
                                                     
                                                     
                                                     

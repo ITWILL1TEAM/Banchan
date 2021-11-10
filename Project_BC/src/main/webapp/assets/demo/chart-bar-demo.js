@@ -4,15 +4,30 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
+
+var mydata = [];
+var mydata2 = [];
+var monthTotal = $('.total_data li');
+var month = $('.date_data li');
+
+monthTotal.each(function(){
+	mydata.push($(this).text());
+	
+});
+month.each(function(){
+		mydata2.push($(this).text());
+});
+
+
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: mydata2,
     datasets: [{
       label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: mydata,
     }],
   },
   options: {
@@ -30,8 +45,8 @@ var myLineChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          min: 0,
-          max: 15000,
+          min: 10000,
+          max: 100000,
           maxTicksLimit: 5
         },
         gridLines: {

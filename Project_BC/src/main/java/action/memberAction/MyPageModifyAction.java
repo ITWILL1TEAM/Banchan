@@ -24,7 +24,7 @@ public class MyPageModifyAction implements Action {
         System.out.println("MyPageModifyAction");
         ActionForward forward = null;
         
-        
+        //
         MemberBean member = new MemberBean();
       
         HttpSession session = request.getSession();

@@ -1,0 +1,26 @@
+로그인
+쿠키값저장시 session에 grade값도 같이 추가
+
+마이페이지
+개인정보수정 전화번호 '-'split 제거 O
+배송지 insertDAO 안됨  O
+고객후기 페이지출력 X
+
+리뷰작성
+작성시 order_num , product_num 넘기기 O
+productBean객체가져오기 O
+
+판매자페이지
+판매자명 Sname가져오기
+카테고리 selectBox 수정
+카테고리 카테고리 영어로 되어있는거 수정
+카테고리 별점 수정
+카테고리 리뷰카운트 수정
+
+결제페이지
+주문시 orderProduct - insert 문제
+주문실패시 장바구니로
+
+메인페이지
+고객센터 컨트롤러 연결
+

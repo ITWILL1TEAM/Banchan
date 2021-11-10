@@ -34,10 +34,7 @@ public class AdminController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if(command.equals("/Chart.ad")) {			
-			forward = new ActionForward();
-			forward.setPath("/adminPage/charts.jsp");
-			forward.setRedirect(false); // Dispatcher 방식(기본값이므로 생략 가능)
+		
 		}else if(command.equals("/CustomerInfo.ad")) {			
 			action = new MemberListAction();
 			try {
@@ -84,7 +81,18 @@ public class AdminController extends HttpServlet {
 	            } catch (Exception e) {
 	                e.printStackTrace();
 	            }
-
+	            
+	            
+//	     -----------------Chart--------------
+		}else if(command.equals("/Chart.ad")) {			
+			action = new ChartDataAction();            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+		}
+		
+            
 		}else if(command.equals("/NoticeWrite.ad")) {          
             forward = new ActionForward();
             forward.setPath("/adminPage/NoticeWrite.jsp");
