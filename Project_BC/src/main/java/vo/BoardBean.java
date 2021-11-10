@@ -19,8 +19,15 @@ public class BoardBean {
     private String product_material;//  제품 원재료명 및 함량.
     private double product_review_score; // 리뷰 평점
     private int reviewCount;
+    private String Sname;
     
-    public int getReviewCount() {
+    public String getSname() {
+		return Sname;
+	}
+	public void setSname(String sname) {
+		Sname = sname;
+	}
+	public int getReviewCount() {
 		return reviewCount;
 	}
 	public void setReviewCount(int reviewCount) {

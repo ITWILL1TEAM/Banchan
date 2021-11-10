@@ -402,7 +402,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "delete from product where board_num=?";
+			String sql = "delete from product where product_num=?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, product_num);

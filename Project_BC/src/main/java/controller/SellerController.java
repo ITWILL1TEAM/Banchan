@@ -58,7 +58,7 @@ public class SellerController extends HttpServlet {
 			}
 			// 위임받은 Exception 예외처리 필요..!
 
-		}else if(command.equals("Del.sc")) {
+		}else if(command.equals("/Del.sc")) {
 			action = new SellerDeleteAction();
 			
 			try {
