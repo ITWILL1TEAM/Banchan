@@ -30,7 +30,7 @@ response.setContentType("text/html;charset=utf-8");
 <head>
 <meta charset="UTF-8">
 
-<title>주문완료 | theBanchan</title>
+<title>결제페이지</title>
 	<link rel="shortcut icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
 	<link rel="icon" href="//www.thebanchan.co.kr/fo/images/common/favicon.ico?v=2" type="image/x-icon">
 	<link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211026000" type="text/css">	
@@ -99,6 +99,7 @@ IMP.request_pay({
 			
 			$('.fail').attr("src",'order/payment_fail.jpg')
 			$('.fail').show();
+			document.getElementById("odr_insCrt").style.display = 'block';
 		}
 	});
 
@@ -130,7 +131,10 @@ IMP.request_pay({
 <input type="hidden" value="<%=total_discount %>" id="total_discount" name="total_discount">
 <input type="hidden" value="<%=shipping_fee %>" id="shipping_fee" name="shipping_fee">
 
-
+<div class="odr_insCrt" id="odr_insCrt" style="display: none;">
+				<a href="Cart.ca" id="go_cart_button"><em>장바구니
+						돌아가기</em></a>
+			</div>
 
 <%
 for(int i = 0 ; i < nums.length ; i ++){
