@@ -96,13 +96,13 @@ CREATE TABLE `basket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `order_list` (
-  `order_num` int(11) NOT NULL,
+  `order_num` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` varchar(15) COLLATE utf8_bin NOT NULL,
   `shipping_name` varchar(50) COLLATE utf8_bin NOT NULL,
   `shipping_phone` varchar(45) COLLATE utf8_bin NOT NULL,
   `shipping_zonecode` varchar(50) COLLATE utf8_bin NOT NULL,
   `shipping_address` varchar(50) COLLATE utf8_bin NOT NULL,
-  `shipping_memo` varchar(1000) COLLATE utf8_bin,  
+  `shipping_memo` varchar(1000) COLLATE utf8_bin DEFAULT NULL,
   `order_price` int(11) NOT NULL,
   `pay_method` varchar(50) COLLATE utf8_bin NOT NULL,
   `order_date` date NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE `order_list` (
   PRIMARY KEY (`order_num`),
   KEY `customer_id_order_fk` (`customer_id`),
   CONSTRAINT `customer_id_order_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `order_product` (
   `order_num` int(11) NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `order_product` (
   `product_num` int(11) NOT NULL,
   `product_qty` int(11) NOT NULL,
   `product_check` int(11) NOT NULL DEFAULT '0',
-  KEY `order_num_product_num_fk_idx` (`order_num`),
+  KEY `order_num_product_num_fk` (`order_num`),
   CONSTRAINT `order_num_product_num_fk` FOREIGN KEY (`order_num`) REFERENCES `order_list` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
