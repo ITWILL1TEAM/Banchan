@@ -5,12 +5,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     ArrayList<Productbean> orderList = (ArrayList<Productbean>)request.getAttribute("orderList");
-	
 %>
 
-<div id="evalListBodydiv">
-<h1>review1</h1>
-<!-- REVIEW LIST -->
+<div id="evalListBodydiv" style="width: 100px; height: 100px;">
 	<%
 	if(orderList != null) {
 	%>
@@ -47,11 +44,11 @@
 			<% } %>
 			</table>
 		</div>	
-	
- <% }else{ %>
-	    <span class="txt">
-			수취 완료 후 30일 이내  작성 가능한 후기가 없습니다.
-		</span>
- <% } %>
 		      
 </div>
+	
+ <% }else{ %>
+	   
+			수취 완료 후 30일 이내  작성 가능한 후기가 없습니다.
+		
+ <% } %>

@@ -10,9 +10,9 @@
 	// "pageInfo" 객체로부터 페이지 관련 값들을 꺼내서 변수에 저장
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	
+	int product_num = Integer.parseInt(request.getParameter("product_num").toString());
 	double score = (Double)request.getAttribute("score");
-	double avgScore = (Double)request.getAttribute("avgScore");
+	double avgScore = Math.round((Double)request.getAttribute("avgScore")*10)/10.0;
 	double avgPercent = (Double)request.getAttribute("avgPercent");
 	
 	int nowPage = pageInfo.getPage();
@@ -51,6 +51,28 @@ $(document).ready(function() {
 	
 	
 });
+
+function arrange() {
+	var selectValue = document.getElementById('sch_gb').value;
+	var product_num = <%=product_num%>
+	if(selectValue=="high_score"){
+		alert(selectValue);
+		location.href='ReviewList.re?arrange='+selectValue+'&product_num='+product_num;
+		$("#sch_gb").val("high_score").prop("selected", true);
+		
+		
+	}else if(selectValue=="row_score"){
+		alert(selectValue);
+		location.href='ReviewList.re?arrange='+selectValue+'&product_num='+product_num;
+		
+	}else{
+		alert(selectValue);
+		location.href='ReviewList.re?arrange='+selectValue+'&product_num='+product_num;
+		
+	}
+
+       
+}
 </script>
 <!-- 파일로 연결할 시 css가 부분부분 깨짐.일단은 링크로 연결해두고 나중에 고쳐보기. -->
 <link href="CSS/common.css" rel="stylesheet" type="text/css">
@@ -61,6 +83,7 @@ $(document).ready(function() {
 <link href="CSS/gds.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/gds.css?t=20200406000000" type="text/css">
 <link rel="stylesheet" href="//www.thebanchan.co.kr/fo/css/common.css?v=20211010170" type="text/css">   
+
 </head>
 <body>
 <!-- TAB3 -->
@@ -102,15 +125,11 @@ $(document).ready(function() {
 				
 				</div>
 				<div class="sort">
-						<select title="상품후기 정렬 선택" id="sch_gb">
-							<option value="recent" selected="selected">최근 등록순</option>
-							<option value="high_score">평점 높은순</option>
-							<option value="low_score">평점 낮은순</option>
-						</select>
+						
 						<span class="button">
 							<button type="button" title="고객후기작성 열기" onclick="location.href='<%=request.getContextPath() %>/Review.my'">고객후기 작성</button>
 						</span>
-					</div>
+				</div>
 				<input type="hidden" id="eval_goods_no" name="eval_goods_no" value="2106015489">	
 				</div>
 				<div id="evalListBodydiv">
@@ -189,7 +208,7 @@ $(document).ready(function() {
 				<div class="paging" id="page_nav">
 					<section id="pageList">
 						<%if(nowPage > 1) {%>
-			      		<a href="ReviewList.re?page=<%=nowPage -1 %>">Prev</a>&nbsp;
+			      		<a href="ReviewList.re?product_num=<%=product_num %>&page=<%=nowPage -1 %>">Prev</a>&nbsp;
 				      		<%
 				      	}else{
 				      		%>
@@ -202,13 +221,13 @@ $(document).ready(function() {
 				      			%><%=i %>&nbsp;<%
 				      		} else{
 				      			%>
-				      			<a href="ReviewList.re?page=<%=i %>"><%=i %></a>&nbsp;
+				      			<a href="ReviewList.re?product_num=<%=product_num %>&page=<%=i %>"><%=i %></a>&nbsp;
 				      			<%
 							}
 						} 
 						
 				      	if(nowPage < maxPage){ %>
-				      		<a href="ReviewList.re?page=<%=nowPage +1 %>">Next</a>&nbsp;
+				      		<a href="ReviewList.re?product_num=<%=product_num %>&page=<%=nowPage +1 %>">Next</a>&nbsp;
 				      		<%
 				      	}else{
 				      		 %>Next&nbsp;<%

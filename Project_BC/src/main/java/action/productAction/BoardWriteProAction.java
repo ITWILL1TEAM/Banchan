@@ -28,7 +28,7 @@ public class BoardWriteProAction implements Action {
 
 		String realFolder = "";
 //        String realFolder = "C:\\Users\\JSW\\git\\Banchan\\Project_BC\\src\\main\\webapp\\upload";//프로젝트 절대경로.
-		String saveFolder = "/upload";
+		String saveFolder = "/img";
 
 		ServletContext context = request.getSession().getServletContext();
 		realFolder = context.getRealPath(saveFolder);

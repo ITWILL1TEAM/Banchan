@@ -84,7 +84,7 @@ public class ReviewListService {
         dao.setConnection(con);
         
         
-        ArrayList<ReviewBean> articleList = dao.selectMyReviewArticleList(id,page, limit);
+        ArrayList<ReviewBean> articleList = dao.selectMyReviewArticleList(id);
         
         close(con);
         

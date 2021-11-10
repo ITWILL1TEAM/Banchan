@@ -10,43 +10,6 @@
 <link rel="stylesheet" href="CSS/common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/pc-main-common.css?v=20211011000" type="text/css">
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
-<script type="text/javascript">
-	$(function() {
-		$('#yet').on('click', function() {
-			var sendFormData = $('form').serialize();
-			
-			$.ajax({
-				type: "GET",
-				url: "myReviewpage1.jsp",
-				data: sendFormData,
-				dataType: 'text',
-				success: function(msg) {
-					$('#yetReviewBodyDiv').html(msg);
-					$('#doneReviewBodyDiv').html('');
-					$('#yet').class(on);
-				} 
-			});
-		});
-		
-		$('#done').on('click', function() {
-			// form 태그에 있는 모든 파라미터를 하나로 묶어서 전송하기 위한 변수 선언
-			var sendFormData = $('form').serialize();
-	//			alert(sendFormData);
-			
-			$.ajax({
-				type: "GET",
-				url: "myReviewpage2.jsp",
-				data: sendFormData,
-				dataType: 'text',
-				success: function(msg) {
-					$('#yetReviewBodyDiv').html('');
-					$('#doneReviewBodyDiv').html(msg);
-					$('#done').class(on);
-				} 
-			});
-		});
-	});
-</script>
 </head>
 <body>
 <%@include file="../inc/top.jsp" %>
@@ -101,9 +64,6 @@
 			<div class="mys_summ">
 				<div class="txt"><b>조정민</b> 고객님께서 구매하신 제품에 고객후기를 남겨 주시면 다양한 혜택을 드립니다. </div>
 			</div>
-			<!-- //MY SUMMARY -->
-
-			<!-- DATE SEARCH -->
 			
 <div class="mys_sch">
 	<div class="txt" id="guide_text">※최대 1년 이내의 고객후기 내역이 확인됩니다.</div>	
@@ -117,21 +77,21 @@
 			<!-- MY TAB -->
 			<div class="tab_menu">
 				<ul id="tabUl">
-					<li class="on" data-review-yn="Y" id="yet">
-						<a href="" id="#tab_con1" class="tab t1">작성 가능한 고객후기</a>
+					<li id="yet">
+						<a id="#tab_con1" class="tab t1">작성 가능한 고객후기</a>
 						<!-- MY LIST a #tab_con1클릭시 tabUl의 첫번째 class를 "" data-review-yn="N"으로 변경-->							
-						<div id="yetReviewBodyDiv">
+						<p id="yetReviewBodyDiv">
 
 
-						</div>
+						</p>
 						<!-- //MY LIST -->	
 					</li>
-					<li data-review-yn="N" id="done">
-						<a href="" id="#tab_con2" class="tab t2">작성한 고객후기</a>
+					<li id="done">
+						<a id="#tab_con2" class="tab t2">작성한 고객후기</a>
 						<!-- MY LIST -->	
-						<div id="doneReviewBodyDiv">
+						<p id="doneReviewBodyDiv">
 							
-						</div>	
+						</p>	
 						<!-- //MY LIST -->	
 					</li>
 				</ul>			
@@ -149,5 +109,49 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	
+	$(function() {
+	
+		$.ajax({
+			type: "GET",
+			url: "${pageContext.request.contextPath}/Review1.my",
+			dataType: 'text',
+			success: function(msg) {
+				$('#yetReviewBodyDiv').html(msg);
+				$('#doneReviewBodyDiv').html('');
+			} 
+		});
+		
+		
+	$('#yet').on('click', function() {
+		
+		$.ajax({
+			type: "GET",
+			url: "${pageContext.request.contextPath}/Review1.my",
+			dataType: 'text',
+			success: function(msg) {
+				$('#yetReviewBodyDiv').html(msg);
+				$('#doneReviewBodyDiv').html('');
+			} 
+		}).fail;
+	});
+	
+	$('#done').on('click', function() {
+		// form 태그에 있는 모든 파라미터를 하나로 묶어서 전송하기 위한 변수 선언
+		$.ajax({
+			type: "GET",
+			url: "${pageContext.request.contextPath}/Review2.my",
+			dataType: 'text'
+		}).done(function(data) {
+				$('#yetReviewBodyDiv').html(data);
+				$('#doneReviewBodyDiv').html('');
+		}).fail(function(data) {
+			alert('실패');
+		})
+	});
+	
+});
+</script>
 </body>
 </html>

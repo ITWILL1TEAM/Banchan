@@ -16,6 +16,7 @@
 	boolean isDiscounted = false;
 	int product_qty = 1;
 	
+	
 	if(article.getProduct_discount() > 0) {
 		isDiscounted = true;
 	}
@@ -157,7 +158,7 @@
 						<div class="gd_img_bx">
 							 <div class="fade_slide gd_img" >
 								<ul class="cont">							
-									<li class="active" id="tumnail" style="background-image:url('${pageContext.request.contextPath}/upload/<%= productImg.get(0).getProduct_img()%>.png">	
+									<li class="active" id="tumnail" style="background-image:url('${pageContext.request.contextPath}/img/<%= productImg.get(0).getProduct_img()%>.png">	
 									<span class="ir"><%=article.getProduct_name()%> </span></li>
 									
 									
@@ -171,7 +172,7 @@
                                    
                                     %>
 									<li class="on"><a href="#gd_img_bx">
-									<img src="${pageContext.request.contextPath}/upload/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
+									<img src="${pageContext.request.contextPath}/img/<%=productImg.get(i).getProduct_img()%>.png" width="100" height="100" alt="<%=productImg.get(i).getProduct_original_img() %>" onclick="ChangeImg()"/>
 									
 									
 									<em class="ir"><%=article.getProduct_name()+i %></em></a></li>
@@ -308,7 +309,7 @@
 						
 						<%for(int i = 0; i < productDtlImg.size(); i++){%>
    
-							<img alt="" src="${pageContext.request.contextPath}/upload/<%=productDtlImg.get(i).getProduct_img()%>.png"/>
+							<img alt="" src="${pageContext.request.contextPath}/img/<%=productDtlImg.get(i).getProduct_img()%>.png"/>
 							
 						<%}%>
     

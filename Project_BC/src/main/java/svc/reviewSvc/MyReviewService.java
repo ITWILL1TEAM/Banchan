@@ -34,7 +34,7 @@ public class MyReviewService {
         return listCount;
     }
 
-    public ArrayList<ReviewBean> getArticleList(String id,int page, int limit) {
+    public ArrayList<ReviewBean> getArticleList(String id) {
         // 공통작업-1. Connection Pool 로부터 Connection 객체 가져오기
 //      Connection con = JdbcUtil.getConnection();
         Connection con = getConnection();
@@ -46,7 +46,7 @@ public class MyReviewService {
         dao.setConnection(con);
         
         
-        ArrayList<ReviewBean> articleList = dao.selectMyReviewArticleList(id,page, limit);
+        ArrayList<ReviewBean> articleList = dao.selectMyReviewArticleList(id);
         
         
         // 공통작업-4. Connection 객체 반환

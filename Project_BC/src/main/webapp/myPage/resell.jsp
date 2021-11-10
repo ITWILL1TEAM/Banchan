@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="CSS/font.css?v=20211018180" type="text/css">
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="//www.thebanchan.co.kr/fo/js/jquery.plugin.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <%@include file="../inc/top.jsp" %>

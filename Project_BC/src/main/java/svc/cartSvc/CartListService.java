@@ -15,7 +15,6 @@ import vo.ProductImg;
 public class CartListService {
 
 	public ArrayList<BasketBean> getCartList(String customer_id) {
-		System.out.println("CartListService - getCartList()");
 		
 		Connection con = getConnection();
 		
@@ -33,7 +32,6 @@ public class CartListService {
 
 	// 주문하려는 회원이 입력된 배송지를 가지고 있는지 판별하는 메소드
 	public boolean getAddressInfo(String customer_id) {
-		System.out.println("CartListService - getAddressInfo()");
 		boolean hasAddress = false;
 		
 		Connection con = getConnection();
