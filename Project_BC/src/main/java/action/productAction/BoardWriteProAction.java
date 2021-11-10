@@ -101,10 +101,9 @@ public class BoardWriteProAction implements Action {
 
 				Enumeration files = multi.getFileNames();// Enumeration형식으로 업로드되 파일 이름 리턴
 				
-				int i = 1, j = 1, z=1;
+				int i = 1, j = 1, z=1;	
 				
-//				String[] item = {};
-				
+								
 				while (files.hasMoreElements()) {
 					String filestr = files.nextElement().toString(); //파일명 들고오기
 					String board_original_file = multi.getOriginalFileName(filestr); //파일명 저장.
