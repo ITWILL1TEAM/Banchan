@@ -207,6 +207,17 @@ public class BoardDAO {
 				article.setProduct_material(rs.getString("product_material"));
 				article.setProduct_review_score(rs.getDouble("product_review_score"));
 			}
+			close(rs);
+			close(pstmt);
+			
+			sql="SELECT Sname FROM seller WHERE seller_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, article.getSeller_id());
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				article.setSname(rs.getString("Sname"));
+			}		
 
 		} catch (Exception e) {
 			e.printStackTrace();
