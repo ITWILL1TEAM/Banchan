@@ -126,8 +126,11 @@ public class ReviewDAO {
 		       // -> 단, 시작행번호부터 페이지당 게시물 수만큼만 조회
 		       //     LIMIT 시작행번호, 페이지당게시물수
 		       String sql = "SELECT * FROM review WHERE product_num=? ORDER BY review_idx DESC LIMIT ?,?";
+		       
 		       pstmt = con.prepareStatement(sql);
+		       
 		       pstmt.setInt(1, product_num);
+		      
 		       pstmt.setInt(2, startRow); // 시작행번호
 		       pstmt.setInt(3, limit); // 페이지당 게시물 수
 		         

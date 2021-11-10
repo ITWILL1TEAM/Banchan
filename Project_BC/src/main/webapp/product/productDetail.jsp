@@ -16,6 +16,7 @@
 	boolean isDiscounted = false;
 	int product_qty = 1;
 	
+	
 	if(article.getProduct_discount() > 0) {
 		isDiscounted = true;
 	}
