@@ -14,9 +14,6 @@
 </head>
 <%
  ArrayList<BoardBean> articleList = (ArrayList<BoardBean>)request.getAttribute("articleList");
-
-
-
 %>
 
 

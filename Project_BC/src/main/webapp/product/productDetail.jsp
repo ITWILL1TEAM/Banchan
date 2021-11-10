@@ -144,7 +144,7 @@
 					<input type="hidden" id="product_name" name="product_name" value="<%=article.getProduct_name()%>"/>
 					<input type="hidden" id="product_discount" name="product_discount" value="<%=article.getProduct_discount()%>"/>
 					<input type="hidden" id="product_stock" name="product_stock" value="<%=article.getProduct_stock()%>"/>
-					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSeller_id() %>"/>
+					<input type="hidden" id="Sname" name="Sname" value="<%=article.getSname() %>"/>
 					<input type="hidden" id="product_price" name="product_price" value="<%=article.getProduct_price()%>"/>
 					<input type="hidden" id="total_amt" name="total_amt" value=""/>
 				</div>
@@ -189,7 +189,7 @@
 						<!-- BRAND -->
 						<div class="gd_brd">	
 							<dl>
-								<dt><%=article.getSeller_id() %></dt>
+								<dt><%=article.getSname() %></dt>
 							</dl>
 						</div>
 						<!-- NAME -->

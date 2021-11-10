@@ -20,7 +20,10 @@ public class BoardBean {
     private double product_review_score; // 리뷰 평점
     private int review_count;
     
-    public int getReview_count() {
+    private String Sname;
+    
+ 
+	public int getReview_count() {
 		return review_count;
 	}
 	public void setReview_count(int review_count) {
@@ -105,7 +108,12 @@ public class BoardBean {
     public void setProduct_material(String product_material) {
         this.product_material = product_material;
     }
-    
+    public String getSname() {
+ 		return Sname;
+ 	}
+ 	public void setSname(String sname) {
+ 		Sname = sname;
+ 	}
     
     
     
