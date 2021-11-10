@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import action.Action;
 import svc.productSvc.ProductDetailService;
@@ -16,7 +17,7 @@ public class ProductDetailAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		ActionForward forward = null;
+		ActionForward forward = null;		
 		
 		// request 객체를 통해 전달받은 파라미터(product_num) 가져오기
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
@@ -27,12 +28,15 @@ public class ProductDetailAction implements Action {
 		ProductDetailService service = new ProductDetailService();
 		ReviewListService review = new ReviewListService();
 		
+		
+		
 		// getArticle() 메소드 호출하여 board_num에 대한 게시물 상세 정보 리턴받기
 		// -> 파라미터 : 글번호(board_num)  리턴타입 : Boardbean(article)
 		BoardBean article = service.getArticle(product_num);
 		ArrayList<ProductImg> productImg= service.getArticleImg(product_num);
 		ArrayList<ProductImg> productDtlImg = service.getDetailImg(product_num);
 		double totalScore = review.getTotalReviewScore(product_num);
+		
 		
 		int reviewCount = service.getReviewCount(product_num);
 		

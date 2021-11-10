@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vo.*;
@@ -393,6 +394,27 @@ public class BoardDAO {
 		}
 
 		return productList;
+	}
+	
+	public int productDelete(int product_num) {
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from product where product_num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+			
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return deleteCount;
+		
 	}
 
 }
