@@ -238,13 +238,13 @@ public class OrderDAO {
 
 						qty =  rs2.getInt("product_qty");
 						
-							sql = "insert into order_product values(?,?,?,?,?)";
+							sql = "insert into order_product values(?,?,?,?,0)";
 							pstmt4 = con.prepareStatement(sql);
 							pstmt4.setInt(1, num);
 							pstmt4.setString(2, order.getCustomer_id());
 							pstmt4.setInt(3, Integer.parseInt(str));
 							pstmt4.setInt(4, qty);
-							pstmt4.setInt(5, 0);
+							
 							pstmt4.executeUpdate();
 							
 							//메소드 불러오기
