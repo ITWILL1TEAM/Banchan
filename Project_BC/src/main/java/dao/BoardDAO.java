@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vo.*;
@@ -206,19 +207,6 @@ public class BoardDAO {
 				article.setProduct_material(rs.getString("product_material"));
 				article.setProduct_review_score(rs.getDouble("product_review_score"));
 			}
-			
-			close(rs);
-			close(pstmt);
-			
-			sql="SELECT Sname FROM seller WHERE seller_id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, article.getSeller_id());
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				article.setSname(rs.getString("Sname"));
-			}		
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -406,6 +394,27 @@ public class BoardDAO {
 		}
 
 		return productList;
+	}
+	
+	public int productDelete(int product_num) {
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from product where board_num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_num);
+			
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return deleteCount;
+		
 	}
 
 }

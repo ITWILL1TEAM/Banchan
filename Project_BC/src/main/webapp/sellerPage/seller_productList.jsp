@@ -85,8 +85,9 @@
 	                                                 info
 	                                               </button>
 	                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-	                                                 <li><button class="dropdown-item" type="button" onclick=" ">상품삭제</button></li>
-	                                                 <li><button class="dropdown-item" type="button" onclick=" ">상품수정</button></li>
+	                                                 <li><button class="dropdown-item" type="button" onclick="location.href='Del.sc?product_num=<%=articleList.get(i).getProduct_num()%>'">상품삭제</button></li>
+                                                     <li><button class="dropdown-item" type="button" onclick="">상품수정</button></li>
+
 	                                               </ul>
 	                                             </div>
 	                                         </td>
