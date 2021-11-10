@@ -20,11 +20,17 @@ public class ReviewListAction implements Action {
 		System.out.println("ReviewListAction");
 		ActionForward forward = null;
 		
+		String arrange = request.getParameter("arrange");
+		System.out.println("arrange:"+arrange);
+		
+		
+		
 		//페이징 처리를 위한 변수 선언
 		int page = 1;//현재 체이지 번호를 저장할 변수(기본값1)
 		int limit = 5; //한페이지에 표시할 게시물수를 저장할 변수 (최대 10개 설정)
 		int product_num = Integer.parseInt(request.getParameter("product_num")); //일단 2로 설정 나중에 변경해야됨	(내가 했어,,,)
 		//만약 page파라미터가 존재할 경우 해당
+		System.out.println("product_num: "+product_num);
 				
 		if(request.getParameter("page")!=null) {
 			page = Integer.parseInt(request.getParameter("page"));//정수화 필요
@@ -74,7 +80,9 @@ public class ReviewListAction implements Action {
 		
 		
 		request.setAttribute("score", score);
+		
 		request.setAttribute("avgScore", avgScore);
+		request.setAttribute("product_num", product_num);
 //		request.setAttribute("avgPercent", avgPercent);
 		
 		//ActionForward객체를 생성하여 board폴더내의 qna_board_list.jsp페이지로 포워딩
